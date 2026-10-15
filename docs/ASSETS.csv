@@ -1,0 +1,136 @@
+arquivo,formato,bytes,finalidade
+cars/models/apex-07.glb,GLB,184184,"Modelo 3D reutilizável; carregar com GLTFLoader, escala 1 unidade = 1 m."
+cars/models/azure-18.glb,GLB,189360,"Modelo 3D reutilizável; carregar com GLTFLoader, escala 1 unidade = 1 m."
+cars/models/baxter-00.glb,GLB,191092,"Modelo 3D reutilizável; carregar com GLTFLoader, escala 1 unidade = 1 m."
+cars/models/ember-22.glb,GLB,190244,"Modelo 3D reutilizável; carregar com GLTFLoader, escala 1 unidade = 1 m."
+cars/models/helix-36.glb,GLB,195424,"Modelo 3D reutilizável; carregar com GLTFLoader, escala 1 unidade = 1 m."
+cars/models/kestrel-14.glb,GLB,191100,"Modelo 3D reutilizável; carregar com GLTFLoader, escala 1 unidade = 1 m."
+cars/models/obsidian-27.glb,GLB,192824,"Modelo 3D reutilizável; carregar com GLTFLoader, escala 1 unidade = 1 m."
+cars/models/orion-63.glb,GLB,191088,"Modelo 3D reutilizável; carregar com GLTFLoader, escala 1 unidade = 1 m."
+cars/models/solstice-44.glb,GLB,188516,"Modelo 3D reutilizável; carregar com GLTFLoader, escala 1 unidade = 1 m."
+cars/models/stratos-59.glb,GLB,195412,"Modelo 3D reutilizável; carregar com GLTFLoader, escala 1 unidade = 1 m."
+cars/models/tempest-48.glb,GLB,195408,"Modelo 3D reutilizável; carregar com GLTFLoader, escala 1 unidade = 1 m."
+cars/models/verdant-31.glb,GLB,187640,"Modelo 3D reutilizável; carregar com GLTFLoader, escala 1 unidade = 1 m."
+cars/thumbnails/car-0.png,PNG,22907,Miniatura PNG da garagem; transparência verdadeira.
+cars/thumbnails/car-1.png,PNG,22818,Miniatura PNG da garagem; transparência verdadeira.
+cars/thumbnails/car-10.png,PNG,24692,Miniatura PNG da garagem; transparência verdadeira.
+cars/thumbnails/car-11.png,PNG,23668,Miniatura PNG da garagem; transparência verdadeira.
+cars/thumbnails/car-2.png,PNG,23413,Miniatura PNG da garagem; transparência verdadeira.
+cars/thumbnails/car-3.png,PNG,23068,Miniatura PNG da garagem; transparência verdadeira.
+cars/thumbnails/car-4.png,PNG,23020,Miniatura PNG da garagem; transparência verdadeira.
+cars/thumbnails/car-5.png,PNG,23233,Miniatura PNG da garagem; transparência verdadeira.
+cars/thumbnails/car-6.png,PNG,24002,Miniatura PNG da garagem; transparência verdadeira.
+cars/thumbnails/car-7.png,PNG,23667,Miniatura PNG da garagem; transparência verdadeira.
+cars/thumbnails/car-8.png,PNG,24237,Miniatura PNG da garagem; transparência verdadeira.
+cars/thumbnails/car-9.png,PNG,24355,Miniatura PNG da garagem; transparência verdadeira.
+drivers/legendary/driver-20.png,PNG,3981,Retrato individual
+drivers/legendary/driver-21.png,PNG,3917,Retrato individual
+drivers/legendary/driver-22.png,PNG,4046,Retrato individual
+drivers/legendary/driver-23.png,PNG,4162,Retrato individual
+drivers/legendary/driver-24.png,PNG,3964,Retrato individual
+drivers/legendary/driver-25.png,PNG,4135,Retrato individual
+drivers/legendary/driver-26.png,PNG,3987,Retrato individual
+drivers/legendary/driver-27.png,PNG,4110,Retrato individual
+drivers/legendary/driver-28.png,PNG,4092,Retrato individual
+drivers/legendary/driver-29.png,PNG,4007,Retrato individual
+drivers/legendary/helmet-20.png,PNG,2291,Capacete individual RGBA
+drivers/legendary/helmet-21.png,PNG,2451,Capacete individual RGBA
+drivers/legendary/helmet-22.png,PNG,2455,Capacete individual RGBA
+drivers/legendary/helmet-23.png,PNG,2396,Capacete individual RGBA
+drivers/legendary/helmet-24.png,PNG,2349,Capacete individual RGBA
+drivers/legendary/helmet-25.png,PNG,2432,Capacete individual RGBA
+drivers/legendary/helmet-26.png,PNG,2401,Capacete individual RGBA
+drivers/legendary/helmet-27.png,PNG,2433,Capacete individual RGBA
+drivers/legendary/helmet-28.png,PNG,2387,Capacete individual RGBA
+drivers/legendary/helmet-29.png,PNG,2372,Capacete individual RGBA
+drivers/mega/driver-30.png,PNG,4214,Retrato individual
+drivers/mega/helmet-30.png,PNG,2652,Capacete individual RGBA
+drivers/mythic/driver-10.png,PNG,4101,Retrato individual
+drivers/mythic/driver-11.png,PNG,4028,Retrato individual
+drivers/mythic/driver-12.png,PNG,3997,Retrato individual
+drivers/mythic/driver-13.png,PNG,4026,Retrato individual
+drivers/mythic/driver-14.png,PNG,4068,Retrato individual
+drivers/mythic/driver-15.png,PNG,4140,Retrato individual
+drivers/mythic/driver-16.png,PNG,3966,Retrato individual
+drivers/mythic/driver-17.png,PNG,3906,Retrato individual
+drivers/mythic/driver-18.png,PNG,4133,Retrato individual
+drivers/mythic/driver-19.png,PNG,3995,Retrato individual
+drivers/mythic/helmet-10.png,PNG,2448,Capacete individual RGBA
+drivers/mythic/helmet-11.png,PNG,2378,Capacete individual RGBA
+drivers/mythic/helmet-12.png,PNG,2360,Capacete individual RGBA
+drivers/mythic/helmet-13.png,PNG,2454,Capacete individual RGBA
+drivers/mythic/helmet-14.png,PNG,2407,Capacete individual RGBA
+drivers/mythic/helmet-15.png,PNG,2483,Capacete individual RGBA
+drivers/mythic/helmet-16.png,PNG,2373,Capacete individual RGBA
+drivers/mythic/helmet-17.png,PNG,2352,Capacete individual RGBA
+drivers/mythic/helmet-18.png,PNG,2453,Capacete individual RGBA
+drivers/mythic/helmet-19.png,PNG,2428,Capacete individual RGBA
+drivers/normal/driver-00.png,PNG,3970,Retrato individual
+drivers/normal/driver-01.png,PNG,4013,Retrato individual
+drivers/normal/driver-02.png,PNG,3902,Retrato individual
+drivers/normal/driver-03.png,PNG,3947,Retrato individual
+drivers/normal/driver-04.png,PNG,3932,Retrato individual
+drivers/normal/driver-05.png,PNG,4083,Retrato individual
+drivers/normal/driver-06.png,PNG,4018,Retrato individual
+drivers/normal/driver-07.png,PNG,4188,Retrato individual
+drivers/normal/driver-08.png,PNG,3999,Retrato individual
+drivers/normal/driver-09.png,PNG,4089,Retrato individual
+drivers/normal/helmet-00.png,PNG,2372,Capacete individual RGBA
+drivers/normal/helmet-01.png,PNG,2465,Capacete individual RGBA
+drivers/normal/helmet-02.png,PNG,2412,Capacete individual RGBA
+drivers/normal/helmet-03.png,PNG,2440,Capacete individual RGBA
+drivers/normal/helmet-04.png,PNG,2378,Capacete individual RGBA
+drivers/normal/helmet-05.png,PNG,2375,Capacete individual RGBA
+drivers/normal/helmet-06.png,PNG,2469,Capacete individual RGBA
+drivers/normal/helmet-07.png,PNG,2455,Capacete individual RGBA
+drivers/normal/helmet-08.png,PNG,2270,Capacete individual RGBA
+drivers/normal/helmet-09.png,PNG,2431,Capacete individual RGBA
+fonts/OFL-Barlow-Condensed.txt,TXT,4377,Fonte local ou licença OFL; não depende de CDN.
+fonts/OFL-Barlow.txt,TXT,4377,Fonte local ou licença OFL; não depende de CDN.
+fonts/barlow-1.woff,WOFF,41552,Fonte local ou licença OFL; não depende de CDN.
+fonts/barlow-2.woff,WOFF,41456,Fonte local ou licença OFL; não depende de CDN.
+fonts/barlow-3.woff,WOFF,43044,Fonte local ou licença OFL; não depende de CDN.
+fonts/barlow-4.woff,WOFF,43004,Fonte local ou licença OFL; não depende de CDN.
+fonts/barlow-condensed-1.woff,WOFF,44756,Fonte local ou licença OFL; não depende de CDN.
+fonts/barlow-condensed-2.woff,WOFF,44996,Fonte local ou licença OFL; não depende de CDN.
+fonts/barlow-condensed-3.woff,WOFF,42532,Fonte local ou licença OFL; não depende de CDN.
+fonts/barlow-condensed-4.woff,WOFF,42676,Fonte local ou licença OFL; não depende de CDN.
+fonts/barlow-condensed-5.woff,WOFF,42768,Fonte local ou licença OFL; não depende de CDN.
+logo-primary.png,PNG,58116,"Logo original fornecida, preservada."
+tracks/models/barrier-concrete.glb,GLB,4080,"Modelo 3D reutilizável; carregar com GLTFLoader, escala 1 unidade = 1 m."
+tracks/models/curve-90deg.glb,GLB,4304,"Modelo 3D reutilizável; carregar com GLTFLoader, escala 1 unidade = 1 m."
+tracks/models/straight-30m.glb,GLB,1328,"Modelo 3D reutilizável; carregar com GLTFLoader, escala 1 unidade = 1 m."
+tracks/textures/asphalt-worn.png,PNG,21637,Textura de superfície; RepeatWrapping e filtragem nearest quando pixel art.
+tracks/textures/asphalt.png,PNG,19395,Textura de superfície; RepeatWrapping e filtragem nearest quando pixel art.
+tracks/textures/braking-marks.png,PNG,292,Textura de superfície; RepeatWrapping e filtragem nearest quando pixel art.
+tracks/textures/concrete.png,PNG,17348,Textura de superfície; RepeatWrapping e filtragem nearest quando pixel art.
+tracks/textures/dirt.png,PNG,20476,Textura de superfície; RepeatWrapping e filtragem nearest quando pixel art.
+tracks/textures/grass.png,PNG,21031,Textura de superfície; RepeatWrapping e filtragem nearest quando pixel art.
+tracks/textures/kerb-red-white.png,PNG,169,Textura de superfície; RepeatWrapping e filtragem nearest quando pixel art.
+tracks/textures/track-line.png,PNG,233,Textura de superfície; RepeatWrapping e filtragem nearest quando pixel art.
+ui/icons/acceleration.svg,SVG,260,"Ícone independente, SVG transparente."
+ui/icons/audio.svg,SVG,291,"Ícone independente, SVG transparente."
+ui/icons/braking.svg,SVG,324,"Ícone independente, SVG transparente."
+ui/icons/championship.svg,SVG,262,"Ícone independente, SVG transparente."
+ui/icons/cornering.svg,SVG,268,"Ícone independente, SVG transparente."
+ui/icons/credits.svg,SVG,269,"Ícone independente, SVG transparente."
+ui/icons/flag.svg,SVG,273,"Ícone independente, SVG transparente."
+ui/icons/pause.svg,SVG,245,"Ícone independente, SVG transparente."
+ui/icons/podiums.svg,SVG,270,"Ícone independente, SVG transparente."
+ui/icons/records.svg,SVG,299,"Ícone independente, SVG transparente."
+ui/icons/settings.svg,SVG,324,"Ícone independente, SVG transparente."
+ui/icons/speed.svg,SVG,287,"Ícone independente, SVG transparente."
+ui/icons/unlocked-car.svg,SVG,298,"Ícone independente, SVG transparente."
+ui/icons/upgrades.svg,SVG,260,"Ícone independente, SVG transparente."
+ui/icons/wins.svg,SVG,313,"Ícone independente, SVG transparente."
+audio/manifest.json,JSON,3080,"v0.7: áudio original, licença/manifesto ou grão de terreno neutro; ver ENTREGA-v07.md."
+audio/grid.mp3,MP3,180973,"v0.7: áudio original, licença/manifesto ou grão de terreno neutro; ver ENTREGA-v07.md."
+audio/crowd-cheer.mp3,MP3,37580,"v0.7: áudio original, licença/manifesto ou grão de terreno neutro; ver ENTREGA-v07.md."
+audio/victory.mp3,MP3,385170,"v0.7: áudio original, licença/manifesto ou grão de terreno neutro; ver ENTREGA-v07.md."
+audio/race.mp3,MP3,720972,"v0.7: áudio original, licença/manifesto ou grão de terreno neutro; ver ENTREGA-v07.md."
+audio/championship.mp3,MP3,618160,"v0.7: áudio original, licença/manifesto ou grão de terreno neutro; ver ENTREGA-v07.md."
+audio/LICENSE-AUDIO.txt,TXT,1386,"v0.7: áudio original, licença/manifesto ou grão de terreno neutro; ver ENTREGA-v07.md."
+audio/menu.mp3,MP3,769078,"v0.7: áudio original, licença/manifesto ou grão de terreno neutro; ver ENTREGA-v07.md."
+audio/crowd-bed.mp3,MP3,139148,"v0.7: áudio original, licença/manifesto ou grão de terreno neutro; ver ENTREGA-v07.md."
+audio/selection.mp3,MP3,618158,"v0.7: áudio original, licença/manifesto ou grão de terreno neutro; ver ENTREGA-v07.md."
+tracks/textures/terrain-neutral.png,PNG,18422,"v0.7: áudio original, licença/manifesto ou grão de terreno neutro; ver ENTREGA-v07.md."

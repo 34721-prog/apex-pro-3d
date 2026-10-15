@@ -1,0 +1,46 @@
+[
+  {
+    version: 'before',
+    quality: 'medium',
+    sampleFrames: 30,
+    meanMs: 1.336666666592161,
+    p95Ms: 4.099999999627471,
+    shadowPasses: 4,
+    meanCalls: 142.2,
+    meanTriangles: 101766.66666666667,
+    resolution: [ 816, 459 ]
+  },
+  {
+    version: 'before',
+    quality: 'high',
+    sampleFrames: 30,
+    meanMs: 1.8566666667039196,
+    p95Ms: 6.399999998509884,
+    shadowPasses: 7,
+    meanCalls: 151.2,
+    meanTriangles: 104471.2,
+    resolution: [ 960, 540 ]
+  },
+  {
+    version: 'after',
+    quality: 'medium',
+    sampleFrames: 30,
+    meanMs: 1.5699999999875824,
+    p95Ms: 3.699999999254942,
+    shadowPasses: 30,
+    meanCalls: 182.2,
+    meanTriangles: 115270.4,
+    resolution: [ 816, 459 ]
+  },
+  {
+    version: 'after',
+    quality: 'high',
+    sampleFrames: 30,
+    meanMs: 2.0300000000124174,
+    p95Ms: 4.799999998882413,
+    shadowPasses: 30,
+    meanCalls: 185.2,
+    meanTriangles: 116900.4,
+    resolution: [ 960, 540 ]
+  }
+]

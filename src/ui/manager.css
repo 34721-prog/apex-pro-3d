@@ -1,0 +1,291 @@
+.manager-central {
+  border: 1px solid #4e6570;
+  border-top: 3px solid #ee3555;
+  color: #eaf0f5;
+  background: #101820f5;
+}
+.manager-central label {
+  display: grid;
+  gap: 5px;
+  font:
+    600 11px Barlow,
+    sans-serif;
+  color: #bacbd4;
+}
+.manager-central select,
+.manager-central input {
+  width: 100%;
+  min-width: 0;
+  background: #1c2934;
+  color: #fff;
+  border: 1px solid #52606d;
+  padding: 8px;
+  border-radius: 3px;
+  font:
+    500 12px Barlow,
+    sans-serif;
+}
+.manager-central button {
+  background: #273744;
+  border: 1px solid #546371;
+  color: #fff;
+  padding: 8px;
+  border-radius: 3px;
+  font:
+    700 10px Barlow,
+    sans-serif;
+  cursor: pointer;
+}
+.manager-central button:hover {
+  background: #b92f4c;
+}
+.manager-body {
+  padding: 12px;
+  max-height: 60vh;
+  overflow: auto;
+  overscroll-behavior: contain;
+  display: grid;
+  gap: 12px;
+}
+.manager-central.strategy-preset .manager-body {
+  max-height: none;
+}
+.manager-lead,
+.manager-note {
+  font: 400 12px/1.5 Barlow;
+  color: #b3c4ce;
+  margin: 0;
+}
+.manager-cards {
+  display: grid;
+  gap: 12px;
+}
+.manager-driver {
+  border: 1px solid #354451;
+  background: #16222c;
+  padding: 12px;
+  border-radius: 4px;
+}
+.manager-driver header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.manager-driver header small {
+  color: #99adbc;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+.manager-driver header h3 {
+  font: 700 20px "Barlow Condensed";
+  margin: 3px 0 10px;
+}
+.manager-number {
+  font: 700 24px "Barlow Condensed";
+  color: #ec4664;
+}
+.manager-driver header button {
+  margin-left: auto;
+}
+.manager-driver output {
+  display: block;
+  font: 500 11px/1.6 Barlow;
+  color: #95dbb3;
+  padding: 8px 0;
+}
+.manager-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.manager-plan {
+  margin-top: 10px;
+}
+.manager-plan summary {
+  padding: 10px 0 !important;
+}
+.manager-window {
+  display: grid;
+  grid-template-columns: 55px 1fr 1fr 1.6fr;
+  gap: 6px;
+  margin-top: 10px;
+  align-items: center;
+}
+.manager-window b {
+  font-size: 10px;
+  color: #a7bbc9;
+}
+.manager-estimate {
+  font: 400 12px/1.6 Barlow;
+  color: #c7d5dd;
+}
+.manager-estimate b {
+  color: #f0cc6f;
+}
+.manager-estimate small {
+  display: block;
+  font-size: 10px;
+  color: #99acb9;
+}
+.manager-pit-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.manager-pit-controls label {
+  flex: 1 0 100%;
+}
+.manager-advice {
+  border-left: 3px solid #e4b950;
+  padding: 8px 10px;
+  margin-top: 12px;
+  background: #24323b;
+}
+.manager-advice b {
+  font-size: 9px;
+  color: #e4b950;
+}
+.manager-advice p {
+  font: 400 12px/1.5 Barlow;
+  margin: 5px 0 10px;
+}
+.manager-history {
+  margin-top: 30px;
+}
+.manager-history details {
+  border: 1px solid #34404e;
+  padding: 15px;
+  background: #131d27;
+  margin: 10px 0;
+}
+.manager-history summary {
+  cursor: pointer;
+}
+.manager-report {
+  font-size: 13px;
+  line-height: 1.8;
+}
+.manager-report ol {
+  max-height: 300px;
+  overflow: auto;
+}
+.manager-central ol {
+  font: 400 11px/1.6 Barlow;
+  padding-left: 18px;
+}
+.manager-control-banner {
+  position: absolute;
+  top: 96px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: #12202aed;
+  padding: 8px 12px;
+  border: 1px solid #435664;
+  pointer-events: auto;
+  color: #b0e1c9;
+  font: 700 11px Barlow;
+  max-width: 75vw;
+}
+.manager-control-banner button,
+.manager-control-banner select {
+  font: 600 11px Barlow;
+  padding: 6px;
+  background: #283843;
+  border: 1px solid #567;
+  color: white;
+  max-width: 160px;
+}
+.rc-hud[data-driving="manager"] .touch-controls {
+  display: none !important;
+}
+.rc-hud[data-driving="manager"] .hud-car {
+  display: none;
+}
+.rc-hud .hud-strategy-slot:has(.manager-central[open]) {
+  width: 360px;
+  max-height: calc(100% - 230px);
+}
+.rc-hud .manager-body {
+  max-height: calc(100vh - 320px);
+}
+@media (min-width: 1100px) {
+  .main > .manager-central .manager-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+  .main > .manager-central .manager-body {
+    padding: 24px;
+  }
+  .main > .manager-central .manager-driver {
+    padding: 20px;
+  }
+}
+@media (max-width: 850px) {
+  .manager-control-banner {
+    top: 116px;
+    left: 12px;
+    transform: none;
+    max-width: calc(100vw - 24px);
+    font-size: 9px;
+  }
+  .rc-hud .hud-strategy-slot:has(.manager-central[open]) {
+    top: 165px;
+    right: 10px;
+    width: min(340px, calc(100vw - 20px));
+    z-index: 15;
+  }
+  .rc-hud .manager-body {
+    max-height: calc(100vh - 420px);
+  }
+  .manager-fields {
+    gap: 6px;
+  }
+  .manager-control-banner select {
+    max-width: 100px;
+  }
+  .manager-control-banner button {
+    max-width: 110px;
+  }
+  .manager-central summary {
+    font-size: 10px;
+  }
+  .manager-driver {
+    padding: 9px;
+  }
+}
+
+.manager-snapshots {
+  display: grid;
+  gap: 5px;
+}
+.manager-snapshots p {
+  margin: 0;
+  padding: 6px;
+  background: #253744;
+  color: #b9e4d0;
+  font: 600 11px Barlow;
+}
+
+@media (max-width: 760px) {
+  .rc-hud .hud-strategy-slot:has(.manager-central:not([open])) {
+    top: 170px;
+  }
+}
+
+.manager-control-banner {
+  z-index: 20;
+}
+.rc-hud .hud-alert {
+  top: 230px;
+}
+@media (max-width: 850px) {
+  .rc-hud .hud-tower {
+    top: 165px;
+  }
+  .rc-hud .hud-alert {
+    top: 400px;
+  }
+}

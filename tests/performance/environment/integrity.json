@@ -1,0 +1,95 @@
+{
+  "changed": [
+    {
+      "path": "src/renderer.js",
+      "status": "changed"
+    },
+    {
+      "path": "src/graphics/EnvironmentVisuals.js",
+      "status": "new"
+    },
+    {
+      "path": "src/graphics/EnvironmentPlan.js",
+      "status": "new"
+    },
+    {
+      "path": "scripts/diagnose-environment-depth.js",
+      "status": "new"
+    },
+    {
+      "path": "scripts/package-release.py",
+      "status": "changed"
+    },
+    {
+      "path": "scripts/diagnose-environment-layers.js",
+      "status": "new"
+    },
+    {
+      "path": "scripts/compare-motion-simulation.js",
+      "status": "changed"
+    },
+    {
+      "path": "scripts/inspect-environment.js",
+      "status": "new"
+    },
+    {
+      "path": "docs/AUDITORIA-v03.md",
+      "status": "preexisting historical document omitted from baseline ZIP; preserved"
+    },
+    {
+      "path": "docs/ENTREGA.md",
+      "status": "preexisting historical document omitted from baseline ZIP; preserved"
+    },
+    {
+      "path": "docs/ENTREGA-v02.md",
+      "status": "preexisting historical document omitted from baseline ZIP; preserved"
+    },
+    {
+      "path": "docs/TESTE-MANUAL-v03.md",
+      "status": "preexisting historical document omitted from baseline ZIP; preserved"
+    },
+    {
+      "path": "docs/AUDITORIA-CENARIOS-v010.md",
+      "status": "new"
+    },
+    {
+      "path": "docs/ENTREGA-v04.md",
+      "status": "preexisting historical document omitted from baseline ZIP; preserved"
+    },
+    {
+      "path": "docs/AUDITORIA-v04.md",
+      "status": "preexisting historical document omitted from baseline ZIP; preserved"
+    },
+    {
+      "path": "docs/EVOLUCAO.md",
+      "status": "preexisting historical document omitted from baseline ZIP; preserved"
+    },
+    {
+      "path": "package.json",
+      "status": "changed"
+    },
+    {
+      "path": "package-lock.json",
+      "status": "changed"
+    },
+    {
+      "path": "README.md",
+      "status": "changed"
+    },
+    {
+      "path": "start.py",
+      "status": "changed"
+    },
+    {
+      "path": "tests/environment.test.js",
+      "status": "new"
+    },
+    {
+      "path": "tests/environment.spec.js",
+      "status": "new"
+    }
+  ],
+  "publicAssetsIdentical": true,
+  "publicAssetCount": 135,
+  "simulationSourceIdentical": true
+}

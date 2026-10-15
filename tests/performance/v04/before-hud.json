@@ -1,0 +1,6 @@
+{
+  "samples": 200,
+  "meanMs": 0.14249999999534338,
+  "p95Ms": 0.3000000002793968,
+  "method": "200 warmed dynamic HUD updates (each after 6 physical ticks), 1280x720; CPU only, not paint or total FPS"
+}

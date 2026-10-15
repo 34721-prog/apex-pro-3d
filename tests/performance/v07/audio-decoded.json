@@ -1,0 +1,66 @@
+[
+  {
+    "id": "menu",
+    "seconds": 64.0,
+    "decodedPeak": 0.5121334195137024,
+    "decodedRMS": 0.1053202317069354,
+    "clippedSamples": 0,
+    "bytes": 769078
+  },
+  {
+    "id": "selection",
+    "seconds": 51.428583333333336,
+    "decodedPeak": 0.47254428267478943,
+    "decodedRMS": 0.07550670441578956,
+    "clippedSamples": 0,
+    "bytes": 618158
+  },
+  {
+    "id": "grid",
+    "seconds": 15.0,
+    "decodedPeak": 0.4935155510902405,
+    "decodedRMS": 0.10184002715468604,
+    "clippedSamples": 0,
+    "bytes": 180973
+  },
+  {
+    "id": "race",
+    "seconds": 60.0,
+    "decodedPeak": 0.36667922139167786,
+    "decodedRMS": 0.09271666638216094,
+    "clippedSamples": 0,
+    "bytes": 720972
+  },
+  {
+    "id": "victory",
+    "seconds": 32.0,
+    "decodedPeak": 0.5146721601486206,
+    "decodedRMS": 0.10519074661176793,
+    "clippedSamples": 0,
+    "bytes": 385170
+  },
+  {
+    "id": "championship",
+    "seconds": 51.428583333333336,
+    "decodedPeak": 0.3614867925643921,
+    "decodedRMS": 0.053818501819105455,
+    "clippedSamples": 0,
+    "bytes": 618160
+  },
+  {
+    "id": "crowd-bed",
+    "seconds": 17.3,
+    "decodedPeak": 0.6939138174057007,
+    "decodedRMS": 0.1600985704846886,
+    "clippedSamples": 0,
+    "bytes": 139148
+  },
+  {
+    "id": "crowd-cheer",
+    "seconds": 4.599958333333333,
+    "decodedPeak": 0.675601601600647,
+    "decodedRMS": 0.14267478247411516,
+    "clippedSamples": 0,
+    "bytes": 37580
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "payloadHashes": 255,
+  "payloadIdentical": true,
+  "rebuiltFiles": [
+    "playable/index.html",
+    "playable/assets/index-C2CKViQW.js",
+    "playable/assets/index-2bzIeoEt.css"
+  ],
+  "rebuildIdentical": true,
+  "nodeTests": {
+    "passed": 125,
+    "failed": 0,
+    "skipped": 0
+  },
+  "browserTests": {
+    "passed": 20,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "npmCi": true,
+  "assetValidation": true,
+  "decodedAudioAssets": 8,
+  "context": "Separate extracted candidate; final package changes only reports/evidence, payload rechecked.",
+  "nodeVersion": "v20.20.2",
+  "pythonVersion": "3.13.16"
+}

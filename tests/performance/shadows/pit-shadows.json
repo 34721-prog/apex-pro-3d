@@ -1,0 +1,150 @@
+[
+  {
+    "state": "entry",
+    "x": -512.2095752338365,
+    "z": 212.8233797392918,
+    "result": {
+      "errors": [],
+      "visible": [
+        4,
+        5,
+        0
+      ],
+      "depthIds": [
+        0,
+        4,
+        5
+      ],
+      "draws": 24,
+      "updates": 1,
+      "span": [
+        224,
+        128
+      ],
+      "resources": {
+        "geometries": 51,
+        "textures": 13
+      }
+    }
+  },
+  {
+    "state": "service",
+    "phase": 0,
+    "x": -324.4427161134468,
+    "z": 308.0877498685757,
+    "result": {
+      "errors": [],
+      "visible": [
+        0
+      ],
+      "depthIds": [
+        0
+      ],
+      "draws": 8,
+      "updates": 2,
+      "span": [
+        224,
+        128
+      ],
+      "resources": {
+        "geometries": 73,
+        "textures": 16
+      }
+    }
+  },
+  {
+    "state": "jacked",
+    "phase": 0.35293379404701036,
+    "y": 0.28,
+    "result": {
+      "errors": [],
+      "visible": [
+        0
+      ],
+      "depthIds": [
+        0
+      ],
+      "draws": 4,
+      "updates": 4,
+      "span": [
+        224,
+        128
+      ],
+      "resources": {
+        "geometries": 74,
+        "textures": 16
+      }
+    }
+  },
+  {
+    "state": "release",
+    "phase": 1,
+    "x": -324.4427161134468,
+    "z": 308.0877498685757,
+    "result": {
+      "errors": [],
+      "visible": [
+        0
+      ],
+      "depthIds": [
+        0
+      ],
+      "draws": 8,
+      "updates": 5,
+      "span": [
+        224,
+        128
+      ],
+      "resources": {
+        "geometries": 74,
+        "textures": 16
+      }
+    }
+  },
+  {
+    "state": "exit",
+    "phase": 1,
+    "x": -324.4427161134468,
+    "z": 308.0877498685757,
+    "result": {
+      "errors": [],
+      "visible": [
+        0
+      ],
+      "depthIds": [
+        0
+      ],
+      "draws": 8,
+      "updates": 6,
+      "span": [
+        224,
+        128
+      ],
+      "resources": {
+        "geometries": 74,
+        "textures": 16
+      }
+    }
+  },
+  {
+    "state": "track",
+    "phase": 1,
+    "x": -44.587805775355896,
+    "z": 341.85821729533427,
+    "result": {
+      "errors": [],
+      "visible": [],
+      "depthIds": [],
+      "draws": 0,
+      "updates": 7,
+      "span": [
+        224,
+        128
+      ],
+      "resources": {
+        "geometries": 74,
+        "textures": 16
+      }
+    }
+  }
+]

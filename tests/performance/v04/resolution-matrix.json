@@ -1,0 +1,428 @@
+[
+  {
+    "w": 1920,
+    "h": 1080,
+    "rows": [
+      {
+        "sel": ".hud-top",
+        "x": 22,
+        "y": 18,
+        "w": 1876,
+        "h": 70,
+        "right": 1898,
+        "bottom": 88
+      },
+      {
+        "sel": ".hud-tower",
+        "x": 22,
+        "y": 112,
+        "w": 270,
+        "h": 334,
+        "right": 292,
+        "bottom": 446
+      },
+      {
+        "sel": ".hud-map",
+        "x": 22,
+        "y": 901,
+        "w": 206,
+        "h": 157,
+        "right": 228,
+        "bottom": 1058
+      },
+      {
+        "sel": ".hud-resources",
+        "x": 731,
+        "y": 922,
+        "w": 458,
+        "h": 85,
+        "right": 1189,
+        "bottom": 1007
+      },
+      {
+        "sel": ".hud-car",
+        "x": 1670,
+        "y": 911,
+        "w": 228,
+        "h": 147,
+        "right": 1898,
+        "bottom": 1058
+      },
+      {
+        "sel": ".hud-strategy-slot",
+        "x": 1616,
+        "y": 110,
+        "w": 282,
+        "h": 38,
+        "right": 1898,
+        "bottom": 148
+      },
+      {
+        "sel": ".hud-toolbar",
+        "x": 734,
+        "y": 1026,
+        "w": 452,
+        "h": 32,
+        "right": 1186,
+        "bottom": 1058
+      }
+    ],
+    "overlaps": [],
+    "overflow": false
+  },
+  {
+    "w": 1600,
+    "h": 900,
+    "rows": [
+      {
+        "sel": ".hud-top",
+        "x": 22,
+        "y": 18,
+        "w": 1556,
+        "h": 70,
+        "right": 1578,
+        "bottom": 88
+      },
+      {
+        "sel": ".hud-tower",
+        "x": 22,
+        "y": 112,
+        "w": 270,
+        "h": 334,
+        "right": 292,
+        "bottom": 446
+      },
+      {
+        "sel": ".hud-map",
+        "x": 22,
+        "y": 721,
+        "w": 206,
+        "h": 157,
+        "right": 228,
+        "bottom": 878
+      },
+      {
+        "sel": ".hud-resources",
+        "x": 571,
+        "y": 742,
+        "w": 458,
+        "h": 85,
+        "right": 1029,
+        "bottom": 827
+      },
+      {
+        "sel": ".hud-car",
+        "x": 1350,
+        "y": 731,
+        "w": 228,
+        "h": 147,
+        "right": 1578,
+        "bottom": 878
+      },
+      {
+        "sel": ".hud-strategy-slot",
+        "x": 1296,
+        "y": 110,
+        "w": 282,
+        "h": 38,
+        "right": 1578,
+        "bottom": 148
+      },
+      {
+        "sel": ".hud-toolbar",
+        "x": 574,
+        "y": 846,
+        "w": 452,
+        "h": 32,
+        "right": 1026,
+        "bottom": 878
+      }
+    ],
+    "overlaps": [],
+    "overflow": false
+  },
+  {
+    "w": 1366,
+    "h": 768,
+    "rows": [
+      {
+        "sel": ".hud-top",
+        "x": 22,
+        "y": 18,
+        "w": 1322,
+        "h": 70,
+        "right": 1344,
+        "bottom": 88
+      },
+      {
+        "sel": ".hud-tower",
+        "x": 22,
+        "y": 112,
+        "w": 245,
+        "h": 334,
+        "right": 267,
+        "bottom": 446
+      },
+      {
+        "sel": ".hud-map",
+        "x": 22,
+        "y": 589,
+        "w": 206,
+        "h": 157,
+        "right": 228,
+        "bottom": 746
+      },
+      {
+        "sel": ".hud-resources",
+        "x": 478,
+        "y": 610,
+        "w": 410,
+        "h": 85,
+        "right": 888,
+        "bottom": 695
+      },
+      {
+        "sel": ".hud-car",
+        "x": 1116,
+        "y": 599,
+        "w": 228,
+        "h": 147,
+        "right": 1344,
+        "bottom": 746
+      },
+      {
+        "sel": ".hud-strategy-slot",
+        "x": 1081,
+        "y": 110,
+        "w": 263,
+        "h": 38,
+        "right": 1344,
+        "bottom": 148
+      },
+      {
+        "sel": ".hud-toolbar",
+        "x": 457,
+        "y": 714,
+        "w": 452,
+        "h": 32,
+        "right": 909,
+        "bottom": 746
+      }
+    ],
+    "overlaps": [],
+    "overflow": false
+  },
+  {
+    "w": 1280,
+    "h": 720,
+    "rows": [
+      {
+        "sel": ".hud-top",
+        "x": 22,
+        "y": 18,
+        "w": 1236,
+        "h": 70,
+        "right": 1258,
+        "bottom": 88
+      },
+      {
+        "sel": ".hud-tower",
+        "x": 22,
+        "y": 112,
+        "w": 245,
+        "h": 334,
+        "right": 267,
+        "bottom": 446
+      },
+      {
+        "sel": ".hud-map",
+        "x": 22,
+        "y": 541,
+        "w": 206,
+        "h": 157,
+        "right": 228,
+        "bottom": 698
+      },
+      {
+        "sel": ".hud-resources",
+        "x": 435,
+        "y": 562,
+        "w": 410,
+        "h": 85,
+        "right": 845,
+        "bottom": 647
+      },
+      {
+        "sel": ".hud-car",
+        "x": 1030,
+        "y": 551,
+        "w": 228,
+        "h": 147,
+        "right": 1258,
+        "bottom": 698
+      },
+      {
+        "sel": ".hud-strategy-slot",
+        "x": 995,
+        "y": 110,
+        "w": 263,
+        "h": 38,
+        "right": 1258,
+        "bottom": 148
+      },
+      {
+        "sel": ".hud-toolbar",
+        "x": 414,
+        "y": 666,
+        "w": 452,
+        "h": 32,
+        "right": 866,
+        "bottom": 698
+      }
+    ],
+    "overlaps": [],
+    "overflow": false
+  },
+  {
+    "w": 768,
+    "h": 1024,
+    "rows": [
+      {
+        "sel": ".hud-top",
+        "x": 22,
+        "y": 18,
+        "w": 724,
+        "h": 70,
+        "right": 746,
+        "bottom": 88
+      },
+      {
+        "sel": ".hud-tower",
+        "x": 22,
+        "y": 165,
+        "w": 218,
+        "h": 334,
+        "right": 240,
+        "bottom": 499
+      },
+      {
+        "sel": ".hud-map",
+        "x": 22,
+        "y": 874.578125,
+        "w": 160,
+        "h": 127.421875,
+        "right": 182,
+        "bottom": 1002
+      },
+      {
+        "sel": ".hud-resources",
+        "x": 205.5,
+        "y": 869,
+        "w": 357,
+        "h": 82,
+        "right": 562.5,
+        "bottom": 951
+      },
+      {
+        "sel": ".hud-car",
+        "x": 561,
+        "y": 855,
+        "w": 185,
+        "h": 147,
+        "right": 746,
+        "bottom": 1002
+      },
+      {
+        "sel": ".hud-strategy-slot",
+        "x": 516,
+        "y": 110,
+        "w": 230,
+        "h": 38,
+        "right": 746,
+        "bottom": 148
+      },
+      {
+        "sel": ".hud-toolbar",
+        "x": 223.5,
+        "y": 970,
+        "w": 321,
+        "h": 32,
+        "right": 544.5,
+        "bottom": 1002
+      }
+    ],
+    "overlaps": [],
+    "overflow": false
+  },
+  {
+    "w": 390,
+    "h": 844,
+    "rows": [
+      {
+        "sel": ".hud-top",
+        "x": 8,
+        "y": 8,
+        "w": 374,
+        "h": 108,
+        "right": 382,
+        "bottom": 116
+      },
+      {
+        "sel": ".hud-tower",
+        "x": 8,
+        "y": 165,
+        "w": 177,
+        "h": 224,
+        "right": 185,
+        "bottom": 389
+      },
+      {
+        "sel": ".hud-map",
+        "x": 8,
+        "y": 565.9375,
+        "w": 125,
+        "h": 101.0625,
+        "right": 133,
+        "bottom": 667
+      },
+      {
+        "sel": ".hud-resources",
+        "x": 8,
+        "y": 680,
+        "w": 374,
+        "h": 71,
+        "right": 382,
+        "bottom": 751
+      },
+      {
+        "sel": ".hud-car",
+        "x": 222,
+        "y": 550,
+        "w": 160,
+        "h": 117,
+        "right": 382,
+        "bottom": 667
+      },
+      {
+        "sel": ".hud-strategy-slot",
+        "x": 193,
+        "y": 170,
+        "w": 189,
+        "h": 32,
+        "right": 382,
+        "bottom": 202
+      },
+      {
+        "sel": ".hud-toolbar",
+        "x": 8,
+        "y": 761,
+        "w": 374,
+        "h": 29,
+        "right": 382,
+        "bottom": 790
+      }
+    ],
+    "overlaps": [],
+    "overflow": false
+  }
+]

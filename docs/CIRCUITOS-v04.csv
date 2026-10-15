@@ -1,0 +1,15 @@
+id,nome,regiao,categoria,comprimento_m,largura_m,curvas_aproximadas,noite,semente
+aurora,Circuito Aurora,República de Auren,Internacionais,3089,18,11,false,
+veloce,Veloce Highlands,Terras Altas de Veloce,Alta velocidade,3939,18,11,false,
+serpente,Serpente Valley,Vale de Sereia,Técnicos,3307,18,13,false,
+neon,Porto Neon,Porto de Nakar,Urbanos,3506,18,13,true,
+titan,Titan Ring,República de Titânia,Alta velocidade,4630,18,12,false,
+vento,Costa do Vento,Costa de Venturia,Montanha e natureza,3822,18,10,false,
+sahara,Sahara Speedway,Sultanato de Sahir,Alta velocidade,5405,22,10,false,
+alpine,Alpine Crown,Principado de Valdora,Montanha e natureza,4947,16,13,false,
+emerald,Emerald Forest Ring,Reserva de Esmeria,Montanha e natureza,4937,18,13,false,
+oldtown,Old Town Grand Prix,Cidade Livre de Bellacosta,Urbanos,4859,14,13,false,
+sunset,Sunset International,Federação de Solária,Internacionais,5201,20,12,false,
+nordic,Nordic Storm Circuit,Confederação de Boreal,Montanha e natureza,4787,18,12,false,
+desert-night,Desert Night Run,Emirado de Zafira,Noite,5513,20,12,true,
+discovery,Discovery Circuit,Distrito de Novaterra,Procedurais,4907,18,8,false,4107

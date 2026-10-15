@@ -1,0 +1,22 @@
+
+> apex-dynasty@0.4.0 test:browser
+> playwright test
+
+
+Running 13 tests using 1 worker
+
+  ✓   1 tests/expanded.spec.js:9:1 › driver catalogue, real paint application, persistence, admin isolation and contracts (27.2s)
+  ✓   2 tests/expanded.spec.js:63:1 › new circuit, solo race, keyboard camera, pit menu pause, radio and result persistence (40.6s)
+  ✓   3 tests/game.spec.js:19:1 › desktop navigation, purchases, settings and persistent save (20.9s)
+  ✓   4 tests/game.spec.js:66:1 › real keyboard input, camera, pause, recovery, three laps, results and restart (46.9s)
+  ✓   5 tests/game.spec.js:130:1 › championship continuity across reload, three stages and new season (50.8s)
+  ✓   6 tests/game.spec.js:169:1 › mobile layout, touch controls, GLB and texture loading (12.6s)
+  ✓   7 tests/game.spec.js:215:1 › corrupted local save recovers defaults; no external runtime dependencies (12.3s)
+  ✓   8 tests/pits-v03.spec.js:16:1 › live presets/custom save, pit plan UI and optional cameras do not change simulation (21.0s)
+  ✓   9 tests/pits-v03.spec.js:73:1 › maximum grid physical stop, coordinated crew, all camera/preset pairs, few-bot finish (17.6s)
+  ✓  10 tests/pits-v03.spec.js:186:1 › repeated race/menu, car catalogue and six-circuit resource lifecycle reaches plateau (22.6s)
+  ✓  11 tests/v04.spec.js:15:1 › v0.4 real keyboard and camera projection, neutral/rebind/blur/pause (5.8s)
+  ✓  12 tests/v04.spec.js:91:1 › v0.4 HUD fits target resolutions, persistent modes/strategy, timing and event alerts (51.0s)
+  ✓  13 tests/v04.spec.js:218:1 › v0.4 all fourteen circuits select, load geometry, complete races, render minimaps and persist records (43.7s)
+
+  13 passed (6.2m)

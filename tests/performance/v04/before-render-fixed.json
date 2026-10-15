@@ -1,0 +1,89 @@
+[
+  {
+    "frameMs": {
+      "mean": 303.15714285714284,
+      "p95": 333.3000000000011
+    },
+    "fps": 3.2986192922105464,
+    "submitMs": {
+      "mean": 1.4238095237829147,
+      "p95": 2.2000000001862645
+    },
+    "frames": 26,
+    "drawCalls": 125,
+    "triangles": 88860,
+    "geometries": 93,
+    "textures": 14,
+    "heapBytes": 16214599,
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "pose": {
+      "x": 95.55866472303842,
+      "z": 347.345998137805,
+      "heading": 1.5326972906539629
+    },
+    "canvas": {
+      "w": 1280,
+      "h": 720
+    },
+    "loadMs": 3044,
+    "errors": []
+  },
+  {
+    "frameMs": {
+      "mean": 292.41818181818184,
+      "p95": 333.2999999999993
+    },
+    "fps": 3.4197599950258035,
+    "submitMs": {
+      "mean": 1.5454545454757118,
+      "p95": 2
+    },
+    "frames": 27,
+    "drawCalls": 125,
+    "triangles": 88860,
+    "geometries": 93,
+    "textures": 14,
+    "heapBytes": 17081351,
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "pose": {
+      "x": 95.55866472303842,
+      "z": 347.345998137805,
+      "heading": 1.5326972906539629
+    },
+    "canvas": {
+      "w": 1280,
+      "h": 720
+    },
+    "loadMs": 2974,
+    "errors": []
+  },
+  {
+    "frameMs": {
+      "mean": 287.10909090909087,
+      "p95": 300
+    },
+    "fps": 3.4829966436577804,
+    "submitMs": {
+      "mean": 1.3363636363594031,
+      "p95": 2
+    },
+    "frames": 27,
+    "drawCalls": 125,
+    "triangles": 88860,
+    "geometries": 93,
+    "textures": 14,
+    "heapBytes": 17327151,
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "pose": {
+      "x": 95.55866472303842,
+      "z": 347.345998137805,
+      "heading": 1.5326972906539629
+    },
+    "canvas": {
+      "w": 1280,
+      "h": 720
+    },
+    "loadMs": 3040,
+    "errors": []
+  }
+]

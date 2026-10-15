@@ -1,0 +1,6 @@
+
+Running 1 test using 1 worker
+
+  ✓  1 tests/v04.spec.js:105:1 › v0.4 HUD fits target resolutions, persistent modes/strategy, timing and event alerts (52.9s)
+
+  1 passed (53.9s)

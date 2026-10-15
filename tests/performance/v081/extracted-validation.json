@@ -1,0 +1,14 @@
+{
+  "payloadFiles": 277,
+  "allHashesMatch": true,
+  "browserStats": {
+    "startTime": "2026-10-15T12:40:34.989Z",
+    "duration": 875344.485,
+    "expected": 33,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "nodeTests": 158,
+  "nodeFailures": 0
+}

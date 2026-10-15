@@ -1,0 +1,164 @@
+[
+  {
+    "track": "aurora",
+    "mode": "own",
+    "time": 76.94999999999692,
+    "services": 6,
+    "overlaps": 0,
+    "maxMotion": 1.1500000000000206,
+    "maxAlignment": 0.05075000665350759
+  },
+  {
+    "track": "aurora",
+    "mode": "same",
+    "time": 143.40000000000626,
+    "services": 6,
+    "overlaps": 0,
+    "maxMotion": 1.1500000000000252,
+    "maxAlignment": 0.07457015425858858
+  },
+  {
+    "track": "aurora",
+    "mode": "rain",
+    "time": 76.89999999999692,
+    "services": 6,
+    "overlaps": 0,
+    "maxMotion": 1.1500000000000057,
+    "maxAlignment": 0.055160493075292694
+  },
+  {
+    "track": "veloce",
+    "mode": "own",
+    "time": 78.29999999999684,
+    "services": 6,
+    "overlaps": 0,
+    "maxMotion": 1.150000000000043,
+    "maxAlignment": 0.029910266949031206
+  },
+  {
+    "track": "veloce",
+    "mode": "same",
+    "time": 138.33333333333556,
+    "services": 6,
+    "overlaps": 0,
+    "maxMotion": 1.1500000000000488,
+    "maxAlignment": 0.029910266949031206
+  },
+  {
+    "track": "veloce",
+    "mode": "rain",
+    "time": 78.04999999999686,
+    "services": 6,
+    "overlaps": 0,
+    "maxMotion": 1.1500000000000004,
+    "maxAlignment": 0.032617288766386476
+  },
+  {
+    "track": "serpente",
+    "mode": "own",
+    "time": 76.83333333333026,
+    "services": 6,
+    "overlaps": 0,
+    "maxMotion": 1.1500000000000061,
+    "maxAlignment": 0.04388090573058467
+  },
+  {
+    "track": "serpente",
+    "mode": "same",
+    "time": 142.10000000000522,
+    "services": 6,
+    "overlaps": 0,
+    "maxMotion": 1.150000000000014,
+    "maxAlignment": 0.04388090573058467
+  },
+  {
+    "track": "serpente",
+    "mode": "rain",
+    "time": 76.74999999999693,
+    "services": 6,
+    "overlaps": 0,
+    "maxMotion": 1.1500000000000026,
+    "maxAlignment": 0.047808613319198834
+  },
+  {
+    "track": "neon",
+    "mode": "own",
+    "time": 77.48333333333022,
+    "services": 6,
+    "overlaps": 0,
+    "maxMotion": 1.1500000000000077,
+    "maxAlignment": 0.02988983658304223
+  },
+  {
+    "track": "neon",
+    "mode": "same",
+    "time": 138.93333333333604,
+    "services": 6,
+    "overlaps": 0,
+    "maxMotion": 1.15000000000002,
+    "maxAlignment": 0.02988983658304223
+  },
+  {
+    "track": "neon",
+    "mode": "rain",
+    "time": 77.38333333333023,
+    "services": 6,
+    "overlaps": 0,
+    "maxMotion": 1.150000000000004,
+    "maxAlignment": 0.03265583738876709
+  },
+  {
+    "track": "titan",
+    "mode": "own",
+    "time": 78.24999999999685,
+    "services": 6,
+    "overlaps": 0,
+    "maxMotion": 1.1500000000000503,
+    "maxAlignment": 0.028601805889222568
+  },
+  {
+    "track": "titan",
+    "mode": "same",
+    "time": 137.16666666666796,
+    "services": 6,
+    "overlaps": 0,
+    "maxMotion": 1.1500000000000463,
+    "maxAlignment": 0.028601805889222568
+  },
+  {
+    "track": "titan",
+    "mode": "rain",
+    "time": 78.09999999999685,
+    "services": 6,
+    "overlaps": 0,
+    "maxMotion": 1.1500000000000028,
+    "maxAlignment": 0.03128819343884116
+  },
+  {
+    "track": "vento",
+    "mode": "own",
+    "time": 78.28333333333018,
+    "services": 6,
+    "overlaps": 0,
+    "maxMotion": 1.1500000000000477,
+    "maxAlignment": 0.02946215179500822
+  },
+  {
+    "track": "vento",
+    "mode": "same",
+    "time": 139.00000000000276,
+    "services": 6,
+    "overlaps": 0,
+    "maxMotion": 1.1500000000000568,
+    "maxAlignment": 0.02946215179500822
+  },
+  {
+    "track": "vento",
+    "mode": "rain",
+    "time": 78.13333333333019,
+    "services": 6,
+    "overlaps": 0,
+    "maxMotion": 1.1500000000000508,
+    "maxAlignment": 0.0322287132156418
+  }
+]

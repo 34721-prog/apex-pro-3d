@@ -1,0 +1,74 @@
+[
+  {
+    "depthBits": 24,
+    "near": 20,
+    "shadows": true,
+    "mode": "overview"
+  },
+  {
+    "depthBits": 24,
+    "near": 20,
+    "shadows": false,
+    "mode": "overview"
+  },
+  {
+    "depthBits": 24,
+    "near": 100,
+    "shadows": true,
+    "mode": "overview"
+  },
+  {
+    "depthBits": 24,
+    "near": 100,
+    "shadows": false,
+    "mode": "overview"
+  },
+  {
+    "depthBits": 24,
+    "near": 300,
+    "shadows": true,
+    "mode": "overview"
+  },
+  {
+    "depthBits": 24,
+    "near": 300,
+    "shadows": false,
+    "mode": "overview"
+  },
+  {
+    "depthBits": 24,
+    "near": 0.2,
+    "shadows": true,
+    "mode": "pit-garage"
+  },
+  {
+    "depthBits": 24,
+    "near": 0.2,
+    "shadows": false,
+    "mode": "pit-garage"
+  },
+  {
+    "depthBits": 24,
+    "near": 1,
+    "shadows": true,
+    "mode": "pit-garage"
+  },
+  {
+    "depthBits": 24,
+    "near": 1,
+    "shadows": false,
+    "mode": "pit-garage"
+  },
+  {
+    "depthBits": 24,
+    "near": 2,
+    "shadows": true,
+    "mode": "pit-garage"
+  },
+  {
+    "depthBits": 24,
+    "near": 2,
+    "shadows": false,
+    "mode": "pit-garage"
+  }
+]

@@ -1,0 +1,212 @@
+{
+  "rows": [
+    {
+      "name": "road",
+      "rootY": 0.10999999999999999,
+      "support": [
+        0.12,
+        0.12,
+        0.12,
+        0.12
+      ],
+      "wheels": [
+        {
+          "bottom": 0.12,
+          "visible": true,
+          "spin": 0,
+          "steer": 0
+        },
+        {
+          "bottom": 0.12,
+          "visible": true,
+          "spin": 0,
+          "steer": 0
+        },
+        {
+          "bottom": 0.12,
+          "visible": true,
+          "spin": 0,
+          "steer": 0
+        },
+        {
+          "bottom": 0.12,
+          "visible": true,
+          "spin": 0,
+          "steer": 0
+        }
+      ],
+      "depthMatches": true,
+      "pauseSpin": true
+    },
+    {
+      "name": "kerb",
+      "rootY": 0.12749999999999984,
+      "support": [
+        0.12000000000000002,
+        0.12000000000000002,
+        0.1549999999999998,
+        0.1549999999999998
+      ],
+      "wheels": [
+        {
+          "bottom": 0.11999999999999988,
+          "visible": true,
+          "spin": 0,
+          "steer": 0
+        },
+        {
+          "bottom": 0.11999999999999988,
+          "visible": true,
+          "spin": 0,
+          "steer": 0
+        },
+        {
+          "bottom": 0.1549999999999998,
+          "visible": true,
+          "spin": 0,
+          "steer": 0
+        },
+        {
+          "bottom": 0.1549999999999998,
+          "visible": true,
+          "spin": 0,
+          "steer": 0
+        }
+      ],
+      "depthMatches": true,
+      "pauseSpin": true
+    },
+    {
+      "name": "service-ramp",
+      "rootY": 0.195,
+      "support": [
+        0.12,
+        0.12,
+        0.12,
+        0.12
+      ],
+      "wheels": [
+        {
+          "bottom": 0.20499999999999996,
+          "visible": true,
+          "spin": 0,
+          "steer": 0
+        },
+        {
+          "bottom": 0.20499999999999996,
+          "visible": true,
+          "spin": 0,
+          "steer": 0
+        },
+        {
+          "bottom": 0.20499999999999996,
+          "visible": true,
+          "spin": 0,
+          "steer": 0
+        },
+        {
+          "bottom": 0.20499999999999996,
+          "visible": true,
+          "spin": 0,
+          "steer": 0
+        }
+      ],
+      "depthMatches": true,
+      "pauseSpin": true
+    },
+    {
+      "name": "service-up",
+      "rootY": 0.28,
+      "support": [
+        0.12,
+        0.12,
+        0.12,
+        0.12
+      ],
+      "wheels": [
+        {
+          "bottom": 0.29000000000000004,
+          "visible": false,
+          "spin": 0,
+          "steer": 0
+        },
+        {
+          "bottom": 0.29000000000000004,
+          "visible": false,
+          "spin": 0,
+          "steer": 0
+        },
+        {
+          "bottom": 0.29000000000000004,
+          "visible": false,
+          "spin": 0,
+          "steer": 0
+        },
+        {
+          "bottom": 0.29000000000000004,
+          "visible": false,
+          "spin": 0,
+          "steer": 0
+        }
+      ],
+      "depthMatches": true,
+      "pauseSpin": true
+    },
+    {
+      "name": "service-down",
+      "rootY": 0.19499999999999984,
+      "support": [
+        0.12,
+        0.12,
+        0.12,
+        0.12
+      ],
+      "wheels": [
+        {
+          "bottom": 0.20499999999999985,
+          "visible": true,
+          "spin": 0,
+          "steer": 0
+        },
+        {
+          "bottom": 0.20499999999999985,
+          "visible": true,
+          "spin": 0,
+          "steer": 0
+        },
+        {
+          "bottom": 0.20499999999999985,
+          "visible": true,
+          "spin": 0,
+          "steer": 0
+        },
+        {
+          "bottom": 0.20499999999999985,
+          "visible": true,
+          "spin": 0,
+          "steer": 0
+        }
+      ],
+      "depthMatches": true,
+      "pauseSpin": true
+    }
+  ],
+  "sizes": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "aspect": 1.7777777777777777
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "aspect": 1.7777777777777777
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "aspect": 0.46208530805687204
+    }
+  ],
+  "errors": []
+}

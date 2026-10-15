@@ -1,0 +1,29 @@
+
+> apex-dynasty@0.7.0 test:browser
+> playwright test
+
+
+Running 20 tests using 1 worker
+
+  ✓   1 tests/expanded.spec.js:9:1 › driver catalogue, real paint application, persistence, admin isolation and contracts (29.8s)
+  ✓   2 tests/expanded.spec.js:63:1 › new circuit, solo race, keyboard camera, pit menu pause, radio and result persistence (39.5s)
+  ✓   3 tests/game.spec.js:19:1 › desktop navigation, purchases, settings and persistent save (23.7s)
+  ✓   4 tests/game.spec.js:66:1 › real keyboard input, camera, pause, recovery, three laps, results and restart (43.1s)
+  ✓   5 tests/game.spec.js:130:1 › championship continuity across reload, three stages and new season (46.0s)
+  ✓   6 tests/game.spec.js:169:1 › mobile layout, touch controls, GLB and texture loading (12.6s)
+  ✓   7 tests/game.spec.js:215:1 › corrupted local save recovers defaults; no external runtime dependencies (13.1s)
+  ✓   8 tests/pits-v03.spec.js:24:1 › live presets/custom save, pit plan UI and optional cameras do not change simulation (30.3s)
+  ✓   9 tests/pits-v03.spec.js:81:1 › maximum grid physical stop, coordinated crew, all camera/preset pairs, few-bot finish (18.9s)
+  ✓  10 tests/pits-v03.spec.js:194:1 › repeated race/menu, car catalogue and six-circuit resource lifecycle reaches plateau (23.0s)
+  ✓  11 tests/v04.spec.js:23:1 › v0.4 real keyboard and camera projection, neutral/rebind/blur/pause (5.8s)
+  ✓  12 tests/v04.spec.js:99:1 › v0.4 HUD fits target resolutions, persistent modes/strategy, timing and event alerts (52.8s)
+  ✓  13 tests/v04.spec.js:227:1 › v0.4 all fourteen circuits select, load geometry, complete races, render minimaps and persist records (47.9s)
+  ✓  14 tests/v05.spec.js:13:1 › v0.5 full Sprint season via real menu/session/next/save/archive, no duplicate awards (16.9s)
+  ✓  15 tests/v05.spec.js:102:1 › v0.5 physical Safety Car visible, live race control, weather, journal and team controls (3.6s)
+  ✓  16 tests/v05.spec.js:159:1 › v0.5 settings, accelerated simulation, contracts/training and persistent filters (37.4s)
+  ✓  17 tests/v07.spec.js:13:1 › v07 venue gallery, actual boards, populated quality levels and moving cars in spectator camera (11.1s)
+  ✓  18 tests/v07.spec.js:62:1 › v07 streaming mixer: gesture, six cues, no restart, master/buses, pause/hidden/repeated race cleanup (15.6s)
+  ✓  19 tests/v07.spec.js:225:1 › v07 all tracks: actual mesh footprint/ground, safe venue disposal, repeat resource bounds (22.3s)
+  ✓  20 tests/v07.spec.js:303:1 › v07 crowd spatial response, bounded celebrations and independent engine/effects/crowd sliders (10.1s)
+
+  20 passed (8.4m)

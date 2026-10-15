@@ -1,0 +1,6 @@
+
+Running 1 test using 1 worker
+
+  ✓  1 tests/v05.spec.js:13:1 › v0.5 full Sprint season via real menu/session/next/save/archive, no duplicate awards (16.6s)
+
+  1 passed (17.3s)

@@ -1,0 +1,24 @@
+{
+  "before": {
+    "simulationWarmMs": 257.21050133333324,
+    "msPerTick": 0.04286841688888887,
+    "fps": 3.2017258381395197,
+    "drawCalls": 131.0,
+    "triangles": 93808.0,
+    "geometries": 103.0,
+    "textures": 18.0,
+    "loadMs": 3326.6666666666665,
+    "renderSubmissionMs": 2.2776106934785942
+  },
+  "after": {
+    "simulationWarmMs": 304.2765143333333,
+    "msPerTick": 0.05071275238888888,
+    "fps": 3.232380949937847,
+    "drawCalls": 131.0,
+    "triangles": 93808.0,
+    "geometries": 103.0,
+    "textures": 18.0,
+    "loadMs": 3301.6666666666665,
+    "renderSubmissionMs": 2.1334126985291877
+  }
+}

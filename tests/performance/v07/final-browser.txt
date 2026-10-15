@@ -1,0 +1,55 @@
+
+> apex-dynasty@0.7.0 test:browser
+> playwright test
+
+
+Running 20 tests using 1 worker
+
+  ✓   1 tests/expanded.spec.js:9:1 › driver catalogue, real paint application, persistence, admin isolation and contracts (29.0s)
+  ✓   2 tests/expanded.spec.js:63:1 › new circuit, solo race, keyboard camera, pit menu pause, radio and result persistence (34.2s)
+  ✓   3 tests/game.spec.js:19:1 › desktop navigation, purchases, settings and persistent save (19.9s)
+  ✓   4 tests/game.spec.js:66:1 › real keyboard input, camera, pause, recovery, three laps, results and restart (46.4s)
+  ✓   5 tests/game.spec.js:130:1 › championship continuity across reload, three stages and new season (53.3s)
+  ✓   6 tests/game.spec.js:169:1 › mobile layout, touch controls, GLB and texture loading (12.3s)
+  ✓   7 tests/game.spec.js:215:1 › corrupted local save recovers defaults; no external runtime dependencies (13.2s)
+  ✓   8 tests/pits-v03.spec.js:16:1 › live presets/custom save, pit plan UI and optional cameras do not change simulation (34.1s)
+  ✓   9 tests/pits-v03.spec.js:73:1 › maximum grid physical stop, coordinated crew, all camera/preset pairs, few-bot finish (19.2s)
+  ✓  10 tests/pits-v03.spec.js:186:1 › repeated race/menu, car catalogue and six-circuit resource lifecycle reaches plateau (22.7s)
+  ✓  11 tests/v04.spec.js:15:1 › v0.4 real keyboard and camera projection, neutral/rebind/blur/pause (5.9s)
+  ✘  12 tests/v04.spec.js:91:1 › v0.4 HUD fits target resolutions, persistent modes/strategy, timing and event alerts (52.0s)
+  ✓  13 tests/v04.spec.js:218:1 › v0.4 all fourteen circuits select, load geometry, complete races, render minimaps and persist records (49.6s)
+  ✓  14 tests/v05.spec.js:13:1 › v0.5 full Sprint season via real menu/session/next/save/archive, no duplicate awards (18.1s)
+  ✓  15 tests/v05.spec.js:102:1 › v0.5 physical Safety Car visible, live race control, weather, journal and team controls (4.1s)
+  ✓  16 tests/v05.spec.js:159:1 › v0.5 settings, accelerated simulation, contracts/training and persistent filters (31.9s)
+  ✓  17 tests/v07.spec.js:13:1 › v07 venue gallery, actual boards, populated quality levels and moving cars in spectator camera (10.6s)
+  ✓  18 tests/v07.spec.js:62:1 › v07 streaming mixer: gesture, six cues, no restart, master/buses, pause/hidden/repeated race cleanup (15.2s)
+  ✓  19 tests/v07.spec.js:225:1 › v07 all tracks: actual mesh footprint/ground, safe venue disposal, repeat resource bounds (21.2s)
+  ✓  20 tests/v07.spec.js:303:1 › v07 crowd spatial response, bounded celebrations and independent engine/effects/crowd sliders (8.7s)
+
+
+  1) tests/v04.spec.js:91:1 › v0.4 HUD fits target resolutions, persistent modes/strategy, timing and event alerts 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "http://localhost:5173/assets/audio/menu.mp3",
+    + ]
+
+      214 |   );
+      215 |   expect(log.errors).toEqual([]);
+    > 216 |   expect(log.failed).toEqual([]);
+          |                      ^
+      217 | });
+      218 | test("v0.4 all fourteen circuits select, load geometry, complete races, render minimaps and persist records", async ({
+      219 |   page,
+        at /home/user/apex-dynasty/tests/v04.spec.js:216:22
+
+    Error Context: test-results/v04-v0-4-HUD-fits-target-r-2845f-egy-timing-and-event-alerts/error-context.md
+
+  1 failed
+    tests/v04.spec.js:91:1 › v0.4 HUD fits target resolutions, persistent modes/strategy, timing and event alerts 
+  19 passed (8.4m)

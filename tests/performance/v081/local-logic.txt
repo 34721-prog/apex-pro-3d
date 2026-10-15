@@ -1,0 +1,215 @@
+TAP version 13
+# Subtest: v08 default and additive save migration make management primary; plans and histories are bounded
+ok 1 - v08 default and additive save migration make management primary; plans and histories are bounded
+  ---
+  duration_ms: 4.462145
+  ...
+# Subtest: v08 team orders cannot change rivals, model stats or create speed; pace ramps and maximum expires
+ok 2 - v08 team orders cannot change rivals, model stats or create speed; pace ramps and maximum expires
+  ---
+  duration_ms: 32.140191
+  ...
+# Subtest: v08 cancellation holds programmed pit requests and commitment locks service
+ok 3 - v08 cancellation holds programmed pit requests and commitment locks service
+  ---
+  duration_ms: 2.639014
+  ...
+# Subtest: v08 grip, fuel and tire outputs differ from physically applied pace choices, not only HUD text
+ok 4 - v08 grip, fuel and tire outputs differ from physically applied pace choices, not only HUD text
+  ---
+  duration_ms: 1067.22902
+  ...
+# Subtest: v08 physical configuration tradeoffs and honest estimators respond to geometry/tires/loss
+ok 5 - v08 physical configuration tradeoffs and honest estimators respond to geometry/tires/loss
+  ---
+  duration_ms: 1.74224
+  ...
+# Subtest: v08 rivals do not read future weather; observed rain/SC advice is executable
+ok 6 - v08 rivals do not read future weather; observed rain/SC advice is executable
+  ---
+  duration_ms: 1.19314
+  ...
+# Subtest: v08 autonomous dry and changing-weather races finish with real opponent strategies, service and stint evidence
+ok 7 - v08 autonomous dry and changing-weather races finish with real opponent strategies, service and stint evidence
+  ---
+  duration_ms: 3408.950731
+  ...
+# Subtest: v08 manual/manager handover preserves race pose, lap, timers and plans
+ok 8 - v08 manual/manager handover preserves race pose, lap, timers and plans
+  ---
+  duration_ms: 62.990775
+  ...
+# Subtest: v08 championship objective chooses actual points priority and constrains teammate risk
+ok 9 - v08 championship objective chooses actual points priority and constrains teammate risk
+  ---
+  duration_ms: 0.863597
+  ...
+# Subtest: v08 full autonomous Sprint season saves strategy reports and standings and resumes between sessions
+ok 10 - v08 full autonomous Sprint season saves strategy reports and standings and resumes between sessions
+  ---
+  duration_ms: 2708.146604
+  ...
+# Subtest: v08 avoid-rival and protect-team orders actually change safe overtake selection
+ok 11 - v08 avoid-rival and protect-team orders actually change safe overtake selection
+  ---
+  duration_ms: 1.11853
+  ...
+# Subtest: v08 undercut and overcut require public rival evidence and an actionable stop horizon
+ok 12 - v08 undercut and overcut require public rival evidence and an actionable stop horizon
+  ---
+  duration_ms: 0.710828
+  ...
+# Subtest: v08 player team orders never constrain rival teammate battles; rivals may use public championship points
+ok 13 - v08 player team orders never constrain rival teammate battles; rivals may use public championship points
+  ---
+  duration_ms: 4.55959
+  ...
+# Subtest: v08 autonomous overcut actually delays a due stop within its window
+ok 14 - v08 autonomous overcut actually delays a due stop within its window
+  ---
+  duration_ms: 1.104623
+  ...
+# Subtest: physical garages aurora / own: 6 cars, no pit overlap, queue drains
+ok 15 - physical garages aurora / own: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 661.768929
+  ...
+# Subtest: physical garages aurora / same: 6 cars, no pit overlap, queue drains
+ok 16 - physical garages aurora / same: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 569.589397
+  ...
+# Subtest: physical garages aurora / rain: 6 cars, no pit overlap, queue drains
+ok 17 - physical garages aurora / rain: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 254.507919
+  ...
+# Subtest: physical garages veloce / own: 6 cars, no pit overlap, queue drains
+ok 18 - physical garages veloce / own: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 259.171656
+  ...
+# Subtest: physical garages veloce / same: 6 cars, no pit overlap, queue drains
+ok 19 - physical garages veloce / same: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 442.28229
+  ...
+# Subtest: physical garages veloce / rain: 6 cars, no pit overlap, queue drains
+ok 20 - physical garages veloce / rain: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 250.286181
+  ...
+# Subtest: physical garages serpente / own: 6 cars, no pit overlap, queue drains
+ok 21 - physical garages serpente / own: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 307.892453
+  ...
+# Subtest: physical garages serpente / same: 6 cars, no pit overlap, queue drains
+ok 22 - physical garages serpente / same: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 479.76401
+  ...
+# Subtest: physical garages serpente / rain: 6 cars, no pit overlap, queue drains
+ok 23 - physical garages serpente / rain: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 258.315085
+  ...
+# Subtest: physical garages neon / own: 6 cars, no pit overlap, queue drains
+ok 24 - physical garages neon / own: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 247.761869
+  ...
+# Subtest: physical garages neon / same: 6 cars, no pit overlap, queue drains
+ok 25 - physical garages neon / same: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 397.677634
+  ...
+# Subtest: physical garages neon / rain: 6 cars, no pit overlap, queue drains
+ok 26 - physical garages neon / rain: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 261.667518
+  ...
+# Subtest: physical garages titan / own: 6 cars, no pit overlap, queue drains
+ok 27 - physical garages titan / own: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 203.495982
+  ...
+# Subtest: physical garages titan / same: 6 cars, no pit overlap, queue drains
+ok 28 - physical garages titan / same: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 408.97475
+  ...
+# Subtest: physical garages titan / rain: 6 cars, no pit overlap, queue drains
+ok 29 - physical garages titan / rain: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 277.574018
+  ...
+# Subtest: physical garages vento / own: 6 cars, no pit overlap, queue drains
+ok 30 - physical garages vento / own: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 257.360011
+  ...
+# Subtest: physical garages vento / same: 6 cars, no pit overlap, queue drains
+ok 31 - physical garages vento / same: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 419.971094
+  ...
+# Subtest: physical garages vento / rain: 6 cars, no pit overlap, queue drains
+ok 32 - physical garages vento / rain: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 231.035768
+  ...
+# Subtest: lookup geometry remains within 4 cm of source spline on all circuits
+ok 33 - lookup geometry remains within 4 cm of source spline on all circuits
+  ---
+  duration_ms: 20.711233
+  ...
+# Subtest: safe merge predicts main-line arrivals and holds/releases without snapping
+ok 34 - safe merge predicts main-line arrivals and holds/releases without snapping
+  ---
+  duration_ms: 3.839047
+  ...
+# Subtest: pit speed penalty, entry gate, crew upgrades, locked work order and wear/weather plans
+ok 35 - pit speed penalty, entry gate, crew upgrades, locked work order and wear/weather plans
+  ---
+  duration_ms: 5.688546
+  ...
+# Subtest: main/pit separator and garage back wall are physical obstacles
+ok 36 - main/pit separator and garage back wall are physical obstacles
+  ---
+  duration_ms: 4.452448
+  ...
+# Subtest: quality and strategy settings validate/persist; adaptive mode cannot mutate race
+ok 37 - quality and strategy settings validate/persist; adaptive mode cannot mutate race
+  ---
+  duration_ms: 8.769173
+  ...
+# Subtest: planned multistop run finishes and persists actual team service statistics once
+ok 38 - planned multistop run finishes and persists actual team service statistics once
+  ---
+  duration_ms: 1628.649284
+  ...
+# Subtest: departing teammate cannot release a reservation already reassigned to another car
+ok 39 - departing teammate cannot release a reservation already reassigned to another car
+  ---
+  duration_ms: 4.104917
+  ...
+# Subtest: unrequested legal entry becomes a speed-controlled drive-through, not a free shortcut
+ok 40 - unrequested legal entry becomes a speed-controlled drive-through, not a free shortcut
+  ---
+  duration_ms: 3.08581
+  ...
+# Subtest: manual driver can authorize approach on the right once and complete physical service
+ok 41 - manual driver can authorize approach on the right once and complete physical service
+  ---
+  duration_ms: 108.675749
+  ...
+1..41
+# tests 41
+# suites 0
+# pass 41
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 15717.33661

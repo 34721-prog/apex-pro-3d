@@ -1,0 +1,11 @@
+
+Running 6 tests using 1 worker
+
+  ✓  1 tests/pits-v03.spec.js:24:1 › live presets/custom save, pit plan UI and optional cameras do not change simulation (34.4s)
+  ✓  2 tests/pits-v03.spec.js:81:1 › maximum grid physical stop, coordinated crew, all camera/preset pairs, few-bot finish (18.3s)
+  ✓  3 tests/pits-v03.spec.js:194:1 › repeated race/menu, car catalogue and six-circuit resource lifecycle reaches plateau (22.9s)
+  ✓  4 tests/v04.spec.js:23:1 › v0.4 real keyboard and camera projection, neutral/rebind/blur/pause (4.8s)
+  ✓  5 tests/v04.spec.js:99:1 › v0.4 HUD fits target resolutions, persistent modes/strategy, timing and event alerts (52.7s)
+  ✓  6 tests/v04.spec.js:227:1 › v0.4 all fourteen circuits select, load geometry, complete races, render minimaps and persist records (46.8s)
+
+  6 passed (3.0m)

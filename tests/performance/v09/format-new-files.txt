@@ -1,0 +1,8 @@
+src/graphics/VehicleMotion.js 96ms (unchanged)
+src/graphics/VehiclePresentation.js 41ms
+tests/motion.test.js 63ms
+tests/motion.spec.js 65ms
+scripts/probe-motion.js 17ms (unchanged)
+scripts/capture-motion.js 27ms
+scripts/compare-motion-simulation.js 10ms
+scripts/benchmark-motion-cpu.js 10ms

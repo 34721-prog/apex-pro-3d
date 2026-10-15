@@ -1,0 +1,10 @@
+
+Running 5 tests using 1 worker
+
+  ✓  1 tests/shadows.spec.js:72:1 › shadows: same-frame depth/colour in stop, acceleration, braking, turns, spin, all bots and cameras (1.1m)
+  ✓  2 tests/shadows.spec.js:156:1 › shadows: stable IDs, reordered grid, removed casters, restart, dt=0 and all circuits (36.5s)
+  ✓  3 tests/shadows.spec.js:237:1 › shadows: real pit entry, queued approach, jacked service, release and merge (8.2s)
+  ✓  4 tests/shadows.spec.js:315:1 › shadows: GPU image differential follows the vehicle; removal leaves no shadow pixels (5.3s)
+  ✓  5 tests/shadows.spec.js:454:1 › shadows: physical collision and surviving/retired vehicle use the current pose (10.1s)
+
+  5 passed (2.2m)

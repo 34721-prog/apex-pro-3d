@@ -1,0 +1,34 @@
+
+> apex-dynasty@0.7.1 test:browser
+> playwright test
+
+
+Running 25 tests using 1 worker
+
+  ✓   1 tests/expanded.spec.js:9:1 › driver catalogue, real paint application, persistence, admin isolation and contracts (27.2s)
+  ✓   2 tests/expanded.spec.js:63:1 › new circuit, solo race, keyboard camera, pit menu pause, radio and result persistence (29.6s)
+  ✓   3 tests/game.spec.js:19:1 › desktop navigation, purchases, settings and persistent save (23.5s)
+  ✓   4 tests/game.spec.js:66:1 › real keyboard input, camera, pause, recovery, three laps, results and restart (45.1s)
+  ✓   5 tests/game.spec.js:130:1 › championship continuity across reload, three stages and new season (47.1s)
+  ✓   6 tests/game.spec.js:169:1 › mobile layout, touch controls, GLB and texture loading (11.7s)
+  ✓   7 tests/game.spec.js:215:1 › corrupted local save recovers defaults; no external runtime dependencies (10.9s)
+  ✓   8 tests/pits-v03.spec.js:24:1 › live presets/custom save, pit plan UI and optional cameras do not change simulation (38.3s)
+  ✓   9 tests/pits-v03.spec.js:81:1 › maximum grid physical stop, coordinated crew, all camera/preset pairs, few-bot finish (17.0s)
+  ✓  10 tests/pits-v03.spec.js:194:1 › repeated race/menu, car catalogue and six-circuit resource lifecycle reaches plateau (22.8s)
+  ✓  11 tests/shadows.spec.js:82:1 › shadows: same-frame depth/colour in stop, acceleration, braking, turns, spin, all bots and cameras (1.1m)
+  ✓  12 tests/shadows.spec.js:166:1 › shadows: stable IDs, reordered grid, removed casters, restart, dt=0 and all circuits (35.9s)
+  ✓  13 tests/shadows.spec.js:247:1 › shadows: real pit entry, queued approach, jacked service, release and merge (7.6s)
+  ✓  14 tests/shadows.spec.js:325:1 › shadows: GPU image differential follows the vehicle; removal leaves no shadow pixels (5.4s)
+  ✓  15 tests/shadows.spec.js:464:1 › shadows: physical collision and surviving/retired vehicle use the current pose (10.6s)
+  ✓  16 tests/v04.spec.js:23:1 › v0.4 real keyboard and camera projection, neutral/rebind/blur/pause (4.4s)
+  ✓  17 tests/v04.spec.js:99:1 › v0.4 HUD fits target resolutions, persistent modes/strategy, timing and event alerts (53.5s)
+  ✓  18 tests/v04.spec.js:227:1 › v0.4 all fourteen circuits select, load geometry, complete races, render minimaps and persist records (47.1s)
+  ✓  19 tests/v05.spec.js:13:1 › v0.5 full Sprint season via real menu/session/next/save/archive, no duplicate awards (17.3s)
+  ✓  20 tests/v05.spec.js:102:1 › v0.5 physical Safety Car visible, live race control, weather, journal and team controls (4.1s)
+  ✓  21 tests/v05.spec.js:159:1 › v0.5 settings, accelerated simulation, contracts/training and persistent filters (35.3s)
+  ✓  22 tests/v07.spec.js:13:1 › v07 venue gallery, actual boards, populated quality levels and moving cars in spectator camera (10.9s)
+  ✓  23 tests/v07.spec.js:62:1 › v07 streaming mixer: gesture, six cues, no restart, master/buses, pause/hidden/repeated race cleanup (15.3s)
+  ✓  24 tests/v07.spec.js:225:1 › v07 all tracks: actual mesh footprint/ground, safe venue disposal, repeat resource bounds (22.6s)
+  ✓  25 tests/v07.spec.js:303:1 › v07 crowd spatial response, bounded celebrations and independent engine/effects/crowd sliders (8.6s)
+
+  25 passed (10.4m)

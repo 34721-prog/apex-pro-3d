@@ -1,0 +1,24 @@
+{
+  "before": {
+    "fps": 4.102636173250516,
+    "drawCalls": 125.0,
+    "triangles": 88860.0,
+    "geometries": 93.0,
+    "textures": 14.0,
+    "heapBytes": 17190319.333333332,
+    "loadMs": 2716.3333333333335,
+    "frameMs": 243.89890109890106,
+    "cpu100sMs": 282.074182
+  },
+  "after": {
+    "fps": 3.5199733975972927,
+    "drawCalls": 131.0,
+    "triangles": 93808.0,
+    "geometries": 103.0,
+    "textures": 18.0,
+    "heapBytes": 12090828.0,
+    "loadMs": 3036.6666666666665,
+    "frameMs": 284.1099472990777,
+    "cpu100sMs": 245.62925600000003
+  }
+}

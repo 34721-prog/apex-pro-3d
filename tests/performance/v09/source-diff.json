@@ -1,0 +1,23 @@
+{
+  "baselineSha256": "87d220774ecdbae3c1fb696e7969c491f6a98d27fe1a479b26998d3daaf4654c",
+  "changedPayload": [
+    "README.md",
+    "package-lock.json",
+    "package.json",
+    "playable/index.html",
+    "scripts/package-release.py",
+    "src/core/Game.js",
+    "src/graphics/PitVisuals.js",
+    "src/race.js",
+    "src/renderer.js"
+  ],
+  "removedPayload": [
+    "playable/assets/index-CloqIkPt.js"
+  ],
+  "newRuntime": [
+    "src/graphics/VehicleMotion.js",
+    "src/graphics/VehiclePresentation.js"
+  ],
+  "publicAssets": 135,
+  "publicHashMatches": 135
+}

@@ -1,0 +1,90 @@
+TAP version 13
+# Subtest: motion observer is absent from save/authoritative car properties
+ok 1 - motion observer is absent from save/authoritative car properties
+  ---
+  duration_ms: 2.317073
+  ...
+# Subtest: signed spin equals actual longitudinal travel / radius and does not advance on render
+ok 2 - signed spin equals actual longitudinal travel / radius and does not advance on render
+  ---
+  duration_ms: 0.9451
+  ...
+# Subtest: stationary car has no rotation or invented oscillation
+ok 3 - stationary car has no rotation or invented oscillation
+  ---
+  duration_ms: 0.363763
+  ...
+# Subtest: interpolation uses exactly adjacent samples, has no accumulated lag
+ok 4 - interpolation uses exactly adjacent samples, has no accumulated lag
+  ---
+  duration_ms: 0.169721
+  ...
+# Subtest: angle and track-coordinate seams use shortest arcs
+ok 5 - angle and track-coordinate seams use shortest arcs
+  ---
+  duration_ms: 0.282889
+  ...
+# Subtest: recover, external teleport and impact never interpolate through a discontinuity
+ok 6 - recover, external teleport and impact never interpolate through a discontinuity
+  ---
+  duration_ms: 0.2724
+  ...
+# Subtest: 30/60/144 Hz and batched ticks produce identical authoritative state and spin
+ok 7 - 30/60/144 Hz and batched ticks produce identical authoritative state and spin
+  ---
+  duration_ms: 4.820267
+  ...
+# Subtest: real steering and acceleration/roll are bounded, rear pivots stay straight
+ok 8 - real steering and acceleration/roll are bounded, rear pivots stay straight
+  ---
+  duration_ms: 47.716181
+  ...
+# Subtest: steered wheel axle does not wobble over a full spin
+ok 9 - steered wheel axle does not wobble over a full spin
+  ---
+  duration_ms: 26.538832
+  ...
+# Subtest: all 12 loaded GLBs retain all four articulated wheels and same geometry count
+ok 10 - all 12 loaded GLBs retain all four articulated wheels and same geometry count
+  ---
+  duration_ms: 64.715823
+  ...
+# Subtest: procedural rig retains meshes, actual radius and four contact centers independent of body attitude
+ok 11 - procedural rig retains meshes, actual radius and four contact centers independent of body attitude
+  ---
+  duration_ms: 14.253356
+  ...
+# Subtest: kerb contact is footprint-local, only 3.5 cm, no texture-driven vibration; pit is .14
+ok 12 - kerb contact is footprint-local, only 3.5 cm, no texture-driven vibration; pit is .14
+  ---
+  duration_ms: 2.920318
+  ...
+# Subtest: service lift is continuous, bounded, shares real phase, retains established .28 plateau
+ok 13 - service lift is continuous, bounded, shares real phase, retains established .28 plateau
+  ---
+  duration_ms: 19.351106
+  ...
+# Subtest: invalid delta, pause and results cannot advance the authoritative race or odometer
+ok 14 - invalid delta, pause and results cannot advance the authoritative race or odometer
+  ---
+  duration_ms: 12.153415
+  ...
+# Subtest: pause/resume before the next tick cannot rewind the presented car or wheel phase
+ok 15 - pause/resume before the next tick cannot rewind the presented car or wheel phase
+  ---
+  duration_ms: 49.673013
+  ...
+# Subtest: interpolation cannot invent pair penetration or suppress real physical overlap
+ok 16 - interpolation cannot invent pair penetration or suppress real physical overlap
+  ---
+  duration_ms: 0.644834
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 445.74752

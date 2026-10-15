@@ -1,0 +1,698 @@
+
+> apex-dynasty@0.7.1 test
+> node --test tests/*.test.js
+
+TAP version 13
+# Subtest: oriented hitboxes: front, rear, side and angled corner contacts resolve; no velocity explosion
+ok 1 - oriented hitboxes: front, rear, side and angled corner contacts resolve; no velocity explosion
+  ---
+  duration_ms: 2.519561
+  ...
+# Subtest: barrier collision respects actual rail edge including body extent
+ok 2 - barrier collision respects actual rail edge including body extent
+  ---
+  duration_ms: 5.2871
+  ...
+# Subtest: fixed-step simulation matches 30, 60 and 144 FPS
+ok 3 - fixed-step simulation matches 30, 60 and 144 FPS
+  ---
+  duration_ms: 8.13548
+  ...
+# easy duration 241.67 max lateral 5.66 [
+#   { id: 0, lap: 3, cp: 0, time: 210.4666666667263 },
+#   { id: 1, lap: 3, cp: 0, time: 239.2000000000825 },
+#   { id: 2, lap: 3, cp: 0, time: 236.2166666667468 },
+#   { id: 3, lap: 3, cp: 0, time: 240.65000000008365 },
+#   { id: 4, lap: 3, cp: 0, time: 238.30000000008178 },
+#   { id: 5, lap: 3, cp: 0, time: 241.66666666675113 }
+# ]
+# normal duration 217.35 max lateral 5.62 [
+#   { id: 0, lap: 3, cp: 0, time: 204.25000000005468 },
+#   { id: 1, lap: 3, cp: 0, time: 215.10000000006332 },
+#   { id: 2, lap: 3, cp: 0, time: 211.8000000000607 },
+#   { id: 3, lap: 3, cp: 0, time: 216.2666666667309 },
+#   { id: 4, lap: 3, cp: 0, time: 213.76666666672892 },
+#   { id: 5, lap: 3, cp: 0, time: 217.3500000000651 }
+# ]
+# hard duration 203.68 max lateral 5.54 [
+#   { id: 0, lap: 3, cp: 0, time: 203.68333333338757 },
+#   { id: 1, lap: 3, cp: 0, time: 201.1666666667189 },
+#   { id: 2, lap: 3, cp: 0, time: 198.1666666667165 },
+#   { id: 3, lap: 3, cp: 0, time: 200.05000000005134 },
+#   { id: 4, lap: 3, cp: 0, time: 198.46666666671675 },
+#   { id: 5, lap: 3, cp: 0, time: 202.46666666671993 }
+# ]
+# Subtest: closed circuit and projection agree
+ok 4 - closed circuit and projection agree
+  ---
+  duration_ms: 6.877127
+  ...
+# Subtest: acceleration, brakes, progressive steering, offroad, recovery
+ok 5 - acceleration, brakes, progressive steering, offroad, recovery
+  ---
+  duration_ms: 3.248134
+  ...
+# Subtest: collisions separate overlapping cars
+ok 6 - collisions separate overlapping cars
+  ---
+  duration_ms: 0.705784
+  ...
+# Subtest: checkpoint validation prevents start-line and wrong-way lap farming
+ok 7 - checkpoint validation prevents start-line and wrong-way lap farming
+  ---
+  duration_ms: 0.31328
+  ...
+# Subtest: six physical cars complete 3 laps on all difficulties, no teleporting
+ok 8 - six physical cars complete 3 laps on all difficulties, no teleporting
+  ---
+  duration_ms: 1876.782105
+  ...
+# Subtest: missing input is neutral, never corrupts physics with NaN
+ok 9 - missing input is neutral, never corrupts physics with NaN
+  ---
+  duration_ms: 0.299929
+  ...
+# Subtest: 31 unique pilots, 12 cars, portraits, helmets, thumbnails and GLB exist
+ok 10 - 31 unique pilots, 12 cars, portraits, helmets, thumbnails and GLB exist
+  ---
+  duration_ms: 1.437654
+  ...
+# Subtest: Mega uses finite limits and realistic mode removes extreme multiplier
+ok 11 - Mega uses finite limits and realistic mode removes extreme multiplier
+  ---
+  duration_ms: 0.508295
+  ...
+# Subtest: career data and custom paints survive validation, malformed arrays are rejected
+ok 12 - career data and custom paints survive validation, malformed arrays are rejected
+  ---
+  duration_ms: 2.205348
+  ...
+# Subtest: admin login isolates career, restore and exit never mutate the normal save
+ok 13 - admin login isolates career, restore and exit never mutate the normal save
+  ---
+  duration_ms: 0.853941
+  ...
+# Subtest: radio priorities and cooldowns work without browser voice support
+ok 14 - radio priorities and cooldowns work without browser voice support
+  ---
+  duration_ms: 0.220093
+  ...
+# Subtest: VSC actually slows traffic and returns green; pause freezes time and resources
+ok 15 - VSC actually slows traffic and returns green; pause freezes time and resources
+  ---
+  duration_ms: 161.932689
+  ...
+# Subtest: 8-lap realistic endurance finishes and bots actually use the pit lane
+ok 16 - 8-lap realistic endurance finishes and bots actually use the pit lane
+  ---
+  duration_ms: 1817.956019
+  ...
+# Subtest: time trial does not grant a fake podium; manager assigns a hired teammate
+ok 17 - time trial does not grant a fake podium; manager assigns a hired teammate
+  ---
+  duration_ms: 44.498644
+  ...
+# Subtest: physical garages aurora / own: 6 cars, no pit overlap, queue drains
+ok 18 - physical garages aurora / own: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 610.429869
+  ...
+# Subtest: physical garages aurora / same: 6 cars, no pit overlap, queue drains
+ok 19 - physical garages aurora / same: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 546.63008
+  ...
+# Subtest: physical garages aurora / rain: 6 cars, no pit overlap, queue drains
+ok 20 - physical garages aurora / rain: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 230.517139
+  ...
+# Subtest: physical garages veloce / own: 6 cars, no pit overlap, queue drains
+ok 21 - physical garages veloce / own: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 246.189882
+  ...
+# Subtest: physical garages veloce / same: 6 cars, no pit overlap, queue drains
+ok 22 - physical garages veloce / same: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 349.85283
+  ...
+# Subtest: physical garages veloce / rain: 6 cars, no pit overlap, queue drains
+ok 23 - physical garages veloce / rain: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 192.105386
+  ...
+# Subtest: physical garages serpente / own: 6 cars, no pit overlap, queue drains
+ok 24 - physical garages serpente / own: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 217.542266
+  ...
+# Subtest: physical garages serpente / same: 6 cars, no pit overlap, queue drains
+ok 25 - physical garages serpente / same: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 336.097678
+  ...
+# Subtest: physical garages serpente / rain: 6 cars, no pit overlap, queue drains
+ok 26 - physical garages serpente / rain: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 193.719793
+  ...
+# Subtest: physical garages neon / own: 6 cars, no pit overlap, queue drains
+ok 27 - physical garages neon / own: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 199.180246
+  ...
+# Subtest: physical garages neon / same: 6 cars, no pit overlap, queue drains
+ok 28 - physical garages neon / same: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 358.035144
+  ...
+# Subtest: physical garages neon / rain: 6 cars, no pit overlap, queue drains
+ok 29 - physical garages neon / rain: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 204.948639
+  ...
+# Subtest: physical garages titan / own: 6 cars, no pit overlap, queue drains
+ok 30 - physical garages titan / own: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 187.221094
+  ...
+# Subtest: physical garages titan / same: 6 cars, no pit overlap, queue drains
+ok 31 - physical garages titan / same: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 381.829545
+  ...
+# Subtest: physical garages titan / rain: 6 cars, no pit overlap, queue drains
+ok 32 - physical garages titan / rain: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 213.895989
+  ...
+# Subtest: physical garages vento / own: 6 cars, no pit overlap, queue drains
+ok 33 - physical garages vento / own: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 193.519716
+  ...
+# Subtest: physical garages vento / same: 6 cars, no pit overlap, queue drains
+ok 34 - physical garages vento / same: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 355.18329
+  ...
+# Subtest: physical garages vento / rain: 6 cars, no pit overlap, queue drains
+ok 35 - physical garages vento / rain: 6 cars, no pit overlap, queue drains
+  ---
+  duration_ms: 186.581482
+  ...
+# Subtest: lookup geometry remains within 4 cm of source spline on all circuits
+ok 36 - lookup geometry remains within 4 cm of source spline on all circuits
+  ---
+  duration_ms: 13.182286
+  ...
+# Subtest: safe merge predicts main-line arrivals and holds/releases without snapping
+ok 37 - safe merge predicts main-line arrivals and holds/releases without snapping
+  ---
+  duration_ms: 2.707313
+  ...
+# Subtest: pit speed penalty, entry gate, crew upgrades, locked work order and wear/weather plans
+ok 38 - pit speed penalty, entry gate, crew upgrades, locked work order and wear/weather plans
+  ---
+  duration_ms: 2.804423
+  ...
+# Subtest: main/pit separator and garage back wall are physical obstacles
+ok 39 - main/pit separator and garage back wall are physical obstacles
+  ---
+  duration_ms: 2.730491
+  ...
+# Subtest: quality and strategy settings validate/persist; adaptive mode cannot mutate race
+ok 40 - quality and strategy settings validate/persist; adaptive mode cannot mutate race
+  ---
+  duration_ms: 4.032501
+  ...
+# Subtest: planned multistop run finishes and persists actual team service statistics once
+ok 41 - planned multistop run finishes and persists actual team service statistics once
+  ---
+  duration_ms: 1080.677691
+  ...
+# Subtest: departing teammate cannot release a reservation already reassigned to another car
+ok 42 - departing teammate cannot release a reservation already reassigned to another car
+  ---
+  duration_ms: 2.139738
+  ...
+# Subtest: unrequested legal entry becomes a speed-controlled drive-through, not a free shortcut
+ok 43 - unrequested legal entry becomes a speed-controlled drive-through, not a free shortcut
+  ---
+  duration_ms: 2.054007
+  ...
+# Subtest: manual driver can authorize approach on the right once and complete physical service
+ok 44 - manual driver can authorize approach on the right once and complete physical service
+  ---
+  duration_ms: 55.384907
+  ...
+# Subtest: upgrades charge once, improve actual physics and respect cap
+ok 45 - upgrades charge once, improve actual physics and respect cap
+  ---
+  duration_ms: 1.292829
+  ...
+# Subtest: save validation rejects malformed values and preserves valid state
+ok 46 - save validation rejects malformed values and preserves valid state
+  ---
+  duration_ms: 2.419457
+  ...
+# Subtest: three races, credits, objectives, championship continuity, winner, new season
+ok 47 - three races, credits, objectives, championship continuity, winner, new season
+  ---
+  duration_ms: 2201.652127
+  ...
+# Subtest: shadows: current light projection, texel snapping, constant world sun direction
+ok 48 - shadows: current light projection, texel snapping, constant world sun direction
+  ---
+  duration_ms: 7.742211
+  ...
+# Subtest: shadows: visible remote vehicle expands coverage, no shrinking/texel pumping mid-session
+ok 49 - shadows: visible remote vehicle expands coverage, no shrinking/texel pumping mid-session
+  ---
+  duration_ms: 0.594688
+  ...
+# Subtest: shadows: explicit user off is preserved; quality does not throttle enabled shadows
+ok 50 - shadows: explicit user off is preserved; quality does not throttle enabled shadows
+  ---
+  duration_ms: 0.281291
+  ...
+# Subtest: shadows: explicit ownership disposes existing map once and no render allocations
+ok 51 - shadows: explicit ownership disposes existing map once and no render allocations
+  ---
+  duration_ms: 0.925675
+  ...
+# aurora 3089 m 146.0s [ 2, 2, 2, 2, 2, 2 ]
+# veloce 3939 m 166.8s [ 2, 2, 2, 2, 2, 2 ]
+# serpente 3307 m 191.5s [ 2, 2, 2, 2, 2, 2 ]
+# neon 3506 m 179.0s [ 2, 2, 2, 2, 2, 2 ]
+# titan 4630 m 200.2s [ 2, 2, 2, 2, 2, 2 ]
+# vento 3822 m 156.4s [ 2, 2, 2, 2, 2, 2 ]
+# sahara 5405 m 200.1s [ 2, 2, 2, 2, 2, 2 ]
+# alpine 4947 m 229.4s [ 2, 2, 2, 2, 2, 2 ]
+# emerald 4937 m 243.8s [ 2, 2, 2, 2, 2, 2 ]
+# oldtown 4859 m 217.1s [ 2, 2, 2, 2, 2, 2 ]
+# sunset 5201 m 213.6s [ 2, 2, 2, 2, 2, 2 ]
+# nordic 4787 m 205.3s [ 2, 2, 2, 2, 2, 2 ]
+# desert-night 5513 m 215.0s [ 2, 2, 2, 2, 2, 2 ]
+# discovery 4907 m 174.5s [ 2, 2, 2, 2, 2, 2 ]
+# pit states Set(5) { 'track', 'entry', 'service', 'release', 'exit' } stops 1 s 308.307162517102 speed 15.532869955689174
+# Subtest: all distinct full-scale circuits; AI completes two laps on each
+ok 52 - all distinct full-scale circuits; AI completes two laps on each
+  ---
+  duration_ms: 6610.942482
+  ...
+# Subtest: real physical pit entry, stop, service and exit; resources bounded
+ok 53 - real physical pit entry, stop, service and exit; resources bounded
+  ---
+  duration_ms: 251.894992
+  ...
+# Subtest: human controls project left/right correctly through the real camera at 8/25/50 m/s
+ok 54 - human controls project left/right correctly through the real camera at 8/25/50 m/s
+  ---
+  duration_ms: 28.024805
+  ...
+# Subtest: legacy steering workaround migrates once without erasing progression or alternate controls
+ok 55 - legacy steering workaround migrates once without erasing progression or alternate controls
+  ---
+  duration_ms: 3.858166
+  ...
+# Subtest: AI retains world-yaw convention, slows for a stopped car and sees rejoining traffic
+ok 56 - AI retains world-yaw convention, slows for a stopped car and sees rejoining traffic
+  ---
+  duration_ms: 5.515167
+  ...
+# Subtest: all strategy fields validate, change operative policy, and persist
+ok 57 - all strategy fields validate, change operative policy, and persist
+  ---
+  duration_ms: 3.298384
+  ...
+# Subtest: overtaking styles affect attempts, defense respects side-by-side space, no lane ping-pong
+ok 58 - overtaking styles affect attempts, defense respects side-by-side space, no lane ping-pong
+  ---
+  duration_ms: 38.178343
+  ...
+# Subtest: pace changes throttle/target speed without editing physical stats; line choices alter trajectories
+ok 59 - pace changes throttle/target speed without editing physical stats; line choices alter trajectories
+  ---
+  duration_ms: 19.602242
+  ...
+# Subtest: pit profiles/windows/traffic preferences produce different actual requests
+ok 60 - pit profiles/windows/traffic preferences produce different actual requests
+  ---
+  duration_ms: 16.866069
+  ...
+# Subtest: stationary service car is solid and cannot be pushed/ghosted through
+ok 61 - stationary service car is solid and cannot be pushed/ghosted through
+  ---
+  duration_ms: 2.761418
+  ...
+# Subtest: timed intervals and reference delta use timestamps, not a fixed speed divisor
+ok 62 - timed intervals and reference delta use timestamps, not a fixed speed divisor
+  ---
+  duration_ms: 0.384303
+  ...
+# Subtest: gear/RPM telemetry is bounded and shift indication corresponds to synthesized engine range
+ok 63 - gear/RPM telemetry is bounded and shift indication corresponds to synthesized engine range
+  ---
+  duration_ms: 0.3287
+  ...
+# Subtest: procedural seeds reproduce geometry and reject/normalize unsafe parameters
+ok 64 - procedural seeds reproduce geometry and reject/normalize unsafe parameters
+  ---
+  duration_ms: 39.350528
+  ...
+# Subtest: v0.4 circuit aurora: geometry, own/shared pit, rain and high-traffic rejoin
+ok 65 - v0.4 circuit aurora: geometry, own/shared pit, rain and high-traffic rejoin
+  ---
+  duration_ms: 1486.536856
+  ...
+# Subtest: v0.4 circuit veloce: geometry, own/shared pit, rain and high-traffic rejoin
+ok 66 - v0.4 circuit veloce: geometry, own/shared pit, rain and high-traffic rejoin
+  ---
+  duration_ms: 858.723203
+  ...
+# Subtest: v0.4 circuit serpente: geometry, own/shared pit, rain and high-traffic rejoin
+ok 67 - v0.4 circuit serpente: geometry, own/shared pit, rain and high-traffic rejoin
+  ---
+  duration_ms: 766.4157
+  ...
+# Subtest: v0.4 circuit neon: geometry, own/shared pit, rain and high-traffic rejoin
+ok 68 - v0.4 circuit neon: geometry, own/shared pit, rain and high-traffic rejoin
+  ---
+  duration_ms: 758.945041
+  ...
+# Subtest: v0.4 circuit titan: geometry, own/shared pit, rain and high-traffic rejoin
+ok 69 - v0.4 circuit titan: geometry, own/shared pit, rain and high-traffic rejoin
+  ---
+  duration_ms: 623.166168
+  ...
+# Subtest: v0.4 circuit vento: geometry, own/shared pit, rain and high-traffic rejoin
+ok 70 - v0.4 circuit vento: geometry, own/shared pit, rain and high-traffic rejoin
+  ---
+  duration_ms: 631.258452
+  ...
+# Subtest: v0.4 circuit sahara: geometry, own/shared pit, rain and high-traffic rejoin
+ok 71 - v0.4 circuit sahara: geometry, own/shared pit, rain and high-traffic rejoin
+  ---
+  duration_ms: 656.598373
+  ...
+# Subtest: v0.4 circuit alpine: geometry, own/shared pit, rain and high-traffic rejoin
+ok 72 - v0.4 circuit alpine: geometry, own/shared pit, rain and high-traffic rejoin
+  ---
+  duration_ms: 613.487297
+  ...
+# Subtest: v0.4 circuit emerald: geometry, own/shared pit, rain and high-traffic rejoin
+ok 73 - v0.4 circuit emerald: geometry, own/shared pit, rain and high-traffic rejoin
+  ---
+  duration_ms: 623.085857
+  ...
+# Subtest: v0.4 circuit oldtown: geometry, own/shared pit, rain and high-traffic rejoin
+ok 74 - v0.4 circuit oldtown: geometry, own/shared pit, rain and high-traffic rejoin
+  ---
+  duration_ms: 617.342076
+  ...
+# Subtest: v0.4 circuit sunset: geometry, own/shared pit, rain and high-traffic rejoin
+ok 75 - v0.4 circuit sunset: geometry, own/shared pit, rain and high-traffic rejoin
+  ---
+  duration_ms: 636.581995
+  ...
+# Subtest: v0.4 circuit nordic: geometry, own/shared pit, rain and high-traffic rejoin
+ok 76 - v0.4 circuit nordic: geometry, own/shared pit, rain and high-traffic rejoin
+  ---
+  duration_ms: 732.555879
+  ...
+# Subtest: v0.4 circuit desert-night: geometry, own/shared pit, rain and high-traffic rejoin
+ok 77 - v0.4 circuit desert-night: geometry, own/shared pit, rain and high-traffic rejoin
+  ---
+  duration_ms: 649.95383
+  ...
+# Subtest: v0.4 circuit discovery: geometry, own/shared pit, rain and high-traffic rejoin
+ok 78 - v0.4 circuit discovery: geometry, own/shared pit, rain and high-traffic rejoin
+  ---
+  duration_ms: 656.641355
+  ...
+# Subtest: simulated gamepad axis sign/deadzone and Start toggle survive inactive pause UI
+ok 79 - simulated gamepad axis sign/deadzone and Start toggle survive inactive pause UI
+  ---
+  duration_ms: 0.405852
+  ...
+# Subtest: AI recovers a moderate off-road excursion without relocation or permanent blockage
+ok 80 - AI recovers a moderate off-road excursion without relocation or permanent blockage
+  ---
+  duration_ms: 9.340434
+  ...
+# Subtest: central flags: sector yellow/double, VSC, blue, red freeze/restart, warnings and black
+ok 81 - central flags: sector yellow/double, VSC, blue, red freeze/restart, warnings and black
+  ---
+  duration_ms: 99.80096
+  ...
+# Subtest: actual jump-start displacement, no penalty for stationary throttle-free grid
+ok 82 - actual jump-start displacement, no penalty for stationary throttle-free grid
+  ---
+  duration_ms: 6.085914
+  ...
+# Subtest: illegal passing orders position return; pit/service penalty held and recorded once
+ok 83 - illegal passing orders position return; pit/service penalty held and recorded once
+  ---
+  duration_ms: 128.20713
+  ...
+# Subtest: weather changes grip gradually, forecasts match schedule, repairs restore real mechanical/wing loss
+ok 84 - weather changes grip gradually, forecasts match schedule, repairs restore real mechanical/wing loss
+  ---
+  duration_ms: 443.186027
+  ...
+# Subtest: track geometry limits: no punishment without advantage/forced exit; repeated proven advantage escalates
+ok 85 - track geometry limits: no punishment without advantage/forced exit; repeated proven advantage escalates
+  ---
+  duration_ms: 15.164892
+  ...
+# Subtest: SC physical deploy/train/return/restart: aurora
+ok 86 - SC physical deploy/train/return/restart: aurora
+  ---
+  duration_ms: 871.086341
+  ...
+# Subtest: SC physical deploy/train/return/restart: veloce
+ok 87 - SC physical deploy/train/return/restart: veloce
+  ---
+  duration_ms: 860.565094
+  ...
+# Subtest: SC physical deploy/train/return/restart: serpente
+ok 88 - SC physical deploy/train/return/restart: serpente
+  ---
+  duration_ms: 715.103109
+  ...
+# Subtest: SC physical deploy/train/return/restart: neon
+ok 89 - SC physical deploy/train/return/restart: neon
+  ---
+  duration_ms: 702.461139
+  ...
+# Subtest: SC physical deploy/train/return/restart: titan
+ok 90 - SC physical deploy/train/return/restart: titan
+  ---
+  duration_ms: 896.969313
+  ...
+# Subtest: SC physical deploy/train/return/restart: vento
+ok 91 - SC physical deploy/train/return/restart: vento
+  ---
+  duration_ms: 694.897428
+  ...
+# Subtest: SC physical deploy/train/return/restart: sahara
+ok 92 - SC physical deploy/train/return/restart: sahara
+  ---
+  duration_ms: 1046.84981
+  ...
+# Subtest: SC physical deploy/train/return/restart: alpine
+ok 93 - SC physical deploy/train/return/restart: alpine
+  ---
+  duration_ms: 972.261482
+  ...
+# Subtest: SC physical deploy/train/return/restart: emerald
+ok 94 - SC physical deploy/train/return/restart: emerald
+  ---
+  duration_ms: 920.784801
+  ...
+# Subtest: SC physical deploy/train/return/restart: oldtown
+ok 95 - SC physical deploy/train/return/restart: oldtown
+  ---
+  duration_ms: 929.819312
+  ...
+# Subtest: SC physical deploy/train/return/restart: sunset
+ok 96 - SC physical deploy/train/return/restart: sunset
+  ---
+  duration_ms: 937.489812
+  ...
+# Subtest: SC physical deploy/train/return/restart: nordic
+ok 97 - SC physical deploy/train/return/restart: nordic
+  ---
+  duration_ms: 877.134286
+  ...
+# Subtest: SC physical deploy/train/return/restart: desert-night
+ok 98 - SC physical deploy/train/return/restart: desert-night
+  ---
+  duration_ms: 1027.234867
+  ...
+# Subtest: SC physical deploy/train/return/restart: discovery
+ok 99 - SC physical deploy/train/return/restart: discovery
+  ---
+  duration_ms: 854.13906
+  ...
+# Subtest: complete physical season, save, points and next season: world
+ok 100 - complete physical season, save, points and next season: world
+  ---
+  duration_ms: 11651.547486
+  ...
+# Subtest: complete physical season, save, points and next season: sprint
+ok 101 - complete physical season, save, points and next season: sprint
+  ---
+  duration_ms: 2094.170347
+  ...
+# Subtest: complete physical season, save, points and next season: junior
+ok 102 - complete physical season, save, points and next season: junior
+  ---
+  duration_ms: 5202.788578
+  ...
+# Subtest: complete physical season, save, points and next season: endurance
+ok 103 - complete physical season, save, points and next season: endurance
+  ---
+  duration_ms: 7811.065241
+  ...
+# Subtest: complete physical season, save, points and next season: one-make
+ok 104 - complete physical season, save, points and next season: one-make
+  ---
+  duration_ms: 4654.519929
+  ...
+# Subtest: complete physical season, save, points and next season: legends
+ok 105 - complete physical season, save, points and next season: legends
+  ---
+  duration_ms: 4828.045665
+  ...
+# Subtest: complete physical season, save, points and next season: time-attack
+ok 106 - complete physical season, save, points and next season: time-attack
+  ---
+  duration_ms: 198.074071
+  ...
+# Subtest: measured severe rear collision really deploys SC and bypasses stationary wrecks
+ok 107 - measured severe rear collision really deploys SC and bypasses stationary wrecks
+  ---
+  duration_ms: 740.562805
+  ...
+# Subtest: spec cars identical, delegated fast/normal batches use identical physics, optional failures are real
+ok 108 - spec cars identical, delegated fast/normal batches use identical physics, optional failures are real
+  ---
+  duration_ms: 82.665793
+  ...
+# Subtest: qualifying grid penalty and time-adjusted official points are applied without duplicated sessions
+ok 109 - qualifying grid penalty and time-adjusted official points are applied without duplicated sessions
+  ---
+  duration_ms: 684.644099
+  ...
+# Subtest: shared pit reservation follows actual arrival, including the higher-id car arriving first
+ok 110 - shared pit reservation follows actual arrival, including the higher-id car arriving first
+  ---
+  duration_ms: 49.672688
+  ...
+# Subtest: v07 ten populated safe distributed venues: aurora
+ok 111 - v07 ten populated safe distributed venues: aurora
+  ---
+  duration_ms: 40.323099
+  ...
+# Subtest: v07 ten populated safe distributed venues: veloce
+ok 112 - v07 ten populated safe distributed venues: veloce
+  ---
+  duration_ms: 16.934209
+  ...
+# Subtest: v07 ten populated safe distributed venues: serpente
+ok 113 - v07 ten populated safe distributed venues: serpente
+  ---
+  duration_ms: 12.193104
+  ...
+# Subtest: v07 ten populated safe distributed venues: neon
+ok 114 - v07 ten populated safe distributed venues: neon
+  ---
+  duration_ms: 20.596885
+  ...
+# Subtest: v07 ten populated safe distributed venues: titan
+ok 115 - v07 ten populated safe distributed venues: titan
+  ---
+  duration_ms: 18.998085
+  ...
+# Subtest: v07 ten populated safe distributed venues: vento
+ok 116 - v07 ten populated safe distributed venues: vento
+  ---
+  duration_ms: 14.039044
+  ...
+# Subtest: v07 ten populated safe distributed venues: sahara
+ok 117 - v07 ten populated safe distributed venues: sahara
+  ---
+  duration_ms: 22.446431
+  ...
+# Subtest: v07 ten populated safe distributed venues: alpine
+ok 118 - v07 ten populated safe distributed venues: alpine
+  ---
+  duration_ms: 9.719845
+  ...
+# Subtest: v07 ten populated safe distributed venues: emerald
+ok 119 - v07 ten populated safe distributed venues: emerald
+  ---
+  duration_ms: 21.614074
+  ...
+# Subtest: v07 ten populated safe distributed venues: oldtown
+ok 120 - v07 ten populated safe distributed venues: oldtown
+  ---
+  duration_ms: 9.905282
+  ...
+# Subtest: v07 ten populated safe distributed venues: sunset
+ok 121 - v07 ten populated safe distributed venues: sunset
+  ---
+  duration_ms: 11.38364
+  ...
+# Subtest: v07 ten populated safe distributed venues: nordic
+ok 122 - v07 ten populated safe distributed venues: nordic
+  ---
+  duration_ms: 9.661752
+  ...
+# Subtest: v07 ten populated safe distributed venues: desert-night
+ok 123 - v07 ten populated safe distributed venues: desert-night
+  ---
+  duration_ms: 18.097618
+  ...
+# Subtest: v07 ten populated safe distributed venues: discovery
+ok 124 - v07 ten populated safe distributed venues: discovery
+  ---
+  duration_ms: 10.167453
+  ...
+# Subtest: v07 audio settings are additive and validated; race audio is opt-in
+ok 125 - v07 audio settings are additive and validated; race audio is opt-in
+  ---
+  duration_ms: 2.522221
+  ...
+# Subtest: v07 scene routing respects race-music independence
+ok 126 - v07 scene routing respects race-music independence
+  ---
+  duration_ms: 0.486389
+  ...
+# Subtest: v07 audience observer follows actual events/order without mutating race
+ok 127 - v07 audience observer follows actual events/order without mutating race
+  ---
+  duration_ms: 7.402816
+  ...
+# Subtest: v07 eight nonempty original compressed assets with hashes/real waveform metadata
+ok 128 - v07 eight nonempty original compressed assets with hashes/real waveform metadata
+  ---
+  duration_ms: 6.806552
+  ...
+# Subtest: v07 native local radio multiplies voice by master and stops on mute
+ok 129 - v07 native local radio multiplies voice by master and stops on mute
+  ---
+  duration_ms: 14.5496
+  ...
+1..129
+# tests 129
+# suites 0
+# pass 129
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 82656.495108

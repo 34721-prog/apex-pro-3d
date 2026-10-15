@@ -1,0 +1,10 @@
+
+> apex-dynasty@0.8.1 test:browser
+> playwright test tests/stability.spec.js --grep all circuits
+
+
+Running 1 test using 1 worker
+
+  ✓  1 tests/stability.spec.js:75:1 › v081 all circuits: one pit, matching physical walls, repeat init/camera/track lifecycle (1.4m)
+
+  1 passed (1.4m)

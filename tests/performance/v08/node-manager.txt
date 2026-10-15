@@ -1,0 +1,80 @@
+TAP version 13
+# Subtest: v08 default and additive save migration make management primary; plans and histories are bounded
+ok 1 - v08 default and additive save migration make management primary; plans and histories are bounded
+  ---
+  duration_ms: 4.773944
+  ...
+# Subtest: v08 team orders cannot change rivals, model stats or create speed; pace ramps and maximum expires
+ok 2 - v08 team orders cannot change rivals, model stats or create speed; pace ramps and maximum expires
+  ---
+  duration_ms: 42.793724
+  ...
+# Subtest: v08 cancellation holds programmed pit requests and commitment locks service
+ok 3 - v08 cancellation holds programmed pit requests and commitment locks service
+  ---
+  duration_ms: 4.267044
+  ...
+# Subtest: v08 grip, fuel and tire outputs differ from physically applied pace choices, not only HUD text
+ok 4 - v08 grip, fuel and tire outputs differ from physically applied pace choices, not only HUD text
+  ---
+  duration_ms: 888.887427
+  ...
+# Subtest: v08 physical configuration tradeoffs and honest estimators respond to geometry/tires/loss
+ok 5 - v08 physical configuration tradeoffs and honest estimators respond to geometry/tires/loss
+  ---
+  duration_ms: 1.484435
+  ...
+# Subtest: v08 rivals do not read future weather; observed rain/SC advice is executable
+ok 6 - v08 rivals do not read future weather; observed rain/SC advice is executable
+  ---
+  duration_ms: 1.219624
+  ...
+# Subtest: v08 autonomous dry and changing-weather races finish with real opponent strategies, service and stint evidence
+ok 7 - v08 autonomous dry and changing-weather races finish with real opponent strategies, service and stint evidence
+  ---
+  duration_ms: 2931.739411
+  ...
+# Subtest: v08 manual/manager handover preserves race pose, lap, timers and plans
+ok 8 - v08 manual/manager handover preserves race pose, lap, timers and plans
+  ---
+  duration_ms: 59.797042
+  ...
+# Subtest: v08 championship objective chooses actual points priority and constrains teammate risk
+ok 9 - v08 championship objective chooses actual points priority and constrains teammate risk
+  ---
+  duration_ms: 0.714188
+  ...
+# Subtest: v08 full autonomous Sprint season saves strategy reports and standings and resumes between sessions
+ok 10 - v08 full autonomous Sprint season saves strategy reports and standings and resumes between sessions
+  ---
+  duration_ms: 2297.544066
+  ...
+# Subtest: v08 avoid-rival and protect-team orders actually change safe overtake selection
+ok 11 - v08 avoid-rival and protect-team orders actually change safe overtake selection
+  ---
+  duration_ms: 0.867991
+  ...
+# Subtest: v08 undercut and overcut require public rival evidence and an actionable stop horizon
+ok 12 - v08 undercut and overcut require public rival evidence and an actionable stop horizon
+  ---
+  duration_ms: 0.719816
+  ...
+# Subtest: v08 player team orders never constrain rival teammate battles; rivals may use public championship points
+ok 13 - v08 player team orders never constrain rival teammate battles; rivals may use public championship points
+  ---
+  duration_ms: 4.304604
+  ...
+# Subtest: v08 autonomous overcut actually delays a due stop within its window
+ok 14 - v08 autonomous overcut actually delays a due stop within its window
+  ---
+  duration_ms: 0.895683
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6417.574913

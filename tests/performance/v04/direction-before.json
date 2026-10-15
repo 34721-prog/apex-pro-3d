@@ -1,0 +1,27 @@
+[
+  {
+    "key": "KeyA",
+    "steer": -1,
+    "screenX": 0.046846677760272154
+  },
+  {
+    "key": "KeyD",
+    "steer": 1,
+    "screenX": -0.04684667776030769
+  },
+  {
+    "key": "ArrowLeft",
+    "steer": -1,
+    "screenX": 0.046846677760272154
+  },
+  {
+    "key": "ArrowRight",
+    "steer": 1,
+    "screenX": -0.04684667776030769
+  },
+  {
+    "key": "neutral",
+    "steer": 0,
+    "screenX": -5.902075499224448e-15
+  }
+]

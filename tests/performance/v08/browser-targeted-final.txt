@@ -1,0 +1,10 @@
+
+Running 5 tests using 1 worker
+
+  ✓  1 tests/manager.spec.js:38:1 › v08 plan both drivers, command live without pausing, physical stop, complete autonomous race and persist report (1.1m)
+  ✓  2 tests/manager.spec.js:145:1 › v08 actual changing weather and controlled Safety Car support executable recommendations and simultaneous team changes (5.9s)
+  ✓  3 tests/manager.spec.js:209:1 › v08 explicit manual handover preserves physical state and management works on mobile (3.2s)
+  ✓  4 tests/manager.spec.js:257:1 › v08 delegated championship reports survive reload and next session uses saved independent plans (8.5s)
+  ✓  5 tests/v04.spec.js:105:1 › v0.4 HUD fits target resolutions, persistent modes/strategy, timing and event alerts (57.6s)
+
+  5 passed (2.4m)

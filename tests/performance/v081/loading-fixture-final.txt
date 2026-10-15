@@ -1,0 +1,10 @@
+
+> apex-dynasty@0.8.1 test:browser
+> playwright test tests/stability.spec.js --grep pending texture
+
+
+Running 1 test using 1 worker
+
+  ✓  1 tests/stability.spec.js:194:1 › v081 pending texture blocks premature ready; one recurring RAF after races, pause and exit (21.6s)
+
+  1 passed (22.5s)

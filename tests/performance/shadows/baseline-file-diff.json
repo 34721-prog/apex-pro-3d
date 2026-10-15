@@ -1,0 +1,13 @@
+{
+  "baselineSHA256": "beface08dcf6702c35cd2e81224de6c624fecdcdb39c80e9c4226372dd8e088c",
+  "unchangedSourceAndAssets": 199,
+  "changed": [
+    "src/renderer.js",
+    "src/graphics/Quality.js",
+    "src/graphics/SafetyCarModel.js"
+  ],
+  "added": [
+    "src/graphics/DynamicShadows.js"
+  ],
+  "publicAssetsUnchanged": true
+}

@@ -1,0 +1,473 @@
+{
+  "before": 0,
+  "after": 3,
+  "retired": false,
+  "frames": [
+    {
+      "errors": [],
+      "visible": [
+        5,
+        1,
+        3,
+        4,
+        2,
+        "SC",
+        0
+      ],
+      "depthIds": [
+        "SC",
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "draws": 54,
+      "updates": 8,
+      "span": [
+        192,
+        224
+      ],
+      "resources": {
+        "geometries": 119,
+        "textures": 23
+      }
+    },
+    {
+      "errors": [],
+      "visible": [
+        5,
+        1,
+        3,
+        4,
+        2,
+        "SC",
+        0
+      ],
+      "depthIds": [
+        "SC",
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "draws": 54,
+      "updates": 9,
+      "span": [
+        192,
+        224
+      ],
+      "resources": {
+        "geometries": 119,
+        "textures": 23
+      }
+    },
+    {
+      "errors": [],
+      "visible": [
+        5,
+        1,
+        3,
+        4,
+        2,
+        "SC",
+        0
+      ],
+      "depthIds": [
+        "SC",
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "draws": 54,
+      "updates": 10,
+      "span": [
+        192,
+        224
+      ],
+      "resources": {
+        "geometries": 119,
+        "textures": 23
+      }
+    },
+    {
+      "errors": [],
+      "visible": [
+        5,
+        1,
+        3,
+        4,
+        2,
+        "SC",
+        0
+      ],
+      "depthIds": [
+        "SC",
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "draws": 54,
+      "updates": 11,
+      "span": [
+        192,
+        224
+      ],
+      "resources": {
+        "geometries": 119,
+        "textures": 23
+      }
+    },
+    {
+      "errors": [],
+      "visible": [
+        5,
+        1,
+        3,
+        4,
+        2,
+        "SC",
+        0
+      ],
+      "depthIds": [
+        "SC",
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "draws": 54,
+      "updates": 12,
+      "span": [
+        192,
+        224
+      ],
+      "resources": {
+        "geometries": 119,
+        "textures": 23
+      }
+    },
+    {
+      "errors": [],
+      "visible": [
+        5,
+        1,
+        3,
+        4,
+        2,
+        "SC",
+        0
+      ],
+      "depthIds": [
+        "SC",
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "draws": 54,
+      "updates": 13,
+      "span": [
+        192,
+        224
+      ],
+      "resources": {
+        "geometries": 119,
+        "textures": 23
+      }
+    },
+    {
+      "errors": [],
+      "visible": [
+        5,
+        1,
+        3,
+        4,
+        2,
+        "SC",
+        0
+      ],
+      "depthIds": [
+        "SC",
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "draws": 54,
+      "updates": 14,
+      "span": [
+        192,
+        224
+      ],
+      "resources": {
+        "geometries": 119,
+        "textures": 23
+      }
+    },
+    {
+      "errors": [],
+      "visible": [
+        5,
+        3,
+        1,
+        4,
+        2,
+        "SC",
+        0
+      ],
+      "depthIds": [
+        "SC",
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "draws": 54,
+      "updates": 15,
+      "span": [
+        192,
+        224
+      ],
+      "resources": {
+        "geometries": 119,
+        "textures": 23
+      }
+    },
+    {
+      "errors": [],
+      "visible": [
+        5,
+        3,
+        1,
+        4,
+        2,
+        "SC",
+        0
+      ],
+      "depthIds": [
+        "SC",
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "draws": 54,
+      "updates": 16,
+      "span": [
+        192,
+        224
+      ],
+      "resources": {
+        "geometries": 119,
+        "textures": 23
+      }
+    },
+    {
+      "errors": [],
+      "visible": [
+        5,
+        3,
+        1,
+        4,
+        2,
+        "SC",
+        0
+      ],
+      "depthIds": [
+        "SC",
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "draws": 54,
+      "updates": 17,
+      "span": [
+        192,
+        224
+      ],
+      "resources": {
+        "geometries": 119,
+        "textures": 23
+      }
+    },
+    {
+      "errors": [],
+      "visible": [
+        5,
+        3,
+        1,
+        4,
+        2,
+        "SC",
+        0
+      ],
+      "depthIds": [
+        "SC",
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "draws": 54,
+      "updates": 18,
+      "span": [
+        192,
+        224
+      ],
+      "resources": {
+        "geometries": 119,
+        "textures": 23
+      }
+    },
+    {
+      "errors": [],
+      "visible": [
+        5,
+        3,
+        1,
+        4,
+        2,
+        "SC",
+        0
+      ],
+      "depthIds": [
+        "SC",
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "draws": 54,
+      "updates": 19,
+      "span": [
+        192,
+        224
+      ],
+      "resources": {
+        "geometries": 119,
+        "textures": 23
+      }
+    },
+    {
+      "errors": [],
+      "visible": [
+        5,
+        3,
+        1,
+        4,
+        2,
+        "SC",
+        0
+      ],
+      "depthIds": [
+        "SC",
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "draws": 54,
+      "updates": 20,
+      "span": [
+        192,
+        224
+      ],
+      "resources": {
+        "geometries": 119,
+        "textures": 23
+      }
+    },
+    {
+      "errors": [],
+      "visible": [
+        5,
+        3,
+        1,
+        4,
+        2,
+        "SC",
+        0
+      ],
+      "depthIds": [
+        "SC",
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "draws": 54,
+      "updates": 21,
+      "span": [
+        192,
+        224
+      ],
+      "resources": {
+        "geometries": 119,
+        "textures": 23
+      }
+    },
+    {
+      "errors": [],
+      "visible": [
+        5,
+        3,
+        1,
+        4,
+        2,
+        "SC",
+        0
+      ],
+      "depthIds": [
+        "SC",
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "draws": 54,
+      "updates": 22,
+      "span": [
+        192,
+        224
+      ],
+      "resources": {
+        "geometries": 119,
+        "textures": 23
+      }
+    }
+  ],
+  "modelVisible": true
+}

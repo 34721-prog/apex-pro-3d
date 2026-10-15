@@ -1,0 +1,31 @@
+{
+  "version": "0.9.0",
+  "validatedPayloadHashes": 285,
+  "matchesIndependentExtraction": true,
+  "independentInstallBuild": true,
+  "independentBuildMatchesPlayable": true,
+  "nodeTests": {
+    "passed": 174,
+    "failed": 0,
+    "skipped": 0,
+    "milliseconds": 107359.120472
+  },
+  "browserTests": {
+    "startTime": "2026-10-15T15:00:30.230Z",
+    "duration": 859267.452,
+    "expected": 37,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "publicAssetHashesUnchanged": 135,
+  "managerRacesExactMatch": 14,
+  "baselineZipPreservedSha256": "87d220774ecdbae3c1fb696e7969c491f6a98d27fe1a479b26998d3daaf4654c",
+  "classification": "Implementado parcialmente",
+  "unexecuted": "Dedicated inside/outside passing visual campaigns; hardware GPU; human subjective audio/interactive review",
+  "matrixStatuses": {
+    "Parcial": 13,
+    "Não executado": 2,
+    "Aprovado": 19
+  }
+}

@@ -1,0 +1,85 @@
+TAP version 13
+# Subtest: v081 full pit footprints, connections and six physical stops: aurora
+ok 1 - v081 full pit footprints, connections and six physical stops: aurora
+  ---
+  duration_ms: 665.218927
+  ...
+# Subtest: v081 full pit footprints, connections and six physical stops: veloce
+ok 2 - v081 full pit footprints, connections and six physical stops: veloce
+  ---
+  duration_ms: 417.699516
+  ...
+# Subtest: v081 full pit footprints, connections and six physical stops: serpente
+ok 3 - v081 full pit footprints, connections and six physical stops: serpente
+  ---
+  duration_ms: 318.330516
+  ...
+# Subtest: v081 full pit footprints, connections and six physical stops: neon
+ok 4 - v081 full pit footprints, connections and six physical stops: neon
+  ---
+  duration_ms: 271.810559
+  ...
+# Subtest: v081 full pit footprints, connections and six physical stops: titan
+ok 5 - v081 full pit footprints, connections and six physical stops: titan
+  ---
+  duration_ms: 219.689697
+  ...
+# Subtest: v081 full pit footprints, connections and six physical stops: vento
+ok 6 - v081 full pit footprints, connections and six physical stops: vento
+  ---
+  duration_ms: 282.541791
+  ...
+# Subtest: v081 full pit footprints, connections and six physical stops: sahara
+ok 7 - v081 full pit footprints, connections and six physical stops: sahara
+  ---
+  duration_ms: 298.956195
+  ...
+# Subtest: v081 full pit footprints, connections and six physical stops: alpine
+ok 8 - v081 full pit footprints, connections and six physical stops: alpine
+  ---
+  duration_ms: 183.678101
+  ...
+# Subtest: v081 full pit footprints, connections and six physical stops: emerald
+ok 9 - v081 full pit footprints, connections and six physical stops: emerald
+  ---
+  duration_ms: 192.036238
+  ...
+# Subtest: v081 full pit footprints, connections and six physical stops: oldtown
+ok 10 - v081 full pit footprints, connections and six physical stops: oldtown
+  ---
+  duration_ms: 184.534525
+  ...
+# Subtest: v081 full pit footprints, connections and six physical stops: sunset
+ok 11 - v081 full pit footprints, connections and six physical stops: sunset
+  ---
+  duration_ms: 239.011412
+  ...
+# Subtest: v081 full pit footprints, connections and six physical stops: nordic
+ok 12 - v081 full pit footprints, connections and six physical stops: nordic
+  ---
+  duration_ms: 188.767261
+  ...
+# Subtest: v081 full pit footprints, connections and six physical stops: desert-night
+ok 13 - v081 full pit footprints, connections and six physical stops: desert-night
+  ---
+  duration_ms: 235.540387
+  ...
+# Subtest: v081 full pit footprints, connections and six physical stops: discovery
+ok 14 - v081 full pit footprints, connections and six physical stops: discovery
+  ---
+  duration_ms: 210.864253
+  ...
+# Subtest: v081 estimator cached geometry preserves exact values and changes with track/weather
+ok 15 - v081 estimator cached geometry preserves exact values and changes with track/weather
+  ---
+  duration_ms: 9.571922
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4093.615473

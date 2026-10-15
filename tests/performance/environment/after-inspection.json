@@ -1,0 +1,1857 @@
+{
+  "url": "http://localhost:5201",
+  "viewport": "1280x720",
+  "quality": "medium",
+  "scenario": "6 autonomous cars, 600 ticks, four actual camera modes; rendering frozen at same authoritative poses",
+  "results": [
+    {
+      "track": "aurora",
+      "theme": "forest",
+      "loadMs": 603.5,
+      "venues": 10,
+      "spectators": 5719,
+      "environment": {
+        "identity": "Bosques e campus",
+        "vegetation": 733,
+        "facilities": 26,
+        "spatialBatches": 65,
+        "lodCells": 24
+      },
+      "cameras": [
+        {
+          "mode": "overview",
+          "camera": [
+            132.98576831368314,
+            1077.0719936985925,
+            632.1496184368907
+          ],
+          "near": 20,
+          "far": 3720.539048163369,
+          "fov": 53,
+          "look": [
+            -37.07823069135776,
+            0,
+            -2.755977848595478
+          ],
+          "calls": 232,
+          "triangles": 167990,
+          "memory": {
+            "geometries": 129,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Bosques e campus",
+            "vegetation": 733,
+            "facilities": 26,
+            "spatialBatches": 65,
+            "lodCells": 24
+          }
+        },
+        {
+          "mode": "broadcast",
+          "camera": [
+            167.176534190922,
+            13,
+            368.59410527330516
+          ],
+          "near": 0.2,
+          "far": 3200,
+          "fov": 50,
+          "look": [
+            129.9217155315892,
+            0.8,
+            341.57268781530473
+          ],
+          "calls": 185,
+          "triangles": 152502,
+          "memory": {
+            "geometries": 130,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Bosques e campus",
+            "vegetation": 733,
+            "facilities": 26,
+            "spatialBatches": 65,
+            "lodCells": 24
+          }
+        },
+        {
+          "mode": "chase",
+          "camera": [
+            116.79746043317115,
+            5.799402774349472,
+            341.13380119023464
+          ],
+          "near": 0.2,
+          "far": 3200,
+          "fov": 63.66019672211929,
+          "look": [
+            146.2426906315109,
+            1.05,
+            342.11847556674223
+          ],
+          "calls": 152,
+          "triangles": 136432,
+          "memory": {
+            "geometries": 130,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Bosques e campus",
+            "vegetation": 733,
+            "facilities": 26,
+            "spatialBatches": 65,
+            "lodCells": 24
+          }
+        },
+        {
+          "mode": "pit-garage",
+          "camera": [
+            -317.51424430427915,
+            3.8,
+            316.92099510442887
+          ],
+          "near": 0.2,
+          "far": 3200,
+          "fov": 57,
+          "look": [
+            -323.84286144155215,
+            0.8,
+            308.37999954595824
+          ],
+          "calls": 78,
+          "triangles": 127984,
+          "memory": {
+            "geometries": 133,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Bosques e campus",
+            "vegetation": 733,
+            "facilities": 26,
+            "spatialBatches": 65,
+            "lodCells": 24
+          }
+        }
+      ]
+    },
+    {
+      "track": "veloce",
+      "theme": "highland",
+      "loadMs": 627,
+      "venues": 10,
+      "spectators": 5719,
+      "environment": {
+        "identity": "Colinas agrícolas",
+        "vegetation": 551,
+        "facilities": 26,
+        "spatialBatches": 80,
+        "lodCells": 30
+      },
+      "cameras": [
+        {
+          "mode": "overview",
+          "camera": [
+            198.5694337474339,
+            1459.4474813215363,
+            809.3041556099162
+          ],
+          "near": 20,
+          "far": 4599.518605041553,
+          "fov": 53,
+          "look": [
+            -31.869642250703407,
+            0,
+            -51.00172811646328
+          ],
+          "calls": 241,
+          "triangles": 155602,
+          "memory": {
+            "geometries": 132,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Colinas agrícolas",
+            "vegetation": 551,
+            "facilities": 26,
+            "spatialBatches": 80,
+            "lodCells": 30
+          }
+        },
+        {
+          "mode": "broadcast",
+          "camera": [
+            39.85163245124198,
+            13,
+            363.53856203505495
+          ],
+          "near": 0.2,
+          "far": 3200,
+          "fov": 50,
+          "look": [
+            2.3677347001565643,
+            0.8,
+            337.33432481289174
+          ],
+          "calls": 179,
+          "triangles": 132572,
+          "memory": {
+            "geometries": 133,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Colinas agrícolas",
+            "vegetation": 551,
+            "facilities": 26,
+            "spatialBatches": 80,
+            "lodCells": 30
+          }
+        },
+        {
+          "mode": "chase",
+          "camera": [
+            -10.76365884036612,
+            5.79935540809672,
+            337.29471722441843
+          ],
+          "near": 0.2,
+          "far": 3200,
+          "fov": 63.65968358771447,
+          "look": [
+            18.69750221191157,
+            1.05,
+            337.38357950238634
+          ],
+          "calls": 160,
+          "triangles": 125602,
+          "memory": {
+            "geometries": 133,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Colinas agrícolas",
+            "vegetation": 551,
+            "facilities": 26,
+            "spatialBatches": 80,
+            "lodCells": 30
+          }
+        },
+        {
+          "mode": "pit-garage",
+          "camera": [
+            -446.0024701208259,
+            3.8,
+            313.75411143988293
+          ],
+          "near": 0.2,
+          "far": 3200,
+          "fov": 57,
+          "look": [
+            -452.6982325139054,
+            0.8,
+            305.4977947081059
+          ],
+          "calls": 73,
+          "triangles": 114090,
+          "memory": {
+            "geometries": 136,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Colinas agrícolas",
+            "vegetation": 551,
+            "facilities": 26,
+            "spatialBatches": 80,
+            "lodCells": 30
+          }
+        }
+      ]
+    },
+    {
+      "track": "serpente",
+      "theme": "desert",
+      "loadMs": 542.3000000000466,
+      "venues": 10,
+      "spectators": 6464,
+      "environment": {
+        "identity": "Mesas de arenito",
+        "vegetation": 389,
+        "facilities": 25,
+        "spatialBatches": 58,
+        "lodCells": 21
+      },
+      "cameras": [
+        {
+          "mode": "overview",
+          "camera": [
+            111.29614708570642,
+            981.7677365782738,
+            520.647298827519
+          ],
+          "near": 20,
+          "far": 3540.0282508029895,
+          "fov": 53,
+          "look": [
+            -43.71981132138944,
+            0,
+            -58.07894589230571
+          ],
+          "calls": 230,
+          "triangles": 146682,
+          "memory": {
+            "geometries": 127,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Mesas de arenito",
+            "vegetation": 389,
+            "facilities": 25,
+            "spatialBatches": 58,
+            "lodCells": 21
+          }
+        },
+        {
+          "mode": "broadcast",
+          "camera": [
+            159.9256897494659,
+            13,
+            338.1224365038622
+          ],
+          "near": 0.2,
+          "far": 3200,
+          "fov": 50,
+          "look": [
+            122.70759045138836,
+            0.8,
+            310.939660294694
+          ],
+          "calls": 184,
+          "triangles": 128396,
+          "memory": {
+            "geometries": 128,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Mesas de arenito",
+            "vegetation": 389,
+            "facilities": 25,
+            "spatialBatches": 58,
+            "lodCells": 21
+          }
+        },
+        {
+          "mode": "chase",
+          "camera": [
+            109.58333671626164,
+            5.8002568927562494,
+            310.43163495934573
+          ],
+          "near": 0.2,
+          "far": 3200,
+          "fov": 63.66944967152603,
+          "look": [
+            139.03009122314555,
+            1.05,
+            311.571486232812
+          ],
+          "calls": 149,
+          "triangles": 111236,
+          "memory": {
+            "geometries": 129,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Mesas de arenito",
+            "vegetation": 389,
+            "facilities": 25,
+            "spatialBatches": 58,
+            "lodCells": 21
+          }
+        },
+        {
+          "mode": "pit-garage",
+          "camera": [
+            -325.65189262378266,
+            3.8,
+            284.78844714583227
+          ],
+          "near": 0.2,
+          "far": 3200,
+          "fov": 57,
+          "look": [
+            -332.2194007351978,
+            0.8,
+            276.4297488496562
+          ],
+          "calls": 75,
+          "triangles": 104492,
+          "memory": {
+            "geometries": 132,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Mesas de arenito",
+            "vegetation": 389,
+            "facilities": 25,
+            "spatialBatches": 58,
+            "lodCells": 21
+          }
+        }
+      ]
+    },
+    {
+      "track": "neon",
+      "theme": "city",
+      "loadMs": 599.8000000000466,
+      "venues": 10,
+      "spectators": 3760,
+      "environment": {
+        "identity": "Distrito metropolitano",
+        "vegetation": 389,
+        "facilities": 26,
+        "spatialBatches": 70,
+        "lodCells": 25
+      },
+      "cameras": [
+        {
+          "mode": "overview",
+          "camera": [
+            142.36229608719256,
+            1159.823366384122,
+            623.6474976294526
+          ],
+          "near": 20,
+          "far": 3962.697527227067,
+          "fov": 53,
+          "look": [
+            -40.767709131353,
+            0,
+            -60.03785518645097
+          ],
+          "calls": 241,
+          "triangles": 172848,
+          "memory": {
+            "geometries": 133,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Distrito metropolitano",
+            "vegetation": 389,
+            "facilities": 26,
+            "spatialBatches": 70,
+            "lodCells": 25
+          }
+        },
+        {
+          "mode": "broadcast",
+          "camera": [
+            80.07497915334343,
+            13,
+            344.153786314246
+          ],
+          "near": 0.2,
+          "far": 3200,
+          "fov": 50,
+          "look": [
+            42.604306769778646,
+            0.8,
+            317.29348365588555
+          ],
+          "calls": 185,
+          "triangles": 145386,
+          "memory": {
+            "geometries": 134,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Distrito metropolitano",
+            "vegetation": 389,
+            "facilities": 26,
+            "spatialBatches": 70,
+            "lodCells": 25
+          }
+        },
+        {
+          "mode": "chase",
+          "camera": [
+            29.47203382832477,
+            5.800236664263219,
+            317.07904619590715
+          ],
+          "near": 0.2,
+          "far": 3200,
+          "fov": 63.6692305295182,
+          "look": [
+            58.93674475804868,
+            1.05,
+            317.5601767510621
+          ],
+          "calls": 166,
+          "triangles": 134798,
+          "memory": {
+            "geometries": 134,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Distrito metropolitano",
+            "vegetation": 389,
+            "facilities": 26,
+            "spatialBatches": 70,
+            "lodCells": 25
+          }
+        },
+        {
+          "mode": "pit-garage",
+          "camera": [
+            -406.3166850615047,
+            3.8,
+            293.2685699249771
+          ],
+          "near": 0.2,
+          "far": 3200,
+          "fov": 57,
+          "look": [
+            -413.11118496477275,
+            0.8,
+            285.0933163469839
+          ],
+          "calls": 77,
+          "triangles": 118820,
+          "memory": {
+            "geometries": 137,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Distrito metropolitano",
+            "vegetation": 389,
+            "facilities": 26,
+            "spatialBatches": 70,
+            "lodCells": 25
+          }
+        }
+      ]
+    },
+    {
+      "track": "titan",
+      "theme": "desert",
+      "loadMs": 514.3000000000466,
+      "venues": 10,
+      "spectators": 6464,
+      "environment": {
+        "identity": "Complexo do deserto",
+        "vegetation": 421,
+        "facilities": 26,
+        "spatialBatches": 85,
+        "lodCells": 32
+      },
+      "cameras": [
+        {
+          "mode": "overview",
+          "camera": [
+            275.5021645853456,
+            1777.578528840856,
+            997.0864796416892
+          ],
+          "near": 20,
+          "far": 5326.7912797017625,
+          "fov": 53,
+          "look": [
+            -5.168129442157976,
+            0,
+            -50.74928472765774
+          ],
+          "calls": 243,
+          "triangles": 157824,
+          "memory": {
+            "geometries": 133,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Complexo do deserto",
+            "vegetation": 421,
+            "facilities": 26,
+            "spatialBatches": 85,
+            "lodCells": 32
+          }
+        },
+        {
+          "mode": "broadcast",
+          "camera": [
+            -129.36079640926937,
+            13,
+            383.71519888743154
+          ],
+          "near": 0.2,
+          "far": 3291.8260081944577,
+          "fov": 50,
+          "look": [
+            -167.56554676300226,
+            0.8,
+            358.32619233220004
+          ],
+          "calls": 179,
+          "triangles": 134742,
+          "memory": {
+            "geometries": 134,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Complexo do deserto",
+            "vegetation": 421,
+            "facilities": 26,
+            "spatialBatches": 85,
+            "lodCells": 32
+          }
+        },
+        {
+          "mode": "chase",
+          "camera": [
+            -180.6990895261991,
+            5.800193275564244,
+            358.42266152538144
+          ],
+          "near": 0.2,
+          "far": 3274.2084412905983,
+          "fov": 63.66876048527931,
+          "look": [
+            -151.23160714482054,
+            1.05,
+            358.2062154147109
+          ],
+          "calls": 160,
+          "triangles": 131482,
+          "memory": {
+            "geometries": 134,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Complexo do deserto",
+            "vegetation": 421,
+            "facilities": 26,
+            "spatialBatches": 85,
+            "lodCells": 32
+          }
+        },
+        {
+          "mode": "pit-garage",
+          "camera": [
+            -616.095308456049,
+            3.8,
+            333.49767422347185
+          ],
+          "near": 0.2,
+          "far": 3255.405122220202,
+          "fov": 57,
+          "look": [
+            -622.822485041607,
+            0.8,
+            325.26693335847546
+          ],
+          "calls": 71,
+          "triangles": 115276,
+          "memory": {
+            "geometries": 137,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Complexo do deserto",
+            "vegetation": 421,
+            "facilities": 26,
+            "spatialBatches": 85,
+            "lodCells": 32
+          }
+        }
+      ]
+    },
+    {
+      "track": "vento",
+      "theme": "coast",
+      "loadMs": 497.39999999990687,
+      "venues": 10,
+      "spectators": 5719,
+      "environment": {
+        "identity": "Parque marítimo",
+        "vegetation": 611,
+        "facilities": 24,
+        "spatialBatches": 77,
+        "lodCells": 30
+      },
+      "cameras": [
+        {
+          "mode": "overview",
+          "camera": [
+            213.65384547135716,
+            1408.6703470719644,
+            784.4001220986178
+          ],
+          "near": 20,
+          "far": 4496.290174386378,
+          "fov": 53,
+          "look": [
+            -8.767788276847739,
+            0,
+            -45.97397722801398
+          ],
+          "calls": 239,
+          "triangles": 168652,
+          "memory": {
+            "geometries": 130,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Parque marítimo",
+            "vegetation": 611,
+            "facilities": 24,
+            "spatialBatches": 77,
+            "lodCells": 30
+          }
+        },
+        {
+          "mode": "broadcast",
+          "camera": [
+            69.63077084077744,
+            13,
+            414.41350438682565
+          ],
+          "near": 0.2,
+          "far": 3200,
+          "fov": 50,
+          "look": [
+            32.397955324810745,
+            0.8,
+            387.2778395648216
+          ],
+          "calls": 183,
+          "triangles": 144070,
+          "memory": {
+            "geometries": 131,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Parque marítimo",
+            "vegetation": 611,
+            "facilities": 24,
+            "spatialBatches": 77,
+            "lodCells": 30
+          }
+        },
+        {
+          "mode": "chase",
+          "camera": [
+            19.267745225920805,
+            5.799788820035032,
+            387.0212292550588
+          ],
+          "near": 0.2,
+          "far": 3200,
+          "fov": 63.66437888371286,
+          "look": [
+            48.72702663193063,
+            1.05,
+            387.59696683047076
+          ],
+          "calls": 160,
+          "triangles": 134352,
+          "memory": {
+            "geometries": 131,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Parque marítimo",
+            "vegetation": 611,
+            "facilities": 24,
+            "spatialBatches": 77,
+            "lodCells": 30
+          }
+        },
+        {
+          "mode": "pit-garage",
+          "camera": [
+            -416.1460566202185,
+            3.8,
+            363.50757561965054
+          ],
+          "near": 0.2,
+          "far": 3200,
+          "fov": 57,
+          "look": [
+            -422.8878945973168,
+            0.8,
+            355.2888396651041
+          ],
+          "calls": 77,
+          "triangles": 126988,
+          "memory": {
+            "geometries": 134,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Parque marítimo",
+            "vegetation": 611,
+            "facilities": 24,
+            "spatialBatches": 77,
+            "lodCells": 30
+          }
+        }
+      ]
+    },
+    {
+      "track": "sahara",
+      "theme": "desert",
+      "loadMs": 469,
+      "venues": 10,
+      "spectators": 6464,
+      "environment": {
+        "identity": "Dunas e pavilhões",
+        "vegetation": 336,
+        "facilities": 26,
+        "spatialBatches": 95,
+        "lodCells": 36
+      },
+      "cameras": [
+        {
+          "mode": "overview",
+          "camera": [
+            349.20082444541674,
+            2097.7551674323813,
+            1216.1842777878587
+          ],
+          "near": 20,
+          "far": 6054.973812954873,
+          "fov": 53,
+          "look": [
+            17.976324324514394,
+            0,
+            -20.387189330176795
+          ],
+          "calls": 247,
+          "triangles": 164148,
+          "memory": {
+            "geometries": 135,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Dunas e pavilhões",
+            "vegetation": 336,
+            "facilities": 26,
+            "spatialBatches": 95,
+            "lodCells": 36
+          }
+        },
+        {
+          "mode": "broadcast",
+          "camera": [
+            19.920528294628134,
+            13,
+            423.12025796769933
+          ],
+          "near": 0.2,
+          "far": 3644.7775164609475,
+          "fov": 50,
+          "look": [
+            -17.8320031231096,
+            0.8,
+            397.32756164986847
+          ],
+          "calls": 190,
+          "triangles": 144804,
+          "memory": {
+            "geometries": 136,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Dunas e pavilhões",
+            "vegetation": 336,
+            "facilities": 26,
+            "spatialBatches": 95,
+            "lodCells": 36
+          }
+        },
+        {
+          "mode": "chase",
+          "camera": [
+            -30.968098788744985,
+            5.800947172266254,
+            397.33014221786783
+          ],
+          "near": 0.2,
+          "far": 3627.3106760716337,
+          "fov": 63.67692769955107,
+          "look": [
+            -1.4935395886015783,
+            1.05,
+            397.324351981088
+          ],
+          "calls": 153,
+          "triangles": 135390,
+          "memory": {
+            "geometries": 136,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Dunas e pavilhões",
+            "vegetation": 336,
+            "facilities": 26,
+            "spatialBatches": 95,
+            "lodCells": 36
+          }
+        },
+        {
+          "mode": "pit-garage",
+          "camera": [
+            -467.00114062266965,
+            3.8,
+            372
+          ],
+          "near": 0.2,
+          "far": 3608.5010346168183,
+          "fov": 57,
+          "look": [
+            -474.00114062266965,
+            0.8,
+            364
+          ],
+          "calls": 77,
+          "triangles": 123768,
+          "memory": {
+            "geometries": 139,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Dunas e pavilhões",
+            "vegetation": 336,
+            "facilities": 26,
+            "spatialBatches": 95,
+            "lodCells": 36
+          }
+        }
+      ]
+    },
+    {
+      "track": "alpine",
+      "theme": "highland",
+      "loadMs": 548,
+      "venues": 10,
+      "spectators": 5719,
+      "environment": {
+        "identity": "Florestas de altitude",
+        "vegetation": 720,
+        "facilities": 26,
+        "spatialBatches": 94,
+        "lodCells": 37
+      },
+      "cameras": [
+        {
+          "mode": "overview",
+          "camera": [
+            184.7023891874764,
+            1805.6949605998732,
+            989.8456632503336
+          ],
+          "near": 20,
+          "far": 5422.503338180164,
+          "fov": 53,
+          "look": [
+            -100.40734143355621,
+            0,
+            -74.56399773485498
+          ],
+          "calls": 246,
+          "triangles": 169378,
+          "memory": {
+            "geometries": 132,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Florestas de altitude",
+            "vegetation": 720,
+            "facilities": 26,
+            "spatialBatches": 94,
+            "lodCells": 37
+          }
+        },
+        {
+          "mode": "broadcast",
+          "camera": [
+            19.847363661320816,
+            13,
+            433.1739052656877
+          ],
+          "near": 0.2,
+          "far": 3354.574801836058,
+          "fov": 50,
+          "look": [
+            -17.793519051876565,
+            0.8,
+            407.00128450538745
+          ],
+          "calls": 194,
+          "triangles": 149286,
+          "memory": {
+            "geometries": 133,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Florestas de altitude",
+            "vegetation": 720,
+            "facilities": 26,
+            "spatialBatches": 94,
+            "lodCells": 37
+          }
+        },
+        {
+          "mode": "chase",
+          "camera": [
+            -30.927755708126142,
+            5.800310226252929,
+            406.99499970481105
+          ],
+          "near": 0.2,
+          "far": 3336.9831080765457,
+          "fov": 63.670027451073395,
+          "look": [
+            -1.4585071964309613,
+            1.05,
+            407.00910089355006
+          ],
+          "calls": 162,
+          "triangles": 137466,
+          "memory": {
+            "geometries": 133,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Florestas de altitude",
+            "vegetation": 720,
+            "facilities": 26,
+            "spatialBatches": 94,
+            "lodCells": 37
+          }
+        },
+        {
+          "mode": "pit-garage",
+          "camera": [
+            -467.0018311069961,
+            3.8,
+            382
+          ],
+          "near": 0.2,
+          "far": 3318.1788082257563,
+          "fov": 57,
+          "look": [
+            -474.0018311069961,
+            0.8,
+            374
+          ],
+          "calls": 78,
+          "triangles": 126568,
+          "memory": {
+            "geometries": 136,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Florestas de altitude",
+            "vegetation": 720,
+            "facilities": 26,
+            "spatialBatches": 94,
+            "lodCells": 37
+          }
+        }
+      ]
+    },
+    {
+      "track": "emerald",
+      "theme": "forest",
+      "loadMs": 476,
+      "venues": 10,
+      "spectators": 5719,
+      "environment": {
+        "identity": "Bosque denso e clareiras",
+        "vegetation": 808,
+        "facilities": 26,
+        "spatialBatches": 86,
+        "lodCells": 33
+      },
+      "cameras": [
+        {
+          "mode": "overview",
+          "camera": [
+            136.72799590560635,
+            1705.202715298566,
+            950.2114648946523
+          ],
+          "near": 20,
+          "far": 5203.364810846562,
+          "fov": 53,
+          "look": [
+            -132.5145380889041,
+            0,
+            -54.96066201818681
+          ],
+          "calls": 241,
+          "triangles": 184598,
+          "memory": {
+            "geometries": 132,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Bosque denso e clareiras",
+            "vegetation": 808,
+            "facilities": 26,
+            "spatialBatches": 86,
+            "lodCells": 33
+          }
+        },
+        {
+          "mode": "broadcast",
+          "camera": [
+            19.88223935407939,
+            13,
+            413.15202513336027
+          ],
+          "near": 0.2,
+          "far": 3253.1875141913956,
+          "fov": 50,
+          "look": [
+            -17.804857280432692,
+            0.8,
+            387.00118514656185
+          ],
+          "calls": 185,
+          "triangles": 158784,
+          "memory": {
+            "geometries": 133,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Bosque denso e clareiras",
+            "vegetation": 808,
+            "facilities": 26,
+            "spatialBatches": 86,
+            "lodCells": 33
+          }
+        },
+        {
+          "mode": "chase",
+          "camera": [
+            -30.939220417309198,
+            5.8003535341904495,
+            386.99525695099794
+          ],
+          "near": 0.2,
+          "far": 3235.5715116140445,
+          "fov": 63.670496620396534,
+          "look": [
+            -1.4696106341170392,
+            1.05,
+            387.0085580610835
+          ],
+          "calls": 158,
+          "triangles": 144804,
+          "memory": {
+            "geometries": 133,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Bosque denso e clareiras",
+            "vegetation": 808,
+            "facilities": 26,
+            "spatialBatches": 86,
+            "lodCells": 33
+          }
+        },
+        {
+          "mode": "pit-garage",
+          "camera": [
+            -467.00177974074387,
+            3.8,
+            362
+          ],
+          "near": 0.2,
+          "far": 3216.7668485710583,
+          "fov": 57,
+          "look": [
+            -474.00177974074387,
+            0.8,
+            354
+          ],
+          "calls": 78,
+          "triangles": 140620,
+          "memory": {
+            "geometries": 136,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Bosque denso e clareiras",
+            "vegetation": 808,
+            "facilities": 26,
+            "spatialBatches": 86,
+            "lodCells": 33
+          }
+        }
+      ]
+    },
+    {
+      "track": "oldtown",
+      "theme": "city",
+      "loadMs": 492.5,
+      "venues": 10,
+      "spectators": 3760,
+      "environment": {
+        "identity": "Bairro de telhados",
+        "vegetation": 530,
+        "facilities": 26,
+        "spatialBatches": 94,
+        "lodCells": 35
+      },
+      "cameras": [
+        {
+          "mode": "overview",
+          "camera": [
+            103.87264047554936,
+            1685.3602444655419,
+            956.6444469740335
+          ],
+          "near": 20,
+          "far": 5120.137530651802,
+          "fov": 53,
+          "look": [
+            -162.23687180848356,
+            0,
+            -36.83106555302285
+          ],
+          "calls": 248,
+          "triangles": 169774,
+          "memory": {
+            "geometries": 135,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Bairro de telhados",
+            "vegetation": 530,
+            "facilities": 26,
+            "spatialBatches": 94,
+            "lodCells": 35
+          }
+        },
+        {
+          "mode": "broadcast",
+          "camera": [
+            19.832558574379377,
+            13,
+            423.173766425462
+          ],
+          "near": 0.2,
+          "far": 3200,
+          "fov": 50,
+          "look": [
+            -17.808719997609025,
+            0.8,
+            397.00127647792146
+          ],
+          "calls": 195,
+          "triangles": 151778,
+          "memory": {
+            "geometries": 136,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Bairro de telhados",
+            "vegetation": 530,
+            "facilities": 26,
+            "spatialBatches": 94,
+            "lodCells": 35
+          }
+        },
+        {
+          "mode": "chase",
+          "camera": [
+            -30.943020706388268,
+            5.800332183183968,
+            396.99501570111624
+          ],
+          "near": 0.2,
+          "far": 3200,
+          "fov": 63.67026531782632,
+          "look": [
+            -1.4735891945127797,
+            1.05,
+            397.00906300651627
+          ],
+          "calls": 163,
+          "triangles": 138256,
+          "memory": {
+            "geometries": 136,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Bairro de telhados",
+            "vegetation": 530,
+            "facilities": 26,
+            "spatialBatches": 94,
+            "lodCells": 35
+          }
+        },
+        {
+          "mode": "pit-garage",
+          "camera": [
+            -467.00063210301084,
+            3.8,
+            372
+          ],
+          "near": 0.2,
+          "far": 3200,
+          "fov": 57,
+          "look": [
+            -474.00063210301084,
+            0.8,
+            364
+          ],
+          "calls": 86,
+          "triangles": 132124,
+          "memory": {
+            "geometries": 139,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Bairro de telhados",
+            "vegetation": 530,
+            "facilities": 26,
+            "spatialBatches": 94,
+            "lodCells": 35
+          }
+        }
+      ]
+    },
+    {
+      "track": "sunset",
+      "theme": "coast",
+      "loadMs": 492.5999999998603,
+      "venues": 10,
+      "spectators": 5719,
+      "environment": {
+        "identity": "Jardins da costa",
+        "vegetation": 729,
+        "facilities": 25,
+        "spatialBatches": 93,
+        "lodCells": 37
+      },
+      "cameras": [
+        {
+          "mode": "overview",
+          "camera": [
+            305.2664031354442,
+            1995.633409721688,
+            1112.5883963183667
+          ],
+          "near": 20,
+          "far": 5835.822865386597,
+          "fov": 53,
+          "look": [
+            -9.833608925874955,
+            0,
+            -63.7849820438916
+          ],
+          "calls": 243,
+          "triangles": 180656,
+          "memory": {
+            "geometries": 132,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Jardins da costa",
+            "vegetation": 729,
+            "facilities": 25,
+            "spatialBatches": 93,
+            "lodCells": 37
+          }
+        },
+        {
+          "mode": "broadcast",
+          "camera": [
+            19.894913988700154,
+            13,
+            443.137487531846
+          ],
+          "near": 0.2,
+          "far": 3545.4210696494565,
+          "fov": 50,
+          "look": [
+            -17.821489657311673,
+            0.8,
+            417.0020782295372
+          ],
+          "calls": 192,
+          "triangles": 158114,
+          "memory": {
+            "geometries": 133,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Jardins da costa",
+            "vegetation": 729,
+            "facilities": 25,
+            "spatialBatches": 93,
+            "lodCells": 37
+          }
+        },
+        {
+          "mode": "chase",
+          "camera": [
+            -30.955533268052584,
+            5.800243912906627,
+            416.9966174146452
+          ],
+          "near": 0.2,
+          "far": 3527.7893706599057,
+          "fov": 63.66930905648846,
+          "look": [
+            -1.4868365409478272,
+            1.05,
+            417.00886977977393
+          ],
+          "calls": 164,
+          "triangles": 149014,
+          "memory": {
+            "geometries": 133,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Jardins da costa",
+            "vegetation": 729,
+            "facilities": 25,
+            "spatialBatches": 93,
+            "lodCells": 37
+          }
+        },
+        {
+          "mode": "pit-garage",
+          "camera": [
+            -467.00040313842726,
+            3.8,
+            392
+          ],
+          "near": 0.2,
+          "far": 3508.985626930943,
+          "fov": 57,
+          "look": [
+            -474.00040313842726,
+            0.8,
+            384
+          ],
+          "calls": 77,
+          "triangles": 137360,
+          "memory": {
+            "geometries": 136,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Jardins da costa",
+            "vegetation": 729,
+            "facilities": 25,
+            "spatialBatches": 93,
+            "lodCells": 37
+          }
+        }
+      ]
+    },
+    {
+      "track": "nordic",
+      "theme": "snow",
+      "loadMs": 459.69999999995343,
+      "venues": 10,
+      "spectators": 5719,
+      "environment": {
+        "identity": "Taiga de inverno",
+        "vegetation": 714,
+        "facilities": 26,
+        "spatialBatches": 96,
+        "lodCells": 38
+      },
+      "cameras": [
+        {
+          "mode": "overview",
+          "camera": [
+            127.53838164859332,
+            1765.1841947496594,
+            965.5794707595949
+          ],
+          "near": 20,
+          "far": 5315.183659052043,
+          "fov": 53,
+          "look": [
+            -151.17491225924766,
+            0,
+            -74.95015982967811
+          ],
+          "calls": 248,
+          "triangles": 169094,
+          "memory": {
+            "geometries": 132,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Taiga de inverno",
+            "vegetation": 714,
+            "facilities": 26,
+            "spatialBatches": 96,
+            "lodCells": 38
+          }
+        },
+        {
+          "mode": "broadcast",
+          "camera": [
+            19.8807364710936,
+            13,
+            413.1553523534784
+          ],
+          "near": 0.2,
+          "far": 3294.733175204271,
+          "fov": 50,
+          "look": [
+            -17.79801891086908,
+            0.8,
+            387.0014632174117
+          ],
+          "calls": 195,
+          "triangles": 147150,
+          "memory": {
+            "geometries": 133,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Taiga de inverno",
+            "vegetation": 714,
+            "facilities": 26,
+            "spatialBatches": 96,
+            "lodCells": 38
+          }
+        },
+        {
+          "mode": "chase",
+          "camera": [
+            -30.932231329578272,
+            5.800301875593696,
+            386.99543125683215
+          ],
+          "near": 0.2,
+          "far": 3277.121681729289,
+          "fov": 63.66993698559838,
+          "look": [
+            -1.4630521407203076,
+            1.05,
+            387.00896514234523
+          ],
+          "calls": 161,
+          "triangles": 133926,
+          "memory": {
+            "geometries": 133,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Taiga de inverno",
+            "vegetation": 714,
+            "facilities": 26,
+            "spatialBatches": 96,
+            "lodCells": 38
+          }
+        },
+        {
+          "mode": "pit-garage",
+          "camera": [
+            -467.00134184048596,
+            3.8,
+            362
+          ],
+          "near": 0.2,
+          "far": 3258.3174519094086,
+          "fov": 57,
+          "look": [
+            -474.00134184048596,
+            0.8,
+            354
+          ],
+          "calls": 79,
+          "triangles": 124864,
+          "memory": {
+            "geometries": 136,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Taiga de inverno",
+            "vegetation": 714,
+            "facilities": 26,
+            "spatialBatches": 96,
+            "lodCells": 38
+          }
+        }
+      ]
+    },
+    {
+      "track": "desert-night",
+      "theme": "desert",
+      "loadMs": 402.5999999998603,
+      "venues": 10,
+      "spectators": 6464,
+      "environment": {
+        "identity": "Escarpas e observatório",
+        "vegetation": 473,
+        "facilities": 26,
+        "spatialBatches": 100,
+        "lodCells": 39
+      },
+      "cameras": [
+        {
+          "mode": "overview",
+          "camera": [
+            306.89362775680746,
+            2027.6848832131345,
+            1154.6790795143695
+          ],
+          "near": 20,
+          "far": 5896.1398138082795,
+          "fov": 53,
+          "look": [
+            -13.267143276845331,
+            0,
+            -40.58779901126795
+          ],
+          "calls": 252,
+          "triangles": 170232,
+          "memory": {
+            "geometries": 136,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Escarpas e observatório",
+            "vegetation": 473,
+            "facilities": 26,
+            "spatialBatches": 100,
+            "lodCells": 39
+          }
+        },
+        {
+          "mode": "broadcast",
+          "camera": [
+            19.90435781687681,
+            13,
+            443.1463434901515
+          ],
+          "near": 0.2,
+          "far": 3568.0014709879097,
+          "fov": 50,
+          "look": [
+            -17.793675313051203,
+            0.8,
+            417.32771884028807
+          ],
+          "calls": 191,
+          "triangles": 148002,
+          "memory": {
+            "geometries": 137,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Escarpas e observatório",
+            "vegetation": 473,
+            "facilities": 26,
+            "spatialBatches": 100,
+            "lodCells": 39
+          }
+        },
+        {
+          "mode": "chase",
+          "camera": [
+            -30.92760222675074,
+            5.800203551037015,
+            417.3294199062559
+          ],
+          "near": 0.2,
+          "far": 3550.5577105589246,
+          "fov": 63.668871802900995,
+          "look": [
+            -1.4592395486028167,
+            1.05,
+            417.3256032542211
+          ],
+          "calls": 166,
+          "triangles": 139402,
+          "memory": {
+            "geometries": 137,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Escarpas e observatório",
+            "vegetation": 473,
+            "facilities": 26,
+            "spatialBatches": 100,
+            "lodCells": 39
+          }
+        },
+        {
+          "mode": "pit-garage",
+          "camera": [
+            -467.00105172109267,
+            3.8,
+            392
+          ],
+          "near": 0.2,
+          "far": 3531.7543053156114,
+          "fov": 57,
+          "look": [
+            -474.00105172109267,
+            0.8,
+            384
+          ],
+          "calls": 83,
+          "triangles": 129868,
+          "memory": {
+            "geometries": 140,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Escarpas e observatório",
+            "vegetation": 473,
+            "facilities": 26,
+            "spatialBatches": 100,
+            "lodCells": 39
+          }
+        }
+      ]
+    },
+    {
+      "track": "discovery",
+      "theme": "forest",
+      "loadMs": 545.6000000000931,
+      "venues": 10,
+      "spectators": 5719,
+      "environment": {
+        "identity": "Reserva e centro de visitantes",
+        "vegetation": 726,
+        "facilities": 26,
+        "spatialBatches": 104,
+        "lodCells": 42
+      },
+      "cameras": [
+        {
+          "mode": "overview",
+          "camera": [
+            236.839441714106,
+            1810.151775936118,
+            966.9880073360596
+          ],
+          "near": 20,
+          "far": 5484.957995073182,
+          "fov": 53,
+          "look": [
+            -48.97399659159686,
+            0,
+            -100.04882900523097
+          ],
+          "calls": 250,
+          "triangles": 169476,
+          "memory": {
+            "geometries": 132,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Reserva e centro de visitantes",
+            "vegetation": 726,
+            "facilities": 26,
+            "spatialBatches": 104,
+            "lodCells": 42
+          }
+        },
+        {
+          "mode": "broadcast",
+          "camera": [
+            19.91592043312573,
+            13,
+            443.13958247669177
+          ],
+          "near": 0.2,
+          "far": 3411.846034540815,
+          "fov": 50,
+          "look": [
+            -17.796242713079785,
+            0.8,
+            417.0011760754244
+          ],
+          "calls": 196,
+          "triangles": 146984,
+          "memory": {
+            "geometries": 133,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Reserva e centro de visitantes",
+            "vegetation": 726,
+            "facilities": 26,
+            "spatialBatches": 104,
+            "lodCells": 42
+          }
+        },
+        {
+          "mode": "chase",
+          "camera": [
+            -30.930437222008802,
+            5.800295658087567,
+            416.99565481792604
+          ],
+          "near": 0.2,
+          "far": 3394.216487963146,
+          "fov": 63.669869629281976,
+          "look": [
+            -1.4613093417383247,
+            1.05,
+            417.0080428363285
+          ],
+          "calls": 164,
+          "triangles": 137200,
+          "memory": {
+            "geometries": 133,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Reserva e centro de visitantes",
+            "vegetation": 726,
+            "facilities": 26,
+            "spatialBatches": 104,
+            "lodCells": 42
+          }
+        },
+        {
+          "mode": "pit-garage",
+          "camera": [
+            -467.00084253516934,
+            3.8,
+            392
+          ],
+          "near": 0.2,
+          "far": 3375.41231028497,
+          "fov": 57,
+          "look": [
+            -474.00084253516934,
+            0.8,
+            384
+          ],
+          "calls": 82,
+          "triangles": 126012,
+          "memory": {
+            "geometries": 136,
+            "textures": 22
+          },
+          "environment": {
+            "identity": "Reserva e centro de visitantes",
+            "vegetation": 726,
+            "facilities": 26,
+            "spatialBatches": 104,
+            "lodCells": 42
+          }
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

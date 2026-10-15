@@ -1,0 +1,8 @@
+
+Running 3 tests using 1 worker
+
+  ✓  1 tests/pits-v03.spec.js:87:1 › maximum grid physical stop, coordinated crew, all camera/preset pairs, few-bot finish (19.3s)
+  ✓  2 tests/shadows.spec.js:83:1 › shadows: same-frame depth/colour in stop, acceleration, braking, turns, spin, all bots and cameras (1.3m)
+  ✓  3 tests/shadows.spec.js:248:1 › shadows: real pit entry, queued approach, jacked service, release and merge (5.7s)
+
+  3 passed (1.7m)

@@ -1,0 +1,10 @@
+{
+  "errors": [],
+  "failed": [],
+  "cancelledMedia": [
+    {
+      "url": "http://localhost:5201/assets/audio/menu.mp3",
+      "error": "net::ERR_ABORTED"
+    }
+  ]
+}

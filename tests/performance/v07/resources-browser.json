@@ -1,0 +1,332 @@
+[
+  {
+    "id": "aurora",
+    "outside": 0,
+    "below": 0,
+    "counts": [
+      800,
+      800,
+      540,
+      483,
+      480,
+      621,
+      420,
+      552,
+      540,
+      483
+    ],
+    "memory": {
+      "geometries": 20,
+      "textures": 10
+    },
+    "programs": 23
+  },
+  {
+    "id": "veloce",
+    "outside": 0,
+    "below": 0,
+    "counts": [
+      800,
+      800,
+      540,
+      483,
+      480,
+      621,
+      420,
+      552,
+      540,
+      483
+    ],
+    "memory": {
+      "geometries": 22,
+      "textures": 11
+    },
+    "programs": 23
+  },
+  {
+    "id": "serpente",
+    "outside": 0,
+    "below": 0,
+    "counts": [
+      800,
+      800,
+      684,
+      532,
+      608,
+      684,
+      532,
+      608,
+      684,
+      532
+    ],
+    "memory": {
+      "geometries": 31,
+      "textures": 13
+    },
+    "programs": 23
+  },
+  {
+    "id": "neon",
+    "outside": 0,
+    "below": 0,
+    "counts": [
+      800,
+      800,
+      270,
+      270,
+      270,
+      270,
+      270,
+      270,
+      270,
+      270
+    ],
+    "memory": {
+      "geometries": 26,
+      "textures": 11
+    },
+    "programs": 24
+  },
+  {
+    "id": "titan",
+    "outside": 0,
+    "below": 0,
+    "counts": [
+      800,
+      800,
+      684,
+      532,
+      608,
+      684,
+      532,
+      608,
+      684,
+      532
+    ],
+    "memory": {
+      "geometries": 23,
+      "textures": 11
+    },
+    "programs": 23
+  },
+  {
+    "id": "vento",
+    "outside": 0,
+    "below": 0,
+    "counts": [
+      800,
+      800,
+      540,
+      483,
+      480,
+      621,
+      420,
+      552,
+      540,
+      483
+    ],
+    "memory": {
+      "geometries": 19,
+      "textures": 9
+    },
+    "programs": 23
+  },
+  {
+    "id": "sahara",
+    "outside": 0,
+    "below": 0,
+    "counts": [
+      800,
+      800,
+      684,
+      532,
+      608,
+      684,
+      532,
+      608,
+      684,
+      532
+    ],
+    "memory": {
+      "geometries": 22,
+      "textures": 12
+    },
+    "programs": 23
+  },
+  {
+    "id": "alpine",
+    "outside": 0,
+    "below": 0,
+    "counts": [
+      800,
+      800,
+      540,
+      483,
+      480,
+      621,
+      420,
+      552,
+      540,
+      483
+    ],
+    "memory": {
+      "geometries": 18,
+      "textures": 8
+    },
+    "programs": 23
+  },
+  {
+    "id": "emerald",
+    "outside": 0,
+    "below": 0,
+    "counts": [
+      800,
+      800,
+      540,
+      483,
+      480,
+      621,
+      420,
+      552,
+      540,
+      483
+    ],
+    "memory": {
+      "geometries": 23,
+      "textures": 11
+    },
+    "programs": 23
+  },
+  {
+    "id": "oldtown",
+    "outside": 0,
+    "below": 0,
+    "counts": [
+      800,
+      800,
+      270,
+      270,
+      270,
+      270,
+      270,
+      270,
+      270,
+      270
+    ],
+    "memory": {
+      "geometries": 25,
+      "textures": 12
+    },
+    "programs": 23
+  },
+  {
+    "id": "sunset",
+    "outside": 0,
+    "below": 0,
+    "counts": [
+      800,
+      800,
+      540,
+      483,
+      480,
+      621,
+      420,
+      552,
+      540,
+      483
+    ],
+    "memory": {
+      "geometries": 22,
+      "textures": 11
+    },
+    "programs": 23
+  },
+  {
+    "id": "nordic",
+    "outside": 0,
+    "below": 0,
+    "counts": [
+      800,
+      800,
+      540,
+      483,
+      480,
+      621,
+      420,
+      552,
+      540,
+      483
+    ],
+    "memory": {
+      "geometries": 21,
+      "textures": 11
+    },
+    "programs": 23
+  },
+  {
+    "id": "desert-night",
+    "outside": 0,
+    "below": 0,
+    "counts": [
+      800,
+      800,
+      684,
+      532,
+      608,
+      684,
+      532,
+      608,
+      684,
+      532
+    ],
+    "memory": {
+      "geometries": 23,
+      "textures": 11
+    },
+    "programs": 24
+  },
+  {
+    "id": "discovery",
+    "outside": 0,
+    "below": 0,
+    "counts": [
+      800,
+      800,
+      540,
+      483,
+      480,
+      621,
+      420,
+      552,
+      540,
+      483
+    ],
+    "memory": {
+      "geometries": 21,
+      "textures": 10
+    },
+    "programs": 23
+  },
+  {
+    "id": "aurora",
+    "outside": 0,
+    "below": 0,
+    "counts": [
+      800,
+      800,
+      540,
+      483,
+      480,
+      621,
+      420,
+      552,
+      540,
+      483
+    ],
+    "memory": {
+      "geometries": 20,
+      "textures": 10
+    },
+    "programs": 23
+  }
+]

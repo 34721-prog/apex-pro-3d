@@ -1,0 +1,7 @@
+node_modules
+playable
+.cache
+test-results
+playwright-report
+tests/performance
+*.zip

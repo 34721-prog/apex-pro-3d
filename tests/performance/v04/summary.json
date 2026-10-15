@@ -1,0 +1,62 @@
+{
+  "before": {
+    "frameMs": 294.2281385281385,
+    "fps": 3.4004586436313766,
+    "p95Runs": [
+      333.3000000000011,
+      333.2999999999993,
+      300
+    ],
+    "heapBytes": 16874367,
+    "drawCalls": 125,
+    "triangles": 88860,
+    "loadMs": 3019.3333333333335,
+    "simulation": {
+      "simulationSecondsPerRun": 100,
+      "grid": 6,
+      "runsMs": [
+        425.34583900000007,
+        302.84453299999996,
+        265.604239,
+        267.30698000000007
+      ],
+      "meanWarmMs": 278.5852506666667
+    },
+    "hud": {
+      "samples": 200,
+      "meanMs": 0.14249999999534338,
+      "p95Ms": 0.3000000002793968,
+      "method": "200 warmed dynamic HUD updates (each after 6 physical ticks), 1280x720; CPU only, not paint or total FPS"
+    }
+  },
+  "after": {
+    "frameMs": 294.8878787878788,
+    "fps": 3.3920933047555626,
+    "p95Runs": [
+      300,
+      316.7000000000007,
+      316.6999999999989
+    ],
+    "heapBytes": 17110534.666666668,
+    "drawCalls": 125,
+    "triangles": 88860,
+    "loadMs": 3143.6666666666665,
+    "simulation": {
+      "simulationSecondsPerRun": 100,
+      "grid": 6,
+      "runsMs": [
+        666.401843,
+        285.35492999999997,
+        246.2749040000001,
+        247.4022349999998
+      ],
+      "meanWarmMs": 259.6773563333333
+    },
+    "hud": {
+      "samples": 200,
+      "meanMs": 0.12200000000186265,
+      "p95Ms": 0.30000000074505806,
+      "method": "200 warmed dynamic HUD updates (each after 6 physical ticks), 1280x720; CPU only, not paint or total FPS"
+    }
+  }
+}

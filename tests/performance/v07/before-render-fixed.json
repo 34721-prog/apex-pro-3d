@@ -1,0 +1,89 @@
+[
+  {
+    "frameMs": {
+      "mean": 238.6785714285714,
+      "p95": 266.5
+    },
+    "fps": 4.189735148885232,
+    "submitMs": {
+      "mean": 1.1464285714152669,
+      "p95": 1.800000000745058
+    },
+    "frames": 33,
+    "drawCalls": 125,
+    "triangles": 88860,
+    "geometries": 93,
+    "textures": 14,
+    "heapBytes": 16875622,
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "pose": {
+      "x": 95.55866472303842,
+      "z": 347.345998137805,
+      "heading": 1.5326972906539629
+    },
+    "canvas": {
+      "w": 1280,
+      "h": 720
+    },
+    "loadMs": 2708,
+    "errors": []
+  },
+  {
+    "frameMs": {
+      "mean": 252.55384615384614,
+      "p95": 266.7000000000007
+    },
+    "fps": 3.959551656920078,
+    "submitMs": {
+      "mean": 1.246153846132354,
+      "p95": 2.2999999998137355
+    },
+    "frames": 31,
+    "drawCalls": 125,
+    "triangles": 88860,
+    "geometries": 93,
+    "textures": 14,
+    "heapBytes": 17363162,
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "pose": {
+      "x": 95.55866472303842,
+      "z": 347.345998137805,
+      "heading": 1.5326972906539629
+    },
+    "canvas": {
+      "w": 1280,
+      "h": 720
+    },
+    "loadMs": 2696,
+    "errors": []
+  },
+  {
+    "frameMs": {
+      "mean": 240.4642857142857,
+      "p95": 266.7000000000007
+    },
+    "fps": 4.158621713946236,
+    "submitMs": {
+      "mean": 1.1535714285647762,
+      "p95": 1.7999999998137355
+    },
+    "frames": 33,
+    "drawCalls": 125,
+    "triangles": 88860,
+    "geometries": 93,
+    "textures": 14,
+    "heapBytes": 17332174,
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "pose": {
+      "x": 95.55866472303842,
+      "z": 347.345998137805,
+      "heading": 1.5326972906539629
+    },
+    "canvas": {
+      "w": 1280,
+      "h": 720
+    },
+    "loadMs": 2745,
+    "errors": []
+  }
+]

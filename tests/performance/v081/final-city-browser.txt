@@ -1,0 +1,13 @@
+
+> apex-dynasty@0.8.1 test:browser
+> playwright test tests/stability.spec.js
+
+
+Running 4 tests using 1 worker
+
+  ✓  1 tests/stability.spec.js:28:1 › v081 production assets and startup are local, complete and hash-identical (3.2s)
+  ✓  2 tests/stability.spec.js:75:1 › v081 all circuits: one pit, matching physical walls, repeat init/camera/track lifecycle (1.4m)
+  ✓  3 tests/stability.spec.js:193:1 › v081 texture/GLB failures show useful warning and keep original procedural fallback (2.7s)
+  ✓  4 tests/stability.spec.js:214:1 › v081 pending texture blocks premature ready; one recurring RAF after races, pause and exit (21.9s)
+
+  4 passed (1.9m)

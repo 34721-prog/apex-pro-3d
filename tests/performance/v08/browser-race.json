@@ -1,0 +1,1481 @@
+{
+  "manual": false,
+  "results": [
+    {
+      "id": 0,
+      "name": "Luan Costa",
+      "position": 1,
+      "time": 413.6666666666191,
+      "penalty": 0,
+      "bestLap": 72.49999999999717,
+      "finished": true,
+      "points": 25,
+      "stops": 1,
+      "pitSeconds": 50.43333333333175,
+      "driverId": 0,
+      "teamId": 0,
+      "gridPosition": 6,
+      "retirement": null,
+      "disqualified": false,
+      "serviceSeconds": 13.741701782566842
+    },
+    {
+      "id": 2,
+      "name": "Sora Nakai",
+      "position": 2,
+      "time": 416.3166666666167,
+      "penalty": 0,
+      "bestLap": 72.06666666666386,
+      "finished": true,
+      "points": 18,
+      "stops": 1,
+      "pitSeconds": 50.7499999999984,
+      "driverId": 2,
+      "teamId": 2,
+      "gridPosition": 2,
+      "retirement": null,
+      "disqualified": false,
+      "serviceSeconds": 10.428210746350866
+    },
+    {
+      "id": 3,
+      "name": "Ari Morel",
+      "position": 3,
+      "time": 432.0999999999357,
+      "penalty": 0,
+      "bestLap": 72.49999999999717,
+      "finished": true,
+      "points": 15,
+      "stops": 1,
+      "pitSeconds": 55.34999999999814,
+      "driverId": 3,
+      "teamId": 2,
+      "gridPosition": 3,
+      "retirement": null,
+      "disqualified": false,
+      "serviceSeconds": 17.43743408103339
+    },
+    {
+      "id": 4,
+      "name": "Kai Vidal",
+      "position": 4,
+      "time": 434.7333333332666,
+      "penalty": 0,
+      "bestLap": 76.39999999999695,
+      "finished": true,
+      "points": 12,
+      "stops": 1,
+      "pitSeconds": 50.383333333331755,
+      "driverId": 4,
+      "teamId": 4,
+      "gridPosition": 4,
+      "retirement": null,
+      "disqualified": false,
+      "serviceSeconds": 12.591455444502834
+    },
+    {
+      "id": 5,
+      "name": "Nina Vale",
+      "position": 5,
+      "time": 446.51666666658923,
+      "penalty": 0,
+      "bestLap": 77.18333333333024,
+      "finished": true,
+      "points": 10,
+      "stops": 1,
+      "pitSeconds": 50.966666666665056,
+      "driverId": 5,
+      "teamId": 4,
+      "gridPosition": 5,
+      "retirement": null,
+      "disqualified": false,
+      "serviceSeconds": 13.251972101813674
+    },
+    {
+      "id": 1,
+      "name": "Mara Vega",
+      "position": 6,
+      "time": 450.3833333332524,
+      "penalty": 0,
+      "bestLap": 79.61666666666343,
+      "finished": true,
+      "points": 8,
+      "stops": 1,
+      "pitSeconds": 50.88333333333173,
+      "driverId": 1,
+      "teamId": 0,
+      "gridPosition": 1,
+      "retirement": null,
+      "disqualified": false,
+      "serviceSeconds": 11.225694238712459
+    }
+  ],
+  "history": {
+    "track": "aurora",
+    "laps": 5,
+    "time": 450.3833333332524,
+    "objective": "both",
+    "initial": [
+      {
+        "id": 0,
+        "driverId": 0,
+        "plan": {
+          "start": "medium",
+          "pace": "aggressive",
+          "overtake": "balanced",
+          "defense": "balanced",
+          "tireCare": "normal",
+          "fuel": "normal",
+          "avoid": -1,
+          "setup": "balanced",
+          "automatic": true,
+          "rain": "auto",
+          "safety": "opportunity",
+          "stops": [
+            {
+              "from": 2,
+              "to": 2,
+              "compound": "hard"
+            }
+          ]
+        }
+      },
+      {
+        "id": 1,
+        "driverId": 1,
+        "plan": {
+          "start": "medium",
+          "pace": "conserve",
+          "overtake": "balanced",
+          "defense": "balanced",
+          "tireCare": "normal",
+          "fuel": "normal",
+          "avoid": -1,
+          "setup": "balanced",
+          "automatic": true,
+          "rain": "auto",
+          "safety": "opportunity",
+          "stops": []
+        }
+      },
+      {
+        "id": 2,
+        "driverId": 2,
+        "plan": {
+          "start": "medium",
+          "pace": "balanced",
+          "overtake": "balanced",
+          "defense": "balanced",
+          "tireCare": "normal",
+          "fuel": "normal",
+          "avoid": -1,
+          "setup": "low-drag",
+          "automatic": true,
+          "rain": "auto",
+          "safety": "opportunity",
+          "stops": [
+            {
+              "from": 2,
+              "to": 3,
+              "compound": "medium"
+            }
+          ]
+        }
+      },
+      {
+        "id": 3,
+        "driverId": 3,
+        "plan": {
+          "start": "medium",
+          "pace": "balanced",
+          "overtake": "balanced",
+          "defense": "balanced",
+          "tireCare": "normal",
+          "fuel": "normal",
+          "avoid": -1,
+          "setup": "low-drag",
+          "automatic": true,
+          "rain": "auto",
+          "safety": "opportunity",
+          "stops": [
+            {
+              "from": 3,
+              "to": 4,
+              "compound": "medium"
+            }
+          ]
+        }
+      },
+      {
+        "id": 4,
+        "driverId": 4,
+        "plan": {
+          "start": "hard",
+          "pace": "balanced",
+          "overtake": "balanced",
+          "defense": "balanced",
+          "tireCare": "save",
+          "fuel": "normal",
+          "avoid": -1,
+          "setup": "downforce",
+          "automatic": true,
+          "rain": "auto",
+          "safety": "opportunity",
+          "stops": [
+            {
+              "from": 2,
+              "to": 3,
+              "compound": "medium"
+            }
+          ]
+        }
+      },
+      {
+        "id": 5,
+        "driverId": 5,
+        "plan": {
+          "start": "hard",
+          "pace": "balanced",
+          "overtake": "balanced",
+          "defense": "balanced",
+          "tireCare": "save",
+          "fuel": "normal",
+          "avoid": -1,
+          "setup": "downforce",
+          "automatic": true,
+          "rain": "auto",
+          "safety": "opportunity",
+          "stops": [
+            {
+              "from": 3,
+              "to": 4,
+              "compound": "medium"
+            }
+          ]
+        }
+      }
+    ],
+    "cars": [
+      {
+        "id": 0,
+        "driverId": 0,
+        "teamId": 0,
+        "stops": 1,
+        "lastLap": 75.48333333333034,
+        "health": 0.510896766301705,
+        "finalPlan": {
+          "start": "medium",
+          "pace": "balanced",
+          "overtake": "aggressive",
+          "defense": "balanced",
+          "tireCare": "normal",
+          "fuel": "normal",
+          "avoid": -1,
+          "setup": "balanced",
+          "automatic": true,
+          "rain": "auto",
+          "safety": "opportunity",
+          "stops": [
+            {
+              "from": 2,
+              "to": 2,
+              "compound": "hard"
+            }
+          ]
+        },
+        "stints": [
+          {
+            "compound": "medium",
+            "distance": 3114.7542458282237,
+            "health": 0.7973999900355833,
+            "lap": 2
+          }
+        ],
+        "pitHistory": [
+          {
+            "lap": 1,
+            "service": 13.741701782566842,
+            "lane": 50.43333333333175,
+            "compound": "hard"
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "driverId": 1,
+        "teamId": 0,
+        "stops": 1,
+        "lastLap": 83.1833333333299,
+        "health": 0.4053726561678608,
+        "finalPlan": {
+          "start": "medium",
+          "pace": "conserve",
+          "overtake": "balanced",
+          "defense": "balanced",
+          "tireCare": "normal",
+          "fuel": "normal",
+          "avoid": -1,
+          "setup": "balanced",
+          "automatic": true,
+          "rain": "auto",
+          "safety": "opportunity",
+          "stops": []
+        },
+        "stints": [
+          {
+            "compound": "medium",
+            "distance": 6186.855897674672,
+            "health": 0.6007498086821912,
+            "lap": 3
+          }
+        ],
+        "pitHistory": [
+          {
+            "lap": 2,
+            "service": 11.225694238712459,
+            "lane": 50.88333333333173,
+            "compound": "medium"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "driverId": 2,
+        "teamId": 2,
+        "stops": 1,
+        "lastLap": 75.51666666666367,
+        "health": 0.3277946526586765,
+        "finalPlan": {
+          "start": "medium",
+          "pace": "balanced",
+          "overtake": "balanced",
+          "defense": "balanced",
+          "tireCare": "normal",
+          "fuel": "normal",
+          "avoid": -1,
+          "setup": "low-drag",
+          "automatic": true,
+          "rain": "auto",
+          "safety": "opportunity",
+          "stops": [
+            {
+              "from": 2,
+              "to": 3,
+              "compound": "medium"
+            }
+          ]
+        },
+        "stints": [
+          {
+            "compound": "medium",
+            "distance": 6267.520971226584,
+            "health": 0.5433266112365087,
+            "lap": 3
+          }
+        ],
+        "pitHistory": [
+          {
+            "lap": 2,
+            "service": 10.428210746350866,
+            "lane": 50.7499999999984,
+            "compound": "medium"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "driverId": 3,
+        "teamId": 2,
+        "stops": 1,
+        "lastLap": 86.0999999999964,
+        "health": 0.11483003039224529,
+        "finalPlan": {
+          "start": "medium",
+          "pace": "balanced",
+          "overtake": "balanced",
+          "defense": "balanced",
+          "tireCare": "normal",
+          "fuel": "normal",
+          "avoid": -1,
+          "setup": "low-drag",
+          "automatic": true,
+          "rain": "auto",
+          "safety": "opportunity",
+          "stops": [
+            {
+              "from": 3,
+              "to": 4,
+              "compound": "medium"
+            }
+          ]
+        },
+        "stints": [
+          {
+            "compound": "medium",
+            "distance": 3167.707409126667,
+            "health": 0.7710728030690509,
+            "lap": 2
+          }
+        ],
+        "pitHistory": [
+          {
+            "lap": 1,
+            "service": 17.43743408103339,
+            "lane": 55.34999999999814,
+            "compound": "medium"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "driverId": 4,
+        "teamId": 4,
+        "stops": 1,
+        "lastLap": 79.61666666666343,
+        "health": 0.3293112255572037,
+        "finalPlan": {
+          "start": "hard",
+          "pace": "balanced",
+          "overtake": "balanced",
+          "defense": "balanced",
+          "tireCare": "save",
+          "fuel": "normal",
+          "avoid": -1,
+          "setup": "downforce",
+          "automatic": true,
+          "rain": "auto",
+          "safety": "opportunity",
+          "stops": [
+            {
+              "from": 2,
+              "to": 3,
+              "compound": "medium"
+            }
+          ]
+        },
+        "stints": [
+          {
+            "compound": "hard",
+            "distance": 6322.902941550502,
+            "health": 0.7191289352057735,
+            "lap": 3
+          }
+        ],
+        "pitHistory": [
+          {
+            "lap": 2,
+            "service": 12.591455444502834,
+            "lane": 50.383333333331755,
+            "compound": "medium"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "driverId": 5,
+        "teamId": 4,
+        "stops": 1,
+        "lastLap": 77.18333333333024,
+        "health": 0.5590206730336934,
+        "finalPlan": {
+          "start": "hard",
+          "pace": "balanced",
+          "overtake": "balanced",
+          "defense": "balanced",
+          "tireCare": "save",
+          "fuel": "normal",
+          "avoid": -1,
+          "setup": "downforce",
+          "automatic": true,
+          "rain": "auto",
+          "safety": "opportunity",
+          "stops": [
+            {
+              "from": 3,
+              "to": 4,
+              "compound": "medium"
+            }
+          ]
+        },
+        "stints": [
+          {
+            "compound": "hard",
+            "distance": 9401.264453848144,
+            "health": 0.5821424188917549,
+            "lap": 4
+          }
+        ],
+        "pitHistory": [
+          {
+            "lap": 3,
+            "service": 13.251972101813674,
+            "lane": 50.966666666665056,
+            "compound": "medium"
+          }
+        ]
+      }
+    ],
+    "decisions": [
+      {
+        "id": 31,
+        "time": 100.81666666666223,
+        "car": 0,
+        "lap": 2,
+        "type": "pit-phase",
+        "detail": "exit"
+      },
+      {
+        "id": 32,
+        "time": 103.86666666666206,
+        "car": 5,
+        "lap": 2,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 2 carro(s); considerar prolongar"
+      },
+      {
+        "id": 33,
+        "time": 104.88333333332866,
+        "car": 1,
+        "lap": 2,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 2 carro(s); considerar prolongar"
+      },
+      {
+        "id": 34,
+        "time": 110.98333333332832,
+        "car": 3,
+        "lap": 2,
+        "type": "pit-phase",
+        "detail": "exit"
+      },
+      {
+        "id": 35,
+        "time": 111.99999999999493,
+        "car": 5,
+        "lap": 2,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 0.1 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 36,
+        "time": 114.03333333332814,
+        "car": 1,
+        "lap": 2,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 3.4 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 37,
+        "time": 120.1333333333278,
+        "car": 0,
+        "lap": 2,
+        "type": "pit-phase",
+        "detail": "track"
+      },
+      {
+        "id": 38,
+        "time": 120.1333333333278,
+        "car": 0,
+        "lap": 2,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 63.4 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 39,
+        "time": 122.16666666666102,
+        "car": 5,
+        "lap": 2,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 40,
+        "time": 126.23333333332745,
+        "car": 1,
+        "lap": 2,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 41,
+        "time": 127.24999999999406,
+        "car": 2,
+        "lap": 2,
+        "type": "pit-request",
+        "detail": "medium"
+      },
+      {
+        "id": 42,
+        "time": 127.24999999999406,
+        "car": 2,
+        "lap": 2,
+        "type": "strategy-executed",
+        "detail": "Janela programada 2–3"
+      },
+      {
+        "id": 43,
+        "time": 127.24999999999406,
+        "car": 3,
+        "lap": 2,
+        "type": "pit-phase",
+        "detail": "track"
+      },
+      {
+        "id": 44,
+        "time": 127.24999999999406,
+        "car": 3,
+        "lap": 2,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 14.0 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 45,
+        "time": 128.2499999999942,
+        "car": 2,
+        "lap": 2,
+        "type": "advice",
+        "detail": "Boxes preparados · próximo composto medium"
+      },
+      {
+        "id": 46,
+        "time": 133.24999999999818,
+        "car": 5,
+        "lap": 2,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 1.9 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 47,
+        "time": 134.24999999999898,
+        "car": 1,
+        "lap": 2,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 0.8 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 48,
+        "time": 143.25000000000614,
+        "car": 1,
+        "lap": 2,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 49,
+        "time": 148.25000000001012,
+        "car": 5,
+        "lap": 2,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 50,
+        "time": 151.2500000000125,
+        "car": 1,
+        "lap": 2,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 1.4 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 51,
+        "time": 151.2500000000125,
+        "car": 2,
+        "lap": 2,
+        "type": "pit-phase",
+        "detail": "entry"
+      },
+      {
+        "id": 52,
+        "time": 151.2500000000125,
+        "car": 2,
+        "lap": 2,
+        "type": "advice",
+        "detail": "Parada comprometida: entry"
+      },
+      {
+        "id": 53,
+        "time": 156.25000000001648,
+        "car": 5,
+        "lap": 2,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 1.9 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 54,
+        "time": 158.25000000001808,
+        "car": 4,
+        "lap": 2,
+        "type": "pit-phase",
+        "detail": "entry"
+      },
+      {
+        "id": 55,
+        "time": 158.25000000001808,
+        "car": 4,
+        "lap": 2,
+        "type": "advice",
+        "detail": "Parada comprometida: entry"
+      },
+      {
+        "id": 56,
+        "time": 160.25000000001967,
+        "car": 1,
+        "lap": 2,
+        "type": "advice",
+        "detail": "Neutralização atual: menor perda relativa estimada nos boxes"
+      },
+      {
+        "id": 57,
+        "time": 160.25000000001967,
+        "car": 1,
+        "lap": 2,
+        "type": "pit-request",
+        "detail": "medium"
+      },
+      {
+        "id": 58,
+        "time": 160.25000000001967,
+        "car": 1,
+        "lap": 2,
+        "type": "strategy-executed",
+        "detail": "Neutralização atual: menor perda relativa estimada nos boxes"
+      },
+      {
+        "id": 59,
+        "time": 163.25000000002206,
+        "car": 1,
+        "lap": 2,
+        "type": "pit-phase",
+        "detail": "entry"
+      },
+      {
+        "id": 60,
+        "time": 164.25000000002285,
+        "car": 5,
+        "lap": 2,
+        "type": "advice",
+        "detail": "Rival nos boxes; seu último ritmo foi melhor: prolongar este stint"
+      },
+      {
+        "id": 61,
+        "time": 168.25000000002603,
+        "car": 1,
+        "lap": 2,
+        "type": "advice",
+        "detail": "Parada comprometida: entry"
+      },
+      {
+        "id": 62,
+        "time": 172.25000000002922,
+        "car": 5,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Neutralização atual: menor perda relativa estimada nos boxes"
+      },
+      {
+        "id": 63,
+        "time": 173.25000000003,
+        "car": 2,
+        "lap": 3,
+        "type": "pit-phase",
+        "detail": "service"
+      },
+      {
+        "id": 64,
+        "time": 180.25000000003558,
+        "car": 5,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Janela de parada aberta: volta 3–4"
+      },
+      {
+        "id": 65,
+        "time": 181.25000000003638,
+        "car": 1,
+        "lap": 3,
+        "type": "pit-phase",
+        "detail": "service"
+      },
+      {
+        "id": 66,
+        "time": 183.25000000003797,
+        "car": 2,
+        "lap": 3,
+        "type": "pit-phase",
+        "detail": "exit"
+      },
+      {
+        "id": 67,
+        "time": 183.25000000003797,
+        "car": 4,
+        "lap": 3,
+        "type": "pit-phase",
+        "detail": "service"
+      },
+      {
+        "id": 68,
+        "time": 192.25000000004513,
+        "car": 1,
+        "lap": 3,
+        "type": "pit-phase",
+        "detail": "exit"
+      },
+      {
+        "id": 69,
+        "time": 193.25000000004593,
+        "car": 3,
+        "lap": 2,
+        "type": "advice",
+        "detail": "Rival nos boxes; seu último ritmo foi melhor: prolongar este stint"
+      },
+      {
+        "id": 70,
+        "time": 195.25000000004752,
+        "car": 4,
+        "lap": 3,
+        "type": "pit-phase",
+        "detail": "exit"
+      },
+      {
+        "id": 71,
+        "time": 201.2500000000523,
+        "car": 3,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 0.3 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 72,
+        "time": 202.2500000000531,
+        "car": 2,
+        "lap": 3,
+        "type": "pit-phase",
+        "detail": "track"
+      },
+      {
+        "id": 73,
+        "time": 202.2500000000531,
+        "car": 2,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 12.7 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 74,
+        "time": 207.25000000005707,
+        "car": 0,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 75,
+        "time": 208.25000000005787,
+        "car": 4,
+        "lap": 3,
+        "type": "pit-phase",
+        "detail": "track"
+      },
+      {
+        "id": 76,
+        "time": 208.25000000005787,
+        "car": 4,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 16.1 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 77,
+        "time": 208.25000000005787,
+        "car": 5,
+        "lap": 3,
+        "type": "pit-request",
+        "detail": "medium"
+      },
+      {
+        "id": 78,
+        "time": 208.25000000005787,
+        "car": 5,
+        "lap": 3,
+        "type": "strategy-executed",
+        "detail": "Janela programada 3–4"
+      },
+      {
+        "id": 79,
+        "time": 209.25000000005866,
+        "car": 5,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Boxes preparados · próximo composto medium"
+      },
+      {
+        "id": 80,
+        "time": 214.25000000006264,
+        "car": 1,
+        "lap": 3,
+        "type": "pit-phase",
+        "detail": "track"
+      },
+      {
+        "id": 81,
+        "time": 214.25000000006264,
+        "car": 1,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 12.7 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 82,
+        "time": 216.25000000006423,
+        "car": 0,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 15.4 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 83,
+        "time": 216.25000000006423,
+        "car": 3,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 84,
+        "time": 224.2500000000706,
+        "car": 0,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 85,
+        "time": 224.2500000000706,
+        "car": 3,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 1.5 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 86,
+        "time": 232.25000000007697,
+        "car": 0,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 11.7 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 87,
+        "time": 232.25000000007697,
+        "car": 3,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 88,
+        "time": 240.25000000008333,
+        "car": 0,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 89,
+        "time": 240.25000000008333,
+        "car": 3,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 1.5 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 90,
+        "time": 241.25000000008413,
+        "car": 2,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 91,
+        "time": 248.2500000000897,
+        "car": 5,
+        "lap": 3,
+        "type": "pit-phase",
+        "detail": "entry"
+      },
+      {
+        "id": 92,
+        "time": 248.2500000000897,
+        "car": 5,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Parada comprometida: entry"
+      },
+      {
+        "id": 93,
+        "time": 249.2500000000905,
+        "car": 0,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 9.4 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 94,
+        "time": 249.2500000000905,
+        "car": 2,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 6.0 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 95,
+        "time": 251.2500000000921,
+        "car": 3,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 96,
+        "time": 259.30000000009284,
+        "car": 3,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 2.9 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 97,
+        "time": 261.3333333334243,
+        "car": 0,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 98,
+        "time": 266.41666666675303,
+        "car": 2,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Rival nos boxes; seu último ritmo foi melhor: prolongar este stint"
+      },
+      {
+        "id": 99,
+        "time": 269.46666666675026,
+        "car": 0,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Manter plano; pista livre à frente · sem oportunidade comprovada"
+      },
+      {
+        "id": 100,
+        "time": 270.483333333416,
+        "car": 3,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 101,
+        "time": 273.5333333334132,
+        "car": 5,
+        "lap": 4,
+        "type": "pit-phase",
+        "detail": "service"
+      },
+      {
+        "id": 102,
+        "time": 274.55000000007897,
+        "car": 2,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 3.5 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 103,
+        "time": 278.61666666674193,
+        "car": 0,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 104,
+        "time": 278.61666666674193,
+        "car": 3,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 2.8 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 105,
+        "time": 281.66666666673916,
+        "car": 1,
+        "lap": 3,
+        "type": "advice",
+        "detail": "Rival nos boxes; seu último ritmo foi melhor: prolongar este stint"
+      },
+      {
+        "id": 106,
+        "time": 282.6833333334049,
+        "car": 2,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 107,
+        "time": 286.75000000006787,
+        "car": 3,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 108,
+        "time": 286.75000000006787,
+        "car": 5,
+        "lap": 4,
+        "type": "pit-phase",
+        "detail": "exit"
+      },
+      {
+        "id": 109,
+        "time": 289.8000000000651,
+        "car": 0,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Manter plano; pista livre à frente · sem oportunidade comprovada"
+      },
+      {
+        "id": 110,
+        "time": 289.8000000000651,
+        "car": 1,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 1.0 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 111,
+        "time": 291.8333333333966,
+        "car": 2,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 5.3 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 112,
+        "time": 293.86666666672807,
+        "car": 4,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 113,
+        "time": 295.90000000005955,
+        "car": 3,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 4.8 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 114,
+        "time": 297.93333333339103,
+        "car": 0,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 115,
+        "time": 298.9500000000568,
+        "car": 5,
+        "lap": 4,
+        "type": "pit-phase",
+        "detail": "track"
+      },
+      {
+        "id": 116,
+        "time": 298.9500000000568,
+        "car": 5,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 22.2 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 117,
+        "time": 299.9666666667225,
+        "car": 2,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 118,
+        "time": 304.0333333333855,
+        "car": 4,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 9.5 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 119,
+        "time": 305.0500000000512,
+        "car": 3,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 120,
+        "time": 308.10000000004845,
+        "car": 0,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Manter plano; pista livre à frente · sem oportunidade comprovada"
+      },
+      {
+        "id": 121,
+        "time": 308.10000000004845,
+        "car": 2,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 3.7 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 122,
+        "time": 313.18333333337716,
+        "car": 4,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 123,
+        "time": 314.2000000000429,
+        "car": 3,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 2.0 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 124,
+        "time": 317.25000000004013,
+        "car": 2,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 125,
+        "time": 318.2666666667059,
+        "car": 0,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 126,
+        "time": 322.33333333336884,
+        "car": 4,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 4.9 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 127,
+        "time": 326.4000000000318,
+        "car": 0,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Manter plano; pista livre à frente · sem oportunidade comprovada"
+      },
+      {
+        "id": 128,
+        "time": 326.4000000000318,
+        "car": 3,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 129,
+        "time": 327.41666666669755,
+        "car": 2,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 2.8 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 130,
+        "time": 332.50000000002626,
+        "car": 4,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 131,
+        "time": 335.5500000000235,
+        "car": 0,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 132,
+        "time": 335.5500000000235,
+        "car": 2,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 2 carro(s); considerar prolongar"
+      },
+      {
+        "id": 133,
+        "time": 335.5500000000235,
+        "car": 3,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 5.9 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 134,
+        "time": 340.6333333333522,
+        "car": 4,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 14.0 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 135,
+        "time": 343.6833333333494,
+        "car": 0,
+        "lap": 5,
+        "type": "advice",
+        "detail": "Manter plano; pista livre à frente · sem oportunidade comprovada"
+      },
+      {
+        "id": 136,
+        "time": 343.6833333333494,
+        "car": 2,
+        "lap": 5,
+        "type": "advice",
+        "detail": "Manter plano; intervalo aproximado à frente 2.7 s · sem oportunidade comprovada"
+      },
+      {
+        "id": 137,
+        "time": 345.7166666666809,
+        "car": 3,
+        "lap": 4,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 138,
+        "time": 350.8000000000096,
+        "car": 3,
+        "lap": 5,
+        "type": "pit-request",
+        "detail": "medium"
+      },
+      {
+        "id": 139,
+        "time": 350.8000000000096,
+        "car": 3,
+        "lap": 5,
+        "type": "strategy-executed",
+        "detail": "Pneus perdendo desempenho: troca recomendada"
+      },
+      {
+        "id": 140,
+        "time": 351.81666666667536,
+        "car": 0,
+        "lap": 5,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 1 carro(s); considerar prolongar"
+      },
+      {
+        "id": 141,
+        "time": 353.85000000000684,
+        "car": 2,
+        "lap": 5,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 2 carro(s); considerar prolongar"
+      },
+      {
+        "id": 142,
+        "time": 353.85000000000684,
+        "car": 3,
+        "lap": 5,
+        "type": "advice",
+        "detail": "Boxes preparados · próximo composto medium"
+      },
+      {
+        "id": 143,
+        "time": 359.9500000000013,
+        "car": 0,
+        "lap": 5,
+        "type": "advice",
+        "detail": "Trecho final: evitar perda de posição por parada não essencial"
+      },
+      {
+        "id": 144,
+        "time": 361.9833333333328,
+        "car": 2,
+        "lap": 5,
+        "type": "advice",
+        "detail": "Trecho final: evitar perda de posição por parada não essencial"
+      },
+      {
+        "id": 145,
+        "time": 371.13333333332446,
+        "car": 4,
+        "lap": 5,
+        "type": "advice",
+        "detail": "Uma parada agora projeta saída perto de 2 carro(s); considerar prolongar"
+      },
+      {
+        "id": 146,
+        "time": 379.2666666666504,
+        "car": 4,
+        "lap": 5,
+        "type": "advice",
+        "detail": "Trecho final: evitar perda de posição por parada não essencial"
+      },
+      {
+        "id": 147,
+        "time": 388.4166666666421,
+        "car": 1,
+        "lap": 5,
+        "type": "advice",
+        "detail": "Trecho final: evitar perda de posição por parada não essencial"
+      },
+      {
+        "id": 148,
+        "time": 388.4166666666421,
+        "car": 5,
+        "lap": 5,
+        "type": "advice",
+        "detail": "Trecho final: evitar perda de posição por parada não essencial"
+      },
+      {
+        "id": 149,
+        "time": 419.9333333332801,
+        "car": 3,
+        "lap": 5,
+        "type": "pit-phase",
+        "detail": "entry"
+      },
+      {
+        "id": 150,
+        "time": 419.9333333332801,
+        "car": 3,
+        "lap": 5,
+        "type": "advice",
+        "detail": "Parada comprometida: entry"
+      }
+    ]
+  }
+}

@@ -1,0 +1,206 @@
+[
+  {
+    "item": 1,
+    "scenario": "Parado",
+    "status": "Aprovado",
+    "evidence": "Giro zero sem tick; trecho inicial dos vídeos; apoio nominal medido."
+  },
+  {
+    "item": 2,
+    "scenario": "Largada",
+    "status": "Aprovado",
+    "evidence": "Sequência autônoma real e clip; observer lê deslocamento, não tempo de render."
+  },
+  {
+    "item": 3,
+    "scenario": "Reta lenta",
+    "status": "Parcial",
+    "evidence": "Amostras 8–25 m/s e lançamento; não há ensaio visual dedicado sustentado de todas as retas."
+  },
+  {
+    "item": 4,
+    "scenario": "Reta rápida",
+    "status": "Aprovado",
+    "evidence": "Amostras >50 m/s, testes de aceleração/sombras e invariância de spin por relógio."
+  },
+  {
+    "item": 5,
+    "scenario": "Curva fechada",
+    "status": "Parcial",
+    "evidence": "Curvas reais e limites de atitude/esterço; sem campanha visual específica classificada por raio."
+  },
+  {
+    "item": 6,
+    "scenario": "Curva rápida",
+    "status": "Parcial",
+    "evidence": "Sequência de corrida/render; falta validação temporal humana em GPU física."
+  },
+  {
+    "item": 7,
+    "scenario": "Frenagem forte",
+    "status": "Aprovado",
+    "evidence": "Frenagem real selecionada no vídeo, amostras brake >0,5, testes de pose/depth/cor."
+  },
+  {
+    "item": 8,
+    "scenario": "Aceleração na saída",
+    "status": "Parcial",
+    "evidence": "Transições por piloto registradas e pitch real; sem cobertura visual exaustiva de saídas."
+  },
+  {
+    "item": 9,
+    "scenario": "Transição reta/curva",
+    "status": "Aprovado",
+    "evidence": "Heading contínuo/wrap e loop real com alpha; sem pista visual paralela."
+  },
+  {
+    "item": 10,
+    "scenario": "Zebras",
+    "status": "Parcial",
+    "evidence": "Footprint e altura real testados/capturados; contato estimado, sem pneu/suspensão física."
+  },
+  {
+    "item": 11,
+    "scenario": "Lado a lado",
+    "status": "Parcial",
+    "evidence": "Captura de grid e guarda SAT; envelope visual pode exceder hitbox."
+  },
+  {
+    "item": 12,
+    "scenario": "Ultrapassagem por dentro",
+    "status": "Não executado",
+    "evidence": "Nenhum ensaio novo isolado que classifique e valide visualmente essa manobra."
+  },
+  {
+    "item": 13,
+    "scenario": "Ultrapassagem por fora",
+    "status": "Não executado",
+    "evidence": "Mesmo limite; eventos de overtake não provam a linha usada."
+  },
+  {
+    "item": 14,
+    "scenario": "Curvas próximas",
+    "status": "Parcial",
+    "evidence": "Testes de colisão e corridas completas; limite de envelope permanece."
+  },
+  {
+    "item": 15,
+    "scenario": "Frenagens próximas",
+    "status": "Parcial",
+    "evidence": "Física/contato existentes preservados; sem certificação visual de todo contato de bico/pneu."
+  },
+  {
+    "item": 16,
+    "scenario": "Mudanças de faixa",
+    "status": "Parcial",
+    "evidence": "IA/traçado preservados e resultados idênticos; não foi revalidada visualmente toda manobra."
+  },
+  {
+    "item": 17,
+    "scenario": "Barreiras",
+    "status": "Parcial",
+    "evidence": "Regressões físicas passam; saliências fora do hitbox impedem afirmar contato visual perfeito."
+  },
+  {
+    "item": 18,
+    "scenario": "Entrada/saída de pit",
+    "status": "Aprovado",
+    "evidence": "Matriz física dos 14 circuitos e testes browser de entrada, serviço, release, merge."
+  },
+  {
+    "item": 19,
+    "scenario": "Todas as câmeras",
+    "status": "Parcial",
+    "evidence": "12 modos capturados; cockpit coerente. Pendência elevada Neon e inspeção temporal limitada."
+  },
+  {
+    "item": 20,
+    "scenario": "Pausa/retomada",
+    "status": "Aprovado",
+    "evidence": "Histórico colapsado; teste do Game.frame antes do próximo tick, sem recuo/giro extra."
+  },
+  {
+    "item": 21,
+    "scenario": "Velocidade da simulação",
+    "status": "Aprovado",
+    "evidence": "Ticks batched/fast-forward, odômetro independente de dt gráfico, simulação invariável."
+  },
+  {
+    "item": 22,
+    "scenario": "Resoluções/aspectos",
+    "status": "Aprovado",
+    "evidence": "1920×1080, 1280×720, 390×844 novos + matriz HUD anterior reexecutada."
+  },
+  {
+    "item": 23,
+    "scenario": "Grid completo",
+    "status": "Aprovado",
+    "evidence": "Seis carros, 24 rodas articuladas; nenhum bot removido."
+  },
+  {
+    "item": 24,
+    "scenario": "Sombras",
+    "status": "Aprovado",
+    "evidence": "Cinco testes browser antigos, mesmas matrizes depth/cor, pixels de remoção e lifecycle."
+  },
+  {
+    "item": 25,
+    "scenario": "Rodas/carroceria",
+    "status": "Aprovado",
+    "evidence": "12 GLBs + procedural, eixo estável, rear neutro, grupo de corpo e contato nominal. Limitado ao modelo visual descrito."
+  },
+  {
+    "item": 26,
+    "scenario": "Build de produção",
+    "status": "Aprovado",
+    "evidence": "Build Node 24 principal e extraído; aviso de chunk explicitado."
+  },
+  {
+    "item": 27,
+    "scenario": "Inicialização",
+    "status": "Aprovado",
+    "evidence": "Assets locais, pronto real, fallback e erros úteis; sem backend."
+  },
+  {
+    "item": 28,
+    "scenario": "Suítes existentes",
+    "status": "Aprovado",
+    "evidence": "174/174 Node e 37/37 Chromium no pacote extraído, incluindo as 158/33 antigas sem alteração."
+  },
+  {
+    "item": 29,
+    "scenario": "Manager",
+    "status": "Aprovado",
+    "evidence": "UI ao vivo, planos independentes e 14 comparações exatas de corridas completas."
+  },
+  {
+    "item": 30,
+    "scenario": "Estratégia/pits",
+    "status": "Parcial",
+    "evidence": "Regras/tempos/filas/merge aprovados; crew retém throttling, sem sincronismo subframe garantido."
+  },
+  {
+    "item": 31,
+    "scenario": "Classificação/resultados",
+    "status": "Aprovado",
+    "evidence": "Hashes exatos nas 14 provas; regressões de resultados e pontuação."
+  },
+  {
+    "item": 32,
+    "scenario": "Carreira",
+    "status": "Aprovado",
+    "evidence": "Temporadas, persistência, contratos/admin e anti-recompensa duplicada na suíte browser."
+  },
+  {
+    "item": 33,
+    "scenario": "Console/runtime",
+    "status": "Aprovado",
+    "evidence": "Sondas normais sem erros inesperados; testes de falha de asset são injeções deliberadas e tratadas."
+  },
+  {
+    "item": 34,
+    "scenario": "Variação de frame rate",
+    "status": "Parcial",
+    "evidence": "30/60/144 Hz determinísticos e Game.frame a 144 Hz lógico; não são 144 fps reais. Benchmark software teve médias mistas, três cenários piores."
+  }
+]

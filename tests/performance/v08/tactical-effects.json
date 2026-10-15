@@ -1,0 +1,40 @@
+[
+  {
+    "pace": "conserve",
+    "progress": 3561.6136189216963,
+    "fuel": 17.21161564892451,
+    "health": 0.7345566085334131,
+    "temperature": 78.30205085496252,
+    "grip": 0.8706601153334521,
+    "stats": {
+      "maxSpeed": 69,
+      "acceleration": 23,
+      "handling": 1,
+      "braking": 44,
+      "grip": 25.435000000000002,
+      "stability": 1,
+      "consumption": 0.942,
+      "durability": 1,
+      "tireWear": 0.9246
+    }
+  },
+  {
+    "pace": "aggressive",
+    "progress": 4100.754220456757,
+    "fuel": 16.62463307386844,
+    "health": 0.6949644333059836,
+    "temperature": 79.74964877720106,
+    "grip": 0.8581519535844585,
+    "stats": {
+      "maxSpeed": 69,
+      "acceleration": 23,
+      "handling": 1,
+      "braking": 44,
+      "grip": 25.435000000000002,
+      "stability": 1,
+      "consumption": 0.942,
+      "durability": 1,
+      "tireWear": 0.9246
+    }
+  }
+]

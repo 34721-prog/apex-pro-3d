@@ -1,0 +1,27 @@
+{
+  "name": "apex-dynasty",
+  "version": "0.10.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "node --test tests/*.test.js",
+    "test:browser": "playwright test",
+    "assets": "python scripts/textures.py && node scripts/export-assets.js",
+    "test:all": "npm test && playwright test",
+    "assets:validate": "node scripts/validate-assets.js",
+    "benchmark": "node scripts/benchmark-sim-v07.js after",
+    "build:playable": "npm run build && python scripts/refresh-playable.py",
+    "audio:compose": "python scripts/compose-audio.py",
+    "audio:validate": "python scripts/validate-audio.py"
+  },
+  "dependencies": {
+    "three": "0.186.1",
+    "vite": "8.3.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1"
+  }
+}

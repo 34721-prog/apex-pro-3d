@@ -1,0 +1,534 @@
+.competition-nav {
+  display: flex;
+  gap: 5px;
+  padding: 10px 3.2%;
+  border-bottom: 1px solid #ffffff12;
+  background: #101720;
+  overflow: auto;
+  max-width: 100%;
+  white-space: nowrap;
+}
+.competition-nav button {
+  background: transparent;
+  color: #a5b5c8;
+  border: 1px solid #ffffff18;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font: 600 11px Barlow;
+}
+.competition-nav button:hover {
+  border-color: #ef3150;
+  color: #fff;
+}
+.series-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 13px;
+  margin: 22px 0;
+}
+.series-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  text-align: left;
+  padding: 18px;
+  border: 1px solid #ffffff18;
+  border-top: 2px solid var(--series);
+  background: linear-gradient(145deg, #1b2632, #111820);
+  border-radius: 5px;
+  cursor: pointer;
+  color: #f2f5fa;
+  min-height: 197px;
+}
+.series-card.selected {
+  outline: 1px solid var(--series);
+}
+.series-mark {
+  font: italic 800 38px "Barlow Condensed";
+  letter-spacing: -1px;
+  color: var(--series);
+  margin-bottom: 9px;
+}
+.series-card small {
+  font-size: 9px;
+  color: #94a4b8;
+}
+.series-card strong {
+  font: 700 23px "Barlow Condensed";
+  margin: 6px 0;
+}
+.series-card > span:not(.series-mark) {
+  font-size: 10px;
+  color: #95a7be;
+}
+.series-card em {
+  font: 600 8px Barlow;
+  letter-spacing: 0.7px;
+  margin-top: 15px;
+  color: var(--series);
+}
+.series-detail {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 34px;
+  padding: 30px;
+  margin-bottom: 23px;
+}
+.series-detail h2 {
+  font: 800 34px "Barlow Condensed";
+  margin: 15px 0;
+}
+.series-detail p {
+  font: 400 12px/1.6 Barlow;
+  color: #9aaec5;
+}
+.series-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 18px 0;
+}
+.series-facts span {
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: #8ba0b8;
+}
+.series-facts b {
+  font-size: 11px;
+  line-height: 1.6;
+  display: block;
+  color: #d5e1ee;
+  letter-spacing: 0;
+  margin-top: 5px;
+}
+.calendar-row {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding: 15px 10px;
+  border-bottom: 1px solid #ffffff13;
+  font-size: 12px;
+}
+.calendar-row.current {
+  background: #ee35511b;
+  border-left: 2px solid #f23452;
+}
+.calendar-row b {
+  font: 700 21px "Barlow Condensed";
+  color: #ed4160;
+}
+.calendar-row small {
+  margin-left: auto;
+  font-size: 8px;
+  color: #8199b5;
+}
+.standings-pair {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 20px;
+}
+.standings-pair > .panel {
+  padding: 22px;
+}
+.champ-row {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  border-bottom: 1px solid #ffffff12;
+  padding: 13px 0;
+  font-size: 12px;
+}
+.champ-row > span {
+  flex: 1;
+}
+.champ-row small {
+  display: block;
+  color: #8298b3;
+  font-size: 9px;
+  margin-top: 5px;
+}
+.champ-row strong {
+  font: 700 25px "Barlow Condensed";
+}
+.career-v05 {
+  padding: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 2fr 2fr;
+  gap: 22px;
+}
+.career-v05 small {
+  display: block;
+  font-size: 8px;
+  color: #8ca2b9;
+  letter-spacing: 1px;
+}
+.career-v05 strong {
+  display: block;
+  font: 700 28px "Barlow Condensed";
+  margin-top: 9px;
+}
+.career-v05 p,
+.regulation-intro p {
+  font: 400 12px/1.7 Barlow;
+  color: #a0afc1;
+}
+.career-v05 button {
+  font-size: 10px;
+  margin-top: 7px;
+}
+.achievement-strip {
+  padding: 22px;
+  margin: 20px 0;
+}
+.achievement-strip button {
+  float: right;
+}
+.rule-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 20px 0;
+}
+.rule-grid article {
+  padding: 23px;
+}
+.rule-grid small {
+  font-size: 9px;
+  color: #ed5570;
+}
+.rule-grid h3 {
+  margin: 12px 0;
+}
+.rule-grid p {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #98a9bd;
+}
+.rule-grid b {
+  font-size: 11px;
+}
+.regulation-intro {
+  padding: 23px;
+}
+.session-history,
+.calendar-page {
+  padding: 25px;
+  margin: 20px 0;
+}
+.calendar-page section {
+  padding: 15px;
+  border-bottom: 1px solid #ffffff14;
+}
+.calendar-page p {
+  color: #91a6bd;
+  font-size: 12px;
+}
+.session-history details,
+.calendar-page details,
+.modal .session-review {
+  margin: 15px 0;
+  background: #121d29;
+  border: 1px solid #ffffff18;
+  border-radius: 4px;
+  padding: 12px;
+}
+.session-history summary,
+.calendar-page summary,
+.session-review summary {
+  font-size: 12px;
+  cursor: pointer;
+}
+.session-journal {
+  list-style: none;
+  padding: 0;
+  max-height: 300px;
+  overflow: auto;
+}
+.session-journal li {
+  display: grid;
+  grid-template-columns: 70px 100px 1fr;
+  gap: 10px;
+  border-bottom: 1px solid #ffffff10;
+  padding: 9px;
+  font-size: 10px;
+  word-break: break-word;
+}
+.session-journal time {
+  color: #8aa2bf;
+}
+.session-journal b {
+  color: #e7516d;
+}
+.decision-list article {
+  padding: 13px;
+  background: #251e27;
+  border-left: 2px solid #ec4662;
+  margin: 9px 0;
+}
+.decision-list b,
+.decision-list span,
+.decision-list small {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 11px;
+  line-height: 1.5;
+  word-break: break-word;
+}
+.decision-list small {
+  font-size: 9px;
+  color: #a5a9b9;
+}
+.news-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+.news-list article {
+  padding: 22px;
+  font: 500 14px/1.6 Barlow;
+}
+.session-highlights {
+  padding: 12px 15px;
+  border-left: 2px solid #5fc6a4;
+  background: #5fc6a40b;
+  margin: 20px 0;
+}
+.session-highlights p {
+  font-size: 12px;
+  margin: 7px 0;
+}
+.hud-director {
+  position: absolute;
+  top: 155px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  max-width: calc(100% - 590px);
+  background: #0e1724ef;
+  border-left: 3px solid #f5c559;
+  border-radius: 3px;
+  padding: 9px 12px;
+}
+.hud-director b {
+  display: block;
+  font-size: 10px;
+  color: #f5c559;
+  letter-spacing: 1px;
+}
+.hud-director span,
+.hud-director small {
+  display: block;
+  font-size: 9px;
+  margin-top: 5px;
+  color: #c3cddd;
+}
+.hud-director[data-flag="red"] {
+  border-color: #f43856;
+}
+.hud-director[data-flag="blue"] {
+  border-color: #4798fc;
+}
+.hud-director[data-flag="black"] {
+  border-color: #fff;
+  background: #000;
+}
+.hud-director[data-flag="red"] b {
+  color: #ff536f;
+}
+.hud-director[data-flag="blue"] b {
+  color: #70b7ff;
+}
+.modal .result-table {
+  overflow: auto;
+}
+.modal .result-table small {
+  display: block;
+  font-size: 9px;
+  color: #8fa5bd;
+}
+.race-strategy .team-order {
+  display: grid;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 10px;
+  color: #ccd7e6;
+}
+.team-order select {
+  width: 100%;
+}
+@media (max-width: 1100px) {
+  .series-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .career-v05 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .hud-director {
+    max-width: calc(100% - 490px);
+  }
+}
+@media (max-width: 760px) {
+  .series-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .series-card {
+    padding: 13px;
+    min-height: 190px;
+  }
+  .series-card strong {
+    font-size: 21px;
+  }
+  .series-detail {
+    grid-template-columns: 1fr;
+    padding: 18px;
+    gap: 20px;
+  }
+  .standings-pair {
+    grid-template-columns: 1fr;
+  }
+  .rule-grid,
+  .news-list {
+    grid-template-columns: 1fr;
+  }
+  .competition-nav {
+    padding: 8px;
+    gap: 4px;
+  }
+  .competition-nav button {
+    padding: 7px 10px;
+    font-size: 10px;
+  }
+  .career-v05 {
+    padding: 18px;
+    gap: 15px;
+  }
+  .career-v05 strong {
+    font-size: 22px;
+  }
+  .achievement-strip button {
+    float: none;
+    margin-top: 14px;
+  }
+  .session-journal li {
+    grid-template-columns: 62px 80px 1fr;
+    font-size: 9px;
+  }
+  .session-history,
+  .calendar-page {
+    padding: 12px;
+  }
+  .hud-director {
+    top: 389px;
+    width: calc(100% - 16px);
+    max-width: none;
+    padding: 7px 9px;
+  }
+  .hud-director b {
+    font-size: 8px;
+  }
+  .hud-director span,
+  .hud-director small {
+    font-size: 8px;
+    margin-top: 3px;
+  }
+  .series-detail .btn {
+    font-size: 10px;
+  }
+  .series-facts {
+    gap: 14px;
+  }
+  .rc-hud .hud-toolbar {
+    gap: 3px;
+  }
+  .rc-hud .hud-toolbar button {
+    font-size: 7px;
+    padding: 0 4px;
+  }
+}
+.session-podium {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  margin: 18px 0;
+}
+.session-podium > div {
+  padding: 15px 10px;
+  background: #f0c8750a;
+  border-top: 2px solid #edbe60;
+}
+.session-podium small,
+.session-podium strong,
+.session-podium span {
+  display: block;
+}
+.session-podium small {
+  color: #edbe60;
+  font-size: 8px;
+}
+.session-podium strong {
+  font: 700 20px "Barlow Condensed";
+  margin: 6px 0;
+}
+.session-podium span {
+  font-size: 7px;
+  color: #9babc1;
+}
+.league-stats {
+  padding: 25px;
+  margin-top: 20px;
+}
+.league-stats > div {
+  display: inline-flex;
+  flex-direction: column;
+  margin: 15px 35px 15px 0;
+}
+.league-stats b {
+  font: 700 35px "Barlow Condensed";
+}
+.league-stats span,
+.league-stats small {
+  font-size: 11px;
+  color: #9babc1;
+}
+.league-stats small {
+  display: block;
+}
+.series-detail {
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+}
+.series-detail > div,
+.series-detail > aside,
+.standings-pair > section {
+  min-width: 0;
+}
+.series-detail .setting-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.series-facts {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.series-facts > span,
+.champ-row > span {
+  min-width: 0;
+}
+.series-detail h2 {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 760px) {
+  .series-detail {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .series-detail .setting-actions .btn {
+    white-space: normal;
+    max-width: 100%;
+  }
+  .series-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.hud-camera-label{display:block;font:600 7px Barlow;color:#ffbf52;letter-spacing:.5px;margin-bottom:8px}

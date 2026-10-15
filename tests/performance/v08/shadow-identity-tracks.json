@@ -1,0 +1,993 @@
+{
+  "identity": {
+    "original": [
+      {
+        "id": 0,
+        "uuid": "16345ae7-b383-42a6-9d45-f5c57e75d5b8"
+      },
+      {
+        "id": 1,
+        "uuid": "ee102322-9e59-4e45-ab5f-51ba24c1f143"
+      },
+      {
+        "id": 2,
+        "uuid": "ed6b14e3-5af0-487c-a3c9-90909b7c0d49"
+      },
+      {
+        "id": 3,
+        "uuid": "9b67f433-e222-483c-a3d7-52bf595ba78e"
+      },
+      {
+        "id": 4,
+        "uuid": "a5d6a248-e887-4bfb-8af2-634d98af5247"
+      },
+      {
+        "id": 5,
+        "uuid": "62225cfc-da0a-4d43-835a-0d9831e636f8"
+      }
+    ],
+    "matched": true,
+    "hidden": true,
+    "removed": {
+      "errors": [],
+      "visible": [
+        5,
+        4,
+        3,
+        1,
+        "SC",
+        0
+      ],
+      "depthIds": [
+        "SC",
+        0,
+        1,
+        3,
+        4,
+        5
+      ],
+      "draws": 46,
+      "updates": 4,
+      "span": [
+        192,
+        224
+      ],
+      "resources": {
+        "geometries": 118,
+        "textures": 23
+      }
+    }
+  },
+  "rows": [
+    {
+      "track": "aurora",
+      "initial": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 5,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 131,
+          "textures": 28
+        }
+      },
+      "final": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 7,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 131,
+          "textures": 28
+        }
+      },
+      "carCount": 6
+    },
+    {
+      "track": "veloce",
+      "initial": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 1,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 94,
+          "textures": 15
+        }
+      },
+      "final": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 3,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 94,
+          "textures": 15
+        }
+      },
+      "carCount": 6
+    },
+    {
+      "track": "serpente",
+      "initial": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 1,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 94,
+          "textures": 15
+        }
+      },
+      "final": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 3,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 94,
+          "textures": 15
+        }
+      },
+      "carCount": 6
+    },
+    {
+      "track": "neon",
+      "initial": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 1,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 96,
+          "textures": 15
+        }
+      },
+      "final": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 3,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 96,
+          "textures": 15
+        }
+      },
+      "carCount": 6
+    },
+    {
+      "track": "titan",
+      "initial": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 1,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 92,
+          "textures": 14
+        }
+      },
+      "final": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 3,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 92,
+          "textures": 14
+        }
+      },
+      "carCount": 6
+    },
+    {
+      "track": "vento",
+      "initial": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 1,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 94,
+          "textures": 15
+        }
+      },
+      "final": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 3,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 94,
+          "textures": 15
+        }
+      },
+      "carCount": 6
+    },
+    {
+      "track": "sahara",
+      "initial": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 1,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 95,
+          "textures": 16
+        }
+      },
+      "final": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 3,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 95,
+          "textures": 16
+        }
+      },
+      "carCount": 6
+    },
+    {
+      "track": "alpine",
+      "initial": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 1,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 95,
+          "textures": 16
+        }
+      },
+      "final": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 3,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 95,
+          "textures": 16
+        }
+      },
+      "carCount": 6
+    },
+    {
+      "track": "emerald",
+      "initial": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 1,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 95,
+          "textures": 16
+        }
+      },
+      "final": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 3,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 95,
+          "textures": 16
+        }
+      },
+      "carCount": 6
+    },
+    {
+      "track": "oldtown",
+      "initial": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 1,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 95,
+          "textures": 16
+        }
+      },
+      "final": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 3,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 95,
+          "textures": 16
+        }
+      },
+      "carCount": 6
+    },
+    {
+      "track": "sunset",
+      "initial": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 1,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 95,
+          "textures": 16
+        }
+      },
+      "final": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 3,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 95,
+          "textures": 16
+        }
+      },
+      "carCount": 6
+    },
+    {
+      "track": "nordic",
+      "initial": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 1,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 96,
+          "textures": 17
+        }
+      },
+      "final": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 3,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 96,
+          "textures": 17
+        }
+      },
+      "carCount": 6
+    },
+    {
+      "track": "desert-night",
+      "initial": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 1,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 97,
+          "textures": 16
+        }
+      },
+      "final": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 3,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 97,
+          "textures": 16
+        }
+      },
+      "carCount": 6
+    },
+    {
+      "track": "discovery",
+      "initial": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 1,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 95,
+          "textures": 16
+        }
+      },
+      "final": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 3,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 95,
+          "textures": 16
+        }
+      },
+      "carCount": 6
+    },
+    {
+      "track": "aurora",
+      "initial": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 1,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 96,
+          "textures": 16
+        }
+      },
+      "final": {
+        "errors": [],
+        "visible": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 3,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 96,
+          "textures": 16
+        }
+      },
+      "carCount": 6
+    }
+  ]
+}

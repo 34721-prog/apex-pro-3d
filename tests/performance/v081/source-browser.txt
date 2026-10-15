@@ -1,0 +1,191 @@
+
+> apex-dynasty@0.8.0 test:browser
+> playwright test
+
+
+Running 33 tests using 1 worker
+
+  ✓   1 tests/expanded.spec.js:9:1 › driver catalogue, real paint application, persistence, admin isolation and contracts (28.7s)
+  ✓   2 tests/expanded.spec.js:75:1 › new circuit, solo race, keyboard camera, pit menu pause, radio and result persistence (40.5s)
+  ✓   3 tests/game.spec.js:19:1 › desktop navigation, purchases, settings and persistent save (23.7s)
+  ✓   4 tests/game.spec.js:66:1 › real keyboard input, camera, pause, recovery, three laps, results and restart (47.5s)
+  ✓   5 tests/game.spec.js:133:1 › championship continuity across reload, three stages and new season (50.1s)
+  ✓   6 tests/game.spec.js:172:1 › mobile layout, touch controls, GLB and texture loading (11.7s)
+  ✓   7 tests/game.spec.js:221:1 › corrupted local save recovers defaults; no external runtime dependencies (13.3s)
+  ✓   8 tests/manager.spec.js:38:1 › v08 plan both drivers, command live without pausing, physical stop, complete autonomous race and persist report (59.0s)
+  ✓   9 tests/manager.spec.js:154:1 › v08 actual changing weather and controlled Safety Car support executable recommendations and simultaneous team changes (4.3s)
+  ✓  10 tests/manager.spec.js:218:1 › v08 explicit manual handover preserves physical state and management works on mobile (2.8s)
+  ✓  11 tests/manager.spec.js:266:1 › v08 delegated championship reports survive reload and next session uses saved independent plans (4.3s)
+  ✓  12 tests/pits-v03.spec.js:27:1 › live presets/custom save, pit plan UI and optional cameras do not change simulation (27.5s)
+  ✘  13 tests/pits-v03.spec.js:87:1 › maximum grid physical stop, coordinated crew, all camera/preset pairs, few-bot finish (313ms)
+  ✓  14 tests/pits-v03.spec.js:200:1 › repeated race/menu, car catalogue and six-circuit resource lifecycle reaches plateau (25.5s)
+  ✘  15 tests/shadows.spec.js:83:1 › shadows: same-frame depth/colour in stop, acceleration, braking, turns, spin, all bots and cameras (299ms)
+  ✓  16 tests/shadows.spec.js:167:1 › shadows: stable IDs, reordered grid, removed casters, restart, dt=0 and all circuits (41.3s)
+  ✘  17 tests/shadows.spec.js:248:1 › shadows: real pit entry, queued approach, jacked service, release and merge (305ms)
+  ✓  18 tests/shadows.spec.js:326:1 › shadows: GPU image differential follows the vehicle; removal leaves no shadow pixels (5.4s)
+  ✓  19 tests/shadows.spec.js:465:1 › shadows: physical collision and surviving/retired vehicle use the current pose (10.4s)
+  ✓  20 tests/stability.spec.js:22:1 › v081 production assets and startup are local, complete and hash-identical (3.4s)
+  ✓  21 tests/stability.spec.js:69:1 › v081 all circuits: one pit, matching physical walls, repeat init/camera/track lifecycle (1.4m)
+  ✓  22 tests/stability.spec.js:173:1 › v081 texture/GLB failures show useful warning and keep original procedural fallback (2.9s)
+  ✓  23 tests/stability.spec.js:194:1 › v081 pending texture blocks premature ready; one recurring RAF after races, pause and exit (22.5s)
+  ✘  24 tests/v04.spec.js:26:1 › v0.4 real keyboard and camera projection, neutral/rebind/blur/pause (304ms)
+  ✓  25 tests/v04.spec.js:105:1 › v0.4 HUD fits target resolutions, persistent modes/strategy, timing and event alerts (56.4s)
+  ✓  26 tests/v04.spec.js:245:1 › v0.4 all fourteen circuits select, load geometry, complete races, render minimaps and persist records (48.7s)
+  ✘  27 tests/v05.spec.js:13:1 › v0.5 full Sprint season via real menu/session/next/save/archive, no duplicate awards (294ms)
+  ✓  28 tests/v05.spec.js:102:1 › v0.5 physical Safety Car visible, live race control, weather, journal and team controls (3.5s)
+  ✓  29 tests/v05.spec.js:159:1 › v0.5 settings, accelerated simulation, contracts/training and persistent filters (35.8s)
+  ✘  30 tests/v07.spec.js:13:1 › v07 venue gallery, actual boards, populated quality levels and moving cars in spectator camera (309ms)
+  ✓  31 tests/v07.spec.js:62:1 › v07 streaming mixer: gesture, six cues, no restart, master/buses, pause/hidden/repeated race cleanup (15.7s)
+  ✓  32 tests/v07.spec.js:225:1 › v07 all tracks: actual mesh footprint/ground, safe venue disposal, repeat resource bounds (25.1s)
+  ✘  33 tests/v07.spec.js:303:1 › v07 crowd spatial response, bounded celebrations and independent engine/effects/crowd sliders (299ms)
+
+
+  1) tests/pits-v03.spec.js:87:1 › maximum grid physical stop, coordinated crew, all camera/preset pairs, few-bot finish 
+
+    Error: page.waitForFunction: ReferenceError: __game is not defined
+        at eval (eval at predicate (eval at evaluate (:370:30)), <anonymous>:1:1)
+        at predicate (eval at evaluate (:370:30), <anonymous>:7:27)
+        at next (eval at evaluate (:370:30), <anonymous>:29:33)
+        at eval (eval at evaluate (:370:30), <anonymous>:42:13)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at eval (eval at predicate (eval at evaluate (:370:30)), <anonymous>:1:1)
+        at predicate (eval at evaluate (:370:30), <anonymous>:7:27)
+        at next (eval at evaluate (:370:30), <anonymous>:29:33)
+        at eval (eval at evaluate (:370:30), <anonymous>:42:13)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at boot (/home/user/apex-dynasty/tests/pits-v03.spec.js:24:14)
+        at /home/user/apex-dynasty/tests/pits-v03.spec.js:90:15
+
+    Error Context: test-results/pits-v03-maximum-grid-phys-3e158-preset-pairs-few-bot-finish/error-context.md
+
+  2) tests/shadows.spec.js:83:1 › shadows: same-frame depth/colour in stop, acceleration, braking, turns, spin, all bots and cameras 
+
+    Error: page.waitForFunction: ReferenceError: __game is not defined
+        at eval (eval at predicate (eval at evaluate (:370:30)), <anonymous>:1:20)
+        at predicate (eval at evaluate (:370:30), <anonymous>:7:27)
+        at next (eval at evaluate (:370:30), <anonymous>:29:33)
+        at eval (eval at evaluate (:370:30), <anonymous>:42:13)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at eval (eval at predicate (eval at evaluate (:370:30)), <anonymous>:1:20)
+        at predicate (eval at evaluate (:370:30), <anonymous>:7:27)
+        at next (eval at evaluate (:370:30), <anonymous>:29:33)
+        at eval (eval at evaluate (:370:30), <anonymous>:42:13)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at boot (/home/user/apex-dynasty/tests/shadows.spec.js:12:14)
+        at /home/user/apex-dynasty/tests/shadows.spec.js:86:18
+
+    Error Context: test-results/shadows-shadows-same-frame-5dd76-s-spin-all-bots-and-cameras/error-context.md
+
+  3) tests/shadows.spec.js:248:1 › shadows: real pit entry, queued approach, jacked service, release and merge 
+
+    Error: page.waitForFunction: ReferenceError: __game is not defined
+        at eval (eval at predicate (eval at evaluate (:370:30)), <anonymous>:1:20)
+        at predicate (eval at evaluate (:370:30), <anonymous>:7:27)
+        at next (eval at evaluate (:370:30), <anonymous>:29:33)
+        at eval (eval at evaluate (:370:30), <anonymous>:42:13)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at eval (eval at predicate (eval at evaluate (:370:30)), <anonymous>:1:20)
+        at predicate (eval at evaluate (:370:30), <anonymous>:7:27)
+        at next (eval at evaluate (:370:30), <anonymous>:29:33)
+        at eval (eval at evaluate (:370:30), <anonymous>:42:13)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at boot (/home/user/apex-dynasty/tests/shadows.spec.js:12:14)
+        at /home/user/apex-dynasty/tests/shadows.spec.js:251:18
+
+    Error Context: test-results/shadows-shadows-real-pit-e-d49f5-d-service-release-and-merge/error-context.md
+
+  4) tests/v04.spec.js:26:1 › v0.4 real keyboard and camera projection, neutral/rebind/blur/pause ──
+
+    Error: page.waitForFunction: ReferenceError: __game is not defined
+        at eval (eval at predicate (eval at evaluate (:370:30)), <anonymous>:1:1)
+        at predicate (eval at evaluate (:370:30), <anonymous>:7:27)
+        at next (eval at evaluate (:370:30), <anonymous>:29:33)
+        at eval (eval at evaluate (:370:30), <anonymous>:42:13)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at eval (eval at predicate (eval at evaluate (:370:30)), <anonymous>:1:1)
+        at predicate (eval at evaluate (:370:30), <anonymous>:7:27)
+        at next (eval at evaluate (:370:30), <anonymous>:29:33)
+        at eval (eval at evaluate (:370:30), <anonymous>:42:13)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at boot (/home/user/apex-dynasty/tests/v04.spec.js:23:14)
+        at /home/user/apex-dynasty/tests/v04.spec.js:29:15
+
+    Error Context: test-results/v04-v0-4-real-keyboard-and-6d945-n-neutral-rebind-blur-pause/error-context.md
+
+  5) tests/v05.spec.js:13:1 › v0.5 full Sprint season via real menu/session/next/save/archive, no duplicate awards 
+
+    Error: page.waitForFunction: ReferenceError: __game is not defined
+        at eval (eval at predicate (eval at evaluate (:370:30)), <anonymous>:1:1)
+        at predicate (eval at evaluate (:370:30), <anonymous>:7:27)
+        at next (eval at evaluate (:370:30), <anonymous>:29:33)
+        at eval (eval at evaluate (:370:30), <anonymous>:42:13)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at eval (eval at predicate (eval at evaluate (:370:30)), <anonymous>:1:1)
+        at predicate (eval at evaluate (:370:30), <anonymous>:7:27)
+        at next (eval at evaluate (:370:30), <anonymous>:29:33)
+        at eval (eval at evaluate (:370:30), <anonymous>:42:13)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at boot (/home/user/apex-dynasty/tests/v05.spec.js:10:14)
+        at /home/user/apex-dynasty/tests/v05.spec.js:17:18
+
+    Error Context: test-results/v05-v0-5-full-Sprint-seaso-43df7-archive-no-duplicate-awards/error-context.md
+
+  6) tests/v07.spec.js:13:1 › v07 venue gallery, actual boards, populated quality levels and moving cars in spectator camera 
+
+    Error: page.waitForFunction: ReferenceError: __game is not defined
+        at eval (eval at predicate (eval at evaluate (:370:30)), <anonymous>:1:1)
+        at predicate (eval at evaluate (:370:30), <anonymous>:7:27)
+        at next (eval at evaluate (:370:30), <anonymous>:29:33)
+        at eval (eval at evaluate (:370:30), <anonymous>:42:13)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at eval (eval at predicate (eval at evaluate (:370:30)), <anonymous>:1:1)
+        at predicate (eval at evaluate (:370:30), <anonymous>:7:27)
+        at next (eval at evaluate (:370:30), <anonymous>:29:33)
+        at eval (eval at evaluate (:370:30), <anonymous>:42:13)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at boot (/home/user/apex-dynasty/tests/v07.spec.js:10:14)
+        at /home/user/apex-dynasty/tests/v07.spec.js:16:18
+
+    Error Context: test-results/v07-v07-venue-gallery-actu-b0052-ng-cars-in-spectator-camera/error-context.md
+
+  7) tests/v07.spec.js:303:1 › v07 crowd spatial response, bounded celebrations and independent engine/effects/crowd sliders 
+
+    Error: page.waitForFunction: ReferenceError: __game is not defined
+        at eval (eval at predicate (eval at evaluate (:370:30)), <anonymous>:1:1)
+        at predicate (eval at evaluate (:370:30), <anonymous>:7:27)
+        at next (eval at evaluate (:370:30), <anonymous>:29:33)
+        at eval (eval at evaluate (:370:30), <anonymous>:42:13)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at eval (eval at predicate (eval at evaluate (:370:30)), <anonymous>:1:1)
+        at predicate (eval at evaluate (:370:30), <anonymous>:7:27)
+        at next (eval at evaluate (:370:30), <anonymous>:29:33)
+        at eval (eval at evaluate (:370:30), <anonymous>:42:13)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at boot (/home/user/apex-dynasty/tests/v07.spec.js:10:14)
+        at /home/user/apex-dynasty/tests/v07.spec.js:306:18
+
+    Error Context: test-results/v07-v07-crowd-spatial-resp-29c1d-ngine-effects-crowd-sliders/error-context.md
+
+  7 failed
+    tests/pits-v03.spec.js:87:1 › maximum grid physical stop, coordinated crew, all camera/preset pairs, few-bot finish 
+    tests/shadows.spec.js:83:1 › shadows: same-frame depth/colour in stop, acceleration, braking, turns, spin, all bots and cameras 
+    tests/shadows.spec.js:248:1 › shadows: real pit entry, queued approach, jacked service, release and merge 
+    tests/v04.spec.js:26:1 › v0.4 real keyboard and camera projection, neutral/rebind/blur/pause ───
+    tests/v05.spec.js:13:1 › v0.5 full Sprint season via real menu/session/next/save/archive, no duplicate awards 
+    tests/v07.spec.js:13:1 › v07 venue gallery, actual boards, populated quality levels and moving cars in spectator camera 
+    tests/v07.spec.js:303:1 › v07 crowd spatial response, bounded celebrations and independent engine/effects/crowd sliders 
+  26 passed (11.7m)

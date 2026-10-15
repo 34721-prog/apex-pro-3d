@@ -1,0 +1,3 @@
+# Optional original audio regeneration only. Runtime uses the included MP3s.
+numpy==2.3.5
+# Also install ffmpeg with the libmp3lame encoder through your OS package manager.

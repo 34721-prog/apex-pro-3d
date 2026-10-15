@@ -1,0 +1,32 @@
+{
+  "version": "0.5.0",
+  "prefix": "Apex-Dynasty-v0.5",
+  "testedPayloadFiles": 229,
+  "testedPayloadManifestSha256": "dd501ab2e094fb22dd9f411661fb41cab1a9147a4bd9c846415718b45e19ddc2",
+  "npmCi": true,
+  "build": true,
+  "node": {
+    "passed": 106,
+    "failed": 0,
+    "skipped": 0
+  },
+  "chromium": {
+    "startTime": "2026-10-14T23:42:23.256Z",
+    "duration": 373076.477,
+    "expected": 16,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "assets": true,
+  "scenariosSC": 14,
+  "sessions": 56,
+  "rounds": 25,
+  "runtimePort": 5185,
+  "sourceMatchesTestedPayload": true,
+  "rebuiltCompiledFilesIdentical": [
+    "index.html",
+    "assets/index-CvlrA5Ti.js",
+    "assets/index-2bzIeoEt.css"
+  ]
+}

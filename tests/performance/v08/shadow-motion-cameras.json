@@ -1,0 +1,4259 @@
+[
+  {
+    "label": "stopped",
+    "quality": "medium",
+    "rows": [
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 9,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 10,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 11,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 12,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 13,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 14,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 15,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 16,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 17,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 18,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 19,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 20,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      }
+    ]
+  },
+  {
+    "label": "acceleration",
+    "quality": "medium",
+    "rows": [
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 21,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 22,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 23,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 24,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 25,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 26,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 27,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 28,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 29,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 30,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 31,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 32,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 118,
+          "textures": 23
+        }
+      }
+    ]
+  },
+  {
+    "label": "braking",
+    "quality": "medium",
+    "rows": [
+      {
+        "errors": [],
+        "visible": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 33,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 34,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 35,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 36,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 37,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 38,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 39,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 40,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 41,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 42,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 43,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 44,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      }
+    ]
+  },
+  {
+    "label": "left",
+    "quality": "medium",
+    "rows": [
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 45,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 46,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 47,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 48,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 49,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 50,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 51,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          2,
+          1,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 52,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          1,
+          2,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 53,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          1,
+          2,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 54,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 119,
+          "textures": 23
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          1,
+          2,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 55,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 120,
+          "textures": 24
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          1,
+          2,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 56,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 120,
+          "textures": 24
+        }
+      }
+    ]
+  },
+  {
+    "label": "right",
+    "quality": "medium",
+    "rows": [
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          1,
+          2,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 57,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 120,
+          "textures": 24
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          1,
+          2,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 58,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 120,
+          "textures": 24
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          1,
+          2,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 59,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 120,
+          "textures": 24
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          1,
+          2,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 60,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 120,
+          "textures": 24
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          1,
+          2,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 61,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 120,
+          "textures": 24
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          1,
+          2,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 62,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 120,
+          "textures": 24
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          1,
+          2,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 63,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 121,
+          "textures": 24
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          1,
+          2,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 64,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 121,
+          "textures": 24
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          3,
+          4,
+          1,
+          2,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 65,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 121,
+          "textures": 24
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          3,
+          4,
+          1,
+          2,
+          "SC",
+          0,
+          5
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 66,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 121,
+          "textures": 24
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          3,
+          4,
+          1,
+          2,
+          "SC",
+          0,
+          5
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 67,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 121,
+          "textures": 24
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          3,
+          4,
+          1,
+          2,
+          "SC",
+          0,
+          5
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 68,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 121,
+          "textures": 24
+        }
+      }
+    ]
+  },
+  {
+    "label": "spin",
+    "quality": "medium",
+    "rows": [
+      {
+        "errors": [],
+        "visible": [
+          3,
+          4,
+          1,
+          2,
+          "SC",
+          0,
+          5
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 69,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 121,
+          "textures": 24
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          3,
+          4,
+          1,
+          2,
+          "SC",
+          0,
+          5
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 70,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 122,
+          "textures": 24
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          3,
+          4,
+          1,
+          2,
+          "SC",
+          0,
+          5
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 71,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 123,
+          "textures": 25
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          3,
+          4,
+          1,
+          2,
+          "SC",
+          0,
+          5
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 72,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 123,
+          "textures": 25
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          3,
+          4,
+          1,
+          2,
+          "SC",
+          0,
+          5
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 73,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 125,
+          "textures": 26
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          3,
+          1,
+          4,
+          2,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 74,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 127,
+          "textures": 26
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          3,
+          1,
+          4,
+          2,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 75,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 128,
+          "textures": 26
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          3,
+          1,
+          4,
+          2,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 76,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 130,
+          "textures": 27
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          3,
+          1,
+          4,
+          2,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 77,
+        "span": [
+          160,
+          224
+        ],
+        "resources": {
+          "geometries": 131,
+          "textures": 28
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          3,
+          1,
+          4,
+          2,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 78,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 136,
+          "textures": 29
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          3,
+          4,
+          2,
+          "SC",
+          0
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 79,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 137,
+          "textures": 30
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          4,
+          0,
+          3
+        ],
+        "depthIds": [
+          "SC",
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 54,
+        "updates": 80,
+        "span": [
+          192,
+          224
+        ],
+        "resources": {
+          "geometries": 139,
+          "textures": 30
+        }
+      }
+    ]
+  },
+  {
+    "label": "stopped",
+    "quality": "high",
+    "rows": [
+      {
+        "errors": [],
+        "visible": [
+          0,
+          3
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 81,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 140,
+          "textures": 30
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0,
+          3
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 82,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 142,
+          "textures": 30
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 83,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 143,
+          "textures": 31
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 84,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 145,
+          "textures": 32
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 85,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 150,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0,
+          3
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 86,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 150,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0,
+          3
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 87,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 151,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0,
+          3
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 88,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0,
+          3
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 89,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0,
+          3,
+          5
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 90,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0,
+          3,
+          5
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 91,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          0,
+          3
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 92,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      }
+    ]
+  },
+  {
+    "label": "acceleration",
+    "quality": "high",
+    "rows": [
+      {
+        "errors": [],
+        "visible": [
+          5,
+          0,
+          3
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 93,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          0,
+          3
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 94,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          0,
+          3
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 95,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          0,
+          3
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 96,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          0,
+          3
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 97,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          0,
+          3
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 98,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          0,
+          3
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 99,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          0,
+          3
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 100,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          0,
+          3
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 101,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 102,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 103,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 104,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      }
+    ]
+  },
+  {
+    "label": "braking",
+    "quality": "high",
+    "rows": [
+      {
+        "errors": [],
+        "visible": [
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 105,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 106,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 107,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 108,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 109,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 110,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          5,
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 111,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0,
+          5
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 112,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0,
+          5
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 113,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0,
+          5
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 114,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 115,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 116,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      }
+    ]
+  },
+  {
+    "label": "left",
+    "quality": "high",
+    "rows": [
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 117,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 118,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 119,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 120,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 121,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 122,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 123,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 124,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 125,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 126,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 127,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 128,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      }
+    ]
+  },
+  {
+    "label": "right",
+    "quality": "high",
+    "rows": [
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 48,
+        "updates": 129,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 47,
+        "updates": 130,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 47,
+        "updates": 131,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 44,
+        "updates": 132,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 44,
+        "updates": 133,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "draws": 43,
+        "updates": 134,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          3,
+          4,
+          5
+        ],
+        "draws": 39,
+        "updates": 135,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          3,
+          4,
+          5
+        ],
+        "draws": 39,
+        "updates": 136,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          3,
+          4,
+          5
+        ],
+        "draws": 36,
+        "updates": 137,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          3,
+          4,
+          5
+        ],
+        "draws": 36,
+        "updates": 138,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          3,
+          4,
+          5
+        ],
+        "draws": 34,
+        "updates": 139,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          3,
+          5
+        ],
+        "draws": 31,
+        "updates": 140,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      }
+    ]
+  },
+  {
+    "label": "spin",
+    "quality": "high",
+    "rows": [
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          3,
+          5
+        ],
+        "draws": 31,
+        "updates": 141,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          3,
+          5
+        ],
+        "draws": 28,
+        "updates": 142,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          3,
+          5
+        ],
+        "draws": 28,
+        "updates": 143,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          3,
+          5
+        ],
+        "draws": 28,
+        "updates": 144,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          3,
+          5
+        ],
+        "draws": 28,
+        "updates": 145,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          3,
+          5
+        ],
+        "draws": 28,
+        "updates": 146,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          3,
+          5
+        ],
+        "draws": 29,
+        "updates": 147,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          3,
+          5
+        ],
+        "draws": 31,
+        "updates": 148,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          3,
+          5
+        ],
+        "draws": 31,
+        "updates": 149,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          3,
+          4,
+          5
+        ],
+        "draws": 35,
+        "updates": 150,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          3,
+          4,
+          5
+        ],
+        "draws": 36,
+        "updates": 151,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      },
+      {
+        "errors": [],
+        "visible": [
+          0
+        ],
+        "depthIds": [
+          0,
+          1,
+          3,
+          4,
+          5
+        ],
+        "draws": 36,
+        "updates": 152,
+        "span": [
+          128,
+          128
+        ],
+        "resources": {
+          "geometries": 152,
+          "textures": 35
+        }
+      }
+    ]
+  },
+  {
+    "camera": "chase",
+    "errors": [],
+    "visible": [
+      5,
+      3,
+      1,
+      0
+    ],
+    "depthIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "draws": 48,
+    "updates": 153,
+    "span": [
+      128,
+      128
+    ],
+    "resources": {
+      "geometries": 153,
+      "textures": 35
+    }
+  },
+  {
+    "camera": "far",
+    "errors": [],
+    "visible": [
+      5,
+      3,
+      1,
+      0
+    ],
+    "depthIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "draws": 48,
+    "updates": 154,
+    "span": [
+      128,
+      128
+    ],
+    "resources": {
+      "geometries": 153,
+      "textures": 35
+    }
+  },
+  {
+    "camera": "cockpit",
+    "errors": [],
+    "visible": [
+      5,
+      3,
+      1,
+      0
+    ],
+    "depthIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "draws": 48,
+    "updates": 155,
+    "span": [
+      128,
+      128
+    ],
+    "resources": {
+      "geometries": 153,
+      "textures": 35
+    }
+  },
+  {
+    "camera": "broadcast",
+    "errors": [],
+    "visible": [
+      0
+    ],
+    "depthIds": [
+      0,
+      1,
+      3,
+      5
+    ],
+    "draws": 31,
+    "updates": 156,
+    "span": [
+      128,
+      128
+    ],
+    "resources": {
+      "geometries": 153,
+      "textures": 35
+    }
+  },
+  {
+    "camera": "pit-garage",
+    "errors": [],
+    "visible": [],
+    "depthIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "draws": 48,
+    "updates": 157,
+    "span": [
+      128,
+      128
+    ],
+    "resources": {
+      "geometries": 153,
+      "textures": 35
+    }
+  },
+  {
+    "camera": "pit-wheels",
+    "errors": [],
+    "visible": [],
+    "depthIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "draws": 48,
+    "updates": 158,
+    "span": [
+      128,
+      128
+    ],
+    "resources": {
+      "geometries": 153,
+      "textures": 35
+    }
+  },
+  {
+    "camera": "pit-lane",
+    "errors": [],
+    "visible": [
+      0
+    ],
+    "depthIds": [
+      0,
+      1,
+      3,
+      5
+    ],
+    "draws": 31,
+    "updates": 159,
+    "span": [
+      128,
+      128
+    ],
+    "resources": {
+      "geometries": 153,
+      "textures": 35
+    }
+  },
+  {
+    "camera": "safety-car",
+    "errors": [],
+    "visible": [
+      "SC"
+    ],
+    "depthIds": [
+      "SC"
+    ],
+    "draws": 6,
+    "updates": 160,
+    "span": [
+      128,
+      128
+    ],
+    "resources": {
+      "geometries": 153,
+      "textures": 35
+    }
+  },
+  {
+    "camera": "grandstands",
+    "errors": [],
+    "visible": [
+      5,
+      3
+    ],
+    "depthIds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "draws": 40,
+    "updates": 161,
+    "span": [
+      128,
+      128
+    ],
+    "resources": {
+      "geometries": 153,
+      "textures": 35
+    }
+  }
+]

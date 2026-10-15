@@ -1,0 +1,150 @@
+[
+  {
+    "track": "aurora",
+    "legacyPaddockOverlaps": [
+      1,
+      2
+    ]
+  },
+  {
+    "track": "veloce",
+    "legacyPaddockOverlaps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "track": "serpente",
+    "legacyPaddockOverlaps": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "track": "neon",
+    "legacyPaddockOverlaps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "track": "titan",
+    "legacyPaddockOverlaps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "track": "vento",
+    "legacyPaddockOverlaps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "track": "sahara",
+    "legacyPaddockOverlaps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "track": "alpine",
+    "legacyPaddockOverlaps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "track": "emerald",
+    "legacyPaddockOverlaps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "track": "oldtown",
+    "legacyPaddockOverlaps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "track": "sunset",
+    "legacyPaddockOverlaps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "track": "nordic",
+    "legacyPaddockOverlaps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "track": "desert-night",
+    "legacyPaddockOverlaps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "track": "discovery",
+    "legacyPaddockOverlaps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  }
+]

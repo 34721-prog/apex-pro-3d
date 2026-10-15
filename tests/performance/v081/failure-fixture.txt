@@ -1,0 +1,6 @@
+
+Running 1 test using 1 worker
+
+  ✓  1 tests/stability.spec.js:35:1 › v081 texture/GLB failures show useful warning and keep original procedural fallback (3.0s)
+
+  1 passed (4.0s)

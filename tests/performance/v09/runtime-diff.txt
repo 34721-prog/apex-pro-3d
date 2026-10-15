@@ -1,0 +1,197 @@
+--- v081/src/core/Game.js
++++ v09/src/core/Game.js
+@@ -629,6 +629,7 @@
+         this.race?.cars || [],
+         this.race?.state || "menu",
+         this.race?.countdown || 0,
++        this.simulating ? 1 : this.loop.accumulator / this.loop.step,
+       );
+       this.lastRender = t;
+       this.renderElapsed = 0;
+--- v081/src/graphics/PitVisuals.js
++++ v09/src/graphics/PitVisuals.js
+@@ -1,3 +1,5 @@
++import { serviceLift } from "./VehicleMotion.js";
++import { PIT_HEIGHT } from "./VehiclePresentation.js";
+ import { batchScenery } from "../optimize.js";
+ import { compounds } from "../strategy/Resources.js";
+ import * as THREE from "three";
+@@ -27,7 +29,7 @@
+       t = at(s),
+       off = pitOffset(s);
+     for (const x of [off - 4.8, off + 4.8 + 12 * apron(s)]) {
+-      vs.push(t.p.x + t.right.x * x, 0.14, t.p.z + t.right.z * x);
++      vs.push(t.p.x + t.right.x * x, PIT_HEIGHT, t.p.z + t.right.z * x);
+       uv.push(x / 10, s / 6);
+     }
+     if (i < n) {
+@@ -280,7 +282,7 @@
+       jack + 1,
+       base,
+       jackX,
+-      service && phase > 0.1 && phase < 0.9 ? 0.42 : 0.28,
++      0.28 + 0.14 * serviceLift(car?.pit),
+       jackZ - 0.4,
+       0.45,
+       0.18,
+--- v081/src/race.js
++++ v09/src/race.js
+@@ -1,3 +1,4 @@
++import { beginVisualStep, endVisualStep, resetVisualHistory } from "./graphics/VehicleMotion.js";
+ import { StrategyDirector } from "./strategy/StrategyDirector.js";
+ import { RaceControl } from "./regulations/RaceControl.js";
+ import { RaceTiming } from "./racing/Timing.js";
+@@ -199,6 +200,15 @@
+       this.events.splice(0, this.events.length - 150);
+   }
+   step(dt, input, autopilot = false) {
++    if (!Number.isFinite(dt) || dt <= 0 || this.state === "paused" || this.state === "results") return;
++    const previousState = this.state;
++    for (const car of this.cars) beginVisualStep(car);
++    this.advanceSimulation(dt, input, autopilot);
++    for (const car of this.cars) endVisualStep(car, dt);
++    if (previousState !== this.state)
++      for (const car of this.cars) resetVisualHistory(car);
++  }
++  advanceSimulation(dt, input, autopilot = false) {
+     if (this.state === "paused" || this.state === "results") return;
+     if (this.state === "red") {
+       this.control.redStep(dt);
+@@ -352,6 +362,7 @@
+     }));
+   }
+   pause() {
++    for (const car of this.cars) resetVisualHistory(car);
+     if (this.state === "paused") {
+       this.state = this.previousState;
+       return;
+--- v081/src/renderer.js
++++ v09/src/renderer.js
+@@ -1,3 +1,5 @@
++import { rigVehicle, applyVehiclePose, interpolationAddsOverlap, ROAD_HEIGHT, KERB_RISE, KERB_WIDTH } from "./graphics/VehiclePresentation.js";
++import { readVisualPose, visualCut } from "./graphics/VehicleMotion.js";
+ import { DynamicShadows } from "./graphics/DynamicShadows.js";
+ import { VenueVisuals } from "./venue/VenueVisuals.js";
+ import { makeSafetyCar } from "./graphics/SafetyCarModel.js";
+@@ -81,6 +83,7 @@
+     this.texLoader = new THREE.TextureLoader(manager);
+     this.carMeshes = [];
+     this.carById = new Map();
++    this.visualDrivers = [];
+     this.mode = "showcase";
+     this.cameraMode = "chase";
+     this.previewRotation = 0;
+@@ -214,7 +217,7 @@
+         dir = next.clone().sub(p).normalize(),
+         r = new THREE.Vector3(dir.z, 0, -dir.x);
+       for (const offset of [inner, outer]) {
+-        verts.push(p.x + r.x * offset, 0.12, p.z + r.z * offset);
++        verts.push(p.x + r.x * offset, ROAD_HEIGHT, p.z + r.z * offset);
+         uv.push(offset / (outer - inner), (i * length) / samples.length / 5);
+         if (colorKerb) {
+           const c = new THREE.Color(
+@@ -278,17 +281,17 @@
+       map: this.texture("kerb-red-white"),
+     });
+     this.ribbon(
+-      -TRACK_WIDTH / 2 - 1.5,
++      -TRACK_WIDTH / 2 - KERB_WIDTH,
+       -TRACK_WIDTH / 2,
+       kerbMat,
+       true,
+-    ).position.y = 0.035;
++    ).position.y = KERB_RISE;
+     this.ribbon(
+       TRACK_WIDTH / 2,
+-      TRACK_WIDTH / 2 + 1.5,
++      TRACK_WIDTH / 2 + KERB_WIDTH,
+       kerbMat,
+       true,
+-    ).position.y = 0.035;
++    ).position.y = KERB_RISE;
+     let line = new THREE.MeshLambertMaterial({
+       color: "#e5e6d7",
+       side: THREE.DoubleSide,
+@@ -782,10 +785,8 @@
+             d.modelIndex !== undefined || !!this.customization;
+         }
+         mesh._frontWing = mesh.getObjectByName("front-wing");
+-        mesh._wheels = [];
+-        mesh.traverse((o) => {
+-          if (o.name === "wheel") mesh._wheels.push(o);
+-        });
++        rigVehicle(mesh);
++        mesh._driverView = Object.create(d);
+         mesh.userData.driverId = d.id;
+         this.carById.set(d.id, mesh);
+         this.carMeshes.push(mesh);
+@@ -817,9 +818,14 @@
+   observeFrame(dt, active) {
+     observePerformance(this, dt, active);
+   }
+-  render(dt, drivers = [], state = "menu", countdown = 0) {
++  render(dt, drivers = [], state = "menu", countdown = 0, alpha = 1) {
+     if (!this.assetsReady || this.disposed) return;
++    dt = Number.isFinite(dt) ? Math.max(0, Math.min(dt, 0.25)) : 0;
+     this.elapsed += dt;
++    // A corrected/contact/teleported tick is shown atomically for the whole grid.
++    // Never interpolate one participant through another's corrected current pose.
++    if (["paused", "red", "results"].includes(state) || drivers.some(visualCut)) alpha = 1;
++    this.visualDrivers.length = 0;
+     const cam = this.camera;
+     const cp = this.camPoint;
+     for (const m of this.carMeshes) m.visible = false;
+@@ -827,36 +833,28 @@
+       const m = this.carById.get(d.id);
+       if (!m) return;
+       m.visible = true;
+-      m.position.set(
+-        d.x,
+-        0.14 +
+-          (d.pit?.state === "service" && d.pit.phase > 0.1 && d.pit.phase < 0.9
+-            ? 0.14
+-            : 0),
+-        d.z,
+-      );
++      const pose = readVisualPose(d, m._pose, alpha);
++      applyVehiclePose(m, d, pose);
++      const view = m._driverView;
++      if (Object.getPrototypeOf(view) !== d) Object.setPrototypeOf(view, d);
++      view.x = pose.x; view.z = pose.z; view.heading = pose.heading;
++      view.s = pose.s; view.speed = pose.speed;
++      this.visualDrivers.push(view);
+       if (m._frontWing) {
+         m._frontWing.rotation.z = (d.wingDamage || 0) * 0.12;
+         m._frontWing.scale.x = 1 - (d.wingDamage || 0) * 0.18;
+       }
+-      m.rotation.y = d.heading;
+-      m.rotation.z = -d.steer * d.speed * 0.0007;
+-      m.rotation.x = d.load * 0.035;
+-      for (const o of m._wheels) {
+-        o.visible = !(
+-          d.pit?.state === "service" &&
+-          d.pit.phase > 0.24 &&
+-          d.pit.phase < 0.84
+-        );
+-        {
+-          o.rotation.x =
+-            (o.rotation.x +
+-              (d.speed * (["paused", "red"].includes(state) ? 0 : dt)) / 0.58) %
+-            (Math.PI * 2);
+-          o.rotation.y = o.userData.front ? d.steer * 0.18 : 0;
+-        }
++    });
++    if (alpha < 1 && interpolationAddsOverlap(this.visualDrivers)) {
++      for (const view of this.visualDrivers) {
++        const d = Object.getPrototypeOf(view), m = this.carById.get(d.id);
++        const pose = readVisualPose(d, m._pose, 1);
++        applyVehiclePose(m, d, pose);
++        view.x = pose.x; view.z = pose.z; view.heading = pose.heading;
++        view.s = pose.s; view.speed = pose.speed;
+       }
+-    });
++    }
++    drivers = this.visualDrivers;
+     if (
+       this.mode === "venue-preview" ||
+       (this.mode === "race" && this.cameraMode === "grandstands")

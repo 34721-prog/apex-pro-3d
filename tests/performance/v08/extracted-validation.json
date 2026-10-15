@@ -1,0 +1,17 @@
+{
+  "payloadFiles": 271,
+  "allHashesMatch": true,
+  "rebuiltPlayable": [
+    "playable/assets/index-DuQ6yNdr.js",
+    "playable/assets/index-DxiZCROj.css",
+    "playable/index.html"
+  ],
+  "browserStats": {
+    "startTime": "2026-10-15T03:01:24.804Z",
+    "duration": 769920.5819999999,
+    "expected": 29,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

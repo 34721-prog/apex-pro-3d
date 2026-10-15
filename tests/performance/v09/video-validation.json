@@ -1,0 +1,23 @@
+{
+  "method": "Real engine offline JPEG frames, encoded separately after initial FFmpeg demuxer failure; browser decoded both WebM files. Not a real-time FPS measurement.",
+  "rows": [
+    {
+      "tag": "before",
+      "frames": 192,
+      "playbackFPS": 30,
+      "duration": 6.4,
+      "width": 960,
+      "height": 540,
+      "decodedFrame": 4.2
+    },
+    {
+      "tag": "after",
+      "frames": 192,
+      "playbackFPS": 30,
+      "duration": 6.4,
+      "width": 960,
+      "height": 540,
+      "decodedFrame": 4.2
+    }
+  ]
+}

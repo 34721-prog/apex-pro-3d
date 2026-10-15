@@ -1,0 +1,2273 @@
+{
+  "records": [
+    {
+      "track": "aurora",
+      "index": 0,
+      "people": 5719,
+      "stats": {
+        "frame": 8,
+        "calls": 50,
+        "triangles": 86018,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 54,
+        "textures": 11
+      },
+      "board": {
+        "track": "aurora",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "aurora-0",
+        "index": 0,
+        "s": 6.177511960922379,
+        "x": -353.04604389341335,
+        "z": 380.8948921251252,
+        "heading": -0.16797378882881353,
+        "side": -1,
+        "front": 32,
+        "width": 76,
+        "rows": 10,
+        "depth": 15,
+        "halfWidth": 40,
+        "halfDepth": 9.5,
+        "sector": 1,
+        "main": true,
+        "night": false,
+        "theme": "forest",
+        "colors": {
+          "roof": "#aebead",
+          "base": "#a5b0a4",
+          "accent": "#ba3652",
+          "format": "Clássica / bosque"
+        },
+        "roof": true,
+        "screen": true,
+        "label": "RETA PRINCIPAL",
+        "minRoadClearance": 29.998921631575186,
+        "minPitClearance": 30.050755145323954,
+        "columns": 84,
+        "capacity": 840,
+        "spectators": 800
+      }
+    },
+    {
+      "track": "aurora",
+      "index": 4,
+      "people": 5719,
+      "stats": {
+        "frame": 9,
+        "calls": 32,
+        "triangles": 70210,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 60,
+        "textures": 11
+      },
+      "board": {
+        "track": "aurora",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "aurora-4",
+        "index": 4,
+        "s": 1158.2834926729452,
+        "x": 553.07624383551,
+        "z": -30.859679604330058,
+        "heading": -4.504408237848594,
+        "side": -1,
+        "front": 32,
+        "width": 58,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 31,
+        "halfDepth": 8.3,
+        "sector": 2,
+        "main": false,
+        "night": false,
+        "theme": "forest",
+        "colors": {
+          "roof": "#aebead",
+          "base": "#a5b0a4",
+          "accent": "#ba3652",
+          "format": "Clássica / bosque"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "RETA / SETOR 2",
+        "minRoadClearance": 30.000000000000053,
+        "minPitClearance": 599.5499582040367,
+        "columns": 63,
+        "capacity": 504,
+        "spectators": 480
+      }
+    },
+    {
+      "track": "aurora",
+      "index": 7,
+      "people": 5719,
+      "stats": {
+        "frame": 10,
+        "calls": 67,
+        "triangles": 82038,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 70,
+        "textures": 18
+      },
+      "board": {
+        "track": "aurora",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "aurora-7",
+        "index": 7,
+        "s": 2362.8983250528086,
+        "x": -469.20318709104805,
+        "z": -155.84270757396143,
+        "heading": -0.3789978283178268,
+        "side": 1,
+        "front": 32,
+        "width": 66,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 35,
+        "halfDepth": 8.3,
+        "sector": 3,
+        "main": false,
+        "night": false,
+        "theme": "forest",
+        "colors": {
+          "roof": "#aebead",
+          "base": "#a5b0a4",
+          "accent": "#ba3652",
+          "format": "Clássica / bosque"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "RETA / SETOR 3",
+        "minRoadClearance": 24.878686503706135,
+        "minPitClearance": 266.92713391332796,
+        "columns": 72,
+        "capacity": 576,
+        "spectators": 552
+      }
+    },
+    {
+      "track": "veloce",
+      "index": 0,
+      "people": 5719,
+      "stats": {
+        "frame": 1,
+        "calls": 50,
+        "triangles": 96194,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 43,
+        "textures": 10
+      },
+      "board": {
+        "track": "veloce",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "veloce-0",
+        "index": 0,
+        "s": 7.877556722199311,
+        "x": -474.6735647680886,
+        "z": 380.00697093394314,
+        "heading": -0.06403541299793059,
+        "side": -1,
+        "front": 32,
+        "width": 76,
+        "rows": 10,
+        "depth": 15,
+        "halfWidth": 40,
+        "halfDepth": 9.5,
+        "sector": 1,
+        "main": true,
+        "night": false,
+        "theme": "highland",
+        "colors": {
+          "roof": "#70889b",
+          "base": "#c1c5c7",
+          "accent": "#b03b52",
+          "format": "Terraços / montanha"
+        },
+        "roof": true,
+        "screen": true,
+        "label": "RETA PRINCIPAL",
+        "minRoadClearance": 29.999474239563476,
+        "minPitClearance": 30.004800231104447,
+        "columns": 84,
+        "capacity": 840,
+        "spectators": 800
+      }
+    },
+    {
+      "track": "veloce",
+      "index": 4,
+      "people": 5719,
+      "stats": {
+        "frame": 2,
+        "calls": 32,
+        "triangles": 80386,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 49,
+        "textures": 10
+      },
+      "board": {
+        "track": "veloce",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "veloce-4",
+        "index": 4,
+        "s": 1528.2460041066647,
+        "x": 739.071756102503,
+        "z": -92.31666537013811,
+        "heading": -4.3798856228032355,
+        "side": -1,
+        "front": 32,
+        "width": 58,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 31,
+        "halfDepth": 8.3,
+        "sector": 2,
+        "main": false,
+        "night": false,
+        "theme": "highland",
+        "colors": {
+          "roof": "#70889b",
+          "base": "#c1c5c7",
+          "accent": "#b03b52",
+          "format": "Terraços / montanha"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "RETA / SETOR 2",
+        "minRoadClearance": 29.99976893701893,
+        "minPitClearance": 919.3701223122316,
+        "columns": 63,
+        "capacity": 504,
+        "spectators": 480
+      }
+    },
+    {
+      "track": "veloce",
+      "index": 7,
+      "people": 5719,
+      "stats": {
+        "frame": 3,
+        "calls": 48,
+        "triangles": 86158,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 63,
+        "textures": 19
+      },
+      "board": {
+        "track": "veloce",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "veloce-7",
+        "index": 7,
+        "s": 2867.4306468805466,
+        "x": -337.1807010417055,
+        "z": -161.32491864623137,
+        "heading": 1.0341144829902302,
+        "side": 1,
+        "front": 32,
+        "width": 66,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 35,
+        "halfDepth": 8.3,
+        "sector": 3,
+        "main": false,
+        "night": false,
+        "theme": "highland",
+        "colors": {
+          "roof": "#70889b",
+          "base": "#c1c5c7",
+          "accent": "#b03b52",
+          "format": "Terraços / montanha"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "CURVA / SETOR 3",
+        "minRoadClearance": 29.997719849160017,
+        "minPitClearance": 357.8515094974298,
+        "columns": 72,
+        "capacity": 576,
+        "spectators": 552
+      }
+    },
+    {
+      "track": "serpente",
+      "index": 0,
+      "people": 6464,
+      "stats": {
+        "frame": 1,
+        "calls": 50,
+        "triangles": 88658,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 43,
+        "textures": 10
+      },
+      "board": {
+        "track": "serpente",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "serpente-0",
+        "index": 0,
+        "s": 6.613044983738317,
+        "x": -357.87239391222846,
+        "z": 350.14247458129466,
+        "heading": -0.1122212152295381,
+        "side": -1,
+        "front": 32,
+        "width": 76,
+        "rows": 10,
+        "depth": 15,
+        "halfWidth": 40,
+        "halfDepth": 9.5,
+        "sector": 1,
+        "main": true,
+        "night": false,
+        "theme": "desert",
+        "colors": {
+          "roof": "#d9c8a4",
+          "base": "#b6a284",
+          "accent": "#d77442",
+          "format": "Canopies do deserto"
+        },
+        "roof": true,
+        "screen": true,
+        "label": "RETA PRINCIPAL",
+        "minRoadClearance": 29.99908911866749,
+        "minPitClearance": 30.02922354693198,
+        "columns": 84,
+        "capacity": 840,
+        "spectators": 800
+      }
+    },
+    {
+      "track": "serpente",
+      "index": 4,
+      "people": 6464,
+      "stats": {
+        "frame": 2,
+        "calls": 43,
+        "triangles": 76292,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 58,
+        "textures": 15
+      },
+      "board": {
+        "track": "serpente",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "serpente-4",
+        "index": 4,
+        "s": 1282.9307268452321,
+        "x": 213.64862982291976,
+        "z": -37.139927964941734,
+        "heading": -3.1188532794642745,
+        "side": -1,
+        "front": 43,
+        "width": 72,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 38,
+        "halfDepth": 8.3,
+        "sector": 2,
+        "main": false,
+        "night": false,
+        "theme": "desert",
+        "colors": {
+          "roof": "#d9c8a4",
+          "base": "#b6a284",
+          "accent": "#d77442",
+          "format": "Canopies do deserto"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "CURVA / SETOR 2",
+        "minRoadClearance": 24.445547496025053,
+        "minPitClearance": 293.3092489840838,
+        "columns": 80,
+        "capacity": 640,
+        "spectators": 608
+      }
+    },
+    {
+      "track": "serpente",
+      "index": 7,
+      "people": 6464,
+      "stats": {
+        "frame": 3,
+        "calls": 46,
+        "triangles": 78364,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 71,
+        "textures": 24
+      },
+      "board": {
+        "track": "serpente",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "serpente-7",
+        "index": 7,
+        "s": 2529.4897062799046,
+        "x": -206.67821936203643,
+        "z": -119.5737570667628,
+        "heading": 0.6831728805751541,
+        "side": 1,
+        "front": 32,
+        "width": 72,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 38,
+        "halfDepth": 8.3,
+        "sector": 3,
+        "main": false,
+        "night": false,
+        "theme": "desert",
+        "colors": {
+          "roof": "#d9c8a4",
+          "base": "#b6a284",
+          "accent": "#d77442",
+          "format": "Canopies do deserto"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "CURVA / SETOR 3",
+        "minRoadClearance": 29.99061398621016,
+        "minPitClearance": 270.2316214958043,
+        "columns": 80,
+        "capacity": 640,
+        "spectators": 608
+      }
+    },
+    {
+      "track": "neon",
+      "index": 0,
+      "people": 3760,
+      "stats": {
+        "frame": 1,
+        "calls": 53,
+        "triangles": 93050,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 44,
+        "textures": 10
+      },
+      "board": {
+        "track": "neon",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "neon-0",
+        "index": 0,
+        "s": 7.011549179329613,
+        "x": -434.95072363265075,
+        "z": 359.86456773477653,
+        "heading": -0.04935193670593674,
+        "side": -1,
+        "front": 32,
+        "width": 76,
+        "rows": 10,
+        "depth": 15,
+        "halfWidth": 40,
+        "halfDepth": 9.5,
+        "sector": 1,
+        "main": true,
+        "night": true,
+        "theme": "city",
+        "colors": {
+          "roof": "#798998",
+          "base": "#a7adb4",
+          "accent": "#d34973",
+          "format": "Temporária / urbana"
+        },
+        "roof": true,
+        "screen": true,
+        "label": "RETA PRINCIPAL",
+        "minRoadClearance": 29.99959684630162,
+        "minPitClearance": 30.00940122287981,
+        "columns": 84,
+        "capacity": 840,
+        "spectators": 800
+      }
+    },
+    {
+      "track": "neon",
+      "index": 4,
+      "people": 3760,
+      "stats": {
+        "frame": 2,
+        "calls": 36,
+        "triangles": 76846,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 50,
+        "textures": 10
+      },
+      "board": {
+        "track": "neon",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "neon-4",
+        "index": 4,
+        "s": 1360.2405407899435,
+        "x": 600.5458458563393,
+        "z": -97.0594655878302,
+        "heading": -4.5682608152115325,
+        "side": -1,
+        "front": 32,
+        "width": 44,
+        "rows": 6,
+        "depth": 10.2,
+        "halfWidth": 24,
+        "halfDepth": 7.1,
+        "sector": 2,
+        "main": false,
+        "night": true,
+        "theme": "city",
+        "colors": {
+          "roof": "#798998",
+          "base": "#a7adb4",
+          "accent": "#d34973",
+          "format": "Temporária / urbana"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "CURVA / SETOR 2",
+        "minRoadClearance": 29.999750493662397,
+        "minPitClearance": 743.0015135774615,
+        "columns": 47,
+        "capacity": 282,
+        "spectators": 270
+      }
+    },
+    {
+      "track": "neon",
+      "index": 7,
+      "people": 3760,
+      "stats": {
+        "frame": 3,
+        "calls": 55,
+        "triangles": 80056,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 67,
+        "textures": 22
+      },
+      "board": {
+        "track": "neon",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "neon-7",
+        "index": 7,
+        "s": 2506.628831610334,
+        "x": -292.0184170925012,
+        "z": -301.6008254481882,
+        "heading": 0.9767527374450924,
+        "side": 1,
+        "front": 32,
+        "width": 44,
+        "rows": 6,
+        "depth": 10.2,
+        "halfWidth": 24,
+        "halfDepth": 7.1,
+        "sector": 3,
+        "main": false,
+        "night": true,
+        "theme": "city",
+        "colors": {
+          "roof": "#798998",
+          "base": "#a7adb4",
+          "accent": "#d34973",
+          "format": "Temporária / urbana"
+        },
+        "roof": false,
+        "screen": false,
+        "label": "CURVA / SETOR 3",
+        "minRoadClearance": 23.15826558749543,
+        "minPitClearance": 468.66708841265483,
+        "columns": 47,
+        "capacity": 282,
+        "spectators": 270
+      }
+    },
+    {
+      "track": "titan",
+      "index": 0,
+      "people": 6464,
+      "stats": {
+        "frame": 1,
+        "calls": 50,
+        "triangles": 104570,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 43,
+        "textures": 10
+      },
+      "board": {
+        "track": "titan",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "titan-0",
+        "index": 0,
+        "s": 9.259583191457104,
+        "x": -642.7856129656473,
+        "z": 400.00154392118355,
+        "heading": -0.051336260715558524,
+        "side": -1,
+        "front": 32,
+        "width": 76,
+        "rows": 10,
+        "depth": 15,
+        "halfWidth": 40,
+        "halfDepth": 9.5,
+        "sector": 1,
+        "main": true,
+        "night": false,
+        "theme": "desert",
+        "colors": {
+          "roof": "#d9c8a4",
+          "base": "#b6a284",
+          "accent": "#d77442",
+          "format": "Canopies do deserto"
+        },
+        "roof": true,
+        "screen": true,
+        "label": "RETA PRINCIPAL",
+        "minRoadClearance": 29.99951074390762,
+        "minPitClearance": 30.000342855518213,
+        "columns": 84,
+        "capacity": 840,
+        "spectators": 800
+      }
+    },
+    {
+      "track": "titan",
+      "index": 4,
+      "people": 6464,
+      "stats": {
+        "frame": 2,
+        "calls": 32,
+        "triangles": 89030,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 49,
+        "textures": 10
+      },
+      "board": {
+        "track": "titan",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "titan-4",
+        "index": 4,
+        "s": 1967.661428184633,
+        "x": 844.4325315588529,
+        "z": -129.96319091378186,
+        "heading": -3.726309090042963,
+        "side": -1,
+        "front": 32,
+        "width": 72,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 38,
+        "halfDepth": 8.3,
+        "sector": 2,
+        "main": false,
+        "night": false,
+        "theme": "desert",
+        "colors": {
+          "roof": "#d9c8a4",
+          "base": "#b6a284",
+          "accent": "#d77442",
+          "format": "Canopies do deserto"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "CURVA / SETOR 2",
+        "minRoadClearance": 29.999999999999982,
+        "minPitClearance": 1176.960353718802,
+        "columns": 80,
+        "capacity": 640,
+        "spectators": 608
+      }
+    },
+    {
+      "track": "titan",
+      "index": 7,
+      "people": 6464,
+      "stats": {
+        "frame": 3,
+        "calls": 48,
+        "triangles": 97262,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 63,
+        "textures": 19
+      },
+      "board": {
+        "track": "titan",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "titan-7",
+        "index": 7,
+        "s": 3541.7905707323393,
+        "x": -397.95665988017095,
+        "z": -99.72444554764135,
+        "heading": 0.2998487096703548,
+        "side": 1,
+        "front": 32,
+        "width": 72,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 38,
+        "halfDepth": 8.3,
+        "sector": 3,
+        "main": false,
+        "night": false,
+        "theme": "desert",
+        "colors": {
+          "roof": "#d9c8a4",
+          "base": "#b6a284",
+          "accent": "#d77442",
+          "format": "Canopies do deserto"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "RETA / SETOR 3",
+        "minRoadClearance": 29.995533527037093,
+        "minPitClearance": 331.3525908044957,
+        "columns": 80,
+        "capacity": 640,
+        "spectators": 608
+      }
+    },
+    {
+      "track": "vento",
+      "index": 0,
+      "people": 5719,
+      "stats": {
+        "frame": 1,
+        "calls": 51,
+        "triangles": 95150,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 44,
+        "textures": 10
+      },
+      "board": {
+        "track": "vento",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "vento-0",
+        "index": 0,
+        "s": 7.643959715085376,
+        "x": -444.57894709717795,
+        "z": 429.93622802679835,
+        "heading": -0.055856798812773834,
+        "side": -1,
+        "front": 32,
+        "width": 76,
+        "rows": 10,
+        "depth": 15,
+        "halfWidth": 40,
+        "halfDepth": 9.5,
+        "sector": 1,
+        "main": true,
+        "night": false,
+        "theme": "coast",
+        "colors": {
+          "roof": "#cfdfdf",
+          "base": "#bec8bd",
+          "accent": "#458dac",
+          "format": "Coberturas costeiras"
+        },
+        "roof": true,
+        "screen": true,
+        "label": "RETA PRINCIPAL",
+        "minRoadClearance": 29.999553914547022,
+        "minPitClearance": 30.005014922138777,
+        "columns": 84,
+        "capacity": 840,
+        "spectators": 800
+      }
+    },
+    {
+      "track": "vento",
+      "index": 4,
+      "people": 5719,
+      "stats": {
+        "frame": 2,
+        "calls": 33,
+        "triangles": 79334,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 50,
+        "textures": 10
+      },
+      "board": {
+        "track": "vento",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "vento-4",
+        "index": 4,
+        "s": 1482.9281847265613,
+        "x": 749.9220957015524,
+        "z": -55.80965361780896,
+        "heading": -4.20551851198349,
+        "side": -1,
+        "front": 32,
+        "width": 58,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 31,
+        "halfDepth": 8.3,
+        "sector": 2,
+        "main": false,
+        "night": false,
+        "theme": "coast",
+        "colors": {
+          "roof": "#cfdfdf",
+          "base": "#bec8bd",
+          "accent": "#458dac",
+          "format": "Coberturas costeiras"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "RETA / SETOR 2",
+        "minRoadClearance": 29.999245888899733,
+        "minPitClearance": 902.6516324082492,
+        "columns": 63,
+        "capacity": 504,
+        "spectators": 480
+      }
+    },
+    {
+      "track": "vento",
+      "index": 7,
+      "people": 5719,
+      "stats": {
+        "frame": 3,
+        "calls": 55,
+        "triangles": 88658,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 66,
+        "textures": 21
+      },
+      "board": {
+        "track": "vento",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "vento-7",
+        "index": 7,
+        "s": 2923.8145910201542,
+        "x": -424.50256770582075,
+        "z": -131.40384193201155,
+        "heading": 0.7039255103315913,
+        "side": 1,
+        "front": 32,
+        "width": 66,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 35,
+        "halfDepth": 8.3,
+        "sector": 3,
+        "main": false,
+        "night": false,
+        "theme": "coast",
+        "colors": {
+          "roof": "#cfdfdf",
+          "base": "#bec8bd",
+          "accent": "#458dac",
+          "format": "Coberturas costeiras"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "CURVA / SETOR 3",
+        "minRoadClearance": 29.99707869013056,
+        "minPitClearance": 372.3897704783036,
+        "columns": 72,
+        "capacity": 576,
+        "spectators": 552
+      }
+    },
+    {
+      "track": "sahara",
+      "index": 0,
+      "people": 6464,
+      "stats": {
+        "frame": 1,
+        "calls": 50,
+        "triangles": 113882,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 43,
+        "textures": 10
+      },
+      "board": {
+        "track": "sahara",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "sahara-0",
+        "index": 0,
+        "s": 10.810660167618126,
+        "x": -489.19025809385283,
+        "z": 439.5,
+        "heading": 0,
+        "side": -1,
+        "front": 32,
+        "width": 76,
+        "rows": 10,
+        "depth": 15,
+        "halfWidth": 40,
+        "halfDepth": 9.5,
+        "sector": 1,
+        "main": true,
+        "night": false,
+        "theme": "desert",
+        "colors": {
+          "roof": "#d9c8a4",
+          "base": "#b6a284",
+          "accent": "#d77442",
+          "format": "Canopies do deserto"
+        },
+        "roof": true,
+        "screen": true,
+        "label": "RETA PRINCIPAL",
+        "minRoadClearance": 29.360309281475583,
+        "minPitClearance": 29.354304913554188,
+        "columns": 84,
+        "capacity": 840,
+        "spectators": 800
+      }
+    },
+    {
+      "track": "sahara",
+      "index": 4,
+      "people": 6464,
+      "stats": {
+        "frame": 2,
+        "calls": 32,
+        "triangles": 98342,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 49,
+        "textures": 10
+      },
+      "board": {
+        "track": "sahara",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "sahara-4",
+        "index": 4,
+        "s": 2297.26528561885,
+        "x": 851.3586141864024,
+        "z": -401.5621837897389,
+        "heading": -3.5433913975976625,
+        "side": -1,
+        "front": 32,
+        "width": 72,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 38,
+        "halfDepth": 8.3,
+        "sector": 2,
+        "main": false,
+        "night": false,
+        "theme": "desert",
+        "colors": {
+          "roof": "#d9c8a4",
+          "base": "#b6a284",
+          "accent": "#d77442",
+          "format": "Canopies do deserto"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "RETA / SETOR 2",
+        "minRoadClearance": 29.999999999999954,
+        "minPitClearance": 1188.75746587387,
+        "columns": 80,
+        "capacity": 640,
+        "spectators": 608
+      }
+    },
+    {
+      "track": "sahara",
+      "index": 7,
+      "people": 6464,
+      "stats": {
+        "frame": 3,
+        "calls": 69,
+        "triangles": 111282,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 65,
+        "textures": 21
+      },
+      "board": {
+        "track": "sahara",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "sahara-7",
+        "index": 7,
+        "s": 3935.0803010129944,
+        "x": -683.9158104433286,
+        "z": -404.24614795018647,
+        "heading": 0.15300529723601386,
+        "side": 1,
+        "front": 32,
+        "width": 72,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 38,
+        "halfDepth": 8.3,
+        "sector": 3,
+        "main": false,
+        "night": false,
+        "theme": "desert",
+        "colors": {
+          "roof": "#d9c8a4",
+          "base": "#b6a284",
+          "accent": "#d77442",
+          "format": "Canopies do deserto"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "CURVA / SETOR 3",
+        "minRoadClearance": 22.128738958015173,
+        "minPitClearance": 688.1971142186597,
+        "columns": 80,
+        "capacity": 640,
+        "spectators": 608
+      }
+    },
+    {
+      "track": "alpine",
+      "index": 0,
+      "people": 5719,
+      "stats": {
+        "frame": 1,
+        "calls": 50,
+        "triangles": 108290,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 43,
+        "textures": 10
+      },
+      "board": {
+        "track": "alpine",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "alpine-0",
+        "index": 0,
+        "s": 9.894272771598517,
+        "x": -490.1074870568765,
+        "z": 449.5,
+        "heading": 0,
+        "side": -1,
+        "front": 32,
+        "width": 76,
+        "rows": 10,
+        "depth": 15,
+        "halfWidth": 40,
+        "halfDepth": 9.5,
+        "sector": 1,
+        "main": true,
+        "night": false,
+        "theme": "highland",
+        "colors": {
+          "roof": "#70889b",
+          "base": "#c1c5c7",
+          "accent": "#b03b52",
+          "format": "Terraços / montanha"
+        },
+        "roof": true,
+        "screen": true,
+        "label": "RETA PRINCIPAL",
+        "minRoadClearance": 29.32335508850786,
+        "minPitClearance": 29.34672705188717,
+        "columns": 84,
+        "capacity": 840,
+        "spectators": 800
+      }
+    },
+    {
+      "track": "alpine",
+      "index": 4,
+      "people": 5719,
+      "stats": {
+        "frame": 2,
+        "calls": 31,
+        "triangles": 92472,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 48,
+        "textures": 10
+      },
+      "board": {
+        "track": "alpine",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "alpine-4",
+        "index": 4,
+        "s": 1855.1761446747205,
+        "x": 873.4482004526461,
+        "z": -216.50617151162123,
+        "heading": -4.2004333975452575,
+        "side": -1,
+        "front": 32,
+        "width": 58,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 31,
+        "halfDepth": 8.3,
+        "sector": 2,
+        "main": false,
+        "night": false,
+        "theme": "highland",
+        "colors": {
+          "roof": "#70889b",
+          "base": "#c1c5c7",
+          "accent": "#b03b52",
+          "format": "Terraços / montanha"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "RETA / SETOR 2",
+        "minRoadClearance": 29.999999999999968,
+        "minPitClearance": 1136.1872964624713,
+        "columns": 63,
+        "capacity": 504,
+        "spectators": 480
+      }
+    },
+    {
+      "track": "alpine",
+      "index": 7,
+      "people": 5719,
+      "stats": {
+        "frame": 3,
+        "calls": 67,
+        "triangles": 105128,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 62,
+        "textures": 19
+      },
+      "board": {
+        "track": "alpine",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "alpine-7",
+        "index": 7,
+        "s": 3720.2465621210395,
+        "x": -690.5958077145613,
+        "z": -192.8514330900977,
+        "heading": 0.19883650087695615,
+        "side": 1,
+        "front": 32,
+        "width": 66,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 35,
+        "halfDepth": 8.3,
+        "sector": 3,
+        "main": false,
+        "night": false,
+        "theme": "highland",
+        "colors": {
+          "roof": "#70889b",
+          "base": "#c1c5c7",
+          "accent": "#b03b52",
+          "format": "Terraços / montanha"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "CURVA / SETOR 3",
+        "minRoadClearance": 22.249769466268447,
+        "minPitClearance": 485.9965500912365,
+        "columns": 72,
+        "capacity": 576,
+        "spectators": 552
+      }
+    },
+    {
+      "track": "emerald",
+      "index": 0,
+      "people": 5719,
+      "stats": {
+        "frame": 1,
+        "calls": 50,
+        "triangles": 108242,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 43,
+        "textures": 10
+      },
+      "board": {
+        "track": "emerald",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "emerald-0",
+        "index": 0,
+        "s": 9.87313593203441,
+        "x": -490.12856993559353,
+        "z": 429.5,
+        "heading": 0,
+        "side": -1,
+        "front": 32,
+        "width": 76,
+        "rows": 10,
+        "depth": 15,
+        "halfWidth": 40,
+        "halfDepth": 9.5,
+        "sector": 1,
+        "main": true,
+        "night": false,
+        "theme": "forest",
+        "colors": {
+          "roof": "#aebead",
+          "base": "#a5b0a4",
+          "accent": "#ba3652",
+          "format": "Clássica / bosque"
+        },
+        "roof": true,
+        "screen": true,
+        "label": "RETA PRINCIPAL",
+        "minRoadClearance": 29.35557065351906,
+        "minPitClearance": 29.377154309542277,
+        "columns": 84,
+        "capacity": 840,
+        "spectators": 800
+      }
+    },
+    {
+      "track": "emerald",
+      "index": 4,
+      "people": 5719,
+      "stats": {
+        "frame": 2,
+        "calls": 33,
+        "triangles": 92436,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 50,
+        "textures": 11
+      },
+      "board": {
+        "track": "emerald",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "emerald-4",
+        "index": 4,
+        "s": 1851.2129872564503,
+        "x": 499.4610300394897,
+        "z": -155.842391618509,
+        "heading": -3.8791413524061835,
+        "side": -1,
+        "front": 76,
+        "width": 58,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 31,
+        "halfDepth": 8.3,
+        "sector": 2,
+        "main": false,
+        "night": false,
+        "theme": "forest",
+        "colors": {
+          "roof": "#aebead",
+          "base": "#a5b0a4",
+          "accent": "#ba3652",
+          "format": "Clássica / bosque"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "CURVA / SETOR 2",
+        "minRoadClearance": 19.054089607228413,
+        "minPitClearance": 765.9991385364661,
+        "columns": 63,
+        "capacity": 504,
+        "spectators": 480
+      }
+    },
+    {
+      "track": "emerald",
+      "index": 7,
+      "people": 5719,
+      "stats": {
+        "frame": 3,
+        "calls": 48,
+        "triangles": 97138,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 64,
+        "textures": 21
+      },
+      "board": {
+        "track": "emerald",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "emerald-7",
+        "index": 7,
+        "s": 3712.299110444935,
+        "x": -534.2259211658971,
+        "z": -85.118154104208,
+        "heading": 1.0846805095916174,
+        "side": 1,
+        "front": 32,
+        "width": 66,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 35,
+        "halfDepth": 8.3,
+        "sector": 3,
+        "main": false,
+        "night": false,
+        "theme": "forest",
+        "colors": {
+          "roof": "#aebead",
+          "base": "#a5b0a4",
+          "accent": "#ba3652",
+          "format": "Clássica / bosque"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "CURVA / SETOR 3",
+        "minRoadClearance": 29.985040953486692,
+        "minPitClearance": 329.11937970900556,
+        "columns": 72,
+        "capacity": 576,
+        "spectators": 552
+      }
+    },
+    {
+      "track": "oldtown",
+      "index": 0,
+      "people": 3760,
+      "stats": {
+        "frame": 1,
+        "calls": 50,
+        "triangles": 107954,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 42,
+        "textures": 10
+      },
+      "board": {
+        "track": "oldtown",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "oldtown-0",
+        "index": 0,
+        "s": 9.71722092270405,
+        "x": -490.28391115327753,
+        "z": 439.5,
+        "heading": 0,
+        "side": -1,
+        "front": 32,
+        "width": 76,
+        "rows": 10,
+        "depth": 15,
+        "halfWidth": 40,
+        "halfDepth": 9.5,
+        "sector": 1,
+        "main": true,
+        "night": false,
+        "theme": "city",
+        "colors": {
+          "roof": "#798998",
+          "base": "#a7adb4",
+          "accent": "#d34973",
+          "format": "Temporária / urbana"
+        },
+        "roof": true,
+        "screen": true,
+        "label": "RETA PRINCIPAL",
+        "minRoadClearance": 29.363578063272683,
+        "minPitClearance": 29.37640019367143,
+        "columns": 84,
+        "capacity": 840,
+        "spectators": 800
+      }
+    },
+    {
+      "track": "oldtown",
+      "index": 4,
+      "people": 3760,
+      "stats": {
+        "frame": 2,
+        "calls": 33,
+        "triangles": 91750,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 48,
+        "textures": 10
+      },
+      "board": {
+        "track": "oldtown",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "oldtown-4",
+        "index": 4,
+        "s": 1885.1408590045833,
+        "x": 461.48503751115834,
+        "z": -203.40558226475818,
+        "heading": -4.412431284875893,
+        "side": -1,
+        "front": 43,
+        "width": 44,
+        "rows": 6,
+        "depth": 10.2,
+        "halfWidth": 24,
+        "halfDepth": 7.1,
+        "sector": 2,
+        "main": false,
+        "night": false,
+        "theme": "city",
+        "colors": {
+          "roof": "#798998",
+          "base": "#a7adb4",
+          "accent": "#d34973",
+          "format": "Temporária / urbana"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "CURVA / SETOR 2",
+        "minRoadClearance": 21.5482031105219,
+        "minPitClearance": 769.285587008795,
+        "columns": 47,
+        "capacity": 282,
+        "spectators": 270
+      }
+    },
+    {
+      "track": "oldtown",
+      "index": 7,
+      "people": 3760,
+      "stats": {
+        "frame": 3,
+        "calls": 64,
+        "triangles": 102212,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 61,
+        "textures": 21
+      },
+      "board": {
+        "track": "oldtown",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "oldtown-7",
+        "index": 7,
+        "s": 3653.6750669367193,
+        "x": -863.9211592636952,
+        "z": -312.64271367810176,
+        "heading": 0.6883055661431154,
+        "side": 1,
+        "front": 32,
+        "width": 44,
+        "rows": 6,
+        "depth": 10.2,
+        "halfWidth": 24,
+        "halfDepth": 7.1,
+        "sector": 3,
+        "main": false,
+        "night": false,
+        "theme": "city",
+        "colors": {
+          "roof": "#798998",
+          "base": "#a7adb4",
+          "accent": "#d34973",
+          "format": "Temporária / urbana"
+        },
+        "roof": false,
+        "screen": false,
+        "label": "RETA / SETOR 3",
+        "minRoadClearance": 27.55132208567263,
+        "minPitClearance": 604.0015575677637,
+        "columns": 47,
+        "capacity": 282,
+        "spectators": 270
+      }
+    },
+    {
+      "track": "sunset",
+      "index": 0,
+      "people": 5719,
+      "stats": {
+        "frame": 1,
+        "calls": 50,
+        "triangles": 111434,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 43,
+        "textures": 10
+      },
+      "board": {
+        "track": "sunset",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "sunset-0",
+        "index": 0,
+        "s": 10.401204157244004,
+        "x": -489.6003054587689,
+        "z": 459.5,
+        "heading": 0,
+        "side": -1,
+        "front": 32,
+        "width": 76,
+        "rows": 10,
+        "depth": 15,
+        "halfWidth": 40,
+        "halfDepth": 9.5,
+        "sector": 1,
+        "main": true,
+        "night": false,
+        "theme": "coast",
+        "colors": {
+          "roof": "#cfdfdf",
+          "base": "#bec8bd",
+          "accent": "#458dac",
+          "format": "Coberturas costeiras"
+        },
+        "roof": true,
+        "screen": true,
+        "label": "RETA PRINCIPAL",
+        "minRoadClearance": 29.214272407649386,
+        "minPitClearance": 29.206640136167586,
+        "columns": 84,
+        "capacity": 840,
+        "spectators": 800
+      }
+    },
+    {
+      "track": "sunset",
+      "index": 4,
+      "people": 5719,
+      "stats": {
+        "frame": 2,
+        "calls": 32,
+        "triangles": 95618,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 49,
+        "textures": 10
+      },
+      "board": {
+        "track": "sunset",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "sunset-4",
+        "index": 4,
+        "s": 2142.648056392263,
+        "x": 829.6603747130093,
+        "z": -360.42142734941456,
+        "heading": -3.81350912063626,
+        "side": -1,
+        "front": 32,
+        "width": 58,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 31,
+        "halfDepth": 8.3,
+        "sector": 2,
+        "main": false,
+        "night": false,
+        "theme": "coast",
+        "colors": {
+          "roof": "#cfdfdf",
+          "base": "#bec8bd",
+          "accent": "#458dac",
+          "format": "Coberturas costeiras"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "RETA / SETOR 2",
+        "minRoadClearance": 29.99984495827368,
+        "minPitClearance": 1169.1899999704897,
+        "columns": 63,
+        "capacity": 504,
+        "spectators": 480
+      }
+    },
+    {
+      "track": "sunset",
+      "index": 7,
+      "people": 5719,
+      "stats": {
+        "frame": 3,
+        "calls": 54,
+        "triangles": 103802,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 65,
+        "textures": 21
+      },
+      "board": {
+        "track": "sunset",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "sunset-7",
+        "index": 7,
+        "s": 3848.445538180278,
+        "x": -543.4922125599043,
+        "z": -152.1294046859578,
+        "heading": 0.6878166760605137,
+        "side": 1,
+        "front": 32,
+        "width": 66,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 35,
+        "halfDepth": 8.3,
+        "sector": 3,
+        "main": false,
+        "night": false,
+        "theme": "coast",
+        "colors": {
+          "roof": "#cfdfdf",
+          "base": "#bec8bd",
+          "accent": "#458dac",
+          "format": "Coberturas costeiras"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "CURVA / SETOR 3",
+        "minRoadClearance": 29.992077270811397,
+        "minPitClearance": 433.38586424227077,
+        "columns": 72,
+        "capacity": 576,
+        "spectators": 552
+      }
+    },
+    {
+      "track": "nordic",
+      "index": 0,
+      "people": 5719,
+      "stats": {
+        "frame": 1,
+        "calls": 50,
+        "triangles": 106418,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 43,
+        "textures": 10
+      },
+      "board": {
+        "track": "nordic",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "nordic-0",
+        "index": 0,
+        "s": 9.573140931289275,
+        "x": -490.42838726826665,
+        "z": 429.5,
+        "heading": 0,
+        "side": -1,
+        "front": 32,
+        "width": 76,
+        "rows": 10,
+        "depth": 15,
+        "halfWidth": 40,
+        "halfDepth": 9.5,
+        "sector": 1,
+        "main": true,
+        "night": false,
+        "theme": "snow",
+        "colors": {
+          "roof": "#dbe4e9",
+          "base": "#aebfc5",
+          "accent": "#6484a6",
+          "format": "Boreal / coberta"
+        },
+        "roof": true,
+        "screen": true,
+        "label": "RETA PRINCIPAL",
+        "minRoadClearance": 29.28428436868003,
+        "minPitClearance": 29.315537521231192,
+        "columns": 84,
+        "capacity": 840,
+        "spectators": 800
+      }
+    },
+    {
+      "track": "nordic",
+      "index": 4,
+      "people": 5719,
+      "stats": {
+        "frame": 2,
+        "calls": 31,
+        "triangles": 90600,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 48,
+        "textures": 10
+      },
+      "board": {
+        "track": "nordic",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "nordic-4",
+        "index": 4,
+        "s": 1914.6281862578528,
+        "x": 627.7953196119809,
+        "z": -364.1213186154705,
+        "heading": -3.5534459058263144,
+        "side": -1,
+        "front": 32,
+        "width": 58,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 31,
+        "halfDepth": 8.3,
+        "sector": 2,
+        "main": false,
+        "night": false,
+        "theme": "snow",
+        "colors": {
+          "roof": "#dbe4e9",
+          "base": "#aebfc5",
+          "accent": "#6484a6",
+          "format": "Boreal / coberta"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "CURVA / SETOR 2",
+        "minRoadClearance": 30.000000000000053,
+        "minPitClearance": 987.4836420984825,
+        "columns": 63,
+        "capacity": 504,
+        "spectators": 480
+      }
+    },
+    {
+      "track": "nordic",
+      "index": 7,
+      "people": 5719,
+      "stats": {
+        "frame": 3,
+        "calls": 57,
+        "triangles": 98756,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 68,
+        "textures": 25
+      },
+      "board": {
+        "track": "nordic",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "nordic-7",
+        "index": 7,
+        "s": 3422.397882935912,
+        "x": -657.076606477475,
+        "z": -348.85422942914556,
+        "heading": 0.6730442357675736,
+        "side": 1,
+        "front": 32,
+        "width": 66,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 35,
+        "halfDepth": 8.3,
+        "sector": 3,
+        "main": false,
+        "night": false,
+        "theme": "snow",
+        "colors": {
+          "roof": "#dbe4e9",
+          "base": "#aebfc5",
+          "accent": "#6484a6",
+          "format": "Boreal / coberta"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "RETA / SETOR 3",
+        "minRoadClearance": 29.150031468343453,
+        "minPitClearance": 606.7201191992434,
+        "columns": 72,
+        "capacity": 576,
+        "spectators": 552
+      }
+    },
+    {
+      "track": "desert-night",
+      "index": 0,
+      "people": 6464,
+      "stats": {
+        "frame": 1,
+        "calls": 54,
+        "triangles": 117038,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 46,
+        "textures": 11
+      },
+      "board": {
+        "track": "desert-night",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "desert-night-0",
+        "index": 0,
+        "s": 11.025318855021588,
+        "x": -488.97561387051826,
+        "z": 459.5,
+        "heading": 0,
+        "side": -1,
+        "front": 32,
+        "width": 76,
+        "rows": 10,
+        "depth": 15,
+        "halfWidth": 40,
+        "halfDepth": 9.5,
+        "sector": 1,
+        "main": true,
+        "night": true,
+        "theme": "desert",
+        "colors": {
+          "roof": "#d9c8a4",
+          "base": "#b6a284",
+          "accent": "#d77442",
+          "format": "Canopies do deserto"
+        },
+        "roof": true,
+        "screen": true,
+        "label": "RETA PRINCIPAL",
+        "minRoadClearance": 29.21155781995888,
+        "minPitClearance": 29.189711697823267,
+        "columns": 84,
+        "capacity": 840,
+        "spectators": 800
+      }
+    },
+    {
+      "track": "desert-night",
+      "index": 4,
+      "people": 6464,
+      "stats": {
+        "frame": 2,
+        "calls": 35,
+        "triangles": 101486,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 52,
+        "textures": 11
+      },
+      "board": {
+        "track": "desert-night",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "desert-night-4",
+        "index": 4,
+        "s": 2271.2156841344445,
+        "x": 824.0271306339748,
+        "z": -441.42267455944807,
+        "heading": -3.6030300825355237,
+        "side": -1,
+        "front": 32,
+        "width": 72,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 38,
+        "halfDepth": 8.3,
+        "sector": 2,
+        "main": false,
+        "night": true,
+        "theme": "desert",
+        "colors": {
+          "roof": "#d9c8a4",
+          "base": "#b6a284",
+          "accent": "#d77442",
+          "format": "Canopies do deserto"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "RETA / SETOR 2",
+        "minRoadClearance": 29.999386474842712,
+        "minPitClearance": 1205.2436984878366,
+        "columns": 80,
+        "capacity": 640,
+        "spectators": 608
+      }
+    },
+    {
+      "track": "desert-night",
+      "index": 7,
+      "people": 6464,
+      "stats": {
+        "frame": 3,
+        "calls": 72,
+        "triangles": 114418,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 68,
+        "textures": 22
+      },
+      "board": {
+        "track": "desert-night",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "desert-night-7",
+        "index": 7,
+        "s": 3941.5514906702133,
+        "x": -580.3390753988913,
+        "z": -475.4153585259756,
+        "heading": 0.159070486017316,
+        "side": 1,
+        "front": 32,
+        "width": 72,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 38,
+        "halfDepth": 8.3,
+        "sector": 3,
+        "main": false,
+        "night": true,
+        "theme": "desert",
+        "colors": {
+          "roof": "#d9c8a4",
+          "base": "#b6a284",
+          "accent": "#d77442",
+          "format": "Canopies do deserto"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "CURVA / SETOR 3",
+        "minRoadClearance": 20.650282137564847,
+        "minPitClearance": 773.6141654844896,
+        "columns": 80,
+        "capacity": 640,
+        "spectators": 608
+      }
+    },
+    {
+      "track": "discovery",
+      "index": 0,
+      "people": 5719,
+      "stats": {
+        "frame": 1,
+        "calls": 50,
+        "triangles": 107834,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 43,
+        "textures": 10
+      },
+      "board": {
+        "track": "discovery",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "discovery-0",
+        "index": 0,
+        "s": 9.814726228346338,
+        "x": -490.1863990261653,
+        "z": 459.5,
+        "heading": 0,
+        "side": -1,
+        "front": 32,
+        "width": 76,
+        "rows": 10,
+        "depth": 15,
+        "halfWidth": 40,
+        "halfDepth": 9.5,
+        "sector": 1,
+        "main": true,
+        "night": false,
+        "theme": "forest",
+        "colors": {
+          "roof": "#aebead",
+          "base": "#a5b0a4",
+          "accent": "#ba3652",
+          "format": "Clássica / bosque"
+        },
+        "roof": true,
+        "screen": true,
+        "label": "RETA PRINCIPAL",
+        "minRoadClearance": 29.27287111720975,
+        "minPitClearance": 29.295847575219227,
+        "columns": 84,
+        "capacity": 840,
+        "spectators": 800
+      }
+    },
+    {
+      "track": "discovery",
+      "index": 4,
+      "people": 5719,
+      "stats": {
+        "frame": 2,
+        "calls": 31,
+        "triangles": 92016,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 48,
+        "textures": 10
+      },
+      "board": {
+        "track": "discovery",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "discovery-4",
+        "index": 4,
+        "s": 1840.261167814937,
+        "x": 856.4311971232274,
+        "z": -153.62655367733947,
+        "heading": -4.068342850260009,
+        "side": -1,
+        "front": 32,
+        "width": 58,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 31,
+        "halfDepth": 8.3,
+        "sector": 2,
+        "main": false,
+        "night": false,
+        "theme": "forest",
+        "colors": {
+          "roof": "#aebead",
+          "base": "#a5b0a4",
+          "accent": "#ba3652",
+          "format": "Clássica / bosque"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "RETA / SETOR 2",
+        "minRoadClearance": 30.000000000000025,
+        "minPitClearance": 1092.9281048171238,
+        "columns": 63,
+        "capacity": 504,
+        "spectators": 480
+      }
+    },
+    {
+      "track": "discovery",
+      "index": 7,
+      "people": 5719,
+      "stats": {
+        "frame": 3,
+        "calls": 69,
+        "triangles": 104692,
+        "points": 0,
+        "lines": 0
+      },
+      "resources": {
+        "geometries": 64,
+        "textures": 21
+      },
+      "board": {
+        "track": "discovery",
+        "rows": [],
+        "state": "no-session"
+      },
+      "venue": {
+        "id": "discovery-7",
+        "index": 7,
+        "s": 3508.764626633812,
+        "x": -617.1891605688606,
+        "z": -382.8247953108786,
+        "heading": 0.38856166926272606,
+        "side": 1,
+        "front": 32,
+        "width": 66,
+        "rows": 8,
+        "depth": 12.6,
+        "halfWidth": 35,
+        "halfDepth": 8.3,
+        "sector": 3,
+        "main": false,
+        "night": false,
+        "theme": "forest",
+        "colors": {
+          "roof": "#aebead",
+          "base": "#a5b0a4",
+          "accent": "#ba3652",
+          "format": "Clássica / bosque"
+        },
+        "roof": true,
+        "screen": false,
+        "label": "RETA / SETOR 3",
+        "minRoadClearance": 27.571374120420895,
+        "minPitClearance": 675.9378130430838,
+        "columns": 72,
+        "capacity": 576,
+        "spectators": 552
+      }
+    }
+  ],
+  "errors": []
+}

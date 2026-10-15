@@ -1,0 +1,3 @@
+# Optional: only to regenerate the already-included PNG assets.
+# The game and start.py have no third-party Python dependency.
+Pillow==12.3.0

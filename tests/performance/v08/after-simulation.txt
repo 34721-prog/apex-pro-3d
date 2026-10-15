@@ -1,0 +1,13 @@
+{
+  ticks: 6000,
+  simulatedSeconds: 100,
+  runsMs: [ 596.087181, 346.37218999999993, 290.944025, 275.513328 ],
+  warmMeanMs: 304.2765143333333,
+  sample: {
+    lap: 1,
+    position: 4338.51484597868,
+    fuel: 14.992024088489307,
+    cars: 6,
+    decisions: 7
+  }
+}

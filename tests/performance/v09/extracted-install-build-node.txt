@@ -1,0 +1,274 @@
+
+added 21 packages, and audited 22 packages in 1s
+
+9 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+> apex-dynasty@0.9.0 build
+> vite build
+
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 83 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.84 kB │ gzip:   0.53 kB
+dist/assets/index-DxiZCROj.css   91.83 kB │ gzip:  20.25 kB
+dist/assets/index-C03bCRfm.js   930.34 kB │ gzip: 266.21 kB
+
+✓ built in 433ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+> apex-dynasty@0.9.0 test
+> node --test tests/*.test.js
+
+✔ oriented hitboxes: front, rear, side and angled corner contacts resolve; no velocity explosion (1.878837ms)
+✔ barrier collision respects actual rail edge including body extent (5.502313ms)
+✔ fixed-step simulation matches 30, 60 and 144 FPS (4.720136ms)
+easy duration 241.67 max lateral 5.66 [
+  { id: 0, lap: 3, cp: 0, time: 210.4666666667263 },
+  { id: 1, lap: 3, cp: 0, time: 239.2000000000825 },
+  { id: 2, lap: 3, cp: 0, time: 236.2166666667468 },
+  { id: 3, lap: 3, cp: 0, time: 240.65000000008365 },
+  { id: 4, lap: 3, cp: 0, time: 238.30000000008178 },
+  { id: 5, lap: 3, cp: 0, time: 241.66666666675113 }
+]
+normal duration 217.35 max lateral 5.62 [
+  { id: 0, lap: 3, cp: 0, time: 204.25000000005468 },
+  { id: 1, lap: 3, cp: 0, time: 215.10000000006332 },
+  { id: 2, lap: 3, cp: 0, time: 211.8000000000607 },
+  { id: 3, lap: 3, cp: 0, time: 216.2666666667309 },
+  { id: 4, lap: 3, cp: 0, time: 213.76666666672892 },
+  { id: 5, lap: 3, cp: 0, time: 217.3500000000651 }
+]
+hard duration 203.68 max lateral 5.54 [
+  { id: 0, lap: 3, cp: 0, time: 203.68333333338757 },
+  { id: 1, lap: 3, cp: 0, time: 201.1666666667189 },
+  { id: 2, lap: 3, cp: 0, time: 198.1666666667165 },
+  { id: 3, lap: 3, cp: 0, time: 200.05000000005134 },
+  { id: 4, lap: 3, cp: 0, time: 198.46666666671675 },
+  { id: 5, lap: 3, cp: 0, time: 202.46666666671993 }
+]
+✔ closed circuit and projection agree (7.046398ms)
+✔ acceleration, brakes, progressive steering, offroad, recovery (2.660192ms)
+✔ collisions separate overlapping cars (0.666748ms)
+✔ checkpoint validation prevents start-line and wrong-way lap farming (0.315028ms)
+✔ six physical cars complete 3 laps on all difficulties, no teleporting (1757.862874ms)
+✔ missing input is neutral, never corrupts physics with NaN (0.427554ms)
+✔ 31 unique pilots, 12 cars, portraits, helmets, thumbnails and GLB exist (1.159102ms)
+✔ Mega uses finite limits and realistic mode removes extreme multiplier (0.50897ms)
+✔ career data and custom paints survive validation, malformed arrays are rejected (2.907601ms)
+✔ admin login isolates career, restore and exit never mutate the normal save (0.953877ms)
+✔ radio priorities and cooldowns work without browser voice support (0.221197ms)
+✔ VSC actually slows traffic and returns green; pause freezes time and resources (116.637437ms)
+✔ 8-lap realistic endurance finishes and bots actually use the pit lane (1660.196396ms)
+✔ time trial does not grant a fake podium; manager assigns a hired teammate (35.503144ms)
+✔ v08 default and additive save migration make management primary; plans and histories are bounded (2.956199ms)
+✔ v08 team orders cannot change rivals, model stats or create speed; pace ramps and maximum expires (17.208721ms)
+✔ v08 cancellation holds programmed pit requests and commitment locks service (2.047847ms)
+✔ v08 grip, fuel and tire outputs differ from physically applied pace choices, not only HUD text (638.563047ms)
+✔ v08 physical configuration tradeoffs and honest estimators respond to geometry/tires/loss (1.203827ms)
+✔ v08 rivals do not read future weather; observed rain/SC advice is executable (1.078805ms)
+✔ v08 autonomous dry and changing-weather races finish with real opponent strategies, service and stint evidence (2425.849026ms)
+✔ v08 manual/manager handover preserves race pose, lap, timers and plans (53.720408ms)
+✔ v08 championship objective chooses actual points priority and constrains teammate risk (0.732547ms)
+✔ v08 full autonomous Sprint season saves strategy reports and standings and resumes between sessions (2133.278866ms)
+✔ v08 avoid-rival and protect-team orders actually change safe overtake selection (0.750115ms)
+✔ v08 undercut and overcut require public rival evidence and an actionable stop horizon (0.673532ms)
+✔ v08 player team orders never constrain rival teammate battles; rivals may use public championship points (4.262648ms)
+✔ v08 autonomous overcut actually delays a due stop within its window (0.940151ms)
+✔ motion observer is absent from save/authoritative car properties (2.4708ms)
+✔ signed spin equals actual longitudinal travel / radius and does not advance on render (0.755284ms)
+✔ stationary car has no rotation or invented oscillation (0.312627ms)
+✔ interpolation uses exactly adjacent samples, has no accumulated lag (0.218634ms)
+✔ angle and track-coordinate seams use shortest arcs (0.217241ms)
+✔ recover, external teleport and impact never interpolate through a discontinuity (0.257995ms)
+✔ 30/60/144 Hz and batched ticks produce identical authoritative state and spin (3.083968ms)
+✔ real steering and acceleration/roll are bounded, rear pivots stay straight (31.253988ms)
+✔ steered wheel axle does not wobble over a full spin (8.830587ms)
+✔ all 12 loaded GLBs retain all four articulated wheels and same geometry count (40.504949ms)
+✔ procedural rig retains meshes, actual radius and four contact centers independent of body attitude (11.351068ms)
+✔ kerb contact is footprint-local, only 3.5 cm, no texture-driven vibration; pit is .14 (4.235633ms)
+✔ service lift is continuous, bounded, shares real phase, retains established .28 plateau (9.770074ms)
+✔ invalid delta, pause and results cannot advance the authoritative race or odometer (13.203481ms)
+✔ pause/resume before the next tick cannot rewind the presented car or wheel phase (53.452754ms)
+✔ interpolation cannot invent pair penetration or suppress real physical overlap (0.484899ms)
+✔ physical garages aurora / own: 6 cars, no pit overlap, queue drains (405.816898ms)
+✔ physical garages aurora / same: 6 cars, no pit overlap, queue drains (464.475243ms)
+✔ physical garages aurora / rain: 6 cars, no pit overlap, queue drains (212.93163ms)
+✔ physical garages veloce / own: 6 cars, no pit overlap, queue drains (183.048882ms)
+✔ physical garages veloce / same: 6 cars, no pit overlap, queue drains (286.797845ms)
+✔ physical garages veloce / rain: 6 cars, no pit overlap, queue drains (159.68199ms)
+✔ physical garages serpente / own: 6 cars, no pit overlap, queue drains (198.27098ms)
+✔ physical garages serpente / same: 6 cars, no pit overlap, queue drains (379.241221ms)
+✔ physical garages serpente / rain: 6 cars, no pit overlap, queue drains (160.167822ms)
+✔ physical garages neon / own: 6 cars, no pit overlap, queue drains (176.462125ms)
+✔ physical garages neon / same: 6 cars, no pit overlap, queue drains (295.72999ms)
+✔ physical garages neon / rain: 6 cars, no pit overlap, queue drains (170.00925ms)
+✔ physical garages titan / own: 6 cars, no pit overlap, queue drains (160.724076ms)
+✔ physical garages titan / same: 6 cars, no pit overlap, queue drains (316.101324ms)
+✔ physical garages titan / rain: 6 cars, no pit overlap, queue drains (162.908344ms)
+✔ physical garages vento / own: 6 cars, no pit overlap, queue drains (161.046963ms)
+✔ physical garages vento / same: 6 cars, no pit overlap, queue drains (307.411802ms)
+✔ physical garages vento / rain: 6 cars, no pit overlap, queue drains (184.773553ms)
+✔ lookup geometry remains within 4 cm of source spline on all circuits (14.550763ms)
+✔ safe merge predicts main-line arrivals and holds/releases without snapping (3.321201ms)
+✔ pit speed penalty, entry gate, crew upgrades, locked work order and wear/weather plans (3.957013ms)
+✔ main/pit separator and garage back wall are physical obstacles (2.660356ms)
+✔ quality and strategy settings validate/persist; adaptive mode cannot mutate race (4.932679ms)
+✔ planned multistop run finishes and persists actual team service statistics once (1173.266846ms)
+✔ departing teammate cannot release a reservation already reassigned to another car (2.290172ms)
+✔ unrequested legal entry becomes a speed-controlled drive-through, not a free shortcut (2.236742ms)
+✔ manual driver can authorize approach on the right once and complete physical service (56.799973ms)
+✔ upgrades charge once, improve actual physics and respect cap (1.291832ms)
+✔ save validation rejects malformed values and preserves valid state (3.921746ms)
+✔ three races, credits, objectives, championship continuity, winner, new season (3267.025689ms)
+✔ shadows: current light projection, texel snapping, constant world sun direction (13.911147ms)
+✔ shadows: visible remote vehicle expands coverage, no shrinking/texel pumping mid-session (0.708685ms)
+✔ shadows: explicit user off is preserved; quality does not throttle enabled shadows (0.30488ms)
+✔ shadows: explicit ownership disposes existing map once and no render allocations (0.856902ms)
+✔ v081 full pit footprints, connections and six physical stops: aurora (741.324878ms)
+✔ v081 full pit footprints, connections and six physical stops: veloce (483.210352ms)
+✔ v081 full pit footprints, connections and six physical stops: serpente (336.740608ms)
+✔ v081 full pit footprints, connections and six physical stops: neon (289.613357ms)
+✔ v081 full pit footprints, connections and six physical stops: titan (289.227632ms)
+✔ v081 full pit footprints, connections and six physical stops: vento (252.888626ms)
+✔ v081 full pit footprints, connections and six physical stops: sahara (247.989289ms)
+✔ v081 full pit footprints, connections and six physical stops: alpine (315.464649ms)
+✔ v081 full pit footprints, connections and six physical stops: emerald (305.551482ms)
+✔ v081 full pit footprints, connections and six physical stops: oldtown (206.93209ms)
+✔ v081 full pit footprints, connections and six physical stops: sunset (293.198425ms)
+✔ v081 full pit footprints, connections and six physical stops: nordic (227.35062ms)
+✔ v081 full pit footprints, connections and six physical stops: desert-night (261.317412ms)
+✔ v081 full pit footprints, connections and six physical stops: discovery (209.427215ms)
+✔ v081 estimator cached geometry preserves exact values and changes with track/weather (20.77956ms)
+aurora 3089 m 146.0s [ 2, 2, 2, 2, 2, 2 ]
+veloce 3939 m 166.8s [ 2, 2, 2, 2, 2, 2 ]
+serpente 3307 m 191.5s [ 2, 2, 2, 2, 2, 2 ]
+neon 3506 m 179.0s [ 2, 2, 2, 2, 2, 2 ]
+titan 4630 m 200.2s [ 2, 2, 2, 2, 2, 2 ]
+vento 3822 m 156.4s [ 2, 2, 2, 2, 2, 2 ]
+sahara 5405 m 200.1s [ 2, 2, 2, 2, 2, 2 ]
+alpine 4947 m 229.4s [ 2, 2, 2, 2, 2, 2 ]
+emerald 4937 m 243.8s [ 2, 2, 2, 2, 2, 2 ]
+oldtown 4859 m 217.1s [ 2, 2, 2, 2, 2, 2 ]
+sunset 5201 m 213.6s [ 2, 2, 2, 2, 2, 2 ]
+nordic 4787 m 205.3s [ 2, 2, 2, 2, 2, 2 ]
+desert-night 5513 m 215.0s [ 2, 2, 2, 2, 2, 2 ]
+discovery 4907 m 174.5s [ 2, 2, 2, 2, 2, 2 ]
+pit states Set(5) { 'track', 'entry', 'service', 'release', 'exit' } stops 1 s 308.307162517102 speed 15.532869955689174
+✔ all distinct full-scale circuits; AI completes two laps on each (8204.864626ms)
+✔ real physical pit entry, stop, service and exit; resources bounded (308.477487ms)
+✔ human controls project left/right correctly through the real camera at 8/25/50 m/s (29.988629ms)
+✔ legacy steering workaround migrates once without erasing progression or alternate controls (3.302145ms)
+✔ AI retains world-yaw convention, slows for a stopped car and sees rejoining traffic (5.61291ms)
+✔ all strategy fields validate, change operative policy, and persist (4.852812ms)
+✔ overtaking styles affect attempts, defense respects side-by-side space, no lane ping-pong (58.229653ms)
+✔ pace changes throttle/target speed without editing physical stats; line choices alter trajectories (49.613599ms)
+✔ pit profiles/windows/traffic preferences produce different actual requests (31.7791ms)
+✔ stationary service car is solid and cannot be pushed/ghosted through (2.87793ms)
+✔ timed intervals and reference delta use timestamps, not a fixed speed divisor (0.4149ms)
+✔ gear/RPM telemetry is bounded and shift indication corresponds to synthesized engine range (8.882926ms)
+✔ procedural seeds reproduce geometry and reject/normalize unsafe parameters (58.100991ms)
+✔ v0.4 circuit aurora: geometry, own/shared pit, rain and high-traffic rejoin (1717.442082ms)
+✔ v0.4 circuit veloce: geometry, own/shared pit, rain and high-traffic rejoin (1032.896762ms)
+✔ v0.4 circuit serpente: geometry, own/shared pit, rain and high-traffic rejoin (984.357118ms)
+✔ v0.4 circuit neon: geometry, own/shared pit, rain and high-traffic rejoin (999.513951ms)
+✔ v0.4 circuit titan: geometry, own/shared pit, rain and high-traffic rejoin (751.394846ms)
+✔ v0.4 circuit vento: geometry, own/shared pit, rain and high-traffic rejoin (690.716977ms)
+✔ v0.4 circuit sahara: geometry, own/shared pit, rain and high-traffic rejoin (852.856574ms)
+✔ v0.4 circuit alpine: geometry, own/shared pit, rain and high-traffic rejoin (814.104502ms)
+✔ v0.4 circuit emerald: geometry, own/shared pit, rain and high-traffic rejoin (779.28147ms)
+✔ v0.4 circuit oldtown: geometry, own/shared pit, rain and high-traffic rejoin (732.003576ms)
+✔ v0.4 circuit sunset: geometry, own/shared pit, rain and high-traffic rejoin (935.394519ms)
+✔ v0.4 circuit nordic: geometry, own/shared pit, rain and high-traffic rejoin (892.730235ms)
+✔ v0.4 circuit desert-night: geometry, own/shared pit, rain and high-traffic rejoin (820.544988ms)
+✔ v0.4 circuit discovery: geometry, own/shared pit, rain and high-traffic rejoin (740.831391ms)
+✔ simulated gamepad axis sign/deadzone and Start toggle survive inactive pause UI (0.486738ms)
+✔ AI recovers a moderate off-road excursion without relocation or permanent blockage (9.994509ms)
+✔ central flags: sector yellow/double, VSC, blue, red freeze/restart, warnings and black (113.960002ms)
+✔ actual jump-start displacement, no penalty for stationary throttle-free grid (23.300019ms)
+✔ illegal passing orders position return; pit/service penalty held and recorded once (189.947329ms)
+✔ weather changes grip gradually, forecasts match schedule, repairs restore real mechanical/wing loss (589.869234ms)
+✔ track geometry limits: no punishment without advantage/forced exit; repeated proven advantage escalates (14.554377ms)
+✔ SC physical deploy/train/return/restart: aurora (1019.387137ms)
+✔ SC physical deploy/train/return/restart: veloce (950.931986ms)
+✔ SC physical deploy/train/return/restart: serpente (826.490131ms)
+✔ SC physical deploy/train/return/restart: neon (971.835157ms)
+✔ SC physical deploy/train/return/restart: titan (1002.51238ms)
+✔ SC physical deploy/train/return/restart: vento (723.196335ms)
+✔ SC physical deploy/train/return/restart: sahara (1023.709195ms)
+✔ SC physical deploy/train/return/restart: alpine (967.500752ms)
+✔ SC physical deploy/train/return/restart: emerald (1067.632966ms)
+✔ SC physical deploy/train/return/restart: oldtown (1099.332383ms)
+✔ SC physical deploy/train/return/restart: sunset (1206.098728ms)
+✔ SC physical deploy/train/return/restart: nordic (948.596269ms)
+✔ SC physical deploy/train/return/restart: desert-night (1240.839176ms)
+✔ SC physical deploy/train/return/restart: discovery (1045.449724ms)
+✔ complete physical season, save, points and next season: world (13562.431571ms)
+✔ complete physical season, save, points and next season: sprint (2488.065487ms)
+✔ complete physical season, save, points and next season: junior (5767.444102ms)
+✔ complete physical season, save, points and next season: endurance (9986.931472ms)
+✔ complete physical season, save, points and next season: one-make (5559.616483ms)
+✔ complete physical season, save, points and next season: legends (6085.947579ms)
+✔ complete physical season, save, points and next season: time-attack (198.252898ms)
+✔ measured severe rear collision really deploys SC and bypasses stationary wrecks (933.569259ms)
+✔ spec cars identical, delegated fast/normal batches use identical physics, optional failures are real (179.373838ms)
+✔ qualifying grid penalty and time-adjusted official points are applied without duplicated sessions (768.093055ms)
+✔ shared pit reservation follows actual arrival, including the higher-id car arriving first (63.28152ms)
+✔ v07 ten populated safe distributed venues: aurora (66.784791ms)
+✔ v07 ten populated safe distributed venues: veloce (21.489643ms)
+✔ v07 ten populated safe distributed venues: serpente (17.661361ms)
+✔ v07 ten populated safe distributed venues: neon (25.12144ms)
+✔ v07 ten populated safe distributed venues: titan (34.125004ms)
+✔ v07 ten populated safe distributed venues: vento (29.212711ms)
+✔ v07 ten populated safe distributed venues: sahara (18.842521ms)
+✔ v07 ten populated safe distributed venues: alpine (17.822374ms)
+✔ v07 ten populated safe distributed venues: emerald (19.820805ms)
+✔ v07 ten populated safe distributed venues: oldtown (28.584986ms)
+✔ v07 ten populated safe distributed venues: sunset (35.93491ms)
+✔ v07 ten populated safe distributed venues: nordic (37.882338ms)
+✔ v07 ten populated safe distributed venues: desert-night (18.034359ms)
+✔ v07 ten populated safe distributed venues: discovery (23.589722ms)
+✔ v07 audio settings are additive and validated; race audio is opt-in (9.593885ms)
+✔ v07 scene routing respects race-music independence (0.747576ms)
+✔ v07 audience observer follows actual events/order without mutating race (5.637478ms)
+✔ v07 eight nonempty original compressed assets with hashes/real waveform metadata (14.139893ms)
+✔ v07 native local radio multiplies voice by master and stops on mute (1.551523ms)
+ℹ tests 174
+ℹ suites 0
+ℹ pass 174
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 107359.120472
+
+> apex-dynasty@0.9.0 assets:validate
+> node scripts/validate-assets.js
+
+┌─────────┬────────────────────────┬────────┬───────────┬───────────────────────┐
+│ (index) │ file                   │ bytes  │ triangles │ dimensions            │
+├─────────┼────────────────────────┼────────┼───────────┼───────────────────────┤
+│ 0       │ 'apex-07.glb'          │ 184184 │ 1852      │ '3.37 × 1.795 × 5.41' │
+│ 1       │ 'azure-18.glb'         │ 189360 │ 1924      │ '3.37 × 1.795 × 5.41' │
+│ 2       │ 'baxter-00.glb'        │ 191092 │ 1948      │ '3.37 × 1.905 × 5.41' │
+│ 3       │ 'ember-22.glb'         │ 190244 │ 1936      │ '3.37 × 1.795 × 5.41' │
+│ 4       │ 'helix-36.glb'         │ 195424 │ 2008      │ '3.37 × 1.905 × 5.41' │
+│ 5       │ 'kestrel-14.glb'       │ 191100 │ 1948      │ '3.37 × 1.815 × 5.41' │
+│ 6       │ 'obsidian-27.glb'      │ 192824 │ 1972      │ '3.37 × 1.86 × 5.41'  │
+│ 7       │ 'orion-63.glb'         │ 191088 │ 1948      │ '3.37 × 1.795 × 5.41' │
+│ 8       │ 'solstice-44.glb'      │ 188516 │ 1912      │ '3.37 × 1.795 × 5.41' │
+│ 9       │ 'stratos-59.glb'       │ 195412 │ 2008      │ '3.37 × 1.86 × 5.41'  │
+│ 10      │ 'tempest-48.glb'       │ 195408 │ 2008      │ '3.37 × 1.815 × 5.41' │
+│ 11      │ 'verdant-31.glb'       │ 187640 │ 1900      │ '3.37 × 1.795 × 5.41' │
+│ 12      │ 'barrier-concrete.glb' │ 4080   │ 24        │ '4 × 1.15 × 0.67'     │
+│ 13      │ 'curve-90deg.glb'      │ 4304   │ 80        │ '48 × 0 × 48'         │
+│ 14      │ 'straight-30m.glb'     │ 1328   │ 2         │ '16 × 0 × 30'         │
+└─────────┴────────────────────────┴────────┴───────────┴───────────────────────┘

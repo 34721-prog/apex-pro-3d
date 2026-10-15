@@ -1,0 +1,29 @@
+{
+  "modified": [
+    ".gitignore",
+    "README.md",
+    "index.html",
+    "package-lock.json",
+    "package.json",
+    "playable/index.html",
+    "scripts/package-release.py",
+    "src/core/Game.js",
+    "src/graphics/PitVisuals.js",
+    "src/main.js",
+    "src/renderer.js",
+    "src/strategy/PitLayout.js",
+    "src/strategy/StrategyEstimator.js"
+  ],
+  "added": [
+    ".vercelignore",
+    "playable/assets/index-CloqIkPt.js",
+    "scripts/benchmark-estimator.js",
+    "scripts/benchmark-stability.js",
+    "tests/stability.spec.js",
+    "tests/stability.test.js",
+    "vercel.json"
+  ],
+  "removed": [
+    "playable/assets/index-DuQ6yNdr.js"
+  ]
+}

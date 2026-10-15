@@ -1,0 +1,24 @@
+APEX DYNASTY — ORIGINAL PROCEDURAL AUDIO / 2026
+
+Files: menu.mp3, selection.mp3, grid.mp3, race.mp3, victory.mp3,
+championship.mp3, crowd-bed.mp3, crowd-cheer.mp3.
+Composition and sound design: Apex Dynasty Procedural Studio (project-generated).
+Recipe: scripts/compose-audio.py; seed 7307.
+No commercial song, third-party recording, vocal performance or sample library
+was copied or included. The crowd is synthetic, not a recording of real people.
+
+PERMISSIVE LICENSE
+To the extent any copyright or related rights subsist in these original assets,
+permission is granted, free of charge, to any person obtaining a copy to use,
+copy, modify, remix, distribute, sublicense, and sell these audio assets and
+compositions, for commercial or noncommercial purposes, worldwide and without
+royalty. Attribution is appreciated but is not a condition of this permission.
+This permission also applies to the original synthesis recipe.
+
+THE MATERIALS ARE PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, INCLUDING
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR CLAIMS OR DAMAGES ARISING FROM USE.
+
+Build tools: Python / NumPy for sample synthesis; FFmpeg/libmp3lame for encoding.
+These build tools are not redistributed in the game. Their licenses remain
+separate and apply to those tools, not to the newly synthesized recordings.

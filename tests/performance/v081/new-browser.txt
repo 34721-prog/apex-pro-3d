@@ -1,0 +1,29 @@
+
+Running 3 tests using 1 worker
+
+  ✓  1 tests/stability.spec.js:10:1 › v081 production assets and startup are local, complete and hash-identical (2.9s)
+  ✓  2 tests/stability.spec.js:17:1 › v081 all circuits: one pit, matching physical walls, repeat init/camera/track lifecycle (1.4m)
+  ✘  3 tests/stability.spec.js:35:1 › v081 texture/GLB failures show useful warning and keep original procedural fallback (2.6s)
+
+
+  1) tests/stability.spec.js:35:1 › v081 texture/GLB failures show useful warning and keep original procedural fallback 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 3
+
+      38 |  await page.goto('/?test=1');await page.waitForFunction(()=>window.__game?.world.assetsReady);
+      39 |  await expect(page.locator('#toast')).toContainText('recursos não carregaram');
+    > 40 |  expect(await page.evaluate(()=>__game.world.assetErrors.length)).toBe(2);
+         |                                                                   ^
+      41 |  expect(await page.evaluate(()=>!!__game.world.loadError&&!!__game.world.showCar)).toBe(true);
+      42 |  await expect(page.locator('#boot-loading')).toHaveCount(0);
+      43 | });
+        at /home/user/apex-dynasty/tests/stability.spec.js:40:67
+
+    Error Context: test-results/stability-v081-texture-GLB-80bdb-riginal-procedural-fallback/error-context.md
+
+  1 failed
+    tests/stability.spec.js:35:1 › v081 texture/GLB failures show useful warning and keep original procedural fallback 
+  2 passed (1.6m)

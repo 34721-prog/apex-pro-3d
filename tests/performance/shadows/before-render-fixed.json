@@ -1,0 +1,89 @@
+[
+  {
+    "frameMs": {
+      "mean": 281.86956521739137,
+      "p95": 300
+    },
+    "fps": 3.547740243714329,
+    "submitMs": {
+      "mean": 1.7739130434296702,
+      "p95": 3.700000001117587
+    },
+    "frames": 28,
+    "drawCalls": 131,
+    "triangles": 93808,
+    "geometries": 103,
+    "textures": 18,
+    "heapBytes": 12234440,
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "pose": {
+      "x": 95.55866472303842,
+      "z": 347.345998137805,
+      "heading": 1.5326972906539629
+    },
+    "canvas": {
+      "w": 1280,
+      "h": 720
+    },
+    "loadMs": 2680,
+    "errors": []
+  },
+  {
+    "frameMs": {
+      "mean": 275.3478260869565,
+      "p95": 283.40000000000055
+    },
+    "fps": 3.6317700931627983,
+    "submitMs": {
+      "mean": 1.721739130580555,
+      "p95": 3
+    },
+    "frames": 28,
+    "drawCalls": 131,
+    "triangles": 93808,
+    "geometries": 103,
+    "textures": 18,
+    "heapBytes": 11863696,
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "pose": {
+      "x": 95.55866472303842,
+      "z": 347.345998137805,
+      "heading": 1.5326972906539629
+    },
+    "canvas": {
+      "w": 1280,
+      "h": 720
+    },
+    "loadMs": 3037,
+    "errors": []
+  },
+  {
+    "frameMs": {
+      "mean": 277.52173913043475,
+      "p95": 300
+    },
+    "fps": 3.6033213222622593,
+    "submitMs": {
+      "mean": 1.9782608697271866,
+      "p95": 2.800000000745058
+    },
+    "frames": 28,
+    "drawCalls": 131,
+    "triangles": 93808,
+    "geometries": 103,
+    "textures": 18,
+    "heapBytes": 12156272,
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "pose": {
+      "x": 95.55866472303842,
+      "z": 347.345998137805,
+      "heading": 1.5326972906539629
+    },
+    "canvas": {
+      "w": 1280,
+      "h": 720
+    },
+    "loadMs": 3294,
+    "errors": []
+  }
+]

@@ -1,0 +1,154 @@
+[
+  {
+    "kind": "race-menu",
+    "n": 0,
+    "geometries": 164,
+    "textures": 21,
+    "canvases": 1
+  },
+  {
+    "kind": "race-menu",
+    "n": 1,
+    "geometries": 164,
+    "textures": 21,
+    "canvases": 1
+  },
+  {
+    "kind": "race-menu",
+    "n": 2,
+    "geometries": 164,
+    "textures": 21,
+    "canvases": 1
+  },
+  {
+    "kind": "race-menu",
+    "n": 3,
+    "geometries": 164,
+    "textures": 21,
+    "canvases": 1
+  },
+  {
+    "kind": "race-menu",
+    "n": 4,
+    "geometries": 164,
+    "textures": 21,
+    "canvases": 1
+  },
+  {
+    "kind": "race-menu",
+    "n": 5,
+    "geometries": 164,
+    "textures": 21,
+    "canvases": 1
+  },
+  {
+    "kind": "race-menu",
+    "n": 6,
+    "geometries": 164,
+    "textures": 21,
+    "canvases": 1
+  },
+  {
+    "kind": "race-menu",
+    "n": 7,
+    "geometries": 164,
+    "textures": 21,
+    "canvases": 1
+  },
+  {
+    "kind": "track",
+    "id": "veloce",
+    "n": 0,
+    "geometries": 40,
+    "textures": 12,
+    "canvases": 1
+  },
+  {
+    "kind": "track",
+    "id": "serpente",
+    "n": 1,
+    "geometries": 40,
+    "textures": 12,
+    "canvases": 1
+  },
+  {
+    "kind": "track",
+    "id": "neon",
+    "n": 2,
+    "geometries": 44,
+    "textures": 12,
+    "canvases": 1
+  },
+  {
+    "kind": "track",
+    "id": "titan",
+    "n": 3,
+    "geometries": 40,
+    "textures": 12,
+    "canvases": 1
+  },
+  {
+    "kind": "track",
+    "id": "vento",
+    "n": 4,
+    "geometries": 43,
+    "textures": 13,
+    "canvases": 1
+  },
+  {
+    "kind": "track",
+    "id": "aurora",
+    "n": 5,
+    "geometries": 40,
+    "textures": 12,
+    "canvases": 1
+  },
+  {
+    "kind": "track",
+    "id": "veloce",
+    "n": 6,
+    "geometries": 40,
+    "textures": 12,
+    "canvases": 1
+  },
+  {
+    "kind": "track",
+    "id": "serpente",
+    "n": 7,
+    "geometries": 40,
+    "textures": 12,
+    "canvases": 1
+  },
+  {
+    "kind": "track",
+    "id": "neon",
+    "n": 8,
+    "geometries": 44,
+    "textures": 12,
+    "canvases": 1
+  },
+  {
+    "kind": "track",
+    "id": "titan",
+    "n": 9,
+    "geometries": 40,
+    "textures": 12,
+    "canvases": 1
+  },
+  {
+    "kind": "track",
+    "id": "vento",
+    "n": 10,
+    "geometries": 43,
+    "textures": 13,
+    "canvases": 1
+  },
+  {
+    "kind": "track",
+    "id": "aurora",
+    "n": 11,
+    "geometries": 40,
+    "textures": 12,
+    "canvases": 1
+  }
+]

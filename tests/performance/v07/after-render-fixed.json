@@ -1,0 +1,89 @@
+[
+  {
+    "frameMs": {
+      "mean": 286.35,
+      "p95": 300.10000000000036
+    },
+    "fps": 3.4922297887200977,
+    "submitMs": {
+      "mean": 2.154545454562388,
+      "p95": 6.800000000745058
+    },
+    "frames": 27,
+    "drawCalls": 131,
+    "triangles": 93808,
+    "geometries": 103,
+    "textures": 18,
+    "heapBytes": 11822124,
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "pose": {
+      "x": 95.55866472303842,
+      "z": 347.345998137805,
+      "heading": 1.5326972906539629
+    },
+    "canvas": {
+      "w": 1280,
+      "h": 720
+    },
+    "loadMs": 3034,
+    "errors": []
+  },
+  {
+    "frameMs": {
+      "mean": 281.14347826086953,
+      "p95": 300
+    },
+    "fps": 3.556902710978458,
+    "submitMs": {
+      "mean": 1.869565217229335,
+      "p95": 3.5
+    },
+    "frames": 28,
+    "drawCalls": 131,
+    "triangles": 93808,
+    "geometries": 103,
+    "textures": 18,
+    "heapBytes": 12214888,
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "pose": {
+      "x": 95.55866472303842,
+      "z": 347.345998137805,
+      "heading": 1.5326972906539629
+    },
+    "canvas": {
+      "w": 1280,
+      "h": 720
+    },
+    "loadMs": 2984,
+    "errors": []
+  },
+  {
+    "frameMs": {
+      "mean": 284.8363636363636,
+      "p95": 300
+    },
+    "fps": 3.5107876930933233,
+    "submitMs": {
+      "mean": 1.8636363637210294,
+      "p95": 4.100000001490116
+    },
+    "frames": 27,
+    "drawCalls": 131,
+    "triangles": 93808,
+    "geometries": 103,
+    "textures": 18,
+    "heapBytes": 12235472,
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "pose": {
+      "x": 95.55866472303842,
+      "z": 347.345998137805,
+      "heading": 1.5326972906539629
+    },
+    "canvas": {
+      "w": 1280,
+      "h": 720
+    },
+    "loadMs": 3092,
+    "errors": []
+  }
+]

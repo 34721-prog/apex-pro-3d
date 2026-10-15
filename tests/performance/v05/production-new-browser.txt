@@ -1,0 +1,8 @@
+
+Running 3 tests using 1 worker
+
+  ✓  1 tests/v05.spec.js:13:1 › v0.5 full Sprint season via real menu/session/next/save/archive, no duplicate awards (16.2s)
+  ✓  2 tests/v05.spec.js:102:1 › v0.5 physical Safety Car visible, live race control, weather, journal and team controls (3.3s)
+  ✓  3 tests/v05.spec.js:154:1 › v0.5 settings, accelerated simulation, contracts/training and persistent filters (30.4s)
+
+  3 passed (50.8s)

@@ -1,0 +1,14 @@
+{
+  "wet": 0.48000316235535734,
+  "advice": {
+    "key": "rain",
+    "message": "Pista molhada observada: considerar pneus de chuva",
+    "action": "review",
+    "compound": "wet",
+    "loss": 25.484347892319807,
+    "traffic": [],
+    "gap": 0.9878869722501483,
+    "behindGap": 14.58783455821637,
+    "lap": 3
+  }
+}

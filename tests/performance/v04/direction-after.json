@@ -1,0 +1,77 @@
+[
+  {
+    "key": "KeyA",
+    "speed": 8,
+    "screenX": -0.029820367961749524
+  },
+  {
+    "key": "KeyD",
+    "speed": 8,
+    "screenX": 0.02982036796174286
+  },
+  {
+    "key": "ArrowLeft",
+    "speed": 8,
+    "screenX": -0.029820367961749524
+  },
+  {
+    "key": "ArrowRight",
+    "speed": 8,
+    "screenX": 0.02982036796174286
+  },
+  {
+    "key": "neutral",
+    "speed": 8,
+    "screenX": 0
+  },
+  {
+    "key": "KeyA",
+    "speed": 25,
+    "screenX": -0.10616088741501674
+  },
+  {
+    "key": "KeyD",
+    "speed": 25,
+    "screenX": 0.10616088741499904
+  },
+  {
+    "key": "ArrowLeft",
+    "speed": 25,
+    "screenX": -0.10616088741501674
+  },
+  {
+    "key": "ArrowRight",
+    "speed": 25,
+    "screenX": 0.10616088741499904
+  },
+  {
+    "key": "neutral",
+    "speed": 25,
+    "screenX": 0
+  },
+  {
+    "key": "KeyA",
+    "speed": 50,
+    "screenX": -0.12311156872409651
+  },
+  {
+    "key": "KeyD",
+    "speed": 50,
+    "screenX": 0.12311156872409364
+  },
+  {
+    "key": "ArrowLeft",
+    "speed": 50,
+    "screenX": -0.12311156872409651
+  },
+  {
+    "key": "ArrowRight",
+    "speed": 50,
+    "screenX": 0.12311156872409364
+  },
+  {
+    "key": "neutral",
+    "speed": 50,
+    "screenX": 0
+  }
+]

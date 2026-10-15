@@ -1,0 +1,194 @@
+[
+  {
+    "q": "low",
+    "cam": "chase",
+    "calls": 111,
+    "triangles": 122944
+  },
+  {
+    "q": "low",
+    "cam": "cockpit",
+    "calls": 117,
+    "triangles": 124666
+  },
+  {
+    "q": "low",
+    "cam": "far",
+    "calls": 112,
+    "triangles": 121452
+  },
+  {
+    "q": "low",
+    "cam": "broadcast",
+    "calls": 66,
+    "triangles": 112762
+  },
+  {
+    "q": "low",
+    "cam": "pit-lane",
+    "calls": 53,
+    "triangles": 104336
+  },
+  {
+    "q": "low",
+    "cam": "pit-garage",
+    "calls": 53,
+    "triangles": 106180
+  },
+  {
+    "q": "low",
+    "cam": "pit-follow",
+    "calls": 113,
+    "triangles": 122500
+  },
+  {
+    "q": "low",
+    "cam": "pit-wheels",
+    "calls": 47,
+    "triangles": 104114
+  },
+  {
+    "q": "medium",
+    "cam": "chase",
+    "calls": 195,
+    "triangles": 157648
+  },
+  {
+    "q": "medium",
+    "cam": "cockpit",
+    "calls": 199,
+    "triangles": 160418
+  },
+  {
+    "q": "medium",
+    "cam": "far",
+    "calls": 196,
+    "triangles": 157756
+  },
+  {
+    "q": "medium",
+    "cam": "broadcast",
+    "calls": 85,
+    "triangles": 123278
+  },
+  {
+    "q": "medium",
+    "cam": "pit-lane",
+    "calls": 72,
+    "triangles": 114852
+  },
+  {
+    "q": "medium",
+    "cam": "pit-garage",
+    "calls": 72,
+    "triangles": 116696
+  },
+  {
+    "q": "medium",
+    "cam": "pit-follow",
+    "calls": 200,
+    "triangles": 165408
+  },
+  {
+    "q": "medium",
+    "cam": "pit-wheels",
+    "calls": 66,
+    "triangles": 114630
+  },
+  {
+    "q": "high",
+    "cam": "chase",
+    "calls": 195,
+    "triangles": 159248
+  },
+  {
+    "q": "high",
+    "cam": "cockpit",
+    "calls": 199,
+    "triangles": 162018
+  },
+  {
+    "q": "high",
+    "cam": "far",
+    "calls": 196,
+    "triangles": 159356
+  },
+  {
+    "q": "high",
+    "cam": "broadcast",
+    "calls": 85,
+    "triangles": 123278
+  },
+  {
+    "q": "high",
+    "cam": "pit-lane",
+    "calls": 72,
+    "triangles": 114852
+  },
+  {
+    "q": "high",
+    "cam": "pit-garage",
+    "calls": 72,
+    "triangles": 116696
+  },
+  {
+    "q": "high",
+    "cam": "pit-follow",
+    "calls": 200,
+    "triangles": 165408
+  },
+  {
+    "q": "high",
+    "cam": "pit-wheels",
+    "calls": 66,
+    "triangles": 114630
+  },
+  {
+    "q": "custom",
+    "cam": "chase",
+    "calls": 195,
+    "triangles": 159248
+  },
+  {
+    "q": "custom",
+    "cam": "cockpit",
+    "calls": 199,
+    "triangles": 160418
+  },
+  {
+    "q": "custom",
+    "cam": "far",
+    "calls": 196,
+    "triangles": 157756
+  },
+  {
+    "q": "custom",
+    "cam": "broadcast",
+    "calls": 85,
+    "triangles": 123278
+  },
+  {
+    "q": "custom",
+    "cam": "pit-lane",
+    "calls": 72,
+    "triangles": 114852
+  },
+  {
+    "q": "custom",
+    "cam": "pit-garage",
+    "calls": 72,
+    "triangles": 116696
+  },
+  {
+    "q": "custom",
+    "cam": "pit-follow",
+    "calls": 200,
+    "triangles": 165408
+  },
+  {
+    "q": "custom",
+    "cam": "pit-wheels",
+    "calls": 66,
+    "triangles": 114630
+  }
+]

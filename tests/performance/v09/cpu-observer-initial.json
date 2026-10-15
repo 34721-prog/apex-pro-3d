@@ -1,0 +1,32 @@
+{
+  "scenario": "Same Node process, alternating before/after, six runs (one warmup), 6000 ticks/100 simulation seconds per run, six manager cars; includes visual tick observer only in after.",
+  "before": {
+    "runs": [
+      280.3462390000002,
+      235.398056,
+      262.1425159999999,
+      223.52277400000003,
+      227.84757499999978
+    ],
+    "n": 5,
+    "mean": 245.851432,
+    "p95": 280.3462390000002,
+    "p99": 280.3462390000002,
+    "max": 280.3462390000002
+  },
+  "after": {
+    "runs": [
+      323.51726399999984,
+      281.23043099999995,
+      300.7821449999997,
+      260.0014649999998,
+      262.43694800000003
+    ],
+    "n": 5,
+    "mean": 285.5936505999999,
+    "p95": 323.51726399999984,
+    "p99": 323.51726399999984,
+    "max": 323.51726399999984
+  },
+  "sameOutcomes": true
+}

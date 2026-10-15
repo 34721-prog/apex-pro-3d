@@ -1,0 +1,9 @@
+
+Running 4 tests using 1 worker
+
+  ✓  1 tests/motion.spec.js:33:1 › v09 four-wheel rigs, immutable rendering, final-pose cockpit and all 12 cameras (11.5s)
+  ✓  2 tests/motion.spec.js:126:1 › v09 contact at road/kerb, lift phases, pause, aspect ratios and current shadow transforms (8.6s)
+  ✓  3 tests/motion.spec.js:258:1 › v09 real tick sequence: launch, braking, curves, fast-forward, no simulation mutation from cameras (1.6s)
+  ✓  4 tests/motion.spec.js:321:1 › v09 actual Game.frame consumes alpha at 144 Hz and resume before a tick does not rewind (6.6s)
+
+  4 passed (29.4s)
