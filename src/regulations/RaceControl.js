@@ -31,6 +31,7 @@ export class RaceControl {
     this.sc = new SafetyCar();
     this.traffic = [...race.cars, this.sc.car];
     this.lastIncident = -100;
+    this.safetyCarChance = 0.12;
     for (const c of race.cars) {
       Object.defineProperty(c, "stewards", { value: this, configurable: true });
       c.ruleState = {
@@ -251,6 +252,15 @@ export class RaceControl {
     }
     return true;
   }
+
+  trySafetyCar(reason, fallbackPhase, seconds = 16, affected = 1) {
+    if (this.phase !== "green") return false;
+    const phase =
+      this.random() < this.safetyCarChance ? "sc" : fallbackPhase;
+    this.neutralize(phase, reason, seconds, affected);
+    return phase === "sc";
+  }
+
   update(dt) {
     const r = this.race;
     this.clock += dt;
@@ -314,9 +324,9 @@ export class RaceControl {
       const hit = r.cars.find((c) => c.impact > 25 && !c.finished);
       if (hit) {
         this.lastIncident = this.clock;
-        this.neutralize(
-          hit.impact > 52 ? "sc" : "vsc",
+        this.trySafetyCar(
           "Incidente: impacto medido de " + hit.impact.toFixed(1),
+          hit.impact > 52 ? "sc" : "vsc",
           16,
           sector(hit.s),
         );
@@ -581,16 +591,21 @@ export class RaceControl {
       ) {
         st.lastSpin = this.clock;
         r.emit("spin", c.id, { slip: c.slip, speed: c.speed });
-        this.neutralize("yellow", "Carro rodado no setor", 10, sector(c.s));
+        this.trySafetyCar(
+          "Carro rodado no setor",
+          "yellow",
+          10,
+          sector(c.s),
+        );
       }
       if (c.speed < 1 && c.offroad && r.time > 15) {
         st.stuck = (st.stuck || 0) + 0.25;
         if (st.stuck > 4 && this.clock - (st.lastStuck || -100) > 25) {
           st.lastStuck = this.clock;
           r.emit("stuck", c.id, "Carro lento/imobilizado fora da pista");
-          this.neutralize(
-            "yellow",
+          this.trySafetyCar(
             "Carro imobilizado na área de escape",
+            "yellow",
             12,
             sector(c.s),
           );
