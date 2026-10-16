@@ -159,7 +159,9 @@ export class Race {
         );
         car.teamId =
           championship || delegated || management || mode === "manager"
-            ? Math.floor(i / 2) * 2
+            ? i < 2
+              ? i
+              : Math.floor(i / 2) * 2
             : i;
         if (teamIds) car.teamId = teamIds[i];
         car.crewLevel = car.teamId === 0 ? crewLevel : i % 3;

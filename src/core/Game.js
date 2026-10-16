@@ -9,6 +9,7 @@ import { setPlan } from "../strategy/PitStrategy.js";
 import { assignTeam } from "../career/TeamManager.js";
 import { FixedStep } from "./GameLoop.js";
 import { configureTrack, activeTrack } from "../track.js";
+import { resolveStartOrder } from "../startOrder.js";
 import { trackById } from "../data/tracks.js";
 import { nextCamera } from "../camera/CameraManager.js";
 import { requestPit } from "../strategy/PitStop.js";
@@ -150,10 +151,11 @@ export class Game {
       tire: this.save.settings.tire,
       mode: champ ? "quick" : this.save.settings.mode,
       botCount: champ ? 5 : this.save.settings.bots,
+      gridOrder: ctx?.options?.gridOrder || resolveStartOrder(this.save),
       teamIds:
         this.save.settings.mode === "mega"
           ? [0, 1, 2, 2, 4, 4]
-          : [0, 0, 2, 2, 4, 4],
+          : [0, 1, 2, 2, 4, 4],
       pilot: this.save.selectedDriver,
       rivalries: this.save.rivalries,
       crewLevel: this.save.team.development,
@@ -174,8 +176,7 @@ export class Game {
     this.race.cars[0].number =
       this.save.customizations[this.save.selectedCar]?.number ??
       liveries[this.save.selectedCar].number;
-    if (!ctx) assignTeam(this.race, this.save);
-    else {
+    if (ctx) {
       for (const c of this.race.cars) {
         c.number = driverCatalog[c.driverId].number;
         if (c.teamId === this.race.cars[0].teamId)
@@ -310,6 +311,32 @@ export class Game {
     this.store();
   }
   setting(key, value) {
+    if (key === "startOrderMode") {
+      this.save.settings.startOrderMode = value === "standings" ? "standings" : "random";
+      if (
+        this.save.settings.startOrderMode === "random" &&
+        (!this.save.settings.startOrder || this.save.settings.startOrder.length !== 6)
+      )
+        this.save.settings.startOrder = (function () {
+          const ids = [0, 1, 2, 3, 4, 5];
+          for (let i = ids.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [ids[i], ids[j]] = [ids[j], ids[i]];
+          }
+          return ids;
+        })();
+      this.store();
+      if (this.ui.modal === "setup") this.ui.showModal("setup");
+      if (this.ui.modal === "champ-setup") this.ui.showModal("champ-setup");
+      return;
+    }
+    if (key === "fpsLimit") {
+      this.save.settings.fpsLimit =
+        value === "auto" || value === "unlimited" ? value : Number(value);
+      this.store();
+      if (this.ui.modal === "settings") this.ui.showModal("settings");
+      return;
+    }
     if (
       [
         "mechanicalRate",
@@ -615,11 +642,19 @@ export class Game {
       !!this.race && this.race.state === "racing",
     );
     this.renderElapsed += dt;
-    const renderInterval =
-      this.race &&
-      ["countdown", "racing", "finishing"].includes(this.race.state)
-        ? 0
-        : 1000 / 30;
+    const fpsLimit = this.save.settings.fpsLimit;
+    let renderInterval;
+    if (fpsLimit === "unlimited") renderInterval = 0;
+    else if (fpsLimit === "auto")
+      renderInterval =
+        this.race &&
+        ["countdown", "racing", "finishing"].includes(this.race.state)
+          ? 0
+          : 1000 / 30;
+    else {
+      const n = Number(fpsLimit);
+      renderInterval = n > 0 ? 1000 / n : 0;
+    }
     if (
       this.world.container.style.display !== "none" &&
       t - this.lastRender >= renderInterval

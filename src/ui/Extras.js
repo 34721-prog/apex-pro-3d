@@ -11,6 +11,7 @@ import { trackCatalog, trackById } from "../data/tracks.js";
 import { vehicles, performance, displayStat } from "../garage.js";
 import { liveries } from "../models.js";
 import { activeTrack, length, mapPoint } from "../track.js";
+import { resolveStartOrder } from "../startOrder.js";
 import { DEFAULT_KEYS } from "../controls.js";
 import { compounds } from "../strategy/Resources.js";
 const fmt = (n) => Math.round(n).toLocaleString("pt-BR"),
@@ -24,7 +25,7 @@ const opt = (values, current) =>
   values
     .map(
       ([v, n]) =>
-        `<option value="${v}" ${v === current ? "selected" : ""}>${n}</option>`,
+        `<option value="${v}" ${String(v) === String(current) ? "selected" : ""}>${n}</option>`,
     )
     .join("");
 const b = (text, action, extra = "") =>
@@ -61,7 +62,17 @@ function settingsExtra(s) {
       [128, "128 · completas"],
     ],
     gfx.particles,
-  )}</select></div><div class="setting-row"><b>Efeitos de chuva / poeira</b><input type="checkbox" data-setting="effects" ${gfx.effects ? "checked" : ""}></div><div class="setting-row"><b>Detalhe / alcance da equipe</b><select data-setting="detail">${opt(
+  )}</select></div><div class="setting-row"><b>Limite de FPS</b><select data-setting="fpsLimit" aria-label="Limite de FPS">${opt(
+    [
+      ["auto", "Automático"],
+      [30, "30 FPS"],
+      [60, "60 FPS"],
+      [120, "120 FPS"],
+      [240, "240 FPS"],
+      ["unlimited", "Sem limite"],
+    ],
+    s.settings.fpsLimit,
+  )}</select><small>Respeita as limitações do navegador e do monitor. Em 60 Hz, 120/240 FPS pode não ser atingível.</small></div><div class="setting-row"><b>Efeitos de chuva / poeira</b><input type="checkbox" data-setting="effects" ${gfx.effects ? "checked" : ""}></div><div class="setting-row"><b>Detalhe / alcance da equipe</b><select data-setting="detail">${opt(
     [
       [0.6, "Reduzido"],
       [0.8, "Médio"],
@@ -137,7 +148,21 @@ function setupExtra(s, champ) {
     )}</select></label><label>PNEUS<select data-setting="tire">${opt(
       Object.entries(compounds).map(([k, t]) => [k, t.label]),
       s.settings.tire,
-    )}</select></label><div class="config-pilot"><img src="${driverCatalog[s.selectedDriver].portrait}" alt=""><span>${driverCatalog[s.selectedDriver].name}<small>${vehicles[s.selectedCar].name} · piloto selecionado</small></span></div></div><p class="subtle">No gerenciamento, a IA conduz e entra nos boxes fisicamente. Limite: 65 km/h. C: câmera · Q: rádio. Pedais somente quando você escolher direção manual.</p>`
+    )}</select></label><div class="setting-row"><b>Ordem de largada</b><select data-setting="startOrderMode" aria-label="Ordem de largada">${opt(
+    [
+      ["standings", "Classificação anterior"],
+      ["random", "Sorteio aleatório"],
+    ],
+    s.settings.startOrderMode,
+  )}</select><small>${s.championship?.results?.length ? "Baseada na pontuação acumulada da temporada." : "Sem pontuação anterior; será usado sorteio aleatório."}</small></div><div class="start-order-preview"><b>Grid previsto</b><ol>${resolveStartOrder(s)
+    .map((id, i) => {
+      const name =
+        id === 0
+          ? driverCatalog[s.selectedDriver].name
+          : driverCatalog[id]?.name || "Piloto " + (id + 1);
+      return `<li>${i + 1}. ${name}</li>`;
+    })
+    .join("")}</ol></div><div class="config-pilot"><img src="${driverCatalog[s.selectedDriver].portrait}" alt=""><span>${driverCatalog[s.selectedDriver].name}<small>${vehicles[s.selectedCar].name} · piloto selecionado</small></span></div></div><p class="subtle">No gerenciamento, a IA conduz e entra nos boxes fisicamente. Limite: 65 km/h. C: câmera · Q: rádio. Pedais somente quando você escolher direção manual.</p>`
   );
 }
 export function extendUI(UI) {
