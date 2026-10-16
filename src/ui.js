@@ -307,7 +307,19 @@ export class UI {
         )
         .join(
           "",
-        )}</select></div><div class="setting-row"><div><b>Dificuldade padrão</b><small>Velocidade, precisão e consistência dos rivais.</small></div><select data-setting="difficulty" aria-label="Dificuldade">${Object.entries(
+        )}</select></div><div class="setting-row"><div><b>Limite de FPS</b><small>Controla a frequência de renderização quando a plataforma permitir.</small></div><select data-setting="fpsLimit" aria-label="Limite de FPS">${[
+        ["auto", "Automático"],
+        [30, "30 FPS"],
+        [60, "60 FPS"],
+        [120, "120 FPS"],
+        [240, "240 FPS"],
+        ["unlimited", "Sem limite"],
+      ]
+        .map(
+          ([v, n]) =>
+            `<option value="${v}" ${String(s.settings.fpsLimit) === String(v) ? "selected" : ""}>${n}</option>`,
+        )
+        .join("")}</select></div><div class="setting-row"><div><b>Dificuldade padrão</b><small>Velocidade, precisão e consistência dos rivais.</small></div><select data-setting="difficulty" aria-label="Dificuldade">${Object.entries(
         difficulties,
       )
         .map(

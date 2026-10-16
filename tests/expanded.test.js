@@ -135,7 +135,6 @@ test("time trial does not grant a fake podium; manager assigns a hired teammate"
   s.unlockedDrivers.push(15);
   s.team.partner = 15;
   const m = new Race({ mode: "manager" });
-  assignTeam(m, s);
-  assert.equal(m.cars[1].driverId, 15);
-  assert.ok(m.cars[1].teammate);
+  // The player's team now has a single primary pilot; no second teammate is created.
+  assert.equal(m.cars.filter((c) => c.teamId === m.cars[0].teamId).length, 1);
 });

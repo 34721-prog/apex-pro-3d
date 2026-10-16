@@ -73,6 +73,9 @@ export const defaults = () => ({
     assistance: true,
     bindings: { ...DEFAULT_KEYS },
     fps: false,
+    fpsLimit: "auto",
+    startOrderMode: "random",
+    startOrder: null,
     difficulty: "normal",
     pitPlan: [],
     quality: "medium",
@@ -275,6 +278,22 @@ export function validateSave(value) {
   )
     ? settings.hudMode
     : "standard";
+  const _fl = settings.fpsLimit;
+  if (_fl === "auto" || _fl === "unlimited") s.settings.fpsLimit = _fl;
+  else {
+    const _n = Number(_fl);
+    s.settings.fpsLimit = [30, 60, 120, 240].includes(_n) ? _n : "auto";
+  }
+  s.settings.startOrderMode =
+    settings.startOrderMode === "standings" ? "standings" : "random";
+  if (
+    Array.isArray(settings.startOrder) &&
+    settings.startOrder.length === 6 &&
+    new Set(settings.startOrder).size === 6 &&
+    settings.startOrder.every((n) => Number.isInteger(n) && n >= 0 && n < 6)
+  )
+    s.settings.startOrder = [...settings.startOrder];
+  else s.settings.startOrder = null;
   s.settings.strategyOpen = settings.strategyOpen === true;
   s.settings.aiStrategy = validateStrategy(settings.aiStrategy);
   if (!Array.isArray(settings.managerPlans)) {
