@@ -153,7 +153,7 @@ function setupExtra(s, champ) {
     )}</select></label></div>` +
     `<button class="btn secondary track-catalog-link" data-action="track-catalog" ${champ ? "disabled" : ""}>EXPLORAR ${trackCatalog.length} CIRCUITOS →</button>` +
     `<label class="setting-row">CONTROLE<select data-setting="controlMode"><option value="manager" ${s.settings.controlMode !== "manual" ? "selected" : ""}>Chefe de equipe · IA autônoma</option><option value="manual" ${s.settings.controlMode === "manual" ? "selected" : ""}>Direção manual · opcional</option></select></label>` +
-    `<div class="race-config-grid"><label>MODALIDADE<select data-setting="mode" ${champ ? "disabled" : ""}>${opt([["quick", "Corrida rápida"], ["time-trial", "Contrarrelógio · solo"], ["practice", "Treino livre · sem prêmio"], ["endurance", "Resistência · 6+ voltas"], ["recovery", "Desafio de recuperação"], ["manager", "Chefe de equipe · IA pilota"], ...(s.stats.seasons || s.baxterWon ? [["mega", "Confronto Mega Baxter"]] : [])], champ ? "quick" : s.settings.mode)}</select></label><label>CIRCUITO<select data-setting="track" ${champ ? "disabled" : ""}>${opt(
+    `<div class="race-config-grid"><label>MODALIDADE<select data-setting="mode" ${champ ? "disabled" : ""}>${opt([["quick", "Corrida rápida"], ["time-trial", "Contrarrelógio · solo"], ["practice", "Treino livre · sem prêmio"], ["endurance", "Resistência · 8+ voltas"], ["recovery", "Desafio de recuperação"], ["manager", "Chefe de equipe · IA pilota"], ...(s.stats.seasons || s.baxterWon ? [["mega", "Confronto Mega Baxter"]] : [])], champ ? "quick" : s.settings.mode)}</select></label><label>CIRCUITO<select data-setting="track" ${champ ? "disabled" : ""}>${opt(
       trackCatalog.map((t) => [t.id, t.name + " / " + t.kind]),
       activeTrack.id,
     )}</select></label><label>REGRAS<select data-setting="realism">${opt(
@@ -170,15 +170,15 @@ function setupExtra(s, champ) {
       s.settings.weather,
     )}</select></label><label>DISTÂNCIA DA PROVA<select data-setting="raceDistancePreset" ${champ ? "disabled" : ""}>${opt(
       [
-        ["short", "Curta · 3 voltas"],
-        ["medium", "Média · 5 voltas"],
+        ["short", "Curta · mínimo de 8 voltas"],
+        ["medium", "Média · mínimo de 8 voltas"],
         ["long", "Longa · 9 voltas"],
         ["endurance", "Endurance · 14 voltas"],
         ["custom", "Personalizada"],
       ],
       s.settings.raceDistancePreset || "medium",
     )}</select></label><label>VOLTAS<select data-setting="laps" ${champ ? "disabled" : ""}>${opt(
-      [1, 2, 3, 5, 8, 9, 12, 14, 20, 25].map((n) => [n, n + " voltas"]),
+      [8, 9, 12, 14, 20, 25, 30].map((n) => [n, n + " voltas"]),
       s.settings.laps,
     )}</select></label><label>ADVERSÁRIOS<select data-setting="bots" ${champ ? "disabled" : ""}>${opt(
       [1, 3, 5].map((n) => [n, n + " equipes rivais"]),
@@ -659,7 +659,7 @@ export function extendUI(UI) {
     else if (type === "confirm-exit")
       html = `<h2>Abandonar esta corrida?</h2><p>A prova atual não concede recompensa nem registra uma etapa. Seu progresso anterior será mantido.</p><div class="setting-actions">${b("CONTINUAR CORRENDO", "resume")}${b("ABANDONAR CORRIDA", "confirm-exit")}</div>`;
     else if (type === "pit-options") {
-      const c = this.game.race.cars[0],
+      const c = this.game.race.localCar || this.game.race.cars[0],
         p = c.pit,
         bay = bayFor(c),
         locked = ["service", "release"].includes(p.state),

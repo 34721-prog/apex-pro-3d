@@ -20,12 +20,17 @@ export const drivers = [
 export const points = [25, 18, 15, 12, 10, 8];
 
 export const RACE_DISTANCE_PRESETS = {
-  short: { id: "short", name: "Curta (Sprint)", laps: 3 },
-  medium: { id: "medium", name: "Média (GP Padrão)", laps: 5 },
+  short: { id: "short", name: "Curta (Sprint)", laps: 8 },
+  medium: { id: "medium", name: "Média (GP Padrão)", laps: 8 },
   long: { id: "long", name: "Longa (GP Completo)", laps: 9 },
   endurance: { id: "endurance", name: "Endurance", laps: 14 },
   custom: { id: "custom", name: "Personalizada", laps: null },
 };
+
+export function collisionParticipants(cars, network) {
+  if (!network || network.authoritative) return cars;
+  return cars.filter((car) => !car.isNetworkHuman || car.isNetworkLocal);
+}
 
 function rivalMachineryStats(playerStats = BASE, difficulty = "normal", slot = 1) {
   if (!playerStats || playerStats === BASE) return { ...BASE };
@@ -130,7 +135,10 @@ export class Race {
     modelIndex = null,
     training = 0,
     teamOrder = "race",
+    network = null,
   } = {}) {
+    this.network = network;
+    this.localCarId = 0;
     this.trackId = activeTrack.id;
     this.trackName = activeTrack.name;
     this.trackLength = length;
@@ -223,6 +231,12 @@ export class Race {
     if (!this.manager) this.manager = new StrategyDirector(this, options);
     return this.manager;
   }
+  get localCar() {
+    return this.cars.find((car) => car.id === this.localCarId) || this.cars[0];
+  }
+  isLocalCar(car) {
+    return this.network ? !!car?.isNetworkLocal : car?.id === 0;
+  }
   isDelegated() {
     return this.manualControl === null
       ? this.delegated || this.mode === "manager"
@@ -261,19 +275,22 @@ export class Race {
       return;
     }
     if (this.state === "countdown") {
+      const localCar = this.localCar;
+      const canDriveLocal = this.network
+        ? !!localCar?.isNetworkHuman
+        : !this.isDelegated();
       if (
         !autopilot &&
-        !this.isDelegated() &&
-        (Number(input?.throttle) > 0 || this.cars[0].speed > 0)
+        canDriveLocal &&
+        (Number(input?.throttle) > 0 || localCar.speed > 0)
       ) {
-        const c = this.cars[0];
-        stepCar(c, input, dt);
-        let d = c.s - c.previousS;
+        stepCar(localCar, input, dt);
+        let d = localCar.s - localCar.previousS;
         if (d < -length / 2) d += length;
         if (d > length / 2) d -= length;
-        c.progress += d;
-        c.previousS = c.s;
-        collisions(this.control.traffic);
+        localCar.progress += d;
+        localCar.previousS = localCar.s;
+        collisions(collisionParticipants(this.control.traffic, this.network));
       }
       this.control.gridCheck();
       this.countdown -= dt;
@@ -287,22 +304,37 @@ export class Race {
     }
     this.time += dt;
     const flag = this.flag;
-    updateFlags(this, dt);
+    if (!this.network || this.network.authoritative) updateFlags(this, dt);
     if (this.state === "red") return;
     if (flag !== this.flag) this.emit("flag", null, this.flag);
     this.manager?.step(dt);
     this.cars.forEach((c, i) => {
       if (c.finished || c.retired) return;
+      const isLocalHuman = this.isLocalCar(c);
+      const remoteHuman =
+        this.network?.authoritative && c.isNetworkHuman && !isLocalHuman;
+      const clientRemoteHuman =
+        this.network && !this.network.authoritative && c.isNetworkHuman && !isLocalHuman;
+      if (clientRemoteHuman) return;
       c.simTime = this.time;
       const lap = c.lap,
         best = c.bestLap,
         pitState = c.pit.state,
         invalid = c.lapInvalid;
-      const guided = i !== 0 || autopilot || this.isDelegated();
+      const guided = this.network
+        ? !c.isNetworkHuman
+        : i !== 0 || autopilot || this.isDelegated();
       const pit = pitInput(c, dt, guided, this.control.traffic);
-      let inp =
-        pit ||
-        (guided
+      const lastInputAt = remoteHuman
+        ? this.network.remoteInputAt.get(c.networkEntityId)
+        : undefined;
+      const remoteInputFresh =
+        Number.isFinite(lastInputAt) && performance.now() - lastInputAt < 1500;
+      let inp = pit || (remoteHuman
+        ? remoteInputFresh
+          ? this.network.remoteInputs.get(c.networkEntityId) || { throttle: 0, brake: 0.18, steer: 0 }
+          : { throttle: 0, brake: 0.18, steer: 0 }
+        : guided
           ? botInput(
               c,
               this.control.traffic,
@@ -338,7 +370,7 @@ export class Race {
         c.eventPenalty = c.penalty;
       }
     });
-    collisions(this.control.traffic);
+    collisions(collisionParticipants(this.control.traffic, this.network));
     updateBattles(this);
     this.invalidateStandingsCache();
     if (this.time >= this._nextReplaySample && this.replayFrames.length < 180) {
@@ -348,8 +380,8 @@ export class Race {
         t: Number(this.time.toFixed(1)),
         flag: this.flag,
         leader: order[0]?.id ?? 0,
-        playerPos: order.findIndex((c) => c.id === 0) + 1,
-        playerSpeed: Math.round((this.cars[0]?.speed || 0) * 3.6),
+        playerPos: order.findIndex((c) => this.isLocalCar(c)) + 1,
+        playerSpeed: Math.round((this.localCar?.speed || 0) * 3.6),
         cars: this.cars.map((c) => ({
           id: c.id,
           x: Math.round(c.x),
@@ -359,7 +391,7 @@ export class Race {
         })),
       });
     }
-    if (this.cars[0].finished || this.cars[0].retired) {
+    if (this.localCar.finished || this.localCar.retired) {
       this.state = "finishing";
       this.finishWait += dt;
       if (

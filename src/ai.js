@@ -4,6 +4,7 @@ import {
   curvature,
   headingAt,
   length,
+  racingLineOffset,
   TRACK_WIDTH,
 } from "./track.js";
 import { defaultStrategy, policyFor } from "./strategy/RaceStrategy.js";
@@ -110,6 +111,7 @@ export const difficulties = {
   },
 };
 const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+const BRAKE_LOOKAHEAD = [18, 36, 60, 92, 132, 178, 230];
 export const trackGap = (a, b) =>
   ((b.s - a.s + length * 1.5) % length) - length / 2;
 export function trafficRelevant(o) {
@@ -203,17 +205,26 @@ export function botInput(car, cars, time, difficulty = "normal") {
     Math.abs(car.s - a.curvatureS) > 2 ||
     time - (a.curvatureTime || 0) > 0.08
   ) {
-    // Distance-weighted kinematic braking lookahead prevents bots from braking 85m too early
+    // Cache a short local profile, then use each corner's actual distance and
+    // braking capability instead of treating a distant bend as the current one.
+    a.cornerCurvatures ||= new Float32Array(BRAKE_LOOKAHEAD.length + 1);
+    a.cornerCurvatures[0] = curvature(car.s + 5);
+    for (let i = 0; i < BRAKE_LOOKAHEAD.length; i++)
+      a.cornerCurvatures[i + 1] = curvature(car.s + BRAKE_LOOKAHEAD[i]);
+    // Keep attack/defense decisions local to the upcoming corner. The longer
+    // braking horizon below must not mark every straight as a no-pass zone.
     a.curvature = Math.max(
-      curvature(car.s + 8),
-      curvature(car.s + 25) * 0.93,
-      curvature(car.s + 52) * 0.79,
-      curvature(car.s + 85) * 0.62,
+      a.cornerCurvatures[0],
+      a.cornerCurvatures[1] * 0.95,
+      a.cornerCurvatures[2] * 0.89,
+      a.cornerCurvatures[3] * 0.78,
+      a.cornerCurvatures[4] * 0.62,
     );
     a.curvatureS = car.s;
     a.curvatureTime = time;
   }
   const curv = a.curvature;
+  const currentCurv = a.cornerCurvatures[0];
   const maxLane = Math.min(4.1, TRACK_WIDTH / 2 - 2.1);
   const manager = car.stewards?.race.manager;
   const avoidTeamRisk =
@@ -263,9 +274,13 @@ export function botInput(car, cars, time, difficulty = "normal") {
     }
     if (time >= a.until) {
       const turn = Math.sign(angle(headingAt(car.s + 40) - headingAt(car.s)));
-      let baseline =
-        (car.id % 2 ? 1.8 : -1.8) +
-        (strategy.line === "ideal" && curv > 0.008 ? turn * 0.2 : 0);
+      const driverLineBias = clamp(
+        ((p.cornering ?? p.precision ?? 0.8) - 0.8) * 1.4 +
+          (car.id % 2 ? 0.14 : -0.14),
+        -0.48,
+        0.48,
+      );
+      let baseline = racingLineOffset(car.s + 32) + driverLineBias;
       if (
         strategy.line === "exit" ||
         (strategy.defense === "exit" && curv > 0.008)
@@ -274,11 +289,19 @@ export function botInput(car, cars, time, difficulty = "normal") {
       if (strategy.line === "safe") baseline = car.id % 2 ? 1.5 : -1.5;
       let wanted = clamp(baseline, -maxLane, maxLane),
         next = "line";
+      const passPressure = ahead
+        ? clamp((policy.search - near) / policy.search, 0, 1)
+        : 0;
+      const relativeSpeed = ahead
+        ? Math.max(0, car.speed - ahead.speed)
+        : 0;
       const score =
         clamp((car.speed - (ahead?.speed ?? car.speed) + 5) / 16, 0, 1) * 0.4 +
         (1 - Math.min(1, curv / policy.maxPassCurvature)) * 0.3 +
         p.overtaking * 0.25 +
         (p.cornering ?? p.precision ?? 0.8) * 0.1 +
+        passPressure * 0.08 +
+        clamp(relativeSpeed / 18, 0, 1) * 0.04 +
         (p.skillId === "overtake_master" ? 0.045 : 0);
       if (
         ahead &&
@@ -294,11 +317,9 @@ export function botInput(car, cars, time, difficulty = "normal") {
         if (laneClear(car, cars, preferred)) {
           wanted = preferred;
           next = "overtake";
-        } else if (
-          strategy.line === "alternate" &&
-          Math.abs(ahead.lateral + preferred) > 3.65 &&
-          laneClear(car, cars, -preferred)
-        ) {
+        } else if (laneClear(car, cars, -preferred)) {
+          // A blocked preferred side is not a reason to queue if the other
+          // passing corridor is clear; laneClear validates the full move.
           wanted = -preferred;
           next = "overtake";
         } else next = "follow";
@@ -380,14 +401,19 @@ export function botInput(car, cars, time, difficulty = "normal") {
   car.maneuver = a.mode;
   const jitter =
     Math.sin(time * 0.53 + car.id * 3.4) *
-    mode.consistency *
-    (2 - p.consistency) *
-    2;
+      mode.consistency *
+      (2 - p.consistency) *
+      0.6;
   let lane = clamp(a.lane + jitter, -maxLane, maxLane);
   car.targetLane ??= car.lateral;
   if (alongside && !laneClear(car, cars, lane)) lane = car.targetLane;
-  // Bounded lateral target velocity; the actual car still obeys grip/inertia.
-  car.targetLane += clamp(lane - car.targetLane, -0.028, 0.028);
+  // Respond faster when committed to a pass; physics still constrains the car.
+  const laneTargetRate = a.mode === "overtake" ? 0.042 : 0.028;
+  car.targetLane += clamp(
+    lane - car.targetLane,
+    -laneTargetRate,
+    laneTargetRate,
+  );
   const look = 14 + car.speed * 0.34 + (strategy.line === "exit" ? 2 : 0),
     t = at(car.s + look);
   const delta = angle(
@@ -402,16 +428,15 @@ export function botInput(car, cars, time, difficulty = "normal") {
     -1,
     1,
   );
-  const cornerSpeed = Math.sqrt(
-    ((15 - 5 * (car.wetness ?? (car.weather === "rain" ? 1 : 0))) *
-      (car.tireGrip ?? 1) *
-      (car.weather === "rain"
-        ? 0.94 +
-          0.06 * (p.wetSkill ?? 0.8) +
-          (p.skillId === "rain_master" ? 0.025 : 0)
-        : 1)) /
-      Math.max(curv, 0.002),
-  );
+  const wetness = car.wetness ?? (car.weather === "rain" ? 1 : 0);
+  const cornerGrip =
+    (15 - 5 * wetness) *
+    (car.tireGrip ?? 1) *
+    (car.weather === "rain"
+      ? 0.94 +
+        0.06 * (p.wetSkill ?? 0.8) +
+        (p.skillId === "rain_master" ? 0.025 : 0)
+      : 1);
   const profile = aiProfileFor(car);
   const skillPace =
     (p.skillId === "qualifying_ace" && (car.tires?.health ?? 1) > 0.82
@@ -420,20 +445,40 @@ export function botInput(car, cars, time, difficulty = "normal") {
     (p.skillId === "rocket_starter" && car.lap === 0 && time < 15 ? 1.008 : 1);
   let pace = policy.pace * (car.id === 0 ? 1 : profile.pace) * skillPace;
   if (strategy.pace === "recovery" && time - a.lastBattle < 7) pace = 1.022;
-  let targetSpeed = Math.min(
-    car.stats.maxSpeed,
-    cornerSpeed *
-      mode.pace *
-      pace *
-      (0.94 +
-        (p.cornering ?? p.precision ?? 0.8) * 0.035 +
-        (p.speed ?? p.skill ?? 0.8) * 0.025) *
-      (1 +
-        Math.sin(time * 0.3 + car.id) *
-          mode.consistency *
-          profile.consistency *
-          (1 - p.consistency * 0.5)),
+  const consistencyFactor =
+    1 +
+    Math.sin(time * 0.3 + car.id) *
+      mode.consistency *
+      profile.consistency *
+      (1 - p.consistency * 0.5);
+  const skillFactor =
+    (0.94 +
+      (p.cornering ?? p.precision ?? 0.8) * 0.035 +
+      (p.speed ?? p.skill ?? 0.8) * 0.025) *
+    consistencyFactor;
+  const paceFactor = mode.pace * pace * skillFactor;
+  const cornerSpeed = Math.sqrt(cornerGrip / Math.max(currentCurv, 0.002));
+  let targetSpeed = Math.min(car.stats.maxSpeed, cornerSpeed * paceFactor);
+  const brakingCapacity = Math.max(
+    5,
+    car.stats.braking *
+      (car.weather === "rain" ? 0.48 : 0.68) *
+      (car.tireGrip ?? 1) *
+      (1 - (car.damage || 0) * 0.2),
   );
+  const reactionDistance = car.speed * (mode.reaction + 0.22);
+  for (let i = 0; i < BRAKE_LOOKAHEAD.length; i++) {
+    const distance = BRAKE_LOOKAHEAD[i];
+    const turnSpeed = Math.min(
+      car.stats.maxSpeed,
+      Math.sqrt(cornerGrip / Math.max(a.cornerCurvatures[i + 1], 0.002)) * paceFactor,
+    );
+    const brakingDistance = Math.max(0, distance - reactionDistance);
+    const envelopeSpeed = Math.sqrt(
+      turnSpeed * turnSpeed + 2 * brakingCapacity * brakingDistance,
+    );
+    targetSpeed = Math.min(targetSpeed, envelopeSpeed);
+  }
   if (Math.abs(delta) > 0.6 || Math.abs(car.lateral) > TRACK_WIDTH / 2 - 2) {
     targetSpeed = Math.min(targetSpeed, 24);
     car.maneuver = "recover";
@@ -468,12 +513,14 @@ export function botInput(car, cars, time, difficulty = "normal") {
   )
     a.until = Math.max(a.until, time + 0.5);
   car.aiTargetSpeed = targetSpeed;
+  const speedError = targetSpeed - car.speed;
+  const brake = clamp((-speedError - 0.7) / 7, 0, 1);
   return {
     steer: steering,
-    throttle: car.speed < targetSpeed - 0.15 ? policy.throttle : 0.035,
-    brake:
-      car.speed > targetSpeed + 0.5
-        ? Math.min(1, (car.speed - targetSpeed) / 9)
-        : 0,
+    throttle:
+      brake > 0.015
+        ? 0
+        : Math.min(policy.throttle, clamp((speedError + 2.2) / 6, 0.025, 1)),
+    brake,
   };
 }

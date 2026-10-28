@@ -1,5 +1,7 @@
 import { managerPanel, managerHistory } from "./ui/ManagerUI.js";
 import { extendCompetitionUI } from "./ui/CompetitionUI.js";
+import { extendMultiplayerUI } from "./multiplayer/MultiplayerUI.js";
+import "./multiplayer/multiplayer.css";
 import { trackPreview } from "./data/TrackGeometry.js";
 import { renderRaceHUD, updateRaceHUD } from "./ui/RaceHUD.js";
 import { cameraModes } from "./camera/CameraManager.js";
@@ -88,6 +90,7 @@ export class UI {
       ["home", "Início"],
       ["management", "Estratégia"],
       ["championship", "Campeonato"],
+      ["multiplayer", "Multiplayer"],
       ["garage", "Garagem"],
       ["upgrades", "Melhorias"],
       ["stats", "Estatísticas"],
@@ -125,6 +128,7 @@ export class UI {
     this.game.world.setPaint?.(this.game.save.selectedPaint);
     this.render();
     if (page === "tracks") this.game.world.setMode("track-preview");
+    if (page === "multiplayer") void this.game.multiplayer.openMenu();
   }
   render() {
     const world = this.game.world.container;
@@ -300,6 +304,11 @@ export class UI {
         )}</div><div class="setup-controls"><span>IA autônoma por padrão</span><span>WASD somente no modo manual</span><span><kbd>R</kbd> recuperar</span><span><kbd>ESC</kbd> pausar</span></div>${btn(`INICIAR CORRIDA ${icon("arrow")}`, champ ? "start-champ" : "start", "primary full-width")}<small class="modal-footnote">${icon("check")} Progresso salvo automaticamente após a corrida.</small>`;
     } else if (type === "pause") {
       html = `<div class="modal-eyebrow">${icon("pause")} BOX, BOX.</div><h2>Uma pausa. Não o fim.</h2><p>Seu lugar no grid está esperando.</p><div class="pause-actions">${btn(`VOLTAR À PISTA ${icon("play")}`, "resume", "primary full-width")}${btn(`REINICIAR CORRIDA ${icon("reset")}`, "restart", "secondary full-width")}${btn("SAIR PARA A CENTRAL", "exit-race", "text-btn full-width")}</div><div class="info-note">Reiniciar ou sair não concede créditos. A etapa atual não será registrada.</div>`;
+    } else if (type === "online-pause") {
+      html = `<div class="modal-eyebrow">${icon("wifi")} CORRIDA ONLINE · PAUSA LOCAL</div><h2>Você ainda está na corrida.</h2><p>A sessão online continua para todos. O anfitrião mantém a simulação autoritativa; sair encerrará sua participação.</p><div class="pause-actions">${btn(`VOLTAR À PISTA ${icon("play")}`, "resume", "primary full-width")}${btn("SAIR DA SALA", "mp-leave", "text-btn full-width")}</div>`;
+    } else if (type === "online-pit") {
+      const car = this.game.race?.localCar;
+      html = `<div class="modal-eyebrow">${icon("flag")} CORRIDA ONLINE · BOXES</div><h2>Parada do piloto.</h2><p>${car?.pit?.requested ? "Uma chamada de boxes está ativa." : "Solicite ou cancele a chamada de boxes. A equipe anfitriã aplica o comando à sua posição autoritativa."}</p><div class="pause-actions">${btn(car?.pit?.requested ? "CANCELAR CHAMADA" : "SOLICITAR BOXES", car?.pit?.requested ? "pit-cancel" : "pit", "primary full-width")}${btn("VOLTAR À PISTA", "resume", "secondary full-width")}</div><div class="info-note">Latência de rede pode atrasar a confirmação visual.</div>`;
     } else if (type === "settings") {
       html = `<div class="modal-eyebrow">${icon("settings")} CONFIGURAÇÕES</div><h2>No seu ritmo.</h2><p>Ajustes salvos neste navegador.</p><div class="setting-row"><div><b>Áudio do motor e efeitos</b><small>Som sintetizado localmente. Sem trilha remota.</small></div><label class="switch"><input type="checkbox" data-setting="audio" ${s.settings.audio ? "checked" : ""}><span></span></label></div><div class="setting-row"><div><b>Volume</b><small>O som começa ao entrar na corrida.</small></div><input type="range" min="0" max="1" step=".05" value="${s.settings.volume}" data-setting="volume" aria-label="Volume"></div><div class="setting-row"><div><b>Qualidade gráfica</b><small>Aplicado ao vivo. Física e regras permanecem iguais.</small></div><select data-setting="quality" aria-label="Qualidade gráfica">${[
         ["low", "Low · Leve"],
@@ -370,3 +379,4 @@ export class UI {
 
 extendUI(UI);
 extendCompetitionUI(UI);
+extendMultiplayerUI(UI);

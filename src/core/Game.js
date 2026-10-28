@@ -18,7 +18,9 @@ import { handleExtraAction } from "./ExtraActions.js";
 import { World } from "../renderer.js";
 import { Controls } from "../controls.js";
 import { Race } from "../race.js";
-import { recover } from "../physics.js";
+import { BASE, recover } from "../physics.js";
+import { MIN_RACE_LAPS, MAX_RACE_LAPS, clampRaceLaps, MAX_GRID_CARS } from "../racing/RaceConfig.js";
+import { MultiplayerClient } from "../multiplayer/MultiplayerClient.js";
 import { load, save as persist } from "../save.js";
 import { performance as carStats, purchase } from "../garage.js";
 import { rewardRace, unlock } from "../progression.js";
@@ -55,11 +57,12 @@ export class Game {
     this.world.pilotColor = this.save.selectedDriver;
     this.audio = new AudioEngine();
     this.audio.configure(this.save.settings);
+    this.multiplayer = new MultiplayerClient(this);
     this.controls = new Controls(
       (blur) => this.pause(blur),
       () => {
         if (this.race?.state === "racing" && !this.race.isDelegated()) {
-          recover(this.race.cars[0]);
+          recover(this.race.localCar || this.race.cars[0]);
           this.ui.toast("Carro recuperado. Volte à disputa.");
         }
       },
@@ -127,84 +130,147 @@ export class Game {
     if (champ && this.save.championship.results.length >= 3) return;
     this.ui.closeModal();
     this.controls.clear();
+    const online = this.onlineRaceContext;
     const ctx = this.launchContext;
-    this.simulating = !!ctx?.fast;
-    const track = ctx
-      ? ctx.track
-      : champ
-        ? rounds[this.save.championship.results.length].track
-        : this.save.settings.track;
+    this.simulating = !online && !!ctx?.fast;
+    const track = online
+      ? online.room.track_id
+      : ctx
+        ? ctx.track
+        : champ
+          ? rounds[this.save.championship.results.length].track
+          : this.save.settings.track;
     this.switchTrack(track);
-    const laps = champ
-      ? rounds[this.save.championship.results.length].laps
-      : this.save.settings.mode === "endurance"
-        ? Math.max(6, this.save.settings.laps)
-        : this.save.settings.laps;
+    const laps = online
+      ? Number(online.room.lap_count)
+      : champ
+        ? rounds[this.save.championship.results.length].laps
+        : this.save.settings.mode === "endurance"
+          ? Math.max(MIN_RACE_LAPS, clampRaceLaps(this.save.settings.laps))
+          : clampRaceLaps(this.save.settings.laps);
+    const network = online
+      ? {
+          authoritative: online.localPlayerId === online.hostPlayerId,
+          localPlayerId: online.localPlayerId,
+          hostPlayerId: online.hostPlayerId,
+          roomStatus: online.room.status,
+          reconnecting: !!online.reconnecting,
+          remoteInputs: new Map(),
+          remoteInputAt: new Map(),
+          hostTime: 0,
+          hostFlag: null,
+          hostState: null,
+          hostEventId: 0,
+        }
+      : null;
     this.race = new Race({
       difficulty: this.save.settings.difficulty,
       laps,
-      stats: carStats(this.save),
+      stats: online ? BASE : carStats(this.save),
       championship: champ,
-      realism: this.save.settings.realism,
-      weather: this.save.settings.weather,
-      tire: this.save.settings.tire,
-      mode: champ ? "quick" : this.save.settings.mode,
-      botCount: champ ? 5 : this.save.settings.bots,
+      realism: online ? "arcade" : this.save.settings.realism,
+      weather: online ? "dry" : this.save.settings.weather,
+      tire: online ? "medium" : this.save.settings.tire,
+      mode: online ? "quick" : champ ? "quick" : this.save.settings.mode,
+      botCount: online
+        ? Math.min(MAX_GRID_CARS - 1, online.entities.length - 1)
+        : champ
+          ? 5
+          : this.save.settings.bots,
       teamIds: [0, 1, 2, 3, 4, 5],
       pilot: this.save.selectedDriver,
       rivalries: this.save.rivalries,
-      crewLevel: this.save.team.development,
-      training: this.save.career.training,
-      strategy: this.save.settings.aiStrategy,
-      delegated: this.save.settings.controlMode !== "manual",
-      weatherProgram: this.save.settings.weatherProgram,
-      mechanicalRate: this.save.settings.mechanicalRate,
-      ruleSet: this.save.settings.ruleSet,
+      crewLevel: online ? 0 : this.save.team.development,
+      training: online ? 0 : this.save.career.training,
+      strategy: online ? undefined : this.save.settings.aiStrategy,
+      delegated: online ? false : this.save.settings.controlMode !== "manual",
+      weatherProgram: online ? "fixed" : this.save.settings.weatherProgram,
+      mechanicalRate: online ? 0 : this.save.settings.mechanicalRate,
+      ruleSet: online ? "auto" : this.save.settings.ruleSet,
+      specStats: online ? BASE : null,
+      network,
+      seed: 17,
       ...(ctx?.options || {}),
     });
-    this.race.manualControl = ctx
-      ? !ctx.options.delegated
-      : this.save.settings.controlMode === "manual";
-    this.race.teamBaseStats = carStats(this.save);
-    setPlan(this.race.cars[0], this.save.settings.pitPlan);
-    this.race.carIndex = ctx?.options.modelIndex ?? this.save.selectedCar;
-    this.race.cars[0].number =
-      this.save.customizations[this.save.selectedCar]?.number ??
-      liveries[this.save.selectedCar].number;
-    if (!ctx) assignTeam(this.race, this.save);
-    else {
-      for (const c of this.race.cars) {
-        c.number = driverCatalog[c.driverId].number;
-        if (c.teamId === this.race.cars[0].teamId)
-          c.crewLevel = Math.min(
-            5,
-            this.save.team.development +
-              (careerTeams.find((t) => t.id === this.race.cars[0].teamId)
-                ?.crew || 0),
-          );
+    this.race.manualControl = online
+      ? true
+      : ctx
+        ? !ctx.options.delegated
+        : this.save.settings.controlMode === "manual";
+    if (online) {
+      this.race.online = {
+        roomId: online.room.id,
+        raceId: online.raceId,
+        localPlayerId: online.localPlayerId,
+        hostPlayerId: online.hostPlayerId,
+        participants: online.participants,
+        reconnecting: !!online.reconnecting,
+      };
+      for (const [index, car] of this.race.cars.entries()) {
+        const entity = online.entities[index];
+        if (!entity) continue;
+        car.networkEntityId = entity.id;
+        car.isNetworkHuman = !!entity.human;
+        car.isNetworkLocal = !!entity.human && entity.playerId === online.localPlayerId;
+        car.name = entity.name;
+        car.modelIndex = entity.human && entity.playerId === online.localPlayerId
+          ? this.save.selectedCar
+          : index % 6;
+        car.number = entity.human ? 7 + index : 80 + index;
+        car.assistance = true;
       }
+      this.race.localCarId = this.race.cars.find((car) => car.isNetworkLocal)?.id ?? 0;
+      this.race.network.localCarId = this.race.localCarId;
+      this.race.countdown = Math.max(0, Math.min(5, online.countdownSeconds));
+      if (online.room.status === "racing") {
+        this.race.state = "racing";
+        this.race.countdown = 0;
+        for (const car of this.race.cars) car.startedLap = true;
+      }
+    } else {
+      this.race.teamBaseStats = carStats(this.save);
+      setPlan(this.race.cars[0], this.save.settings.pitPlan);
+      this.race.cars[0].number =
+        this.save.customizations[this.save.selectedCar]?.number ??
+        liveries[this.save.selectedCar].number;
+      if (!ctx) assignTeam(this.race, this.save);
+      else {
+        for (const c of this.race.cars) {
+          c.number = driverCatalog[c.driverId].number;
+          if (c.teamId === this.race.cars[0].teamId)
+            c.crewLevel = Math.min(
+              5,
+              this.save.team.development +
+                (careerTeams.find((t) => t.id === this.race.cars[0].teamId)
+                  ?.crew || 0),
+            );
+        }
+      }
+      for (const c of this.race.cars)
+        if (c.id !== 0 && c.teamId === this.race.cars[0].teamId)
+          c.personality.consistency = Math.min(
+            0.99,
+            c.personality.consistency +
+              Math.min(5, this.save.career.training) * 0.02,
+          );
+      this.race.enableManagement({
+        plans: this.save.settings.managerPlans,
+        objective: this.save.settings.managerObjective,
+        points: ctx?.managerPoints || {},
+      });
     }
-    for (const c of this.race.cars)
-      if (c.id !== 0 && c.teamId === this.race.cars[0].teamId)
-        c.personality.consistency = Math.min(
-          0.99,
-          c.personality.consistency +
-            Math.min(5, this.save.career.training) * 0.02,
-        );
-    this.race.enableManagement({
-      plans: this.save.settings.managerPlans,
-      objective: this.save.settings.managerObjective,
-      points: ctx?.managerPoints || {},
-    });
+    this.race.carIndex = online
+      ? this.race.localCarId
+      : (ctx?.options.modelIndex ?? this.save.selectedCar);
     this.lastManagerReport = null;
-    this.world.focusId = 0;
+    this.world.focusId = online ? this.race.localCarId : 0;
     this.world.raceContext = this.race;
-    this.race.cars.forEach(
-      (c) => (c.assistance = this.save.settings.assistance),
-    );
+    this.race.cars.forEach((c) => {
+      if (!online) c.assistance = this.save.settings.assistance;
+    });
     this.engineer.reset();
     this.loop.reset();
-    this.world.setWeather(this.save.settings.weather);
+    this.world.setWeather(online ? "dry" : this.save.settings.weather);
     this.lastReward = null;
     this.world.customization = this.save.customizations[this.save.selectedCar];
     this.world.setMode("race", this.race.cars);
@@ -234,6 +300,19 @@ export class Game {
     this.last = performance.now();
     this.bindTouch();
   }
+  startOnlineRace(context) {
+    if (!context?.room || !context?.raceId) return false;
+    const laps = Number(context.room.lap_count);
+    if (!Number.isInteger(laps) || laps < MIN_RACE_LAPS || laps > MAX_RACE_LAPS)
+      throw new RangeError("A corrida online deve ter entre 8 e 30 voltas.");
+    const knownTrack = trackById(context.room.track_id);
+    if (knownTrack.id !== context.room.track_id)
+      throw new RangeError("A sala selecionou uma pista inválida.");
+    this.launchContext = null;
+    this.onlineRaceContext = { ...context, room: { ...context.room, lap_count: laps } };
+    this.start(false);
+    return true;
+  }
   bindTouch() {
     const apply = (id, active) => {
       const t = this.controls.touch;
@@ -262,6 +341,11 @@ export class Game {
       return;
     }
     if (this.race.state === "results") return;
+    if (this.race.online) {
+      this.controls.clear();
+      if (!onlyPause) this.ui.showModal("online-pause");
+      return;
+    }
     if (onlyPause && this.race.state === "paused") return;
     this.race.pause();
     this.controls.clear();
@@ -273,6 +357,7 @@ export class Game {
     this.loop.reset();
   }
   finish() {
+    if (this.race?.online) return;
     if (this.lastReward) return;
     recordManager(this);
     if (this.launchContext) {
@@ -345,15 +430,14 @@ export class Game {
       ])
         this.save.settings[k] = this.world.graphics[k];
     }
+    if (key === "laps") value = clampRaceLaps(value);
     this.save.settings[key] = value;
     if (key === "raceDistancePreset") {
-      const presetLaps = { short: 3, medium: 5, long: 9, endurance: 14 }[value];
+      const presetLaps = { short: 8, medium: 8, long: 9, endurance: 14 }[value];
       if (presetLaps) this.save.settings.laps = presetLaps;
     }
     if (key === "laps") {
-      const match = { 3: "short", 5: "medium", 9: "long", 14: "endurance" }[
-        value
-      ];
+      const match = { 8: "medium", 9: "long", 14: "endurance" }[value];
       this.save.settings.raceDistancePreset = match || "custom";
     }
     if (key === "hudMode") {
@@ -410,6 +494,10 @@ export class Game {
     return managerChange(this, el);
   }
   action(action, data = {}) {
+    if (action.startsWith("mp-")) {
+      void this.multiplayer.handleAction(action, data);
+      return;
+    }
     if (managerAction(this, action, data)) return;
     if (competitionAction(this, action, data)) return;
     if (
@@ -454,8 +542,13 @@ export class Game {
         this.start(true);
         break;
       case "pause":
-      case "resume":
         this.pause();
+        break;
+      case "resume":
+        if (this.race?.online) {
+          this.controls.clear();
+          this.ui.closeModal();
+        } else this.pause();
         break;
       case "restart":
         this.start(this.race?.championship);
@@ -610,12 +703,13 @@ export class Game {
             (d) => this.race.step(d, input),
             ["paused", "results"].includes(this.race.state),
           );
+      if (this.race.online) this.multiplayer.tickRace(t, input, this.race);
       this.ui.updateHUD(this.race, t);
       const wet = this.race.control.weather;
       const visual = wet.rain > 0.12 ? "rain" : "dry";
       if (this.world.weather !== visual) this.world.setWeather(visual);
       this.world.rainIntensity = wet.rain;
-      if (this.race.done && !this.lastReward) this.finish();
+      if (!this.race.online && this.race.done && !this.lastReward) this.finish();
     }
     this.engineer.update(this.race);
     this.audio.tick(this.race, this.ui, this.world.venues);

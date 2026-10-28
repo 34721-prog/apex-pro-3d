@@ -28,11 +28,11 @@ export class AudienceEvents {
       this.nextCheck = 0;
     }
     if (!race) return;
-    const p = race.cars[0];
+    const p = race.localCar || race.cars[0];
     for (const e of race.events)
       if (e.id > this.lastId) {
         if (e.type === "start") this.push("start", p, 0.55);
-        if (e.type === "finish" && e.car === 0) this.push("finish", p, 0.85);
+        if (e.type === "finish" && e.car === race.localCarId) this.push("finish", p, 0.85);
       }
     this.lastId = race.eventSerial;
     const order = race.physicalOrder();
