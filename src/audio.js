@@ -181,7 +181,7 @@ export class AudioEngine {
       this.effectTimes.clear();
       this.silenceEffects();
     }
-    const p = race?.cars[0],
+    const p = race?.localCar || race?.cars[0],
       active =
         race &&
         ["racing", "finishing"].includes(race.state) &&

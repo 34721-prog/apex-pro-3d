@@ -31,6 +31,10 @@ const paths = {
   help: "M9 8a3 3 0 0 1 6 0c0 3-3 3-3 6m0 3v1M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z",
   reset: "M4 9a8 8 0 1 1 0 7M4 3v6h6",
   download: "M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5",
+  wifi: "M5 9a11 11 0 0 1 14 0m-11 4a6 6 0 0 1 8 0m-5 4h.1",
+  user: "M20 21a8 8 0 0 0-16 0m8-10a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z",
+  copy: "M8 8V4h12v12h-4M4 8h12v12H4z",
+  alert: "M12 3 2.8 20h18.4L12 3Zm0 6v5m0 3v.1",
 };
 export const icon = (name, cls = "") =>
   `<svg class="icon ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${paths[name] || paths.flag}"/></svg>`;

@@ -17,6 +17,7 @@ import {
   aeroSetupPresets,
 } from "./data/parts.js";
 import { sponsorCatalog, teamPrincipals } from "./data/sponsors.js";
+import { MIN_RACE_LAPS } from "./racing/RaceConfig.js";
 
 export const SAVE_KEY = "apex-dynasty-v1";
 export const defaults = () => ({
@@ -87,7 +88,7 @@ export const defaults = () => ({
     mode: "manager",
     realism: "arcade",
     weather: "dry",
-    laps: 3,
+    laps: MIN_RACE_LAPS,
     raceDistancePreset: "medium",
     bots: 5,
     tire: "medium",
@@ -331,7 +332,7 @@ export function validateSave(value) {
     ["shadows", 0, 1024],
     ["particles", 0, 128],
     ["detail", 0.6, 1],
-    ["laps", 1, 30],
+    ["laps", MIN_RACE_LAPS, 30],
     ["bots", 1, 5],
     ["radioFrequency", 10, 60],
     ["sensitivity", 0.4, 1.8],

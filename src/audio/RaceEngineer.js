@@ -74,7 +74,7 @@ export class RaceEngineer {
       return;
     }
     this.wasRacing = true;
-    const c = race.cars[0],
+    const c = race.localCar || race.cars[0],
       t = race.time;
     if (c.engineerEvent) {
       this.say(c.engineerEvent, 3, t);
@@ -135,7 +135,7 @@ export class RaceEngineer {
   }
   report(race) {
     if (!race) return;
-    const c = race.cars[0];
+    const c = race.localCar || race.cars[0];
     this.say(
       `Pneus com ${Math.round(c.tires.health * 100)} por cento. Combustível para ${(c.fuel / c.fuelPerLap).toFixed(1)} voltas. Danos ${Math.round(c.damage * 100)} por cento.`,
       3,

@@ -4,6 +4,10 @@
 
 Continuação do projeto original: mantém o HUD e os 14 circuitos da v0.4, 31 pilotos, 12 carros, boxes, estratégias, carreira, campeonato legado e ferramentas locais. Mantém direção de prova central, acontecimentos físicos, clima evolutivo e sete competições com temporadas completas. A v0.7 acrescenta dez arquibancadas por circuito, público denso, telões reais e trilha sonora/torcida originais.
 
+## Multiplayer online real — v0.10
+
+Salas públicas/privadas exclusivas para identidades Google via Supabase Auth, Realtime para inputs/snapshots e resultados finais persistidos por RPC. RLS e RPCs exigem a claim Google assinada; identidades anônimas/email-only não entram. Sem jogadores, salas ou resultados fictícios; o host mantém a simulação autoritativa no navegador. Setup do OAuth, migrações, variáveis e limites: **`docs/MULTIPLAYER-SUPABASE.md`**.
+
 ## Experiência principal — chefe de equipe
 
 **Os pilotos dirigem autonomamente por padrão.** Prepare equipe/pilotos/carros, abra **Estratégia** ou **Preparar equipe**, configure cada plano e inicie a corrida. No HUD, a central de estratégia continua funcionando **sem pausar a prova**. Em Competições, **Chefe de equipe** e **Simular sessão** não exigem volante.

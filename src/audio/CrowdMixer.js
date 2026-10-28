@@ -94,7 +94,7 @@ export class CrowdMixer {
         b.source.start(0, i * 6.7);
         this.beds.push(b);
       }
-    const p = race.cars[0],
+    const p = race.localCar || race.cars[0],
       near = venues.plan
         .map((v) => ({ v, d: Math.hypot(v.x - p.x, v.z - p.z) }))
         .sort((a, b) => a.d - b.d)
