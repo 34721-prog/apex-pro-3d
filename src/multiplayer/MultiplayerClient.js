@@ -14,7 +14,12 @@ import {
   SNAPSHOT_INTERVAL_MS,
   validateRaceInput,
 } from "./NetworkProtocol.js";
-import { createSupabaseClient, supabaseConfig, supabaseConfigured } from "./supabase.js";
+import {
+  createSupabaseClient,
+  isGoogleIdentity,
+  supabaseConfig,
+  supabaseConfigured,
+} from "./supabase.js";
 
 const ROOM_KEY = "apex-dynasty:last-room:v1";
 const VALID_EVENTS = new Set([
@@ -35,6 +40,8 @@ export class MultiplayerClient {
     this.state = {
       configured: this.configured,
       googleEnabled: this.configured && supabaseConfig.googleEnabled,
+      googleIdentityRequired: true,
+      anonymousSession: false,
       profile: null,
       room: null,
       players: [],
@@ -79,6 +86,10 @@ export class MultiplayerClient {
     return this.state.profile?.id || null;
   }
 
+  get isGoogleUser() {
+    return this.state.profile?.isGoogle === true;
+  }
+
   get isHost() {
     return !!this.playerId && this.state.room?.host_id === this.playerId;
   }
@@ -115,7 +126,7 @@ export class MultiplayerClient {
     try {
       await this.ensureClient();
       await this.loadExistingProfile();
-      if (this.playerId) {
+      if (this.isGoogleUser) {
         await this.resumeLastRoom();
         await this.subscribePublicRooms();
         await this.refreshPublicRooms();
@@ -137,64 +148,50 @@ export class MultiplayerClient {
     const { data, error } = await this.client.auth.getSession();
     if (error) throw error;
     const session = data?.session;
-    if (!session?.user?.id) return null;
+    const user = session?.user;
+    if (!user?.id) {
+      this.emit({
+        profile: null,
+        googleIdentityRequired: true,
+        anonymousSession: false,
+        connection: "offline",
+        info: "Entre com Google para acessar o multiplayer.",
+      });
+      return null;
+    }
+    if (!isGoogleIdentity(user)) {
+      this.emit({
+        profile: null,
+        googleIdentityRequired: true,
+        anonymousSession: !!user.is_anonymous,
+        connection: "google-required",
+        info: user.is_anonymous
+          ? "Esta sessão anônima não pode acessar as salas até ser vinculada a uma conta Google."
+          : "Esta conta não tem identidade Google vinculada.",
+      });
+      return null;
+    }
     const { data: profile, error: profileError } = await this.client
       .from("profiles")
       .select("id,display_name,avatar_url,created_at,updated_at")
-      .eq("id", session.user.id)
+      .eq("id", user.id)
       .maybeSingle();
     if (profileError) throw profileError;
     if (!profile) return null;
-    this.state.profile = {
-      ...profile,
-      isAnonymous: !!session.user.is_anonymous,
-    };
-    this.state.connection = "online";
+    this.state.profile = { ...profile, isGoogle: true };
+    this.emit({
+      profile: this.state.profile,
+      googleIdentityRequired: false,
+      anonymousSession: false,
+      connection: "online",
+      error: "",
+      info: "Conta Google confirmada.",
+    });
     return this.state.profile;
   }
 
-  async enterAsGuest(displayName) {
-    if (!this.configured) throw new Error("Configure o Supabase antes de entrar no multiplayer.");
-    await this.ensureClient();
-    const name = cleanDisplayName(displayName);
-    this.emit({ busy: true, error: "", info: "Conectando como convidado…" });
-    try {
-      const { data: sessionData, error: sessionError } = await this.client.auth.getSession();
-      if (sessionError) throw sessionError;
-      let session = sessionData?.session;
-      if (!session) {
-        const { data, error } = await this.client.auth.signInAnonymously({
-          options: { data: { display_name: name } },
-        });
-        if (error) throw error;
-        session = data?.session;
-      }
-      if (!session?.user?.id) throw new Error("O Supabase não criou uma sessão de convidado.");
-      const { data: profile, error: profileError } = await this.client.rpc(
-        "set_display_name",
-        { p_display_name: name },
-      );
-      if (profileError) throw profileError;
-      this.state.profile = {
-        id: session.user.id,
-        display_name: profile?.display_name || name,
-        avatar_url: profile?.avatar_url || null,
-        created_at: profile?.created_at || null,
-        isAnonymous: !!session.user.is_anonymous,
-      };
-      this.emit({ busy: false, error: "", info: "Sessão de convidado pronta." });
-      await this.resumeLastRoom();
-      await this.subscribePublicRooms();
-      await this.refreshPublicRooms();
-      return this.state.profile;
-    } catch (error) {
-      this.emit({ busy: false, error: friendlyError(error), info: "" });
-      throw error;
-    }
-  }
-
   async updateDisplayName(value) {
-    if (!this.playerId) throw new Error("Entre como convidado antes de alterar o nome.");
+    if (!this.isGoogleUser) throw new Error("Entre com uma conta Google para usar o multiplayer.");
     await this.ensureClient();
     const name = cleanDisplayName(value);
     const { data, error } = await this.client.rpc("set_display_name", {
@@ -207,26 +204,36 @@ export class MultiplayerClient {
 
   async continueWithGoogle() {
     if (!this.configured || !this.state.googleEnabled)
-      throw new Error("Ative o Google OAuth nas variáveis de ambiente e no Supabase.");
+      throw new Error("Configure o provedor Google no Supabase e habilite o botão no build.");
     await this.ensureClient();
     const { data, error: sessionError } = await this.client.auth.getSession();
     if (sessionError) throw sessionError;
+    const session = data?.session;
+    if (isGoogleIdentity(session?.user)) {
+      await this.loadExistingProfile();
+      return true;
+    }
     const redirectTo = `${window.location.origin}${window.location.pathname}`;
-    const credentials = {
-      provider: "google",
-      options: { redirectTo },
-    };
-    const result = data?.session?.user?.is_anonymous
-      ? await this.client.auth.linkIdentity(credentials)
-      : await this.client.auth.signInWithOAuth(credentials);
+    const credentials = { provider: "google", options: { redirectTo } };
+    let result;
+    if (session?.user?.is_anonymous) {
+      result = await this.client.auth.linkIdentity(credentials);
+    } else {
+      if (session) {
+        const { error } = await this.client.auth.signOut();
+        if (error) throw error;
+      }
+      result = await this.client.auth.signInWithOAuth(credentials);
+    }
     if (result.error) throw result.error;
-    // OAuth redirects away and returns to the same origin; the real Supabase
-    // session is restored by detectSessionInUrl when the application reloads.
+    // OAuth returns to the same origin; detectSessionInUrl restores the
+    // Supabase session and loadExistingProfile verifies its Google identity.
+    return true;
   }
 
   async createRoom(rawSettings) {
     const settings = validateRoomSettings(rawSettings);
-    if (!this.playerId) throw new Error("Entre como convidado para criar uma sala.");
+    if (!this.isGoogleUser) throw new Error("Entre com uma conta Google para criar uma sala.");
     this.emit({ busy: true, error: "", info: "Criando sala…" });
     const { data, error } = await this.client.rpc("create_room", {
       p_name: settings.name,
@@ -261,7 +268,7 @@ export class MultiplayerClient {
   }
 
   async joinRoom({ id = null, code = null } = {}) {
-    if (!this.playerId) throw new Error("Entre como convidado antes de entrar em uma sala.");
+    if (!this.isGoogleUser) throw new Error("Entre com uma conta Google antes de entrar em uma sala.");
     this.emit({ busy: true, error: "", info: "Entrando na sala…" });
     const { data, error } = await this.client.rpc("join_room", {
       p_room_id: id,
@@ -280,7 +287,7 @@ export class MultiplayerClient {
   }
 
   async resumeLastRoom() {
-    if (!this.playerId || this.activeRoomId) return;
+    if (!this.isGoogleUser || this.activeRoomId) return;
     const id = this.readLastRoom();
     if (!id) return;
     try {
@@ -293,7 +300,7 @@ export class MultiplayerClient {
   }
 
   async attachRoom(roomId, roomCode = null) {
-    if (!this.configured || !this.playerId) return;
+    if (!this.configured || !this.isGoogleUser) return;
     await this.detachRoom();
     this.activeRoomId = roomId;
     this.roomCode = /^[A-Z0-9]{8}$/.test(String(roomCode || ""))
@@ -488,7 +495,7 @@ export class MultiplayerClient {
   }
 
   async refreshPublicRooms() {
-    if (!this.configured || !this.playerId) {
+    if (!this.configured || !this.isGoogleUser) {
       this.emit({ publicRooms: [] });
       return [];
     }
@@ -503,7 +510,7 @@ export class MultiplayerClient {
   }
 
   async subscribePublicRooms() {
-    if (!this.configured || !this.playerId || this.publicChannel) return;
+    if (!this.configured || !this.isGoogleUser || this.publicChannel) return;
     this.publicChannel = this.client
       .channel("apex-public-room-feed")
       .on(
@@ -524,7 +531,7 @@ export class MultiplayerClient {
 
   async refreshRoomState() {
     const roomId = this.activeRoomId || this.state.room?.id;
-    if (!roomId || !this.configured || !this.playerId) return null;
+    if (!roomId || !this.configured || !this.isGoogleUser) return null;
     const { data, error } = await this.client.rpc("get_room_state", {
       p_room_id: roomId,
     });
@@ -601,7 +608,7 @@ export class MultiplayerClient {
     clearInterval(this.heartbeatTimer);
     this.heartbeatCount = 0;
     this.heartbeatTimer = setInterval(async () => {
-      if (!this.activeRoomId || !this.playerId) return;
+      if (!this.activeRoomId || !this.isGoogleUser) return;
       const { data, error } = await this.client.rpc("room_heartbeat", {
         p_room_id: this.activeRoomId,
       });
@@ -1048,12 +1055,6 @@ export class MultiplayerClient {
   async handleAction(action, data = {}) {
     try {
       switch (action) {
-        case "mp-guest": {
-          const name = document.getElementById("mp-display-name")?.value;
-          await this.enterAsGuest(name);
-          this.game.ui.render();
-          return true;
-        }
         case "mp-google":
           await this.continueWithGoogle();
           return true;
@@ -1166,8 +1167,10 @@ function interpolateSnapshot(previous, current, alpha) {
 }
 function friendlyError(error) {
   const message = String(error?.message || error || "Falha de conexão.").slice(0, 220);
-  if (/anonymous.*disabled|anonymous sign.?in.*disabled/i.test(message))
-    return "Ative o login anônimo em Authentication → Sign In / Providers no Supabase.";
+  if (/google_account_required|google.*required/i.test(message))
+    return "Entre com uma conta Google para usar o multiplayer.";
+  if (/provider.*not enabled|google.*not enabled/i.test(message))
+    return "O provedor Google ainda não está habilitado no Supabase.";
   if (/room_full|room is full|capacity/i.test(message)) return "A sala está cheia.";
   if (/invalid_invite|private|code/i.test(message)) return "Código de convite inválido ou sala privada.";
   if (/not.*host|permission|not authorized|42501/i.test(message)) return "Essa ação é permitida somente ao anfitrião.";

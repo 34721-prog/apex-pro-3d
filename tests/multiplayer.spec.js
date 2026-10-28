@@ -8,25 +8,25 @@ async function boot(page) {
   return errors;
 }
 
-test("multiplayer menu never fabricates an identity, room or race", async ({ page }) => {
+test("multiplayer menu requires Google and never exposes guest or fake-room entry", async ({ page }) => {
   const errors = await boot(page);
   await page.locator('[data-nav="multiplayer"]').click();
   await expect(page.getByRole("heading", { name: "Corra com pessoas de verdade." })).toBeVisible();
   const state = await page.evaluate(() => ({
     configured: __game.multiplayer.state.configured,
+    googleRequired: __game.multiplayer.state.googleIdentityRequired,
     profile: __game.multiplayer.state.profile,
     room: __game.multiplayer.state.room,
     publicRooms: __game.multiplayer.state.publicRooms.length,
   }));
   expect(typeof state.configured).toBe("boolean");
-  expect(state).toMatchObject({ profile: null, room: null, publicRooms: 0 });
-  if (state.configured) {
-    await expect(page.getByRole("heading", { name: "Escolha seu nome no grid." })).toBeVisible();
-    await expect(page.locator("#mp-guest-form")).toBeVisible();
-  } else {
-    await expect(page.getByRole("heading", { name: "Conecte um projeto Supabase." })).toBeVisible();
-    await expect(page.locator(".mp-setup-required")).toContainText("Nenhuma sala fictícia é exibida");
-  }
+  expect(state).toMatchObject({ googleRequired: true, profile: null, room: null, publicRooms: 0 });
+  if (state.configured)
+    await expect(page.getByRole("heading", { name: "Entre com sua conta Google." })).toBeVisible();
+  else
+    await expect(page.getByRole("heading", { name: "Configure o acesso Google." })).toBeVisible();
+  await expect(page.locator("#mp-guest-form")).toHaveCount(0);
+  await expect(page.locator('[data-action="mp-guest"]')).toHaveCount(0);
   await expect(page.locator("#mp-create-form")).toHaveCount(0);
   await expect(page.locator(".mp-room-row")).toHaveCount(0);
   expect(errors).toEqual([]);

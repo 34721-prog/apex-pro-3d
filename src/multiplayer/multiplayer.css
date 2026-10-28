@@ -1,6 +1,6 @@
 .mp-setup-required,
 .mp-identity-card,
-.mp-guest-note,
+.mp-google-note,
 .mp-create-card,
 .mp-room-list,
 .mp-participants-card,
@@ -28,7 +28,7 @@
 }
 .mp-setup-required p,
 .mp-identity-card p,
-.mp-guest-note p,
+.mp-google-note p,
 .mp-create-card > p,
 .mp-lobby-header p {
   color: #9eafc1;
@@ -71,7 +71,7 @@
   margin-top: 22px;
 }
 .mp-identity-card,
-.mp-guest-note,
+.mp-google-note,
 .mp-create-card,
 .mp-room-list,
 .mp-participants-card,
@@ -144,13 +144,13 @@
   background: #ffffff18;
 }
 .mp-identity-card > .subtle,
-.mp-guest-note p,
+.mp-google-note p,
 .mp-create-card .subtle,
 .mp-lobby-actions small,
 .mp-lobby-header p {
   font-size: 11px;
 }
-.mp-guest-note {
+.mp-google-note {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -164,11 +164,11 @@
   font: 700 9px Barlow, sans-serif;
   letter-spacing: 1.25px;
 }
-.mp-guest-note > b {
+.mp-google-note > b {
   font: 700 23px var(--heading, "Barlow Condensed", sans-serif);
   margin-top: 12px;
 }
-.mp-guest-note p {
+.mp-google-note p {
   max-width: 330px;
 }
 .mp-connection-pill,
@@ -258,8 +258,7 @@
   width: 160px;
   min-height: 34px;
 }
-.mp-profile-name .btn,
-.mp-google-link {
+.mp-profile-name .btn {
   min-height: 34px;
   padding: 8px 10px;
   font-size: 8px;
@@ -718,7 +717,7 @@
     padding: 20px;
   }
   .mp-identity-card,
-  .mp-guest-note,
+  .mp-google-note,
   .mp-create-card,
   .mp-room-list,
   .mp-participants-card,
@@ -743,9 +742,6 @@
   .mp-profile-name input {
     width: auto;
     flex: 1;
-  }
-  .mp-google-link {
-    margin-left: auto;
   }
   .mp-room-row {
     grid-template-columns: 1fr auto;

@@ -24,6 +24,7 @@ import {
   validateRaceInput,
 } from "../src/multiplayer/NetworkProtocol.js";
 import { MultiplayerClient } from "../src/multiplayer/MultiplayerClient.js";
+import { isGoogleIdentity } from "../src/multiplayer/supabase.js";
 
 const RACE_ID = "74a2a023-270f-4e53-923e-e99bbbc5ca4d";
 const HOST_ID = "54a1a023-270f-4e53-923e-e99bbbc5ca4d";
@@ -229,26 +230,55 @@ test("snapshot interpolation wraps heading and synchronizes resources and pit st
   assert.equal(car.pit.requested, true);
 });
 
-test("guest identity stays real-auth-only and missing Supabase config is handled without a fake room", async () => {
+test("multiplayer accepts only a real Google identity, not anonymous or email-only sessions", async () => {
+  assert.equal(isGoogleIdentity({
+    id: HOST_ID,
+    is_anonymous: false,
+    app_metadata: { provider: "google", providers: ["google"] },
+  }), true);
+  assert.equal(isGoogleIdentity({
+    id: GUEST_ID,
+    is_anonymous: true,
+    app_metadata: { provider: "anonymous", providers: ["anonymous"] },
+  }), false);
+  assert.equal(isGoogleIdentity({
+    id: GUEST_ID,
+    is_anonymous: false,
+    app_metadata: { provider: "email", providers: ["email"] },
+    identities: [{ provider: "google" }],
+  }), false, "the client uses the same signed app_metadata claim as the database gate");
+
   const calls = [];
-  const game = {
-    ui: {
-      page: "multiplayer",
-      render: () => calls.push("render"),
-      toast: (message) => calls.push(message),
+  const client = {
+    auth: {
+      getSession: async () => ({
+        data: { session: { user: {
+          id: GUEST_ID,
+          is_anonymous: true,
+          app_metadata: { provider: "anonymous", providers: ["anonymous"] },
+        } } },
+        error: null,
+      }),
     },
+    from: () => { calls.push("profile-read"); throw new Error("must not read a guest profile"); },
+    rpc: () => { calls.push("rpc"); throw new Error("must not call room RPCs as guest"); },
   };
-  const multiplayer = new MultiplayerClient(game, { client: null, configured: false });
+  const game = {
+    ui: { page: "multiplayer", render: () => calls.push("render"), toast() {} },
+  };
+  const multiplayer = new MultiplayerClient(game, { client, configured: true });
   await multiplayer.openMenu();
-  assert.equal(multiplayer.state.connection, "unconfigured");
+  assert.equal(multiplayer.state.googleIdentityRequired, true);
+  assert.equal(multiplayer.state.anonymousSession, true);
+  assert.equal(multiplayer.state.connection, "google-required");
   assert.equal(multiplayer.state.profile, null);
   assert.equal(multiplayer.state.room, null);
   assert.equal(multiplayer.state.publicRooms.length, 0);
-  await assert.rejects(multiplayer.enterAsGuest("Piloto Arena"), /Configure o Supabase/i);
+  await assert.rejects(multiplayer.createRoom(roomSettings()), /Google/i);
   assert.equal(await multiplayer.handleAction("mp-google"), true);
-  assert.match(multiplayer.state.error, /Ative o Google OAuth/i);
-  assert.equal(multiplayer.state.profile, null);
-  assert.ok(calls.length > 0);
+  assert.match(multiplayer.state.error, /Configure o provedor Google/i);
+  assert.equal(calls.includes("profile-read"), false);
+  assert.equal(calls.includes("rpc"), false);
 });
 
 test("invite codes are exactly eight characters and survive room-state refreshes", async () => {
@@ -270,7 +300,7 @@ test("invite codes are exactly eight characters and survive room-state refreshes
   };
   const game = { ui: { page: "multiplayer", render() {}, toast() {} } };
   const multiplayer = new MultiplayerClient(game, { client, configured: true });
-  multiplayer.state.profile = { id: HOST_ID };
+  multiplayer.state.profile = { id: HOST_ID, isGoogle: true };
   multiplayer.attachRoom = async (id, code) => {
     multiplayer.activeRoomId = id;
     multiplayer.roomCode = code;
@@ -300,4 +330,23 @@ test("database migration enables explicit RLS and restricts room broadcast ident
   assert.match(privilegeMigration, /revoke all[\s\S]*?from anon/);
   assert.match(sql, /lap_count integer not null check \(lap_count between 8 and 30\)/);
   assert.doesNotMatch(sql, /service_role|service-role/i);
+  const googleMigration = fs.readFileSync(
+    "supabase/migrations/20261028220544_google_only_multiplayer_access.sql",
+    "utf8",
+  );
+  assert.match(googleMigration, /create or replace function public\.is_google_user/);
+  assert.match(googleMigration, /app_metadata[\s\S]*?providers[\s\S]*?google/);
+  assert.match(googleMigration, /google_account_required/);
+  assert.match(googleMigration, /using \(public\.is_google_user\(\)/);
+  for (const rpc of [
+    "create_room", "join_room", "set_room_connection", "room_heartbeat",
+    "set_room_ready", "configure_room", "start_room", "begin_room_race",
+    "finish_room_race", "return_room_to_lobby", "leave_room",
+    "list_public_rooms", "get_room_state", "set_display_name",
+  ]) {
+    assert.match(
+      googleMigration,
+      new RegExp(`create or replace function public\\.${rpc}\\([\\s\\S]*?require_google_user`),
+    );
+  }
 });

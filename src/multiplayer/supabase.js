@@ -21,6 +21,15 @@ function validSupabaseUrl(value) {
 export const supabaseConfigured =
   validSupabaseUrl(supabaseConfig.url) && supabaseConfig.anonKey.length > 20;
 
+export function isGoogleIdentity(user) {
+  if (!user || user.is_anonymous) return false;
+  const providers = user.app_metadata?.providers;
+  return (
+    user.app_metadata?.provider === "google" ||
+    (Array.isArray(providers) && providers.includes("google"))
+  );
+}
+
 // Only the public anon/publishable key belongs in a browser build. Keep the
 // SDK out of the game bundle until a configured user opens the multiplayer page.
 export async function createSupabaseClient() {

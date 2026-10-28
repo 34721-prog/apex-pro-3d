@@ -6,7 +6,7 @@ Continuação do projeto original: mantém o HUD e os 14 circuitos da v0.4, 31 p
 
 ## Multiplayer online real — v0.10
 
-Salas públicas/privadas, identidade de convidado via Supabase Auth, Realtime para inputs/snapshots e resultados finais persistidos por RPC. Sem jogadores, salas ou resultados fictícios; o host mantém a simulação autoritativa no navegador. A migration/RLS foi aplicada ao projeto Supabase Free em São Paulo. Para ativar a entrada de convidados, habilite **Anonymous Sign-Ins** no painel antes de testar. Setup, variáveis públicas, limites e instruções de deploy: **`docs/MULTIPLAYER-SUPABASE.md`**.
+Salas públicas/privadas exclusivas para identidades Google via Supabase Auth, Realtime para inputs/snapshots e resultados finais persistidos por RPC. RLS e RPCs exigem a claim Google assinada; identidades anônimas/email-only não entram. Sem jogadores, salas ou resultados fictícios; o host mantém a simulação autoritativa no navegador. Setup do OAuth, migrações, variáveis e limites: **`docs/MULTIPLAYER-SUPABASE.md`**.
 
 ## Experiência principal — chefe de equipe
 
