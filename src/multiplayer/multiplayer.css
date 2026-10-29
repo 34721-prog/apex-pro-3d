@@ -800,3 +800,188 @@
     min-width: calc(100% - 70px);
   }
 }
+
+.account-gate {
+  display: grid;
+  min-height: 100vh;
+  padding: 42px 22px;
+  place-items: center;
+  color: #edf1f5;
+  background:
+    radial-gradient(ellipse at 50% 12%, #1b2734 0, #0d131b 42%, #090c10 78%);
+}
+.account-gate-shell {
+  width: min(100%, 880px);
+  margin: auto;
+}
+.account-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.account-brand > img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+.account-brand > span {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.account-brand > span > b {
+  color: #f5f7fa;
+  font: 800 20px/1 var(--heading, "Barlow Condensed", sans-serif);
+  letter-spacing: 1.2px;
+}
+.account-brand > span > small {
+  color: #8190a2;
+  font: 700 8px Barlow, sans-serif;
+  letter-spacing: 1.15px;
+}
+.account-gate-intro {
+  max-width: 650px;
+  margin: clamp(35px, 7vh, 66px) auto 24px;
+  text-align: center;
+}
+.account-gate-intro .eyebrow {
+  color: #ff6379;
+}
+.account-gate-intro h1 {
+  margin: 10px 0 12px;
+  color: #f7f8fa;
+  font: 800 clamp(38px, 7vw, 62px)/0.98 var(--heading, "Barlow Condensed", sans-serif);
+}
+.account-gate-intro p {
+  max-width: 570px;
+  margin: auto;
+  color: #a4b1c0;
+  font: 400 14px/1.7 Barlow, sans-serif;
+}
+.account-gate-shell .mp-identity-layout {
+  margin-top: 0;
+}
+.account-gate-shell .mp-setup-required {
+  margin-top: 0;
+}
+.account-gate-shell .mp-identity-card,
+.account-gate-shell .mp-google-note {
+  background: linear-gradient(145deg, #182330, #111820);
+  box-shadow: 0 22px 80px #0006;
+}
+.account-gate-shell .mp-identity-card {
+  max-width: none;
+}
+.account-gate-shell .mp-identity-card h2 {
+  font-size: 34px;
+}
+.account-gate-shell .mp-identity-card > p {
+  max-width: 560px;
+}
+.account-gate-shell .mp-google-signin {
+  display: flex;
+  justify-content: center;
+  margin: 22px 0 12px;
+}
+.account-check {
+  display: flex;
+  min-height: 145px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  padding: 28px;
+  color: #eaf0f6;
+  background: #141d27;
+  border: 1px solid #ffffff1c;
+  border-top: 2px solid #ef3150;
+  text-align: center;
+}
+.account-check small {
+  color: #97a6b6;
+}
+.account-spinner {
+  width: 28px;
+  height: 28px;
+  border: 2px solid #ffffff2c;
+  border-top-color: #f24762;
+  border-radius: 50%;
+  animation: account-spin 0.8s linear infinite;
+}
+.account-retry {
+  margin-top: 15px;
+}
+.account-gate-footnote {
+  margin: 22px auto 0;
+  color: #718092;
+  font: 400 10px/1.6 Barlow, sans-serif;
+  text-align: center;
+}
+.cloud-save-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 12px 13px;
+  border: 1px solid #ffffff1a;
+  border-radius: 4px;
+  background: #111a24;
+}
+.cloud-save-note > .live-dot {
+  flex: 0 0 7px;
+}
+.cloud-save-note > div {
+  display: grid;
+  flex: 1;
+  gap: 3px;
+}
+.cloud-save-note b {
+  color: #dce5ef;
+  font: 700 11px Barlow, sans-serif;
+}
+.cloud-save-note small {
+  color: #8999aa;
+  font: 400 10px/1.5 Barlow, sans-serif;
+}
+.cloud-save-synced > .live-dot {
+  background: #46d19a;
+  box-shadow: 0 0 0 3px #46d19a1b;
+}
+.cloud-save-pending > .live-dot,
+.cloud-save-checking > .live-dot {
+  background: #ffc35a;
+  box-shadow: 0 0 0 3px #ffc35a1b;
+  animation: mp-pulse 1.4s infinite;
+}
+.cloud-save-error {
+  border-color: #ef315055;
+}
+.cloud-save-error > .live-dot {
+  background: #ef4860;
+  box-shadow: 0 0 0 3px #ef31501b;
+}
+@keyframes account-spin {
+  to { transform: rotate(360deg); }
+}
+@media (max-width: 680px) {
+  .account-gate {
+    padding: 28px 15px;
+  }
+  .account-gate-intro {
+    margin: 36px auto 20px;
+  }
+  .account-gate-intro p {
+    font-size: 12px;
+  }
+  .account-gate-shell .mp-identity-layout {
+    grid-template-columns: 1fr;
+  }
+  .account-gate-shell .mp-identity-card h2 {
+    font-size: 29px;
+  }
+  .cloud-save-note {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+}

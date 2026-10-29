@@ -28,18 +28,34 @@ const botSelect = (value, disabled = false) =>
     .join("")}</select>`;
 
 export function extendMultiplayerUI(UI) {
+  UI.prototype.accountGate = function () {
+    const game = this.game;
+    const state = game.multiplayer.state;
+    let content = "";
+    if (game.authStatus === "checking") {
+      content = `<section class="panel account-check"><span class="account-spinner" aria-hidden="true"></span><b>Verificando sua conta e sua carreira…</b><small>Não feche esta página enquanto carregamos o save protegido.</small></section>`;
+    } else if (!state.configured) {
+      content = this.multiplayerUnconfigured();
+    } else if (game.authStatus === "sync-error") {
+      content = `<div class="mp-alert" role="alert"><span>${icon("alert")}</span><p>${esc(state.error || "Não foi possível carregar sua carreira da nuvem.")}</p></div><button class="btn primary full-width account-retry" data-action="account-retry" ${state.busy ? "disabled" : ""}>${state.busy ? "TENTANDO…" : "TENTAR NOVAMENTE"}</button>`;
+    } else {
+      content = `${state.error ? `<div class="mp-alert" role="alert"><span>${icon("alert")}</span><p>${esc(state.error)}</p><button data-action="mp-close-error" aria-label="Fechar">${icon("close")}</button></div>` : ""}${this.multiplayerIdentity()}`;
+    }
+    return `<main class="account-gate"><div class="account-gate-shell"><div class="account-brand"><img src="/assets/logo-primary.png" alt="Apex Dynasty"><span><b>APEX DYNASTY<span class="brand-dot">.</span></b><small>BUILD THE TEAM. MASTER THE RACE.</small></span></div><section class="account-gate-intro"><div class="eyebrow">UMA CONTA · A MESMA CARREIRA</div><h1>Seu legado acompanha você.</h1><p>Entre com sua conta Google para acessar o jogo. Sua carreira será salva na nuvem e ficará disponível nas suas sessões e dispositivos.</p></section>${content}<p class="account-gate-footnote">Login protegido pelo Supabase Auth. O jogo não recebe nem armazena sua senha Google.</p></div></main>`;
+  };
+
   UI.prototype.multiplayer = function () {
     const mp = this.game.multiplayer;
     if (!mp) return this.title("APEX ONLINE", "Multiplayer indisponível.");
     const state = mp.state;
-    return `${this.title("APEX ONLINE / CORRIDAS REAIS", "Corra com pessoas de verdade.", "Salas, convites e corridas sincronizadas. Sua carreira local continua intacta.")}
+    return `${this.title("APEX ONLINE / CORRIDAS REAIS", "Corra com pessoas de verdade.", "Salas e corridas sincronizadas. Sua carreira também fica vinculada à mesma conta Google.")}
       ${state.error ? `<div class="mp-alert" role="alert"><span>${icon("alert")}</span><p>${esc(state.error)}</p><button data-action="mp-close-error" aria-label="Fechar">${icon("close")}</button></div>` : ""}
       ${state.info ? `<div class="mp-info" role="status"><span class="live-dot"></span>${esc(state.info)}</div>` : ""}
       ${!state.configured ? this.multiplayerUnconfigured() : !state.profile ? this.multiplayerIdentity() : state.room ? this.multiplayerLobby() : this.multiplayerRooms()}`;
   };
 
   UI.prototype.multiplayerUnconfigured = function () {
-    return `<section class="panel mp-setup-required"><span class="mp-mark">${icon("wifi")}</span><div><div class="eyebrow">GOOGLE OAUTH NECESSÁRIO</div><h2>Configure o acesso Google.</h2><p>O multiplayer aceita somente identidades Supabase Auth vinculadas ao provedor Google. Salas fictícias e entrada anônima não são oferecidas.</p><ol><li>Aplique as migrations de <code>supabase/migrations/</code>.</li><li>Configure Google OAuth no Supabase e, se quiser converter sessões anônimas antigas, habilite <b>Manual Identity Linking</b>.</li><li>Defina <code>VITE_SUPABASE_GOOGLE_ENABLED=true</code>, a URL e a chave publicável; então reinicie o Vite.</li></ol><p class="subtle">Nunca coloque o segredo OAuth ou a chave <code>service_role</code> no frontend.</p></div></section>`;
+    return `<section class="panel mp-setup-required"><span class="mp-mark">${icon("wifi")}</span><div><div class="eyebrow">GOOGLE OAUTH NECESSÁRIO</div><h2>Configure o acesso Google.</h2><p>Todo o jogo exige uma identidade Supabase Auth vinculada ao Google antes de carregar a carreira. O banco também rejeita acessos sem essa identidade.</p><ol><li>Aplique as migrations de <code>supabase/migrations/</code>.</li><li>Configure Google OAuth no Supabase e, se quiser converter sessões anônimas antigas, habilite <b>Manual Identity Linking</b>.</li><li>Defina <code>VITE_SUPABASE_GOOGLE_ENABLED=true</code>, a URL e a chave publicável; então reinicie o Vite.</li></ol><p class="subtle">Nunca coloque o segredo OAuth ou a chave <code>service_role</code> no frontend.</p></div></section>`;
   };
 
   UI.prototype.multiplayerIdentity = function () {
@@ -47,8 +63,8 @@ export function extendMultiplayerUI(UI) {
     const linking = state.anonymousSession;
     const heading = linking ? "Vincule esta sessão ao Google." : "Entre com sua conta Google.";
     const message = linking
-      ? "Esta sessão anônima não pode entrar em salas. Vincule uma conta Google para continuar com a mesma identidade."
-      : "O multiplayer é exclusivo para contas autenticadas com Google. Sua identidade e participação são verificadas também pelo banco.";
+      ? "Esta sessão antiga não tem acesso ao jogo. Vincule uma conta Google para carregar a carreira e habilitar o multiplayer."
+      : "O jogo inteiro e o multiplayer exigem uma conta Google. Sua identidade é validada pelo Supabase antes de carregar a carreira.";
     const button = linking ? "VINCULAR CONTA GOOGLE" : "ENTRAR COM GOOGLE";
     return `<section class="mp-identity-layout"><article class="panel mp-identity-card"><div class="eyebrow">ACESSO RESTRITO · GOOGLE</div><h2>${heading}</h2><p>${message}</p>${state.googleEnabled ? `<button class="btn primary full-width mp-google-signin" data-action="mp-google" ${state.busy ? "disabled" : ""}>${icon("user")} ${state.busy ? "REDIRECIONANDO…" : button}</button><small class="subtle">Login OAuth do Supabase. Nenhuma senha Google passa pelo jogo.</small>` : `<div class="mp-info" role="status">Google OAuth ainda não está configurado. Consulte <code>docs/MULTIPLAYER-SUPABASE.md</code>.</div>`}</article><article class="panel mp-google-note"><span class="mp-kicker">CONTA OBRIGATÓRIA</span><b>Google verificado pelo Supabase.</b><p>O banco rejeita identidades anônimas e contas sem o provedor Google, mesmo que tentem chamar a API diretamente.</p><div class="mp-connection-pill ${state.connection}"><i></i>${connectionLabel(state.connection)}</div></article></section>`;
   };

@@ -34,7 +34,7 @@ export class UI {
   constructor(game) {
     this.game = game;
     this.root = document.querySelector("#ui");
-    this.page = "home";
+    this.page = game.authStatus === "ready" ? "home" : "account";
     this.modal = null;
     this.toastTimer = 0;
     this.lastHUD = 0;
@@ -110,6 +110,7 @@ export class UI {
     return `<div class="page-heading"><div><div class="eyebrow">${eyebrow}</div><h1>${title}</h1>${sub ? `<p>${sub}</p>` : ""}</div><div class="session-tag"><span class="live-dot"></span> PRONTO PARA CORRER</div></div>`;
   }
   navigate(page) {
+    if (this.game.authStatus !== "ready") return;
     if (
       this.game.race &&
       ["countdown", "racing", "paused", "finishing"].includes(
@@ -135,11 +136,13 @@ export class UI {
     document.querySelector("#app").appendChild(world);
     world.className = "";
     this.root.innerHTML =
-      this.page === "race"
-        ? this.raceHUD()
-        : this.header() +
-          `<main class="main">${this[this.page]()}</main>` +
-          this.footer();
+      this.page === "account"
+        ? this.accountGate()
+        : this.page === "race"
+          ? this.raceHUD()
+          : this.header() +
+            `<main class="main">${this[this.page]()}</main>` +
+            this.footer();
     const slot = this.root.querySelector(".scene-slot");
     if (slot) {
       slot.appendChild(world);
@@ -289,6 +292,17 @@ export class UI {
     document.getElementById("modal")?.remove();
     let html = "",
       s = this.game.save;
+    const cloudStatus = this.game.multiplayer?.state.cloudSaveStatus || "checking";
+    const cloudStatusMessage = {
+      checking: "Verificando",
+      idle: "Aguardando conta Google",
+      pending: "Sincronizando alterações…",
+      synced: "Sincronizado",
+      error: "Falha na sincronização",
+    }[cloudStatus] || "Sincronizando";
+    const cloudRetry = cloudStatus === "error"
+      ? btn("TENTAR NOVAMENTE", "save-sync-retry", "secondary")
+      : "";
     if (type === "setup" || type === "champ-setup") {
       const champ = type === "champ-setup",
         round = rounds[s.championship.results.length];
@@ -310,7 +324,7 @@ export class UI {
       const car = this.game.race?.localCar;
       html = `<div class="modal-eyebrow">${icon("flag")} CORRIDA ONLINE · BOXES</div><h2>Parada do piloto.</h2><p>${car?.pit?.requested ? "Uma chamada de boxes está ativa." : "Solicite ou cancele a chamada de boxes. A equipe anfitriã aplica o comando à sua posição autoritativa."}</p><div class="pause-actions">${btn(car?.pit?.requested ? "CANCELAR CHAMADA" : "SOLICITAR BOXES", car?.pit?.requested ? "pit-cancel" : "pit", "primary full-width")}${btn("VOLTAR À PISTA", "resume", "secondary full-width")}</div><div class="info-note">Latência de rede pode atrasar a confirmação visual.</div>`;
     } else if (type === "settings") {
-      html = `<div class="modal-eyebrow">${icon("settings")} CONFIGURAÇÕES</div><h2>No seu ritmo.</h2><p>Ajustes salvos neste navegador.</p><div class="setting-row"><div><b>Áudio do motor e efeitos</b><small>Som sintetizado localmente. Sem trilha remota.</small></div><label class="switch"><input type="checkbox" data-setting="audio" ${s.settings.audio ? "checked" : ""}><span></span></label></div><div class="setting-row"><div><b>Volume</b><small>O som começa ao entrar na corrida.</small></div><input type="range" min="0" max="1" step=".05" value="${s.settings.volume}" data-setting="volume" aria-label="Volume"></div><div class="setting-row"><div><b>Qualidade gráfica</b><small>Aplicado ao vivo. Física e regras permanecem iguais.</small></div><select data-setting="quality" aria-label="Qualidade gráfica">${[
+      html = `<div class="modal-eyebrow">${icon("settings")} CONFIGURAÇÕES</div><h2>No seu ritmo.</h2><p>Ajustes e carreira vinculados à sua conta Google.</p><div class="setting-row"><div><b>Áudio do motor e efeitos</b><small>Som sintetizado localmente. Sem trilha remota.</small></div><label class="switch"><input type="checkbox" data-setting="audio" ${s.settings.audio ? "checked" : ""}><span></span></label></div><div class="setting-row"><div><b>Volume</b><small>O som começa ao entrar na corrida.</small></div><input type="range" min="0" max="1" step=".05" value="${s.settings.volume}" data-setting="volume" aria-label="Volume"></div><div class="setting-row"><div><b>Qualidade gráfica</b><small>Aplicado ao vivo. Física e regras permanecem iguais.</small></div><select data-setting="quality" aria-label="Qualidade gráfica">${[
         ["low", "Low · Leve"],
         ["medium", "Medium · Média"],
         ["high", "High · Alta"],
@@ -331,7 +345,7 @@ export class UI {
         )
         .join(
           "",
-        )}</select></div><div class="setting-actions">${btn(`${icon("help")} CONTROLES`, "help")}${btn(`${icon("download")} EXPORTAR SAVE`, "export-save")}</div><div class="local-note"><span class="live-dot"></span> Offline por natureza. Seu save pertence a este navegador.</div>`;
+        )}</select></div><div class="cloud-save-note cloud-save-${cloudStatus}"><span class="live-dot"></span><div><b>Carreira na nuvem · ${cloudStatusMessage}</b><small>Seu progresso acompanha sua conta Google nos dispositivos.</small></div>${cloudRetry}</div><div class="setting-actions">${btn(`${icon("help")} CONTROLES`, "help")}</div>`;
     } else if (type === "help") {
       html = `<div class="modal-eyebrow">${icon("help")} GUIA DO PILOTO</div><h2>Sinta o asfalto.</h2><p>Física arcade. Resposta rápida. O resto é com você.</p><div class="help-grid">${[
         ["W / ↑", "Acelerar"],

@@ -21,7 +21,7 @@ import { Race } from "../race.js";
 import { BASE, recover } from "../physics.js";
 import { MIN_RACE_LAPS, MAX_RACE_LAPS, clampRaceLaps, MAX_GRID_CARS } from "../racing/RaceConfig.js";
 import { MultiplayerClient } from "../multiplayer/MultiplayerClient.js";
-import { load, save as persist } from "../save.js";
+import { load, save as persist, validateSave } from "../save.js";
 import { performance as carStats, purchase } from "../garage.js";
 import { rewardRace, unlock } from "../progression.js";
 import { rounds, resetSeason } from "../championship.js";
@@ -29,6 +29,7 @@ import { UI } from "../ui.js";
 import { AudioEngine } from "../audio.js";
 export class Game {
   constructor() {
+    this.authStatus = "checking";
     this.save = load();
     configureTrack(this.save.settings.track);
     this.loop = new FixedStep();
@@ -80,17 +81,22 @@ export class Game {
     this.controls.configure(this.save.settings);
     this.ui = new UI(this);
     this.ui.render();
+    void this.multiplayer.initializeAccount();
     this.last = performance.now();
     this.acc = 0;
     this.pendingSaveError = false;
     requestAnimationFrame((t) => this.frame(t));
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) this.pause(true);
+      if (document.hidden) void this.multiplayer.flushCloudSave();
       this.audio.setHidden(document.hidden);
       if (document.hidden) this.engineer.stop();
       this.last = performance.now();
       this.acc = 0;
       this.loop.reset();
+    });
+    window.addEventListener("pagehide", () => {
+      void this.multiplayer.flushCloudSave();
     });
     document.addEventListener("keydown", (e) => {
       if (e.key === "Tab" && this.ui.modal) {
@@ -121,12 +127,29 @@ export class Game {
     if (!persist(this.save) && !this.pendingSaveError) {
       this.pendingSaveError = true;
       this.ui.toast(
-        "Armazenamento indisponível. Exporte seu save nas configurações.",
+        "O cache local está indisponível. A carreira continua vinculada à nuvem.",
       );
     }
+    if (this.authStatus === "ready")
+      this.multiplayer?.queueCloudSave(this.save);
+  }
+  applyCloudSave(value) {
+    this.save = validateSave(value);
+    if (activeTrack.id !== this.save.settings.track)
+      this.switchTrack(this.save.settings.track);
+    this.engineer.configure(this.save.settings);
+    this.controls.configure(this.save.settings);
+    this.world.quality(this.save.settings);
+    this.world.setPreview(this.save.selectedCar);
+    this.world.setPaint(this.save.selectedPaint);
+    this.world.customization = this.save.customizations[this.save.selectedCar];
+    this.world.pilotColor = this.save.selectedDriver;
+    this.audio.configure(this.save.settings);
+    this.ui?.render();
+    return this.save;
   }
   start(champ = false) {
-    if (this.loadingTrack) return;
+    if (this.authStatus !== "ready" || this.loadingTrack) return;
     if (champ && this.save.championship.results.length >= 3) return;
     this.ui.closeModal();
     this.controls.clear();
@@ -370,6 +393,7 @@ export class Game {
     this.ui.showModal("results");
   }
   setStrategy(key, value) {
+    if (this.authStatus !== "ready") return;
     this.save.settings.aiStrategy = validateStrategy({
       ...this.save.settings.aiStrategy,
       [key]: value,
@@ -394,6 +418,7 @@ export class Game {
     this.store();
   }
   setting(key, value) {
+    if (this.authStatus !== "ready") return;
     if (
       [
         "mechanicalRate",
@@ -491,9 +516,20 @@ export class Game {
       this.ui.showModal(this.ui.modal);
   }
   managerChange(el) {
+    if (this.authStatus !== "ready") return false;
     return managerChange(this, el);
   }
   action(action, data = {}) {
+    if (action === "account-retry") {
+      void this.multiplayer.initializeAccount();
+      return;
+    }
+    if (action === "save-sync-retry") {
+      void this.multiplayer.retryCloudSave();
+      return;
+    }
+    if (this.authStatus !== "ready" && !["mp-google", "mp-close-error"].includes(action))
+      return;
     if (action.startsWith("mp-")) {
       void this.multiplayer.handleAction(action, data);
       return;
@@ -605,17 +641,6 @@ export class Game {
         this.ui.render();
         this.ui.toast("Nova temporada. Uma nova chance de fazer história.");
         break;
-      case "export-save": {
-        const blob = new Blob([JSON.stringify(this.save, null, 2)], {
-          type: "application/json",
-        });
-        const a = document.createElement("a");
-        a.href = URL.createObjectURL(blob);
-        a.download = "apex-dynasty-save.json";
-        a.click();
-        setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-        break;
-      }
     }
   }
   async loadTrack(id, { modal = null, page = false } = {}) {

@@ -6,7 +6,7 @@ Continuação do projeto original: mantém o HUD e os 14 circuitos da v0.4, 31 p
 
 ## Multiplayer online real — v0.10
 
-Salas públicas/privadas exclusivas para identidades Google via Supabase Auth, Realtime para inputs/snapshots e resultados finais persistidos por RPC. RLS e RPCs exigem a claim Google assinada; identidades anônimas/email-only não entram. Sem jogadores, salas ou resultados fictícios; o host mantém a simulação autoritativa no navegador. Setup do OAuth, migrações, variáveis e limites: **`docs/MULTIPLAYER-SUPABASE.md`**.
+Conta Google obrigatória antes de acessar o jogo. Supabase Auth protege o login; o save da carreira fica na nuvem e acompanha a mesma conta entre sessões/dispositivos. Salas públicas/privadas usam Realtime para inputs/snapshots e persistem resultados por RPC. RLS e RPCs validam a claim Google assinada; identidades anônimas/email-only não entram. Sem jogadores, salas ou resultados fictícios; o host mantém a simulação autoritativa no navegador. Setup do OAuth, migrações, variáveis e limites: **`docs/MULTIPLAYER-SUPABASE.md`**.
 
 ## Experiência principal — chefe de equipe
 
@@ -30,19 +30,9 @@ Não foram adicionadas elipses, sombras por posição fixa, timers ou loops por 
 
 Diagnóstico, testes e custos: **`docs/CORRECAO-SOMBRAS.md`**. Validação extraída: **`docs/VALIDACAO-SOMBRAS.md`**. Relatórios v0.7 e anteriores são históricos.
 
-## Jogar sem npm ou internet permanente
+## Executar a edição local
 
-1. Extraia `Apex-Dynasty-v0.8-Manager-e-Estrategia.zip`.
-2. Entre na pasta `Apex-Dynasty-v0.8`.
-3. Execute com Python 3:
-
-```bash
-python start.py
-```
-
-Abra **http://localhost:8080**. Outra porta: `python start.py --port 5173`.
-
-Não use `file://`. Os assets ficam **uma única vez em `public/assets/`**; o servidor combina essa pasta com a compilação em `playable/`. Mantenha as duas. Three.js, fontes, retratos, modelos e texturas são locais. Não há API paga, CDN ou backend remoto.
+A cena e os assets são servidos localmente, mas o jogo exige conexão para autenticar a conta Google e carregar/sincronizar a carreira na nuvem. Configure `.env.local` conforme `docs/MULTIPLAYER-SUPABASE.md`, instale as dependências e execute `npm run dev`. Não use `file://` nem considere o pacote Python/offline uma forma de contornar o login obrigatório.
 
 ## Instalar, desenvolver e testar
 
@@ -155,7 +145,7 @@ Notícias são derivadas dos resultados, paradas, penalidades, abandonos, ultrap
 
 Low/Medium/High/Custom, Medium padrão, adaptação visual opcional, física fixa e HUD Padrão/Compacto/Imersivo mantidos. Não se carregam todos os cenários 3D simultaneamente.
 
-Laboratório: senha de desenvolvimento **123456789**, save separado. **Não é autenticação segura de cliente.** O jogo não coleta dados pessoais nem exige conta.
+Laboratório: senha de desenvolvimento **123456789**, save separado. **Não é autenticação segura de cliente.** O jogo exige conta Google; a identidade de autenticação e a carreira são vinculadas ao Supabase.
 
 ## Evidências, limites e estrutura
 
