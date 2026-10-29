@@ -1,11 +1,11 @@
-# Multiplayer Google-only com Supabase
+# Login Google, carreira na nuvem e multiplayer
 
 ## Projeto provisionado
 
 - Projeto Supabase: `apex-dynasty-3d-pro` (plano Free, região São Paulo `sa-east-1`).
 - Referência: `kjvzbonieahvqobulggb`.
-- Migrations multiplayer/RLS: `20261028211101` (`apex_dynasty_multiplayer`), `20261028211941` (`revoke_anon_public_table_privileges`) e `20261028220544` (`google_only_multiplayer_access`).
-- O cliente de jogo só aceita usuários cuja identidade autenticada contém o provedor Google. O banco confere a claim assinada do JWT em RLS, políticas Realtime e RPCs; a interface não é a única barreira.
+- Migrations multiplayer/RLS/saves: `20261028211101` (`apex_dynasty_multiplayer`), `20261028211941` (`revoke_anon_public_table_privileges`), `20261028220544` (`google_only_multiplayer_access`) e `20261029201652` (`google_account_cloud_saves`).
+- O jogo só libera qualquer tela de carreira depois de autenticação Google e carregamento do save da conta. O banco confere a claim assinada do JWT em RLS e RPCs; a interface não é a única barreira.
 
 `.env.local` é ignorado pelo Git. O frontend usa somente uma **publishable key**. Nunca coloque o segredo OAuth do Google nem `service_role` / `sb_secret_*` em variável `VITE_*`, bundle ou repositório.
 
@@ -35,9 +35,11 @@
 
 ## Autorização Google-only e dados
 
-- `profiles`, `rooms`, `room_players` e `race_results` têm RLS ativo. `anon` não tem privilégios diretos de leitura/escrita; clientes não têm `INSERT`, `UPDATE` ou `DELETE` direto nessas tabelas.
+- `profiles`, `rooms`, `room_players`, `race_results` e `player_saves` têm RLS ativo. `anon` não tem privilégios diretos de leitura/escrita; clientes não têm `INSERT`, `UPDATE` ou `DELETE` direto nessas tabelas.
 - Os usuários Google usam o papel Postgres `authenticated`, mas as políticas exigem também uma identidade Google presente em `app_metadata.providers` e rejeitam `is_anonymous=true`.
 - RPCs públicas de multiplayer são wrappers `SECURITY DEFINER` que exigem a claim Google antes de delegar às implementações transacionais internas. As funções internas não são executáveis pelo cliente.
+- `load_player_save` e `save_player_save` retornam/alteram somente o save associado a `auth.uid()`. A tabela não concede acesso direto; ambos os RPCs exigem Google, validam o formato/tamanho e usam revisão otimista para rejeitar gravações antigas.
+- No primeiro login da conta, o save já existente no dispositivo é enviado somente se a nuvem ainda não tiver um. Se já houver save na nuvem, ele substitui o cache local. Alterações posteriores são sincronizadas automaticamente após pequenas pausas, sem gravar cada frame.
 - Leituras seguem o escopo do perfil próprio, salas públicas e membros. Tópicos privados `room:<uuid>` só podem ser acessados por membros Google da sala; inputs continuam vinculados ao ID do jogador e snapshots só podem vir do host.
 - O gatilho de Auth cria o perfil; o nome pode ser ajustado pela tela após o login. Nome ou UUID local não são prova de identidade.
 
@@ -56,5 +58,6 @@ As variáveis `VITE_*` são incorporadas ao bundle e devem ser públicas. Para p
 
 - O host continua autoritativo para a simulação local. O começo é coordenado pela sala; inputs e snapshots dos carros trafegam via Supabase Realtime em intervalos de 50 ms; estado e resultados finais são persistidos por RPC. A timeline/frame-a-frame não é gravada no Postgres.
 - É multiplayer com autoridade no navegador, não servidor dedicado: não há rollback, compensação de latência ou anti-cheat da física do host. Perda do host pode encerrar uma corrida ativa.
-- A conta Google é necessária para entrar em salas. Uma conta anônima ou email-only não passa pelas políticas nem pelas RPCs, ainda que consiga obter uma sessão Supabase.
-- O Supabase Free tem cotas, limites e possíveis pausas. A última consulta de saúde mostrou Realtime `ACTIVE_HEALTHY`, mas `db_connected` e `replication_connected` estavam `false`; ainda é preciso testar canal e corrida com duas contas Google independentes.
+- A conta Google é obrigatória antes de acessar qualquer parte do jogo, inclusive corridas solo. Uma conta anônima ou email-only não passa pelas políticas nem pelas RPCs, ainda que consiga obter uma sessão Supabase.
+- Cada save na nuvem é limitado a 8 MiB. Uma falha de sincronização fica visível nas configurações e pode ser tentada novamente; o cache local não é oferecido para exportação.
+- O Supabase Free tem cotas, limites e possíveis pausas. Ainda é preciso testar OAuth em domínio de produção e corrida com duas contas Google independentes.

@@ -25,6 +25,7 @@ import {
 } from "../src/multiplayer/NetworkProtocol.js";
 import { MultiplayerClient } from "../src/multiplayer/MultiplayerClient.js";
 import { isGoogleIdentity } from "../src/multiplayer/supabase.js";
+import { resolveAccountSave } from "../src/multiplayer/CloudSave.js";
 
 const RACE_ID = "74a2a023-270f-4e53-923e-e99bbbc5ca4d";
 const HOST_ID = "54a1a023-270f-4e53-923e-e99bbbc5ca4d";
@@ -310,6 +311,54 @@ test("invite codes are exactly eight characters and survive room-state refreshes
   await assert.rejects(multiplayer.joinRoomByCode("ABC1234"), /8 caracteres/);
   await multiplayer.joinRoomById(ROOM_ID);
   assert.equal(multiplayer.state.room.code, "ABC12345");
+});
+
+test("account save resolution prefers cloud data and seeds a new account from the validated local save", () => {
+  const localSave = defaults();
+  localSave.credits = 4700;
+  const cloudSave = defaults();
+  cloudSave.credits = 875;
+
+  const existing = resolveAccountSave(
+    { save_data: cloudSave, revision: 4 },
+    localSave,
+  );
+  assert.equal(existing.source, "cloud");
+  assert.equal(existing.revision, 4);
+  assert.equal(existing.save.credits, 875);
+
+  const firstLogin = resolveAccountSave(null, localSave);
+  assert.equal(firstLogin.source, "local");
+  assert.equal(firstLogin.revision, 0);
+  assert.equal(firstLogin.save.credits, 4700);
+  assert.throws(
+    () => resolveAccountSave({ save_data: { version: 2 }, revision: 1 }, localSave),
+    /cloud_save_invalid/,
+  );
+});
+
+test("cloud career migration gates account saves with Google, RLS, size validation and revisions", () => {
+  const sql = fs.readFileSync(
+    "supabase/migrations/20261029201652_google_account_cloud_saves.sql",
+    "utf8",
+  );
+  assert.match(sql, /create table if not exists public\.player_saves/);
+  assert.match(sql, /alter table public\.player_saves enable row level security/);
+  assert.match(sql, /revoke all on table public\.player_saves from public, anon, authenticated/);
+  assert.match(sql, /public\.is_google_user\(\) and user_id = auth\.uid\(\)/);
+  assert.match(sql, /perform public\.require_google_user\(\)/);
+  assert.match(sql, /cloud_save_too_large/);
+  assert.match(sql, /save_revision_conflict/);
+  assert.match(sql, /p_expected_revision/);
+  assert.match(sql, /grant execute on function public\.load_player_save\(\) to authenticated/);
+  assert.doesNotMatch(sql, /service_role|service-role/i);
+
+  const gameSource = fs.readFileSync("src/core/Game.js", "utf8");
+  const uiSource = fs.readFileSync("src/ui.js", "utf8");
+  assert.match(gameSource, /this\.authStatus !== "ready"/);
+  assert.doesNotMatch(gameSource, /export-save|apex-dynasty-save\.json/);
+  assert.doesNotMatch(uiSource, /EXPORTAR SAVE|export-save/);
+  assert.match(uiSource, /this\.page === "account"/);
 });
 
 test("database migration enables explicit RLS and restricts room broadcast identities", () => {

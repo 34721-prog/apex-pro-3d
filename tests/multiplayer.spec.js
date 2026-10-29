@@ -5,46 +5,63 @@ async function boot(page) {
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("/?test=1");
   await page.waitForFunction(() => window.__game?.world.assetsReady);
+  await page.waitForFunction(() => window.__game?.authStatus !== "checking");
   return errors;
 }
 
-test("multiplayer menu requires Google and never exposes guest or fake-room entry", async ({ page }) => {
+test("Google account is required before any career or multiplayer screen", async ({ page }) => {
   const errors = await boot(page);
-  await page.locator('[data-nav="multiplayer"]').click();
-  await expect(page.getByRole("heading", { name: "Corra com pessoas de verdade." })).toBeVisible();
+  await expect(page.locator(".account-gate")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Seu legado acompanha você." })).toBeVisible();
+  await expect(page.locator("[data-nav]")).toHaveCount(0);
+
   const state = await page.evaluate(() => ({
+    status: __game.authStatus,
     configured: __game.multiplayer.state.configured,
-    googleRequired: __game.multiplayer.state.googleIdentityRequired,
+    googleEnabled: __game.multiplayer.state.googleEnabled,
     profile: __game.multiplayer.state.profile,
     room: __game.multiplayer.state.room,
     publicRooms: __game.multiplayer.state.publicRooms.length,
   }));
-  expect(typeof state.configured).toBe("boolean");
-  expect(state).toMatchObject({ googleRequired: true, profile: null, room: null, publicRooms: 0 });
-  if (state.configured)
-    await expect(page.getByRole("heading", { name: "Entre com sua conta Google." })).toBeVisible();
-  else
+  expect(["login-required", "unconfigured", "sync-error"]).toContain(state.status);
+  expect(state).toMatchObject({ profile: null, room: null, publicRooms: 0 });
+  if (state.status === "login-required" && state.configured && state.googleEnabled)
+    await expect(page.getByRole("button", { name: /ENTRAR COM GOOGLE|VINCULAR CONTA GOOGLE/ })).toBeVisible();
+  else if (state.status === "sync-error")
+    await expect(page.getByRole("button", { name: "TENTAR NOVAMENTE" })).toBeVisible();
+  else if (!state.configured)
     await expect(page.getByRole("heading", { name: "Configure o acesso Google." })).toBeVisible();
-  await expect(page.locator("#mp-guest-form")).toHaveCount(0);
-  await expect(page.locator('[data-action="mp-guest"]')).toHaveCount(0);
   await expect(page.locator("#mp-create-form")).toHaveCount(0);
   await expect(page.locator(".mp-room-row")).toHaveCount(0);
+  await expect(page.locator('[data-action="export-save"]')).toHaveCount(0);
   expect(errors).toEqual([]);
 });
 
-test("interactive lap inputs and named presets clamp to 8–30 laps", async ({ page }) => {
+test("career actions and settings remain blocked without a Google session", async ({ page }) => {
   const errors = await boot(page);
-  const settings = await page.evaluate(() => {
+  const state = await page.evaluate(() => {
     const game = __game;
-    game.setting("laps", 3);
-    const belowMin = game.save.settings.laps;
+    const before = {
+      laps: game.save.settings.laps,
+      credits: game.save.credits,
+      page: game.ui.page,
+    };
     game.setting("laps", 30);
-    const max = game.save.settings.laps;
-    game.setting("raceDistancePreset", "short");
-    const short = game.save.settings.laps;
-    game.setting("raceDistancePreset", "endurance");
-    return { belowMin, max, short, endurance: game.save.settings.laps };
+    game.setting("quality", "low");
+    game.action("start");
+    game.ui.navigate("garage");
+    return {
+      before,
+      after: {
+        laps: game.save.settings.laps,
+        credits: game.save.credits,
+        page: game.ui.page,
+        race: !!game.race,
+      },
+    };
   });
-  expect(settings).toEqual({ belowMin: 8, max: 30, short: 8, endurance: 14 });
+  expect(state.after).toEqual({ ...state.before, race: false });
+  expect(state.before).toMatchObject({ laps: 8, page: "account" });
+  await expect(page.locator(".account-gate")).toBeVisible();
   expect(errors).toEqual([]);
 });

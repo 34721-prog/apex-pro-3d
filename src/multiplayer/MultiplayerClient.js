@@ -1,4 +1,6 @@
 import { trackCatalog } from "../data/tracks.js";
+import { save as persist } from "../save.js";
+import { resolveAccountSave, validateCloudSave } from "./CloudSave.js";
 import { MAX_GRID_CARS, validateRoomSettings } from "../racing/RaceConfig.js";
 import { BASE } from "../physics.js";
 import { requestPit } from "../strategy/PitStop.js";
@@ -51,6 +53,7 @@ export class MultiplayerClient {
       busy: false,
       error: "",
       info: "",
+      cloudSaveStatus: "checking",
       roomLoading: false,
       trackReady: false,
       onlineRace: false,
@@ -80,6 +83,13 @@ export class MultiplayerClient {
     this.trackReadyId = null;
     this.preparingTrackId = null;
     this.trackPreparation = null;
+    this.accountInitialization = null;
+    this.authSubscription = null;
+    this.cloudSaveRevision = 0;
+    this.cloudSaveTimer = 0;
+    this.pendingCloudSave = null;
+    this.cloudSaveInFlight = null;
+    this.cloudSaveDelay = 650;
   }
 
   get playerId() {
@@ -100,7 +110,8 @@ export class MultiplayerClient {
 
   emit(patch = {}) {
     Object.assign(this.state, patch);
-    if (this.game.ui?.page === "multiplayer") this.game.ui.render();
+    if (["account", "multiplayer"].includes(this.game.ui?.page))
+      this.game.ui.render();
   }
 
   async ensureClient() {
@@ -116,6 +127,280 @@ export class MultiplayerClient {
       throw new Error("As variáveis públicas do Supabase não estão configuradas.");
     }
     return this.client;
+  }
+
+  async initializeAccount() {
+    if (this.accountInitialization) return this.accountInitialization;
+    this.game.authStatus = "checking";
+    this.emit({
+      busy: true,
+      error: "",
+      info: "Verificando sua conta Google…",
+      cloudSaveStatus: "checking",
+    });
+
+    const initialization = (async () => {
+      try {
+        if (!this.configured) {
+          this.game.authStatus = "unconfigured";
+          this.emit({
+            busy: false,
+            connection: "unconfigured",
+            cloudSaveStatus: "idle",
+            info: "Configure o Supabase e o provedor Google para acessar o jogo.",
+          });
+          return false;
+        }
+
+        const client = await this.ensureClient();
+        this.subscribeAuthChanges(client);
+        const profile = await this.loadExistingProfile();
+        if (!profile) {
+          if (!["offline", "google-required"].includes(this.state.connection))
+            throw new Error("google_profile_missing");
+          this.game.authStatus = "login-required";
+          this.emit({ busy: false, cloudSaveStatus: "idle", error: "" });
+          return false;
+        }
+
+        this.emit({
+          busy: true,
+          error: "",
+          info: "Carregando sua carreira da nuvem…",
+          cloudSaveStatus: "checking",
+        });
+        const record = await this.readCloudSave();
+        let resolved = resolveAccountSave(record, this.game.save);
+        if (resolved.source === "local") {
+          try {
+            this.cloudSaveRevision = await this.writeCloudSave(
+              resolved.save,
+              resolved.revision,
+            );
+          } catch (error) {
+            if (!isSaveRevisionConflict(error)) throw error;
+            const winner = await this.readCloudSave();
+            resolved = resolveAccountSave(winner, this.game.save);
+            if (resolved.source !== "cloud") throw error;
+            this.cloudSaveRevision = resolved.revision;
+            this.game.applyCloudSave(resolved.save);
+            persist(resolved.save);
+          }
+          if (resolved.source === "local") {
+            this.game.save = resolved.save;
+            persist(resolved.save);
+          }
+        } else {
+          // A save already attached to this Google account always wins over
+          // this browser's local copy, including when their contents differ.
+          this.cloudSaveRevision = resolved.revision;
+          this.game.applyCloudSave(resolved.save);
+          persist(resolved.save);
+        }
+
+        this.game.authStatus = "ready";
+        this.game.ui.page = "home";
+        this.game.ui.modal = null;
+        this.emit({
+          busy: false,
+          error: "",
+          connection: "online",
+          cloudSaveStatus: "synced",
+          info:
+            resolved.source === "local"
+              ? "Save deste dispositivo enviado para sua conta Google."
+              : "Carreira carregada da sua conta Google.",
+        });
+        this.game.ui.render();
+        return true;
+      } catch (error) {
+        this.game.authStatus = this.configured ? "sync-error" : "unconfigured";
+        this.emit({
+          busy: false,
+          error: friendlyError(error),
+          info: "",
+          cloudSaveStatus: "error",
+          connection: this.configured ? "offline" : "unconfigured",
+        });
+        return false;
+      }
+    })();
+
+    this.accountInitialization = initialization;
+    try {
+      return await initialization;
+    } finally {
+      if (this.accountInitialization === initialization)
+        this.accountInitialization = null;
+    }
+  }
+
+  subscribeAuthChanges(client) {
+    if (this.authSubscription || !client?.auth?.onAuthStateChange) return;
+    const result = client.auth.onAuthStateChange((event) => {
+      if (event !== "SIGNED_OUT") return;
+      clearTimeout(this.cloudSaveTimer);
+      this.cloudSaveTimer = 0;
+      this.pendingCloudSave = null;
+      this.cloudSaveRevision = 0;
+      void this.detachRoom();
+      if (this.publicChannel) {
+        const channel = this.publicChannel;
+        this.publicChannel = null;
+        void this.client?.removeChannel(channel).catch(() => {});
+      }
+      this.removeLastRoom();
+      this.roomCode = null;
+      this.game.controls?.clear();
+      this.game.world.raceContext = null;
+      this.game.world.setMode("showcase");
+      this.game.world.setPreview(this.game.save.selectedCar);
+      this.state.profile = null;
+      this.state.room = null;
+      this.state.players = [];
+      this.state.results = [];
+      this.state.publicRooms = [];
+      this.game.race = null;
+      this.game.onlineRaceContext = null;
+      this.game.authStatus = "login-required";
+      if (this.game.ui) {
+        this.game.ui.modal = null;
+        this.game.ui.page = "account";
+        this.game.ui.render();
+      }
+      this.emit({
+        busy: false,
+        error: "",
+        info: "Entre com sua conta Google para continuar.",
+        cloudSaveStatus: "idle",
+        connection: "offline",
+      });
+    });
+    this.authSubscription = result?.data?.subscription || null;
+  }
+
+  async readCloudSave() {
+    const { data, error } = await this.client.rpc("load_player_save");
+    if (error) throw error;
+    return data ?? null;
+  }
+
+  async writeCloudSave(saveData, expectedRevision) {
+    const save = validateCloudSave(saveData);
+    const { data, error } = await this.client.rpc("save_player_save", {
+      p_save: save,
+      p_expected_revision: expectedRevision,
+    });
+    if (error) throw error;
+    const revision = Number(data?.revision);
+    if (!Number.isSafeInteger(revision) || revision <= expectedRevision)
+      throw new Error("cloud_save_revision_invalid");
+    return revision;
+  }
+
+  queueCloudSave(saveData) {
+    if (
+      this.game.authStatus !== "ready" ||
+      !this.isGoogleUser ||
+      !this.client
+    )
+      return;
+    try {
+      this.pendingCloudSave = validateCloudSave(saveData);
+    } catch (error) {
+      this.state.cloudSaveStatus = "error";
+      const message = friendlyError(error);
+      this.state.error = message;
+      this.state.info = "";
+      this.game.ui?.toast?.(message);
+      return;
+    }
+    this.state.cloudSaveStatus = "pending";
+    this.state.error = "";
+    clearTimeout(this.cloudSaveTimer);
+    this.cloudSaveTimer = setTimeout(
+      () => void this.flushCloudSave(),
+      this.cloudSaveDelay,
+    );
+  }
+
+  async flushCloudSave() {
+    clearTimeout(this.cloudSaveTimer);
+    this.cloudSaveTimer = 0;
+    if (this.cloudSaveInFlight) return this.cloudSaveInFlight;
+    if (!this.pendingCloudSave || !this.isGoogleUser) return false;
+
+    const snapshot = this.pendingCloudSave;
+    this.pendingCloudSave = null;
+    const expectedRevision = this.cloudSaveRevision;
+    const operation = (async () => {
+      try {
+        this.cloudSaveRevision = await this.writeCloudSave(
+          snapshot,
+          expectedRevision,
+        );
+        this.state.cloudSaveStatus = "synced";
+        this.state.error = "";
+        this.state.info = "Carreira sincronizada com sua conta Google.";
+        return true;
+      } catch (error) {
+        if (isSaveRevisionConflict(error)) {
+          try {
+            const latest = resolveAccountSave(
+              await this.readCloudSave(),
+              this.game.save,
+            );
+            if (latest.source !== "cloud") throw error;
+            this.cloudSaveRevision = latest.revision;
+            this.game.applyCloudSave(latest.save);
+            persist(latest.save);
+            this.pendingCloudSave = null;
+            this.state.cloudSaveStatus = "synced";
+            this.state.error = "";
+            this.state.info = "Uma versão mais recente da nuvem foi carregada.";
+            this.game.ui?.toast?.("Save da nuvem carregado; ele prevalece nesta conta.");
+            return true;
+          } catch (reloadError) {
+            error = reloadError;
+          }
+        }
+        if (!this.pendingCloudSave) this.pendingCloudSave = snapshot;
+        const message = friendlyError(error);
+        this.state.cloudSaveStatus = "error";
+        this.state.error = message;
+        this.state.info = "";
+        this.game.ui?.toast?.(`Falha ao sincronizar a carreira: ${message}`);
+        return false;
+      } finally {
+        this.cloudSaveInFlight = null;
+        if (this.pendingCloudSave && this.pendingCloudSave !== snapshot) {
+          clearTimeout(this.cloudSaveTimer);
+          this.cloudSaveTimer = setTimeout(
+            () => void this.flushCloudSave(),
+            this.cloudSaveDelay,
+          );
+        }
+      }
+    })();
+    this.cloudSaveInFlight = operation;
+    return operation;
+  }
+
+  async retryCloudSave() {
+    if (!this.isGoogleUser || !this.client) return false;
+    try {
+      if (!this.pendingCloudSave)
+        this.pendingCloudSave = validateCloudSave(this.game.save);
+      this.state.cloudSaveStatus = "pending";
+      this.state.error = "";
+      return await this.flushCloudSave();
+    } catch (error) {
+      const message = friendlyError(error);
+      this.state.cloudSaveStatus = "error";
+      this.state.error = message;
+      this.game.ui?.toast?.(message);
+      return false;
+    }
   }
 
   async openMenu() {
@@ -177,7 +462,15 @@ export class MultiplayerClient {
       .eq("id", user.id)
       .maybeSingle();
     if (profileError) throw profileError;
-    if (!profile) return null;
+    if (!profile) {
+      this.emit({
+        profile: null,
+        connection: "online",
+        error: "",
+        info: "O perfil Google não foi criado no Supabase. Verifique o trigger de criação de perfil.",
+      });
+      return null;
+    }
     this.state.profile = { ...profile, isGoogle: true };
     this.emit({
       profile: this.state.profile,
@@ -205,12 +498,14 @@ export class MultiplayerClient {
   async continueWithGoogle() {
     if (!this.configured || !this.state.googleEnabled)
       throw new Error("Configure o provedor Google no Supabase e habilite o botão no build.");
+    this.emit({ busy: true, error: "", info: "Abrindo o login Google…" });
     await this.ensureClient();
     const { data, error: sessionError } = await this.client.auth.getSession();
     if (sessionError) throw sessionError;
     const session = data?.session;
     if (isGoogleIdentity(session?.user)) {
-      await this.loadExistingProfile();
+      const profile = await this.loadExistingProfile();
+      if (profile) await this.initializeAccount();
       return true;
     }
     const redirectTo = `${window.location.origin}${window.location.pathname}`;
@@ -227,7 +522,8 @@ export class MultiplayerClient {
     }
     if (result.error) throw result.error;
     // OAuth returns to the same origin; detectSessionInUrl restores the
-    // Supabase session and loadExistingProfile verifies its Google identity.
+    // Supabase session and the app initializer verifies Google and loads the
+    // account-bound cloud save before showing the game.
     return true;
   }
 
@@ -1167,6 +1463,12 @@ function interpolateSnapshot(previous, current, alpha) {
 }
 function friendlyError(error) {
   const message = String(error?.message || error || "Falha de conexão.").slice(0, 220);
+  if (/save_too_large|cloud_save_too_large/i.test(message))
+    return "Este save excede o limite de 8 MiB da sincronização em nuvem. Reduza retratos personalizados e tente novamente.";
+  if (/cloud_save_invalid|cloud_save_revision_invalid/i.test(message))
+    return "O save da nuvem está inválido. Seus dados locais foram mantidos; entre em contato com o suporte.";
+  if (/google_profile_missing/i.test(message))
+    return "A conta Google não possui perfil de jogo no Supabase. Verifique a configuração do banco.";
   if (/google_account_required|google.*required/i.test(message))
     return "Entre com uma conta Google para usar o multiplayer.";
   if (/provider.*not enabled|google.*not enabled/i.test(message))
@@ -1178,6 +1480,12 @@ function friendlyError(error) {
   if (/lap|volta/i.test(message)) return "A corrida deve ter entre 8 e 30 voltas.";
   if (/closed|expired|not found|unavailable/i.test(message)) return "A sala foi encerrada ou não está mais disponível.";
   return message;
+}
+function isSaveRevisionConflict(error) {
+  return (
+    error?.code === "40001" ||
+    /save_revision_conflict/i.test(String(error?.message || error || ""))
+  );
 }
 function isRoomUnavailable(error) {
   return /room_closed|room_expired|not found|no longer available|room_unavailable/i.test(
