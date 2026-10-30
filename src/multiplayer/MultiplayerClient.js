@@ -17,6 +17,7 @@ import {
   validateRaceInput,
 } from "./NetworkProtocol.js";
 import {
+  cleanupAuthRedirectUrl,
   createSupabaseClient,
   isGoogleIdentity,
   supabaseConfig,
@@ -223,6 +224,11 @@ export class MultiplayerClient {
           connection: this.configured ? "offline" : "unconfigured",
         });
         return false;
+      } finally {
+        // Always remove any OAuth tokens/code left in the address bar, even if
+        // the account/profile load failed. Supabase already read the session by
+        // the time we reach here, so this only cleans the visible URL.
+        cleanupAuthRedirectUrl();
       }
     })();
 
@@ -509,7 +515,15 @@ export class MultiplayerClient {
       return true;
     }
     const redirectTo = `${window.location.origin}${window.location.pathname}`;
-    const credentials = { provider: "google", options: { redirectTo } };
+    // skipBrowserRedirect returns the provider URL instead of navigating, so we
+    // can open it in a popup. The main tab stays on the live preview, keeping the
+    // (ephemeral) e2b sandbox alive; otherwise a full-page redirect to Google
+    // drops the connection and the callback can land on a recycled sandbox
+    // ("Sandbox not found").
+    const credentials = {
+      provider: "google",
+      options: { redirectTo, skipBrowserRedirect: true },
+    };
     let result;
     if (session?.user?.is_anonymous) {
       result = await this.client.auth.linkIdentity(credentials);
@@ -521,10 +535,61 @@ export class MultiplayerClient {
       result = await this.client.auth.signInWithOAuth(credentials);
     }
     if (result.error) throw result.error;
-    // OAuth returns to the same origin; detectSessionInUrl restores the
-    // Supabase session and the app initializer verifies Google and loads the
-    // account-bound cloud save before showing the game.
+    if (!result.data?.url)
+      throw new Error("Não foi possível iniciar o login do Google.");
+
+    const popup = window.open(
+      result.data.url,
+      "apex-google-oauth",
+      "width=480,height=720",
+    );
+    if (!popup) {
+      // Pop-up blocked: fall back to the traditional full-page redirect.
+      window.location.assign(result.data.url);
+      return true;
+    }
+    await this.waitForPopupSession(popup);
     return true;
+  }
+
+  waitForPopupSession(popup) {
+    return new Promise((resolve) => {
+      let settled = false;
+      const start = Date.now();
+      let timer = 0;
+      const finish = async () => {
+        if (settled) return;
+        settled = true;
+        clearInterval(timer);
+        window.removeEventListener("message", onMessage);
+        try {
+          await this.initializeAccount();
+        } catch {}
+        try {
+          popup.close();
+        } catch {}
+        resolve();
+      };
+      const onMessage = (event) => {
+        if (event.origin !== window.location.origin) return;
+        if (event.data?.type === "apex-oauth-complete") void finish();
+      };
+      window.addEventListener("message", onMessage);
+      timer = setInterval(async () => {
+        try {
+          if (popup.closed) {
+            await finish();
+            return;
+          }
+          const { data: current } = await this.client.auth.getSession();
+          if (current?.session) {
+            await finish();
+            return;
+          }
+        } catch {}
+        if (Date.now() - start > 180000) await finish();
+      }, 500);
+    });
   }
 
   async createRoom(rawSettings) {
