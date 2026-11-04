@@ -59,6 +59,8 @@ export class MultiplayerClient {
       roomLoading: false,
       trackReady: false,
       onlineRace: false,
+      quickPlayPhase: "",
+      quickPlayElapsed: 0,
     };
     this.roomChannel = null;
     this.publicChannel = null;
@@ -66,6 +68,12 @@ export class MultiplayerClient {
     this.roomCode = null;
     this.refreshTimer = 0;
     this.heartbeatTimer = 0;
+    // Quick-play ("JOGAR AGORA") controls. Timings are injectable for tests.
+    this.quickPlayActive = false;
+    this.quickPlayTimer = 0;
+    this.quickPlayResolve = null;
+    this.quickPlayWaitMs = options.quickPlayWaitMs ?? 30000;
+    this.quickPlayPollMs = options.quickPlayPollMs ?? 2000;
     this.heartbeatCount = 0;
     this.lastInputSentAt = -Infinity;
     this.lastSnapshotSentAt = -Infinity;
@@ -257,6 +265,7 @@ export class MultiplayerClient {
   }
 
   handleSignedOut() {
+      this.cancelQuickPlay();
       clearTimeout(this.cloudSaveTimer);
       this.cloudSaveTimer = 0;
       this.pendingCloudSave = null;
@@ -794,6 +803,7 @@ export class MultiplayerClient {
         throw error;
       }
     }
+    this.cancelQuickPlay();
     await this.detachRoom();
     this.roomCode = null;
     this.removeLastRoom();
@@ -907,6 +917,147 @@ export class MultiplayerClient {
     const rooms = Array.isArray(data) ? data : [];
     this.emit({ publicRooms: rooms.filter((room) => room?.status === "waiting") });
     return this.state.publicRooms;
+  }
+
+  // "JOGAR AGORA": entra na sala pública com mais vagas; se não houver nenhuma,
+  // cria uma pública. Depois aguarda outros jogadores até quickPlayWaitMs e,
+  // se ninguém aparecer, o anfitrião preenche as vagas do grid com bots.
+  async quickPlay() {
+    if (!this.isSignedIn)
+      throw new Error("Entre na sua conta para procurar uma partida.");
+    // Proteção contra entradas duplicadas: uma busca por vez e, se já
+    // estiver em uma sala, apenas atualiza o estado dela.
+    if (this.quickPlayActive) return false;
+    if (this.activeRoomId || this.state.room) {
+      await this.refreshRoomState();
+      return true;
+    }
+    this.quickPlayActive = true;
+    const startedAt = Date.now();
+    this.emit({
+      busy: true,
+      error: "",
+      info: "Procurando partida rápida…",
+      quickPlayPhase: "searching",
+      quickPlayElapsed: 0,
+    });
+    try {
+      await this.refreshPublicRooms();
+      const candidates = this.state.publicRooms
+        .filter(
+          (room) =>
+            room?.status === "waiting" &&
+            (room.player_count ?? 0) < (room.max_players ?? MAX_GRID_CARS),
+        )
+        .sort(
+          (a, b) =>
+            b.max_players - b.player_count - (a.max_players - a.player_count),
+        );
+      let joined = false;
+      for (const room of candidates) {
+        try {
+          await this.joinRoomById(room.id);
+          joined = true;
+          break;
+        } catch (error) {
+          if (!/room_full|unavailable|closed|not accepting|not found/i.test(String(error?.message || error)))
+            throw error;
+          // Sala encheu entre a listagem e o join: tenta a próxima.
+        }
+      }
+      if (!joined) {
+        this.emit({
+          info: "Nenhuma sala pública com vaga — criando uma nova…",
+          quickPlayPhase: "creating",
+        });
+        await this.createRoom({
+          name: "Partida rápida",
+          visibility: "public",
+          trackId: this.game.save.settings.track,
+          lapCount: this.game.save.settings.laps,
+          maxPlayers: MAX_GRID_CARS,
+          botCount: 0,
+        });
+      }
+
+      // Aguarda outros jogadores até o limite configurado.
+      this.emit({
+        info: "Sala encontrada. Aguardando outros jogadores…",
+        quickPlayPhase: "waiting",
+      });
+      const deadline = Date.now() + this.quickPlayWaitMs;
+      while (this.quickPlayActive && Date.now() < deadline) {
+        await this.refreshRoomState();
+        this.emit({
+          quickPlayElapsed: Math.floor((Date.now() - startedAt) / 1000),
+        });
+        const active = this.state.players.filter((p) => p.left_at === null).length;
+        if (active >= 2) break; // outro jogador chegou
+        await this.waitQuickPlay(this.quickPlayPollMs);
+      }
+      if (!this.quickPlayActive) return false; // busca cancelada
+
+      // Ninguém apareceu: o anfitrião preenche o grid com bots.
+      const room = this.state.room;
+      if (room && this.isHost) {
+        const active = this.state.players.filter((p) => p.left_at === null).length;
+        const freeGrid = Math.max(0, MAX_GRID_CARS - active);
+        if (freeGrid > 0 && (room.bot_count ?? 0) < freeGrid) {
+          await this.configureRoom({
+            name: room.name,
+            visibility: room.visibility,
+            trackId: room.track_id,
+            lapCount: room.lap_count,
+            maxPlayers: room.max_players,
+            botCount: Math.min(freeGrid, 5),
+          });
+          this.emit({ info: "Sem novos jogadores — vagas preenchidas com bots." });
+        }
+      }
+      return true;
+    } catch (error) {
+      this.emit({
+        busy: false,
+        error: friendlyError(error),
+        info: "",
+        quickPlayPhase: "",
+        quickPlayElapsed: 0,
+      });
+      throw error;
+    } finally {
+      this.quickPlayActive = false;
+      clearTimeout(this.quickPlayTimer);
+      this.quickPlayTimer = 0;
+      this.quickPlayResolve = null;
+      if (!this.state.error)
+        this.emit({ busy: false, quickPlayPhase: "", quickPlayElapsed: 0 });
+    }
+  }
+
+  waitQuickPlay(ms) {
+    return new Promise((resolve) => {
+      this.quickPlayResolve = resolve;
+      this.quickPlayTimer = setTimeout(() => {
+        this.quickPlayResolve = null;
+        resolve();
+      }, ms);
+    });
+  }
+
+  cancelQuickPlay() {
+    if (!this.quickPlayActive) return;
+    this.quickPlayActive = false;
+    clearTimeout(this.quickPlayTimer);
+    this.quickPlayTimer = 0;
+    const resolve = this.quickPlayResolve;
+    this.quickPlayResolve = null;
+    resolve?.();
+    this.emit({
+      busy: false,
+      info: "Busca por partida cancelada.",
+      quickPlayPhase: "",
+      quickPlayElapsed: 0,
+    });
   }
 
   async subscribePublicRooms() {
@@ -1516,6 +1667,13 @@ export class MultiplayerClient {
           await this.refreshPublicRooms();
           this.game.ui.toast("Lista de salas atualizada.");
           return true;
+        case "mp-quick-play":
+          await this.quickPlay();
+          this.game.ui.render();
+          return true;
+        case "mp-quick-play-cancel":
+          this.cancelQuickPlay();
+          return true;
         case "mp-ready":
           await this.setReady(data.ready === "true");
           return true;
@@ -1552,6 +1710,7 @@ export class MultiplayerClient {
   }
 
   async dispose() {
+    this.cancelQuickPlay();
     await this.detachRoom();
     if (this.publicChannel) {
       try {
