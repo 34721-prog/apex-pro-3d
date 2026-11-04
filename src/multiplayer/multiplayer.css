@@ -991,3 +991,46 @@
     max-width: none;
   }
 }
+
+/* ---- Partida rápida (JOGAR AGORA) ---- */
+.mp-room-list-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mp-quickplay {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+  padding: 16px 18px;
+  background: linear-gradient(145deg, #182330, #111820);
+  border: 1px solid #ffffff18;
+  border-left: 2px solid #ef3150;
+  border-radius: 5px;
+  color: #edf1f5;
+}
+.mp-quickplay .account-spinner {
+  flex-shrink: 0;
+}
+.mp-quickplay > div {
+  flex: 1;
+  display: grid;
+  gap: 3px;
+}
+.mp-quickplay b {
+  font: 700 14px Barlow, sans-serif;
+}
+.mp-quickplay small {
+  color: #8fa2b6;
+  font: 400 11px/1.5 Barlow, sans-serif;
+}
+@media (max-width: 680px) {
+  .mp-quickplay {
+    flex-wrap: wrap;
+  }
+  .mp-room-list-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

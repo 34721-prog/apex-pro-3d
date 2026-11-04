@@ -183,3 +183,60 @@ test("MultiplayerClient.handleAction implements every auth-* action used by the 
   assert.equal(await mp.handleAction("auth-view", { view: "register" }), true);
   assert.equal(mp.state.authView, "register");
 });
+
+test("multiplayer screen has working JOGAR AGORA button and quick-play cancel banner", async () => {
+  const dom = new JSDOM(
+    `<!doctype html><html><body><div id="app"><div id="world"></div><div id="ui"></div><div id="toast"></div></div></body></html>`,
+    { url: "http://localhost:5173/", pretendToBeVisual: true },
+  );
+  globalThis.window = dom.window;
+  globalThis.document = dom.window.document;
+  globalThis.localStorage = dom.window.localStorage;
+  globalThis.sessionStorage = dom.window.sessionStorage;
+  if (!uiModule) uiModule = await import("../src/ui.js");
+  const { UI } = uiModule;
+  const { defaults } = await import("../src/save.js");
+  const { MultiplayerClient } = await import("../src/multiplayer/MultiplayerClient.js");
+
+  const calls = [];
+  const game = {
+    authStatus: "ready",
+    save: defaults(),
+    multiplayer: null,
+    world: { container: document.getElementById("world"), resize() {}, setMode() {}, setPreview() {} },
+    admin: { active: false },
+    action(action, data = {}) { calls.push({ action, view: data.view ?? null }); },
+  };
+  const fakeClient = {
+    auth: { getSession: async () => ({ data: { session: null }, error: null }) },
+    rpc: async () => ({ data: [], error: null }),
+  };
+  game.multiplayer = new MultiplayerClient(game, { client: fakeClient, configured: true });
+  game.multiplayer.state.profile = { id: crypto.randomUUID(), username: "p1", display_name: "P1" };
+  game.multiplayer.state.connection = "online";
+
+  const ui = new UI(game);
+  ui.page = "multiplayer";
+  ui.render();
+
+  // JOGAR AGORA presente, habilitado e despacha mp-quick-play
+  const qp = [...document.querySelectorAll('[data-action="mp-quick-play"]')][0];
+  assert.ok(qp, "botão JOGAR AGORA existe");
+  assert.equal(qp.disabled, false);
+  assert.match(qp.textContent, /JOGAR AGORA/);
+  qp.click();
+  assert.deepEqual(calls.map((c) => c.action), ["mp-quick-play"]);
+
+  // durante a espera, o banner mostra indicador e o botão de cancelar
+  game.multiplayer.state.quickPlayPhase = "waiting";
+  game.multiplayer.state.quickPlayElapsed = 7;
+  ui.render();
+  const banner = document.querySelector(".mp-quickplay");
+  assert.ok(banner, "banner de procura visível");
+  assert.match(banner.textContent, /Aguardando outros jogadores/);
+  assert.match(banner.textContent, /7s/);
+  const cancel = banner.querySelector('[data-action="mp-quick-play-cancel"]');
+  assert.ok(cancel, "botão CANCELAR BUSCA existe no banner");
+  cancel.click();
+  assert.deepEqual(calls.map((c) => c.action), ["mp-quick-play", "mp-quick-play-cancel"]);
+});

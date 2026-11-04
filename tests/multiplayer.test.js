@@ -629,6 +629,18 @@ function makeSupabaseMock() {
           if (p) p.left_at = new Date().toISOString();
           return { data: {}, error: null };
         }
+        case "configure_room": {
+          const room = db.rooms.get(args.p_room_id);
+          if (!room || room.host_id !== user.id) throw new Error("host_only");
+          if (room.status !== "waiting") throw new Error("room_not_waiting");
+          room.name = args.p_name;
+          room.visibility = args.p_visibility;
+          room.track_id = args.p_track_id;
+          room.lap_count = args.p_lap_count;
+          room.max_players = args.p_max_players;
+          room.bot_count = args.p_bot_count;
+          return { data: { ...room }, error: null };
+        }
         case "list_public_rooms": {
           return {
             data: [...db.rooms.values()]
@@ -668,7 +680,7 @@ function makeSupabaseMock() {
       rpc: call,
     };
   }
-  return { makeClient };
+  return { makeClient, db };
 }
 
 function makeGameStub() {
@@ -750,5 +762,143 @@ test("two confirmed accounts create/join one room, sync state, start together an
     clearInterval(bob.heartbeatTimer);
     clearTimeout(alice.refreshTimer);
     clearTimeout(bob.refreshTimer);
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Fase 1 — partida rápida "JOGAR AGORA": entra na sala pública com mais vagas,
+// cria sala pública se não houver, aguarda outros jogadores e preenche com
+// bots após o limite; com cancelamento e proteção contra duplicidade.
+// ---------------------------------------------------------------------------
+function makeQuickPlayClient(makeClient, user, extraOptions = {}) {
+  const game = makeGameStub();
+  const mp = new MultiplayerClient(game, {
+    client: makeClient(user),
+    configured: true,
+    quickPlayWaitMs: extraOptions.quickPlayWaitMs ?? 30000,
+    quickPlayPollMs: extraOptions.quickPlayPollMs ?? 2000,
+  });
+  mp.state.profile = { id: user.id, username: user.username, display_name: user.username };
+  mp.prepareRoomTrack = async () => true;
+  return mp;
+}
+
+test("JOGAR AGORA entra na sala pública com mais vagas livres", async () => {
+  const { makeClient, db } = makeSupabaseMock();
+  const hostUser = { id: crypto.randomUUID(), email: "host@example.com", email_confirmed_at: "2026-11-04T10:00:00Z", is_anonymous: false, username: "host_01" };
+  const seeker = { id: crypto.randomUUID(), email: "busca@example.com", email_confirmed_at: "2026-11-04T10:00:00Z", is_anonymous: false, username: "busca_01" };
+
+  // Host cria duas salas públicas: "Cheia" (5/6 ocupadas) e "Vazia" (1/6).
+  const host = makeQuickPlayClient(makeClient, hostUser, { quickPlayWaitMs: 100, quickPlayPollMs: 20 });
+  await host.createRoom(roomSettings({ name: "Cheia", visibility: "public", maxPlayers: 6, botCount: 0 }));
+  const fullRoomId = host.state.room.id;
+  for (let i = 0; i < 4; i++) {
+    const ghostId = crypto.randomUUID();
+    db.players.set(`${fullRoomId}:${ghostId}`, {
+      room_id: fullRoomId, player_id: ghostId, role: "driver",
+      ready: false, connection_status: "online", left_at: null,
+    });
+  }
+  await host.leaveRoom();
+  await host.createRoom(roomSettings({ name: "Vazia", visibility: "public", maxPlayers: 6, botCount: 0 }));
+  const openRoomId = host.state.room.id;
+  await host.leaveRoom();
+
+  const seekerMp = makeQuickPlayClient(makeClient, seeker, { quickPlayWaitMs: 100, quickPlayPollMs: 20 });
+  try {
+    await seekerMp.quickPlay();
+    assert.equal(seekerMp.activeRoomId, openRoomId, "deve escolher a sala com mais vagas (Vazia, 1/6) e não a outra");
+    assert.equal(seekerMp.state.room.name, "Vazia");
+  } finally {
+    await new Promise((r) => setTimeout(r, 30));
+    await seekerMp.dispose();
+    clearInterval(seekerMp.heartbeatTimer);
+    clearTimeout(seekerMp.refreshTimer);
+    await host.dispose();
+    clearInterval(host.heartbeatTimer);
+    clearTimeout(host.refreshTimer);
+  }
+});
+
+test("JOGAR AGORA cria sala pública quando não há nenhuma disponível", async () => {
+  const { makeClient } = makeSupabaseMock();
+  const user = { id: crypto.randomUUID(), email: "solo@example.com", email_confirmed_at: "2026-11-04T10:00:00Z", is_anonymous: false, username: "solo_01" };
+  const mp = makeQuickPlayClient(makeClient, user, { quickPlayWaitMs: 100, quickPlayPollMs: 20 });
+  try {
+    await mp.quickPlay();
+    assert.ok(mp.state.room, "deve ter criado sala");
+    assert.equal(mp.state.room.visibility, "public");
+    assert.equal(mp.state.room.host_id, user.id);
+  } finally {
+    await new Promise((r) => setTimeout(r, 30));
+    await mp.dispose();
+    clearInterval(mp.heartbeatTimer);
+    clearTimeout(mp.refreshTimer);
+  }
+});
+
+test("JOGAR AGORA preenche as vagas com bots após o tempo de espera", async () => {
+  const { makeClient } = makeSupabaseMock();
+  const user = { id: crypto.randomUUID(), email: "bots@example.com", email_confirmed_at: "2026-11-04T10:00:00Z", is_anonymous: false, username: "bots_01" };
+  const mp = makeQuickPlayClient(makeClient, user, { quickPlayWaitMs: 150, quickPlayPollMs: 30 });
+  try {
+    await mp.quickPlay();
+    assert.ok(mp.state.room);
+    // só o próprio jogador na sala → grid de 6 → 5 bots
+    assert.equal(mp.state.room.bot_count, 5);
+    assert.match(mp.state.info, /bots/i);
+  } finally {
+    await new Promise((r) => setTimeout(r, 30));
+    await mp.dispose();
+    clearInterval(mp.heartbeatTimer);
+    clearTimeout(mp.refreshTimer);
+  }
+});
+
+test("cancelar a busca interrompe a partida rápida sem preencher bots", async () => {
+  const { makeClient } = makeSupabaseMock();
+  const user = { id: crypto.randomUUID(), email: "cancela@example.com", email_confirmed_at: "2026-11-04T10:00:00Z", is_anonymous: false, username: "cancela_01" };
+  const mp = makeQuickPlayClient(makeClient, user, { quickPlayWaitMs: 5000, quickPlayPollMs: 50 });
+  try {
+    const pending = mp.quickPlay();
+    await new Promise((r) => setTimeout(r, 120)); // deixou entrar na sala e começar a esperar
+    assert.equal(mp.quickPlayActive, true);
+    assert.ok(mp.state.room, "já está na sala enquanto espera");
+    mp.cancelQuickPlay();
+    const result = await pending;
+    assert.equal(result, false, "busca cancelada retorna false");
+    assert.equal(mp.quickPlayActive, false);
+    assert.equal(mp.state.room.bot_count, 0, "cancelado não preenche bots");
+    assert.match(mp.state.info, /cancelada/i);
+  } finally {
+    await new Promise((r) => setTimeout(r, 30));
+    await mp.dispose();
+    clearInterval(mp.heartbeatTimer);
+    clearTimeout(mp.refreshTimer);
+  }
+});
+
+test("proteção contra duplicidade: segunda busca simultânea é ignorada e quem já está em sala não entra em outra", async () => {
+  const { makeClient } = makeSupabaseMock();
+  const user = { id: crypto.randomUUID(), email: "dup@example.com", email_confirmed_at: "2026-11-04T10:00:00Z", is_anonymous: false, username: "dup_01" };
+  const mp = makeQuickPlayClient(makeClient, user, { quickPlayWaitMs: 5000, quickPlayPollMs: 50 });
+  try {
+    const first = mp.quickPlay();
+    await new Promise((r) => setTimeout(r, 100));
+    const second = await mp.quickPlay();
+    assert.equal(second, false, "busca simultânea deve ser recusada");
+    const roomIdWhileWaiting = mp.activeRoomId;
+    assert.ok(roomIdWhileWaiting);
+    mp.cancelQuickPlay();
+    await first;
+    // já está em sala: quickPlay apenas atualiza o estado, não cria outra sala
+    const again = await mp.quickPlay();
+    assert.equal(again, true);
+    assert.equal(mp.activeRoomId, roomIdWhileWaiting, "não entrou em outra sala");
+  } finally {
+    await new Promise((r) => setTimeout(r, 30));
+    await mp.dispose();
+    clearInterval(mp.heartbeatTimer);
+    clearTimeout(mp.refreshTimer);
   }
 });
