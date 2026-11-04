@@ -24,7 +24,7 @@ import {
   validateRaceInput,
 } from "../src/multiplayer/NetworkProtocol.js";
 import { MultiplayerClient } from "../src/multiplayer/MultiplayerClient.js";
-import { isGoogleIdentity } from "../src/multiplayer/supabase.js";
+import { isEmailConfirmed } from "../src/multiplayer/supabase.js";
 import { resolveAccountSave } from "../src/multiplayer/CloudSave.js";
 
 const RACE_ID = "74a2a023-270f-4e53-923e-e99bbbc5ca4d";
@@ -231,23 +231,23 @@ test("snapshot interpolation wraps heading and synchronizes resources and pit st
   assert.equal(car.pit.requested, true);
 });
 
-test("multiplayer accepts only a real Google identity, not anonymous or email-only sessions", async () => {
-  assert.equal(isGoogleIdentity({
+test("multiplayer accepts only confirmed e-mail accounts, never anonymous or unconfirmed sessions", async () => {
+  assert.equal(isEmailConfirmed({
     id: HOST_ID,
     is_anonymous: false,
-    app_metadata: { provider: "google", providers: ["google"] },
+    email_confirmed_at: "2026-11-04T10:00:00Z",
+    app_metadata: { provider: "email", providers: ["email"] },
   }), true);
-  assert.equal(isGoogleIdentity({
+  assert.equal(isEmailConfirmed({
     id: GUEST_ID,
     is_anonymous: true,
-    app_metadata: { provider: "anonymous", providers: ["anonymous"] },
-  }), false);
-  assert.equal(isGoogleIdentity({
+    email_confirmed_at: "2026-11-04T10:00:00Z",
+  }), false, "anonymous sessions are rejected");
+  assert.equal(isEmailConfirmed({
     id: GUEST_ID,
     is_anonymous: false,
-    app_metadata: { provider: "email", providers: ["email"] },
-    identities: [{ provider: "google" }],
-  }), false, "the client uses the same signed app_metadata claim as the database gate");
+    email: "piloto@example.com",
+  }), false, "an unconfirmed e-mail cannot access the game");
 
   const calls = [];
   const client = {
@@ -269,17 +269,124 @@ test("multiplayer accepts only a real Google identity, not anonymous or email-on
   };
   const multiplayer = new MultiplayerClient(game, { client, configured: true });
   await multiplayer.openMenu();
-  assert.equal(multiplayer.state.googleIdentityRequired, true);
-  assert.equal(multiplayer.state.anonymousSession, true);
-  assert.equal(multiplayer.state.connection, "google-required");
+  assert.equal(multiplayer.state.emailUnconfirmed, false);
+  assert.equal(multiplayer.state.connection, "offline");
+  assert.equal(multiplayer.state.authView, "login");
   assert.equal(multiplayer.state.profile, null);
   assert.equal(multiplayer.state.room, null);
   assert.equal(multiplayer.state.publicRooms.length, 0);
-  await assert.rejects(multiplayer.createRoom(roomSettings()), /Google/i);
-  assert.equal(await multiplayer.handleAction("mp-google"), true);
-  assert.match(multiplayer.state.error, /Configure o provedor Google/i);
+  await assert.rejects(multiplayer.createRoom(roomSettings()), /Entre na sua conta/i);
+  assert.equal(await multiplayer.handleAction("auth-view", { view: "register" }), true);
+  assert.equal(multiplayer.state.authView, "register");
   assert.equal(calls.includes("profile-read"), false);
   assert.equal(calls.includes("rpc"), false);
+});
+
+test("signup requires unique username, matching passwords and shows the confirm-e-mail screen", async () => {
+  const calls = [];
+  const client = {
+    auth: {
+      getSession: async () => ({ data: { session: null }, error: null }),
+      signUp: async ({ email, password, options }) => {
+        calls.push(`signUp:${email}:${options?.data?.username}`);
+        assert.equal(password, "senha12345");
+        return { data: { user: { id: GUEST_ID, email }, session: null }, error: null };
+      },
+    },
+    rpc: async (name, args) => {
+      calls.push(`rpc:${name}:${args?.p_username}`);
+      if (name === "username_available") return { data: true, error: null };
+      throw new Error(`Unexpected RPC: ${name}`);
+    },
+  };
+  const game = { ui: { page: "account", render() {}, toast() {} }, authStatus: "login-required" };
+  const multiplayer = new MultiplayerClient(game, { client, configured: true });
+
+  await assert.rejects(
+    multiplayer.signUp({ username: "ab", email: "piloto@example.com", password: "senha12345", confirmPassword: "senha12345" }),
+    /username_invalid/,
+  );
+  await assert.rejects(
+    multiplayer.signUp({ username: "piloto_01", email: "piloto@example.com", password: "senha12345", confirmPassword: "outra12345" }),
+    /password_mismatch/,
+  );
+  await assert.rejects(
+    multiplayer.signUp({ username: "piloto_01", email: "piloto@example.com", password: "123", confirmPassword: "123" }),
+    /8 caracteres/,
+  );
+
+  await multiplayer.signUp({
+    username: "Piloto_01",
+    email: "Piloto@Example.com",
+    password: "senha12345",
+    confirmPassword: "senha12345",
+  });
+  assert.equal(multiplayer.state.authView, "confirm");
+  assert.equal(multiplayer.state.pendingEmail, "piloto@example.com");
+  assert.equal(multiplayer.state.emailUnconfirmed, true);
+  assert.ok(calls.includes("rpc:username_available:Piloto_01"));
+  assert.ok(calls.includes("signUp:piloto@example.com:Piloto_01"));
+  assert.equal(multiplayer.state.profile, null, "no access before the e-mail is confirmed");
+});
+
+test("login resolves username to e-mail, keeps session preference and loads the profile", async () => {
+  let session = null;
+  const client = {
+    auth: {
+      getSession: async () => ({ data: { session }, error: null }),
+      signInWithPassword: async ({ email, password }) => {
+        assert.equal(email, "piloto@example.com");
+        assert.equal(password, "senha12345");
+        session = { user: { id: HOST_ID, email, email_confirmed_at: "2026-11-04T10:00:00Z" } };
+        return { data: { session }, error: null };
+      },
+      signOut: async () => { session = null; return { error: null }; },
+    },
+    from: () => ({
+      select: () => ({
+        eq: () => ({
+          maybeSingle: async () => ({
+            data: { id: HOST_ID, username: "piloto_01", display_name: "Piloto_01" },
+            error: null,
+          }),
+        }),
+      }),
+    }),
+    rpc: async (name, args) => {
+      if (name === "email_for_username")
+        return { data: args.p_username === "piloto_01" ? "piloto@example.com" : null, error: null };
+      if (name === "load_player_save") return { data: null, error: null };
+      if (name === "save_player_save") return { data: { revision: 1 }, error: null };
+      throw new Error(`Unexpected RPC: ${name}`);
+    },
+  };
+  const game = {
+    ui: { page: "account", render() {}, toast() {}, modal: null },
+    authStatus: "login-required",
+    save: defaults(),
+    applyCloudSave() {},
+  };
+  const multiplayer = new MultiplayerClient(game, { client, configured: true });
+  multiplayer.game.world = { setMode() {}, setPreview() {}, raceContext: null };
+
+  await assert.rejects(
+    multiplayer.signInWithCredentials({ identifier: "ninguem", password: "senha12345" }),
+    /account_not_found/,
+  );
+  const ok = await multiplayer.signInWithCredentials({
+    identifier: "piloto_01",
+    password: "senha12345",
+    keepSignedIn: true,
+  });
+  assert.equal(ok, true);
+  assert.equal(multiplayer.state.profile.username, "piloto_01");
+  assert.equal(multiplayer.isSignedIn, true);
+  assert.equal(game.authStatus, "ready");
+
+  await multiplayer.signOut();
+  assert.equal(multiplayer.state.profile, null);
+  assert.equal(game.authStatus, "login-required");
+  assert.equal(multiplayer.state.authView, "login");
 });
 
 test("invite codes are exactly eight characters and survive room-state refreshes", async () => {
@@ -301,7 +408,7 @@ test("invite codes are exactly eight characters and survive room-state refreshes
   };
   const game = { ui: { page: "multiplayer", render() {}, toast() {} } };
   const multiplayer = new MultiplayerClient(game, { client, configured: true });
-  multiplayer.state.profile = { id: HOST_ID, isGoogle: true };
+  multiplayer.state.profile = { id: HOST_ID, username: "host_01", display_name: "Host" };
   multiplayer.attachRoom = async (id, code) => {
     multiplayer.activeRoomId = id;
     multiplayer.roomCode = code;
@@ -337,21 +444,42 @@ test("account save resolution prefers cloud data and seeds a new account from th
   );
 });
 
-test("cloud career migration gates account saves with Google, RLS, size validation and revisions", () => {
+test("cloud career migration gates account saves behind a confirmed e-mail account, with RLS, size validation and revisions", () => {
   const sql = fs.readFileSync(
+    "supabase/migrations/20261104120000_email_password_auth.sql",
+    "utf8",
+  );
+  const savesMigration = fs.readFileSync(
     "supabase/migrations/20261029201652_google_account_cloud_saves.sql",
     "utf8",
   );
-  assert.match(sql, /create table if not exists public\.player_saves/);
-  assert.match(sql, /alter table public\.player_saves enable row level security/);
-  assert.match(sql, /revoke all on table public\.player_saves from public, anon, authenticated/);
-  assert.match(sql, /public\.is_google_user\(\) and user_id = auth\.uid\(\)/);
-  assert.match(sql, /perform public\.require_google_user\(\)/);
+  assert.match(savesMigration, /create table if not exists public\.player_saves/);
+  assert.match(savesMigration, /alter table public\.player_saves enable row level security/);
+  assert.match(savesMigration, /revoke all on table public\.player_saves from public, anon, authenticated/);
+  assert.match(sql, /public\.is_confirmed_user\(\) and user_id = auth\.uid\(\)/);
+  assert.match(sql, /perform public\.require_confirmed_user\(\)/);
   assert.match(sql, /cloud_save_too_large/);
   assert.match(sql, /save_revision_conflict/);
   assert.match(sql, /p_expected_revision/);
   assert.match(sql, /grant execute on function public\.load_player_save\(\) to authenticated/);
+  assert.match(sql, /grant execute on function public\.save_player_save\(jsonb, bigint\) to authenticated/);
   assert.doesNotMatch(sql, /service_role|service-role/i);
+  // The Google-era gate functions are dropped, not reused.
+  assert.match(sql, /drop function if exists public\.is_google_user\(\)/);
+  assert.match(sql, /drop function if exists public\.require_google_user\(\)/);
+  // No Google/OAuth code remains in the frontend auth path.
+  for (const file of [
+    "src/multiplayer/MultiplayerClient.js",
+    "src/multiplayer/MultiplayerUI.js",
+    "src/multiplayer/supabase.js",
+    "src/main.js",
+  ]) {
+    assert.doesNotMatch(
+      fs.readFileSync(file, "utf8"),
+      /google|signInWithOAuth|oauth/i,
+      `${file} must not reference Google or OAuth`,
+    );
+  }
 
   const gameSource = fs.readFileSync("src/core/Game.js", "utf8");
   const uiSource = fs.readFileSync("src/ui.js", "utf8");
@@ -379,14 +507,17 @@ test("database migration enables explicit RLS and restricts room broadcast ident
   assert.match(privilegeMigration, /revoke all[\s\S]*?from anon/);
   assert.match(sql, /lap_count integer not null check \(lap_count between 8 and 30\)/);
   assert.doesNotMatch(sql, /service_role|service-role/i);
-  const googleMigration = fs.readFileSync(
-    "supabase/migrations/20261028220544_google_only_multiplayer_access.sql",
+  const emailMigration = fs.readFileSync(
+    "supabase/migrations/20261104120000_email_password_auth.sql",
     "utf8",
   );
-  assert.match(googleMigration, /create or replace function public\.is_google_user/);
-  assert.match(googleMigration, /app_metadata[\s\S]*?providers[\s\S]*?google/);
-  assert.match(googleMigration, /google_account_required/);
-  assert.match(googleMigration, /using \(public\.is_google_user\(\)/);
+  assert.match(emailMigration, /create or replace function public\.is_confirmed_user/);
+  assert.match(emailMigration, /auth\.jwt\(\) ->> 'is_anonymous' is distinct from 'true'/);
+  assert.match(emailMigration, /email_account_required/);
+  assert.match(emailMigration, /using \(public\.is_confirmed_user\(\)/);
+  // Unique usernames are enforced at the database level; passwords never live in public tables.
+  assert.match(emailMigration, /profiles_username_unique unique \(username\)/);
+  assert.match(emailMigration, /profiles_username_format/);
   for (const rpc of [
     "create_room", "join_room", "set_room_connection", "room_heartbeat",
     "set_room_ready", "configure_room", "start_room", "begin_room_race",
@@ -394,8 +525,12 @@ test("database migration enables explicit RLS and restricts room broadcast ident
     "list_public_rooms", "get_room_state", "set_display_name",
   ]) {
     assert.match(
-      googleMigration,
-      new RegExp(`create or replace function public\\.${rpc}\\([\\s\\S]*?require_google_user`),
+      emailMigration,
+      new RegExp(`create or replace function public\\.${rpc}\\([\\s\\S]*?require_confirmed_user`),
     );
   }
+  // Username login helpers exist for the e-mail/password flow.
+  assert.match(emailMigration, /create or replace function public\.username_available/);
+  assert.match(emailMigration, /create or replace function public\.email_for_username/);
+  assert.match(emailMigration, /create or replace function public\.set_username/);
 });

@@ -6,7 +6,7 @@ Continuação do projeto original: mantém o HUD e os 14 circuitos da v0.4, 31 p
 
 ## Multiplayer online real — v0.10
 
-Conta Google obrigatória antes de acessar o jogo. Supabase Auth protege o login; o save da carreira fica na nuvem e acompanha a mesma conta entre sessões/dispositivos. Salas públicas/privadas usam Realtime para inputs/snapshots e persistem resultados por RPC. RLS e RPCs validam a claim Google assinada; identidades anônimas/email-only não entram. Sem jogadores, salas ou resultados fictícios; o host mantém a simulação autoritativa no navegador. Setup do OAuth, migrações, variáveis e limites: **`docs/MULTIPLAYER-SUPABASE.md`**.
+Conta de e-mail/senha obrigatória antes de acessar o jogo (com confirmação de e-mail). Supabase Auth protege o login; o save da carreira fica na nuvem e acompanha a mesma conta entre sessões/dispositivos. Salas públicas/privadas usam Realtime para inputs/snapshots e persistem resultados por RPC. RLS e RPCs exigem conta confirmada assinada; sessões anônimas ou e-mails não confirmados não entram. Sem jogadores, salas ou resultados fictícios; o host mantém a simulação autoritativa no navegador. Setup do provedor E-mail, migrações, variáveis e limites: **`docs/MULTIPLAYER-SUPABASE.md`**.
 
 ## Experiência principal — chefe de equipe
 
@@ -32,7 +32,7 @@ Diagnóstico, testes e custos: **`docs/CORRECAO-SOMBRAS.md`**. Validação extra
 
 ## Executar a edição local
 
-A cena e os assets são servidos localmente, mas o jogo exige conexão para autenticar a conta Google e carregar/sincronizar a carreira na nuvem. Configure `.env.local` conforme `docs/MULTIPLAYER-SUPABASE.md`, instale as dependências e execute `npm run dev`. Não use `file://` nem considere o pacote Python/offline uma forma de contornar o login obrigatório.
+A cena e os assets são servidos localmente, mas o jogo exige conexão para autenticar sua conta de e-mail/senha e carregar/sincronizar a carreira na nuvem. Configure `.env.local` conforme `docs/MULTIPLAYER-SUPABASE.md`, instale as dependências e execute `npm run dev`. Não use `file://` nem considere o pacote Python/offline uma forma de contornar o login obrigatório.
 
 ## Instalar, desenvolver e testar
 
@@ -145,7 +145,7 @@ Notícias são derivadas dos resultados, paradas, penalidades, abandonos, ultrap
 
 Low/Medium/High/Custom, Medium padrão, adaptação visual opcional, física fixa e HUD Padrão/Compacto/Imersivo mantidos. Não se carregam todos os cenários 3D simultaneamente.
 
-Laboratório: senha de desenvolvimento **123456789**, save separado. **Não é autenticação segura de cliente.** O jogo exige conta Google; a identidade de autenticação e a carreira são vinculadas ao Supabase.
+Laboratório: senha de desenvolvimento **123456789**, save separado. **Não é autenticação segura de cliente.** O jogo exige conta de e-mail/senha confirmada; a identidade de autenticação e a carreira são vinculadas ao Supabase.
 
 ## Evidências, limites e estrutura
 

@@ -528,7 +528,11 @@ export class Game {
       void this.multiplayer.retryCloudSave();
       return;
     }
-    if (this.authStatus !== "ready" && !["mp-google", "mp-close-error"].includes(action))
+    if (
+      this.authStatus !== "ready" &&
+      !["mp-close-error", "account-retry", "save-sync-retry"].includes(action) &&
+      !action.startsWith("auth-")
+    )
       return;
     if (action.startsWith("mp-")) {
       void this.multiplayer.handleAction(action, data);
