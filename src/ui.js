@@ -44,6 +44,14 @@ export class UI {
       if (b.dataset.nav) this.navigate(b.dataset.nav);
       else this.game.action(b.dataset.action, b.dataset);
     });
+    // Auth forms: pressing Enter in any field must submit like the button.
+    this.root.addEventListener("submit", (e) => {
+      const form = e.target.closest?.("form[data-auth-form]");
+      if (!form) return;
+      e.preventDefault();
+      const action = form.dataset.authForm;
+      if (action) this.game.action(action, {});
+    });
     this.root.addEventListener("change", (e) => {
       if (this.game.managerChange(e.target)) return;
       if (e.target.dataset.actionSelect) {

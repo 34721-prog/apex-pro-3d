@@ -831,11 +831,10 @@
   color: #a4b1c0;
   font: 400 14px/1.7 Barlow, sans-serif;
 }
-.account-gate-shell .account-gate-shell .mp-setup-required {
+.account-gate-shell .mp-setup-required {
   margin-top: 0;
 }
-.account-gate-shell .mp-identity-card,
-.account-gate-shell .account-gate-shell .mp-identity-card {
+.account-gate-shell .mp-identity-card {
   max-width: none;
 }
 .account-gate-shell .mp-identity-card h2 {
