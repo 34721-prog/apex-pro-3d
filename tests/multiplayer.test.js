@@ -534,3 +534,221 @@ test("database migration enables explicit RLS and restricts room broadcast ident
   assert.match(emailMigration, /create or replace function public\.email_for_username/);
   assert.match(emailMigration, /create or replace function public\.set_username/);
 });
+
+// ---------------------------------------------------------------------------
+// Two-account multiplayer integration: a shared in-memory Supabase mock plays
+// the role of the real project (rooms + room_players + RPC guards), and two
+// MultiplayerClient instances behave like two browsers signed in with two
+// different confirmed e-mail accounts.
+// ---------------------------------------------------------------------------
+function makeSupabaseMock() {
+  const db = { rooms: new Map(), players: new Map() };
+  const pkey = (roomId, playerId) => `${roomId}:${playerId}`;
+  const activePlayers = (roomId) =>
+    [...db.players.values()].filter((p) => p.room_id === roomId && p.left_at === null);
+
+  function makeClient(user) {
+    const call = async (name, args = {}) => {
+      switch (name) {
+        case "create_room": {
+          const room = {
+            id: crypto.randomUUID(),
+            code: crypto.randomUUID().replaceAll("-", "").slice(0, 8).toUpperCase(),
+            host_id: user.id,
+            name: args.p_name,
+            visibility: args.p_visibility,
+            track_id: args.p_track_id,
+            lap_count: args.p_lap_count,
+            max_players: args.p_max_players,
+            bot_count: args.p_bot_count,
+            status: "waiting",
+            race_id: null,
+          };
+          db.rooms.set(room.id, room);
+          db.players.set(pkey(room.id, user.id), {
+            room_id: room.id, player_id: user.id, role: "host",
+            ready: false, connection_status: "reconnecting", left_at: null,
+          });
+          return { data: { id: room.id, code: room.code }, error: null };
+        }
+        case "join_room": {
+          const room = [...db.rooms.values()].find(
+            (r) => (args.p_room_id && r.id === args.p_room_id) || (args.p_code && r.code === args.p_code),
+          );
+          if (!room || room.status === "closed") throw new Error("room_unavailable");
+          const existing = db.players.get(pkey(room.id, user.id));
+          if (existing && existing.left_at === null) {
+            existing.connection_status = "reconnecting";
+            return { data: { id: room.id, code: room.code, reconnected: true }, error: null };
+          }
+          if (room.status !== "waiting") throw new Error("room_not_accepting_players");
+          if (room.visibility === "private" && args.p_code !== room.code)
+            throw new Error("invalid_invite_code");
+          if (activePlayers(room.id).length >= room.max_players) throw new Error("room_full");
+          db.players.set(pkey(room.id, user.id), {
+            room_id: room.id, player_id: user.id, role: "driver",
+            ready: false, connection_status: "reconnecting", left_at: null,
+          });
+          return { data: { id: room.id, code: room.code, reconnected: false }, error: null };
+        }
+        case "get_room_state": {
+          const room = db.rooms.get(args.p_room_id);
+          if (!room) throw new Error("room_unavailable");
+          const players = [...db.players.values()]
+            .filter((p) => p.room_id === room.id)
+            .map((p) => ({
+              ...p,
+              display_name: p.player_id === user.id ? user.username : `user-${p.player_id.slice(0, 4)}`,
+            }));
+          return { data: { room, players, results: [], server_time: new Date().toISOString() }, error: null };
+        }
+        case "set_room_connection":
+        case "room_heartbeat": {
+          const p = db.players.get(pkey(args.p_room_id, user.id));
+          if (p) { p.connection_status = args.p_status || "online"; p.left_at = p.left_at; }
+          return { data: {}, error: null };
+        }
+        case "set_room_ready": {
+          const p = db.players.get(pkey(args.p_room_id, user.id));
+          if (!p || p.left_at !== null) throw new Error("not_a_room_member");
+          p.ready = !!args.p_ready;
+          return { data: {}, error: null };
+        }
+        case "start_room": {
+          const room = db.rooms.get(args.p_room_id);
+          if (!room || room.host_id !== user.id) throw new Error("host_only");
+          const active = activePlayers(room.id);
+          if (room.status !== "waiting") throw new Error("room_not_waiting");
+          if (!active.length || !active.every((p) => p.ready)) throw new Error("all_players_must_be_ready");
+          room.status = "countdown";
+          room.race_id = crypto.randomUUID();
+          return { data: { id: room.id, status: room.status, race_id: room.race_id }, error: null };
+        }
+        case "leave_room": {
+          const p = db.players.get(pkey(args.p_room_id, user.id));
+          if (p) p.left_at = new Date().toISOString();
+          return { data: {}, error: null };
+        }
+        case "list_public_rooms": {
+          return {
+            data: [...db.rooms.values()]
+              .filter((r) => r.visibility === "public" && r.status === "waiting")
+              .map((r) => ({ ...r, player_count: activePlayers(r.id).length })),
+            error: null,
+          };
+        }
+        default:
+          throw new Error(`Unexpected RPC: ${name}`);
+      }
+    };
+    return {
+      auth: {
+        getSession: async () => ({ data: { session: { user } }, error: null }),
+        signInWithPassword: async () => ({ data: { session: { user } }, error: null }),
+      },
+      from: () => ({
+        select: () => ({
+          eq: () => ({
+            maybeSingle: async () => ({
+              data: { id: user.id, username: user.username, display_name: user.username },
+              error: null,
+            }),
+          }),
+        }),
+      }),
+      channel: () => {
+        const ch = {
+          on: () => ch,
+          subscribe: (cb) => { setTimeout(() => cb("SUBSCRIBED"), 0); return ch; },
+          track: async () => ({}),
+        };
+        return ch;
+      },
+      removeChannel: async () => {},
+      rpc: call,
+    };
+  }
+  return { makeClient };
+}
+
+function makeGameStub() {
+  return {
+    ui: { page: "multiplayer", render() {}, toast() {}, closeModal() {}, modal: null },
+    authStatus: "ready",
+    save: defaults(),
+    race: null,
+    onlineRaceContext: null,
+    controls: { clear() {} },
+    world: { setMode() {}, setPreview() {}, raceContext: null },
+    applyCloudSave() {},
+    startOnlineRace(context) { this.onlineRaceContext = context; },
+  };
+}
+
+test("two confirmed accounts create/join one room, sync state, start together and survive leave/rejoin without duplicates", async () => {
+  const { makeClient } = makeSupabaseMock();
+  const aliceUser = { id: crypto.randomUUID(), email: "alice@example.com", email_confirmed_at: "2026-11-04T10:00:00Z", is_anonymous: false, username: "alice_01" };
+  const bobUser = { id: crypto.randomUUID(), email: "bob@example.com", email_confirmed_at: "2026-11-04T10:00:00Z", is_anonymous: false, username: "bob_02" };
+
+  const alice = new MultiplayerClient(makeGameStub(), { client: makeClient(aliceUser), configured: true });
+  const bob = new MultiplayerClient(makeGameStub(), { client: makeClient(bobUser), configured: true });
+  alice.state.profile = { id: aliceUser.id, username: "alice_01", display_name: "alice_01" };
+  bob.state.profile = { id: bobUser.id, username: "bob_02", display_name: "bob_02" };
+  alice.prepareRoomTrack = async () => true;
+  bob.prepareRoomTrack = async () => true;
+
+  try {
+    // Alice creates a public room; the 8-char code is the invite.
+    await alice.createRoom(roomSettings({ name: "Duelo Apex", visibility: "public", maxPlayers: 2, botCount: 0 }));
+    const roomId = alice.state.room.id;
+    const code = alice.state.room.code;
+    assert.match(code, /^[A-Z0-9]{8}$/);
+
+    // Bob finds the room in the public list and joins by code.
+    await bob.refreshPublicRooms();
+    assert.equal(bob.state.publicRooms.length, 1);
+    await bob.joinRoomByCode(code);
+    await alice.refreshRoomState();
+    await bob.refreshRoomState();
+
+    // Both clients see exactly the same two players, once each.
+    assert.equal(alice.state.players.length, 2);
+    assert.equal(bob.state.players.length, 2);
+    const ids = alice.state.players.map((p) => p.player_id).sort();
+    assert.deepEqual(ids, [aliceUser.id, bobUser.id].sort());
+    assert.equal(new Set(ids).size, 2, "no duplicate players in the room");
+    assert.equal(alice.state.room.host_id, aliceUser.id);
+
+    // Bob rejoining (reconnect) must not create a duplicate seat.
+    await bob.joinRoomById(roomId);
+    await alice.refreshRoomState();
+    assert.equal(alice.state.players.filter((p) => p.player_id === bobUser.id).length, 1);
+
+    // Both ready, host starts: the room state flips for everyone.
+    await alice.setReady(true);
+    await bob.setReady(true);
+    await alice.startRoom();
+    await bob.refreshRoomState();
+    assert.equal(alice.state.room.status, "countdown");
+    assert.equal(bob.state.room.status, "countdown");
+    assert.ok(alice.state.room.race_id);
+
+    // Bob leaves mid-session: Alice's room keeps working, Bob's seat is marked left.
+    await bob.leaveRoom();
+    await alice.refreshRoomState();
+    assert.equal(alice.state.room.id, roomId, "host room survives the guest leaving");
+    assert.equal(alice.state.players.filter((p) => p.player_id === aliceUser.id && p.left_at === null).length, 1);
+    assert.equal(bob.state.room, null);
+    assert.equal(alice.state.error, "");
+  } finally {
+    // Let in-flight channel subscribe callbacks settle, then dispose and clear
+    // any heartbeat/refresh timers so the test process can exit.
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    await alice.dispose();
+    await bob.dispose();
+    clearInterval(alice.heartbeatTimer);
+    clearInterval(bob.heartbeatTimer);
+    clearTimeout(alice.refreshTimer);
+    clearTimeout(bob.refreshTimer);
+  }
+});
