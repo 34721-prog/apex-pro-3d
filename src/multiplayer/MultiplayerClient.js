@@ -19,8 +19,8 @@ import {
 import {
   cleanupAuthRedirectUrl,
   createSupabaseClient,
-  isGoogleIdentity,
-  supabaseConfig,
+  isEmailConfirmed,
+  setRememberSession,
   supabaseConfigured,
 } from "./supabase.js";
 
@@ -39,12 +39,13 @@ export class MultiplayerClient {
     this.client = options.client ?? null;
     this.clientFactory = injectedClient ? null : createSupabaseClient;
     this.clientPromise = null;
+    this.clientSessionOnly = null;
     this.configured = options.configured ?? (injectedClient ? !!this.client : supabaseConfigured);
     this.state = {
       configured: this.configured,
-      googleEnabled: this.configured && supabaseConfig.googleEnabled,
-      googleIdentityRequired: true,
-      anonymousSession: false,
+      authView: "login",
+      pendingEmail: "",
+      emailUnconfirmed: false,
       profile: null,
       room: null,
       players: [],
@@ -97,8 +98,8 @@ export class MultiplayerClient {
     return this.state.profile?.id || null;
   }
 
-  get isGoogleUser() {
-    return this.state.profile?.isGoogle === true;
+  get isSignedIn() {
+    return !!this.state.profile;
   }
 
   get isHost() {
@@ -120,7 +121,12 @@ export class MultiplayerClient {
     if (this.client) return this.client;
     if (!this.clientFactory)
       throw new Error("O cliente Supabase não está disponível neste navegador.");
-    if (!this.clientPromise) this.clientPromise = this.clientFactory();
+    if (!this.clientPromise)
+      this.clientPromise = this.clientFactory(
+        this.clientSessionOnly === null
+          ? {}
+          : { sessionOnly: this.clientSessionOnly },
+      );
     this.client = await this.clientPromise;
     if (!this.client) {
       this.configured = false;
@@ -136,7 +142,7 @@ export class MultiplayerClient {
     this.emit({
       busy: true,
       error: "",
-      info: "Verificando sua conta Google…",
+      info: "Verificando sua conta…",
       cloudSaveStatus: "checking",
     });
 
@@ -148,7 +154,7 @@ export class MultiplayerClient {
             busy: false,
             connection: "unconfigured",
             cloudSaveStatus: "idle",
-            info: "Configure o Supabase e o provedor Google para acessar o jogo.",
+            info: "Configure o Supabase para acessar o jogo.",
           });
           return false;
         }
@@ -157,8 +163,8 @@ export class MultiplayerClient {
         this.subscribeAuthChanges(client);
         const profile = await this.loadExistingProfile();
         if (!profile) {
-          if (!["offline", "google-required"].includes(this.state.connection))
-            throw new Error("google_profile_missing");
+          if (!["offline", "email-unconfirmed"].includes(this.state.connection))
+            throw new Error("profile_missing");
           this.game.authStatus = "login-required";
           this.emit({ busy: false, cloudSaveStatus: "idle", error: "" });
           return false;
@@ -192,8 +198,8 @@ export class MultiplayerClient {
             persist(resolved.save);
           }
         } else {
-          // A save already attached to this Google account always wins over
-          // this browser's local copy, including when their contents differ.
+          // A save already attached to this account always wins over this
+          // browser's local copy, including when their contents differ.
           this.cloudSaveRevision = resolved.revision;
           this.game.applyCloudSave(resolved.save);
           persist(resolved.save);
@@ -209,8 +215,8 @@ export class MultiplayerClient {
           cloudSaveStatus: "synced",
           info:
             resolved.source === "local"
-              ? "Save deste dispositivo enviado para sua conta Google."
-              : "Carreira carregada da sua conta Google.",
+              ? "Save deste dispositivo enviado para a sua conta."
+              : "Carreira carregada da sua conta.",
         });
         this.game.ui.render();
         return true;
@@ -225,7 +231,7 @@ export class MultiplayerClient {
         });
         return false;
       } finally {
-        // Always remove any OAuth tokens/code left in the address bar, even if
+        // Always remove any auth tokens/code left in the address bar, even if
         // the account/profile load failed. Supabase already read the session by
         // the time we reach here, so this only cleans the visible URL.
         cleanupAuthRedirectUrl();
@@ -245,6 +251,12 @@ export class MultiplayerClient {
     if (this.authSubscription || !client?.auth?.onAuthStateChange) return;
     const result = client.auth.onAuthStateChange((event) => {
       if (event !== "SIGNED_OUT") return;
+      this.handleSignedOut();
+    });
+    this.authSubscription = result?.data?.subscription || null;
+  }
+
+  handleSignedOut() {
       clearTimeout(this.cloudSaveTimer);
       this.cloudSaveTimer = 0;
       this.pendingCloudSave = null;
@@ -277,12 +289,11 @@ export class MultiplayerClient {
       this.emit({
         busy: false,
         error: "",
-        info: "Entre com sua conta Google para continuar.",
+        info: "Você saiu da sua conta. Entre novamente para continuar.",
         cloudSaveStatus: "idle",
         connection: "offline",
+        authView: "login",
       });
-    });
-    this.authSubscription = result?.data?.subscription || null;
   }
 
   async readCloudSave() {
@@ -307,7 +318,7 @@ export class MultiplayerClient {
   queueCloudSave(saveData) {
     if (
       this.game.authStatus !== "ready" ||
-      !this.isGoogleUser ||
+      !this.isSignedIn ||
       !this.client
     )
       return;
@@ -334,7 +345,7 @@ export class MultiplayerClient {
     clearTimeout(this.cloudSaveTimer);
     this.cloudSaveTimer = 0;
     if (this.cloudSaveInFlight) return this.cloudSaveInFlight;
-    if (!this.pendingCloudSave || !this.isGoogleUser) return false;
+    if (!this.pendingCloudSave || !this.isSignedIn) return false;
 
     const snapshot = this.pendingCloudSave;
     this.pendingCloudSave = null;
@@ -347,7 +358,7 @@ export class MultiplayerClient {
         );
         this.state.cloudSaveStatus = "synced";
         this.state.error = "";
-        this.state.info = "Carreira sincronizada com sua conta Google.";
+        this.state.info = "Carreira sincronizada com sua conta.";
         return true;
       } catch (error) {
         if (isSaveRevisionConflict(error)) {
@@ -393,7 +404,7 @@ export class MultiplayerClient {
   }
 
   async retryCloudSave() {
-    if (!this.isGoogleUser || !this.client) return false;
+    if (!this.isSignedIn || !this.client) return false;
     try {
       if (!this.pendingCloudSave)
         this.pendingCloudSave = validateCloudSave(this.game.save);
@@ -417,7 +428,7 @@ export class MultiplayerClient {
     try {
       await this.ensureClient();
       await this.loadExistingProfile();
-      if (this.isGoogleUser) {
+      if (this.isSignedIn) {
         await this.resumeLastRoom();
         await this.subscribePublicRooms();
         await this.refreshPublicRooms();
@@ -438,33 +449,31 @@ export class MultiplayerClient {
     await this.ensureClient();
     const { data, error } = await this.client.auth.getSession();
     if (error) throw error;
-    const session = data?.session;
-    const user = session?.user;
-    if (!user?.id) {
+    const user = data?.session?.user;
+    if (!user?.id || user.is_anonymous) {
       this.emit({
         profile: null,
-        googleIdentityRequired: true,
-        anonymousSession: false,
+        emailUnconfirmed: false,
         connection: "offline",
-        info: "Entre com Google para acessar o multiplayer.",
+        authView: "login",
+        info: "Entre com sua conta para acessar o jogo.",
       });
       return null;
     }
-    if (!isGoogleIdentity(user)) {
+    if (!isEmailConfirmed(user)) {
       this.emit({
         profile: null,
-        googleIdentityRequired: true,
-        anonymousSession: !!user.is_anonymous,
-        connection: "google-required",
-        info: user.is_anonymous
-          ? "Esta sessão anônima não pode acessar as salas até ser vinculada a uma conta Google."
-          : "Esta conta não tem identidade Google vinculada.",
+        emailUnconfirmed: true,
+        pendingEmail: user.email || "",
+        connection: "email-unconfirmed",
+        authView: "confirm",
+        info: "Confirme seu e-mail para liberar o acesso à sua conta.",
       });
       return null;
     }
     const { data: profile, error: profileError } = await this.client
       .from("profiles")
-      .select("id,display_name,avatar_url,created_at,updated_at")
+      .select("id,username,display_name,avatar_url,created_at,updated_at")
       .eq("id", user.id)
       .maybeSingle();
     if (profileError) throw profileError;
@@ -473,24 +482,23 @@ export class MultiplayerClient {
         profile: null,
         connection: "online",
         error: "",
-        info: "O perfil Google não foi criado no Supabase. Verifique o trigger de criação de perfil.",
+        info: "O perfil não foi criado no Supabase. Verifique o trigger de criação de perfil.",
       });
       return null;
     }
-    this.state.profile = { ...profile, isGoogle: true };
+    this.state.profile = { ...profile };
     this.emit({
       profile: this.state.profile,
-      googleIdentityRequired: false,
-      anonymousSession: false,
+      emailUnconfirmed: false,
       connection: "online",
       error: "",
-      info: "Conta Google confirmada.",
+      info: "Sessão restaurada. Bem-vindo de volta.",
     });
     return this.state.profile;
   }
 
   async updateDisplayName(value) {
-    if (!this.isGoogleUser) throw new Error("Entre com uma conta Google para usar o multiplayer.");
+    if (!this.isSignedIn) throw new Error("Entre na sua conta para usar o multiplayer.");
     await this.ensureClient();
     const name = cleanDisplayName(value);
     const { data, error } = await this.client.rpc("set_display_name", {
@@ -501,100 +509,131 @@ export class MultiplayerClient {
     this.emit({ profile: this.state.profile, error: "", info: "Nome atualizado." });
   }
 
-  async continueWithGoogle() {
-    if (!this.configured || !this.state.googleEnabled)
-      throw new Error("Configure o provedor Google no Supabase e habilite o botão no build.");
-    this.emit({ busy: true, error: "", info: "Abrindo o login Google…" });
-    await this.ensureClient();
-    const { data, error: sessionError } = await this.client.auth.getSession();
-    if (sessionError) throw sessionError;
-    const session = data?.session;
-    if (isGoogleIdentity(session?.user)) {
-      const profile = await this.loadExistingProfile();
-      if (profile) await this.initializeAccount();
-      return true;
-    }
-    const redirectTo = `${window.location.origin}${window.location.pathname}`;
-    // skipBrowserRedirect returns the provider URL instead of navigating, so we
-    // can open it in a popup. The main tab stays on the live preview, keeping the
-    // (ephemeral) e2b sandbox alive; otherwise a full-page redirect to Google
-    // drops the connection and the callback can land on a recycled sandbox
-    // ("Sandbox not found").
-    const credentials = {
-      provider: "google",
-      options: { redirectTo, skipBrowserRedirect: true },
-    };
-    let result;
-    if (session?.user?.is_anonymous) {
-      result = await this.client.auth.linkIdentity(credentials);
-    } else {
-      if (session) {
-        const { error } = await this.client.auth.signOut();
-        if (error) throw error;
-      }
-      result = await this.client.auth.signInWithOAuth(credentials);
-    }
-    if (result.error) throw result.error;
-    if (!result.data?.url)
-      throw new Error("Não foi possível iniciar o login do Google.");
+  switchAuthView(view) {
+    const allowed = ["login", "register", "confirm", "forgot", "reset-sent"];
+    if (!allowed.includes(view)) return;
+    this.emit({ authView: view, error: "", info: "" });
+  }
 
-    const popup = window.open(
-      result.data.url,
-      "apex-google-oauth",
-      "width=480,height=720",
+  async signUp({ username, email, password, confirmPassword }) {
+    const name = cleanUsername(username);
+    const mail = cleanEmail(email);
+    if (String(password || "").length < 8)
+      throw new Error("A senha deve ter pelo menos 8 caracteres.");
+    if (password !== confirmPassword) throw new Error("password_mismatch");
+    this.emit({ busy: true, error: "", info: "Criando sua conta…" });
+    await this.ensureClient();
+    const { data: available, error: availabilityError } = await this.client.rpc(
+      "username_available",
+      { p_username: name },
     );
-    if (!popup) {
-      // Pop-up blocked: fall back to the traditional full-page redirect.
-      window.location.assign(result.data.url);
+    if (availabilityError) throw availabilityError;
+    if (available === false) throw new Error("username_taken");
+    const { data, error } = await this.client.auth.signUp({
+      email: mail,
+      password,
+      options: { data: { username: name, display_name: name } },
+    });
+    if (error) throw error;
+    // When e-mail confirmation is disabled the session is returned right away.
+    if (data?.session) {
+      await this.initializeAccount();
       return true;
     }
-    await this.waitForPopupSession(popup);
+    this.emit({
+      busy: false,
+      error: "",
+      authView: "confirm",
+      pendingEmail: mail,
+      emailUnconfirmed: true,
+      info: "Conta criada! Enviamos um e-mail de confirmação.",
+    });
     return true;
   }
 
-  waitForPopupSession(popup) {
-    return new Promise((resolve) => {
-      let settled = false;
-      const start = Date.now();
-      let timer = 0;
-      const finish = async () => {
-        if (settled) return;
-        settled = true;
-        clearInterval(timer);
-        window.removeEventListener("message", onMessage);
-        try {
-          await this.initializeAccount();
-        } catch {}
-        try {
-          popup.close();
-        } catch {}
-        resolve();
-      };
-      const onMessage = (event) => {
-        if (event.origin !== window.location.origin) return;
-        if (event.data?.type === "apex-oauth-complete") void finish();
-      };
-      window.addEventListener("message", onMessage);
-      timer = setInterval(async () => {
-        try {
-          if (popup.closed) {
-            await finish();
-            return;
-          }
-          const { data: current } = await this.client.auth.getSession();
-          if (current?.session) {
-            await finish();
-            return;
-          }
-        } catch {}
-        if (Date.now() - start > 180000) await finish();
-      }, 500);
+  async signInWithCredentials({ identifier, password, keepSignedIn }) {
+    setRememberSession(keepSignedIn !== false);
+    // Recreate the SDK client if the persistence choice changed, so the
+    // session lands in localStorage (keep connected) or sessionStorage.
+    const sessionOnly = keepSignedIn === false;
+    if (this.client && this.clientSessionOnly !== null && this.clientSessionOnly !== sessionOnly) {
+      try {
+        await this.client.auth.signOut();
+      } catch {}
+      this.client = null;
+      this.clientPromise = null;
+    }
+    this.clientSessionOnly = sessionOnly;
+    const id = String(identifier || "").trim();
+    if (!id) throw new Error("Informe seu nome de usuário ou e-mail.");
+    if (!password) throw new Error("Informe sua senha.");
+    await this.ensureClient();
+    let email = id.includes("@") ? id.toLowerCase() : null;
+    if (!email) {
+      const username = cleanUsername(id);
+      const { data, error } = await this.client.rpc("email_for_username", {
+        p_username: username,
+      });
+      if (error) throw error;
+      if (!data) throw new Error("account_not_found");
+      email = String(data);
+    }
+    this.emit({ busy: true, error: "", info: "Entrando…" });
+    const { error: signInError } = await this.client.auth.signInWithPassword({
+      email,
+      password,
     });
+    if (signInError) throw signInError;
+    await this.initializeAccount();
+    return this.game.authStatus === "ready";
+  }
+
+  async signOut() {
+    if (this.client) {
+      try {
+        await this.client.auth.signOut();
+      } catch {}
+    }
+    this.handleSignedOut();
+    return true;
+  }
+
+  async sendPasswordReset(email) {
+    const mail = cleanEmail(email);
+    await this.ensureClient();
+    const redirectTo = `${window.location.origin}${window.location.pathname}`;
+    const { error } = await this.client.auth.resetPasswordForEmail(mail, {
+      redirectTo,
+    });
+    if (error) throw error;
+    this.emit({
+      busy: false,
+      error: "",
+      authView: "reset-sent",
+      pendingEmail: mail,
+      info: "E-mail de recuperação enviado.",
+    });
+    return true;
+  }
+
+  async resendConfirmation(email) {
+    const mail = cleanEmail(email || this.state.pendingEmail);
+    await this.ensureClient();
+    const { error } = await this.client.auth.resend({ type: "signup", email: mail });
+    if (error) throw error;
+    this.emit({
+      busy: false,
+      error: "",
+      authView: "confirm",
+      pendingEmail: mail,
+      info: "E-mail de confirmação reenviado. Verifique sua caixa de entrada.",
+    });
+    return true;
   }
 
   async createRoom(rawSettings) {
     const settings = validateRoomSettings(rawSettings);
-    if (!this.isGoogleUser) throw new Error("Entre com uma conta Google para criar uma sala.");
+    if (!this.isSignedIn) throw new Error("Entre na sua conta para criar uma sala.");
     this.emit({ busy: true, error: "", info: "Criando sala…" });
     const { data, error } = await this.client.rpc("create_room", {
       p_name: settings.name,
@@ -629,7 +668,7 @@ export class MultiplayerClient {
   }
 
   async joinRoom({ id = null, code = null } = {}) {
-    if (!this.isGoogleUser) throw new Error("Entre com uma conta Google antes de entrar em uma sala.");
+    if (!this.isSignedIn) throw new Error("Entre na sua conta antes de entrar em uma sala.");
     this.emit({ busy: true, error: "", info: "Entrando na sala…" });
     const { data, error } = await this.client.rpc("join_room", {
       p_room_id: id,
@@ -648,7 +687,7 @@ export class MultiplayerClient {
   }
 
   async resumeLastRoom() {
-    if (!this.isGoogleUser || this.activeRoomId) return;
+    if (!this.isSignedIn || this.activeRoomId) return;
     const id = this.readLastRoom();
     if (!id) return;
     try {
@@ -661,7 +700,7 @@ export class MultiplayerClient {
   }
 
   async attachRoom(roomId, roomCode = null) {
-    if (!this.configured || !this.isGoogleUser) return;
+    if (!this.configured || !this.isSignedIn) return;
     await this.detachRoom();
     this.activeRoomId = roomId;
     this.roomCode = /^[A-Z0-9]{8}$/.test(String(roomCode || ""))
@@ -856,7 +895,7 @@ export class MultiplayerClient {
   }
 
   async refreshPublicRooms() {
-    if (!this.configured || !this.isGoogleUser) {
+    if (!this.configured || !this.isSignedIn) {
       this.emit({ publicRooms: [] });
       return [];
     }
@@ -871,7 +910,7 @@ export class MultiplayerClient {
   }
 
   async subscribePublicRooms() {
-    if (!this.configured || !this.isGoogleUser || this.publicChannel) return;
+    if (!this.configured || !this.isSignedIn || this.publicChannel) return;
     this.publicChannel = this.client
       .channel("apex-public-room-feed")
       .on(
@@ -892,7 +931,7 @@ export class MultiplayerClient {
 
   async refreshRoomState() {
     const roomId = this.activeRoomId || this.state.room?.id;
-    if (!roomId || !this.configured || !this.isGoogleUser) return null;
+    if (!roomId || !this.configured || !this.isSignedIn) return null;
     const { data, error } = await this.client.rpc("get_room_state", {
       p_room_id: roomId,
     });
@@ -969,7 +1008,7 @@ export class MultiplayerClient {
     clearInterval(this.heartbeatTimer);
     this.heartbeatCount = 0;
     this.heartbeatTimer = setInterval(async () => {
-      if (!this.activeRoomId || !this.isGoogleUser) return;
+      if (!this.activeRoomId || !this.isSignedIn) return;
       const { data, error } = await this.client.rpc("room_heartbeat", {
         p_room_id: this.activeRoomId,
       });
@@ -1416,8 +1455,44 @@ export class MultiplayerClient {
   async handleAction(action, data = {}) {
     try {
       switch (action) {
-        case "mp-google":
-          await this.continueWithGoogle();
+        case "auth-login": {
+          const form = document.getElementById("auth-login-form");
+          await this.signInWithCredentials({
+            identifier: form?.querySelector('[name="identifier"]')?.value,
+            password: form?.querySelector('[name="password"]')?.value,
+            keepSignedIn: form?.querySelector('[name="keep"]')?.checked !== false,
+          });
+          this.game.ui.render();
+          return true;
+        }
+        case "auth-register": {
+          const form = document.getElementById("auth-register-form");
+          const field = (name) => form?.querySelector(`[name="${name}"]`)?.value;
+          await this.signUp({
+            username: field("username"),
+            email: field("email"),
+            password: field("password"),
+            confirmPassword: field("confirm"),
+          });
+          this.game.ui.render();
+          return true;
+        }
+        case "auth-logout":
+          await this.signOut();
+          this.game.ui.render();
+          return true;
+        case "auth-forgot": {
+          const form = document.getElementById("auth-forgot-form");
+          await this.sendPasswordReset(form?.querySelector('[name="email"]')?.value);
+          this.game.ui.render();
+          return true;
+        }
+        case "auth-resend":
+          await this.resendConfirmation(this.state.pendingEmail);
+          this.game.ui.render();
+          return true;
+        case "auth-view":
+          this.switchAuthView(data.view);
           return true;
         case "mp-name":
           await this.updateDisplayName(document.getElementById("mp-new-name")?.value);
@@ -1501,6 +1576,22 @@ function readRoomForm(id) {
   };
 }
 
+function cleanUsername(raw) {
+  const value = String(raw || "")
+    .trim()
+    .replace(/[\u0000-\u001f\u007f]/g, "");
+  if (!/^[a-zA-Z0-9_]{3,20}$/.test(value))
+    throw new RangeError("username_invalid");
+  return value;
+}
+
+function cleanEmail(raw) {
+  const value = String(raw || "").trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value) || value.length > 254)
+    throw new RangeError("Informe um e-mail válido.");
+  return value;
+}
+
 function cleanDisplayName(raw) {
   const value = String(raw || "").trim().replace(/[\u0000-\u001f\u007f]/g, "");
   if (value.length < 2 || value.length > 24)
@@ -1532,12 +1623,28 @@ function friendlyError(error) {
     return "Este save excede o limite de 8 MiB da sincronização em nuvem. Reduza retratos personalizados e tente novamente.";
   if (/cloud_save_invalid|cloud_save_revision_invalid/i.test(message))
     return "O save da nuvem está inválido. Seus dados locais foram mantidos; entre em contato com o suporte.";
-  if (/google_profile_missing/i.test(message))
-    return "A conta Google não possui perfil de jogo no Supabase. Verifique a configuração do banco.";
-  if (/google_account_required|google.*required/i.test(message))
-    return "Entre com uma conta Google para usar o multiplayer.";
-  if (/provider.*not enabled|google.*not enabled/i.test(message))
-    return "O provedor Google ainda não está habilitado no Supabase.";
+  if (/profile_missing/i.test(message))
+    return "A conta não possui perfil de jogo no Supabase. Verifique a configuração do banco.";
+  if (/email_account_required|authentication_required/i.test(message))
+    return "Entre na sua conta para usar o multiplayer.";
+  if (/invalid login credentials|invalid_grant/i.test(message))
+    return "Nome de usuário/e-mail ou senha incorretos.";
+  if (/email not confirmed/i.test(message))
+    return "Confirme seu e-mail antes de entrar. Reenvie a confirmação se necessário.";
+  if (/user already registered|already been registered/i.test(message))
+    return "Este e-mail já está cadastrado. Faça login ou recupere sua senha.";
+  if (/username_taken|23505/i.test(message))
+    return "Este nome de usuário já está em uso. Escolha outro.";
+  if (/username_invalid/i.test(message))
+    return "O nome de usuário deve ter 3 a 20 caracteres (letras, números e _).";
+  if (/account_not_found/i.test(message))
+    return "Nenhuma conta encontrada para este nome de usuário.";
+  if (/password_mismatch/i.test(message))
+    return "As senhas não conferem. Digite a mesma senha nos dois campos.";
+  if (/password.*(8|characters)|weak|should be at least/i.test(message))
+    return "A senha deve ter pelo menos 8 caracteres.";
+  if (/email.*(invalid|rate)|over_email_send_rate_limit|rate.?limit/i.test(message))
+    return "E-mail inválido ou limite de envios atingido. Aguarde alguns segundos e tente novamente.";
   if (/room_full|room is full|capacity/i.test(message)) return "A sala está cheia.";
   if (/invalid_invite|private|code/i.test(message)) return "Código de convite inválido ou sala privada.";
   if (/not.*host|permission|not authorized|42501/i.test(message)) return "Essa ação é permitida somente ao anfitrião.";

@@ -2,8 +2,6 @@ const env = import.meta.env || {};
 export const supabaseConfig = Object.freeze({
   url: String(env.VITE_SUPABASE_URL || "").trim(),
   anonKey: String(env.VITE_SUPABASE_ANON_KEY || "").trim(),
-  googleEnabled:
-    String(env.VITE_SUPABASE_GOOGLE_ENABLED || "").toLowerCase() === "true",
 });
 
 function validSupabaseUrl(value) {
@@ -21,40 +19,88 @@ function validSupabaseUrl(value) {
 export const supabaseConfigured =
   validSupabaseUrl(supabaseConfig.url) && supabaseConfig.anonKey.length > 20;
 
-export function isGoogleIdentity(user) {
+// A usable account is any non-anonymous Supabase Auth user whose e-mail has
+// been confirmed. Anonymous sessions and unconfirmed signups are rejected.
+export function isEmailConfirmed(user) {
   if (!user || user.is_anonymous) return false;
-  const providers = user.app_metadata?.providers;
-  return (
-    user.app_metadata?.provider === "google" ||
-    (Array.isArray(providers) && providers.includes("google"))
-  );
+  return !!(user.email_confirmed_at || user.confirmed_at);
+}
+
+// "Manter conectado" preference: when disabled the session is kept only in
+// sessionStorage, so it disappears when the tab/browser is closed.
+const REMEMBER_KEY = "apex-dynasty:remember-session:v1";
+
+export function rememberSessionEnabled() {
+  try {
+    return localStorage.getItem(REMEMBER_KEY) !== "0";
+  } catch {
+    return true;
+  }
+}
+
+export function setRememberSession(enabled) {
+  try {
+    if (enabled) localStorage.setItem(REMEMBER_KEY, "1");
+    else localStorage.setItem(REMEMBER_KEY, "0");
+  } catch {}
+}
+
+function sessionOnlyStorage() {
+  const fallback = new Map();
+  const wrap = (store) => ({
+    getItem: (key) => {
+      try {
+        return store.getItem(key);
+      } catch {
+        return fallback.get(key) ?? null;
+      }
+    },
+    setItem: (key, value) => {
+      try {
+        store.setItem(key, value);
+      } catch {
+        fallback.set(key, value);
+      }
+    },
+    removeItem: (key) => {
+      try {
+        store.removeItem(key);
+      } catch {
+        fallback.delete(key);
+      }
+    },
+  });
+  try {
+    return wrap(window.sessionStorage);
+  } catch {
+    return wrap({ getItem: () => null, setItem: () => {}, removeItem: () => {} });
+  }
 }
 
 // Only the public anon/publishable key belongs in a browser build. Keep the
 // SDK out of the game bundle until a configured user opens the multiplayer page.
-export async function createSupabaseClient() {
+export async function createSupabaseClient(options = {}) {
   if (!supabaseConfigured) return null;
   const { createClient } = await import("@supabase/supabase-js");
+  const sessionOnly =
+    typeof options.sessionOnly === "boolean"
+      ? options.sessionOnly
+      : !rememberSessionEnabled();
   return createClient(supabaseConfig.url, supabaseConfig.anonKey, {
     auth: {
       autoRefreshToken: true,
       persistSession: true,
       detectSessionInUrl: true,
-      // PKCE over implicit grant. The implicit flow returns the access/refresh
-      // tokens in the URL fragment (#access_token=...), and @supabase/auth-js
-      // does NOT strip that fragment from the address bar — so the token stays
-      // visible after a Google login. PKCE returns only a short-lived ?code=,
-      // exchanges it server-side, and removes it from the URL automatically.
+      // PKCE keeps tokens out of the URL fragment; e-mail confirmation and
+      // password flows use short-lived ?code= exchanges that auth-js strips.
       flowType: "pkce",
+      storage: sessionOnly ? sessionOnlyStorage() : undefined,
     },
   });
 }
 
-// Strip Supabase auth parameters from the browser address bar. The PKCE ?code=
-// query param is already removed by @supabase/auth-js, but the implicit-grant
-// #access_token=... fragment is not, and an OAuth error can land as
-// ?error=.../ #error=... as well. Call this once the session has already been
-// read from the URL, so a token never lingers in the address bar or history.
+// Strip Supabase auth parameters from the browser address bar once the session
+// has been read, so a token or code never lingers in the address bar/history.
 export function cleanupAuthRedirectUrl() {
   if (typeof window === "undefined" || !window.history?.replaceState) return;
   try {

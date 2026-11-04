@@ -295,7 +295,7 @@ export class UI {
     const cloudStatus = this.game.multiplayer?.state.cloudSaveStatus || "checking";
     const cloudStatusMessage = {
       checking: "Verificando",
-      idle: "Aguardando conta Google",
+      idle: "Aguardando conta",
       pending: "Sincronizando alterações…",
       synced: "Sincronizado",
       error: "Falha na sincronização",
@@ -324,7 +324,7 @@ export class UI {
       const car = this.game.race?.localCar;
       html = `<div class="modal-eyebrow">${icon("flag")} CORRIDA ONLINE · BOXES</div><h2>Parada do piloto.</h2><p>${car?.pit?.requested ? "Uma chamada de boxes está ativa." : "Solicite ou cancele a chamada de boxes. A equipe anfitriã aplica o comando à sua posição autoritativa."}</p><div class="pause-actions">${btn(car?.pit?.requested ? "CANCELAR CHAMADA" : "SOLICITAR BOXES", car?.pit?.requested ? "pit-cancel" : "pit", "primary full-width")}${btn("VOLTAR À PISTA", "resume", "secondary full-width")}</div><div class="info-note">Latência de rede pode atrasar a confirmação visual.</div>`;
     } else if (type === "settings") {
-      html = `<div class="modal-eyebrow">${icon("settings")} CONFIGURAÇÕES</div><h2>No seu ritmo.</h2><p>Ajustes e carreira vinculados à sua conta Google.</p><div class="setting-row"><div><b>Áudio do motor e efeitos</b><small>Som sintetizado localmente. Sem trilha remota.</small></div><label class="switch"><input type="checkbox" data-setting="audio" ${s.settings.audio ? "checked" : ""}><span></span></label></div><div class="setting-row"><div><b>Volume</b><small>O som começa ao entrar na corrida.</small></div><input type="range" min="0" max="1" step=".05" value="${s.settings.volume}" data-setting="volume" aria-label="Volume"></div><div class="setting-row"><div><b>Qualidade gráfica</b><small>Aplicado ao vivo. Física e regras permanecem iguais.</small></div><select data-setting="quality" aria-label="Qualidade gráfica">${[
+      html = `<div class="modal-eyebrow">${icon("settings")} CONFIGURAÇÕES</div><h2>No seu ritmo.</h2><p>Ajustes e carreira vinculados à sua conta.</p><div class="setting-row"><div><b>Áudio do motor e efeitos</b><small>Som sintetizado localmente. Sem trilha remota.</small></div><label class="switch"><input type="checkbox" data-setting="audio" ${s.settings.audio ? "checked" : ""}><span></span></label></div><div class="setting-row"><div><b>Volume</b><small>O som começa ao entrar na corrida.</small></div><input type="range" min="0" max="1" step=".05" value="${s.settings.volume}" data-setting="volume" aria-label="Volume"></div><div class="setting-row"><div><b>Qualidade gráfica</b><small>Aplicado ao vivo. Física e regras permanecem iguais.</small></div><select data-setting="quality" aria-label="Qualidade gráfica">${[
         ["low", "Low · Leve"],
         ["medium", "Medium · Média"],
         ["high", "High · Alta"],
@@ -345,7 +345,7 @@ export class UI {
         )
         .join(
           "",
-        )}</select></div><div class="cloud-save-note cloud-save-${cloudStatus}"><span class="live-dot"></span><div><b>Carreira na nuvem · ${cloudStatusMessage}</b><small>Seu progresso acompanha sua conta Google nos dispositivos.</small></div>${cloudRetry}</div><div class="setting-actions">${btn(`${icon("help")} CONTROLES`, "help")}</div>`;
+        )}</select></div><div class="cloud-save-note cloud-save-${cloudStatus}"><span class="live-dot"></span><div><b>Carreira na nuvem · ${cloudStatusMessage}</b><small>Seu progresso acompanha sua conta nos dispositivos.</small></div>${cloudRetry}</div><div class="setting-actions">${btn(`${icon("help")} CONTROLES`, "help")}</div>`;
     } else if (type === "help") {
       html = `<div class="modal-eyebrow">${icon("help")} GUIA DO PILOTO</div><h2>Sinta o asfalto.</h2><p>Física arcade. Resposta rápida. O resto é com você.</p><div class="help-grid">${[
         ["W / ↑", "Acelerar"],

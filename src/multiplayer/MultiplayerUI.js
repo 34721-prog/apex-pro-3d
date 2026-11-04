@@ -39,34 +39,48 @@ export function extendMultiplayerUI(UI) {
     } else if (game.authStatus === "sync-error") {
       content = `<div class="mp-alert" role="alert"><span>${icon("alert")}</span><p>${esc(state.error || "Não foi possível carregar sua carreira da nuvem.")}</p></div><button class="btn primary full-width account-retry" data-action="account-retry" ${state.busy ? "disabled" : ""}>${state.busy ? "TENTANDO…" : "TENTAR NOVAMENTE"}</button>`;
     } else {
-      content = `${state.error ? `<div class="mp-alert" role="alert"><span>${icon("alert")}</span><p>${esc(state.error)}</p><button data-action="mp-close-error" aria-label="Fechar">${icon("close")}</button></div>` : ""}${this.multiplayerIdentity()}`;
+      content = this.authPanel();
     }
-    return `<main class="account-gate"><div class="account-gate-shell"><div class="account-brand"><img src="/assets/logo-primary.png" alt="Apex Dynasty"><span><b>APEX DYNASTY<span class="brand-dot">.</span></b><small>BUILD THE TEAM. MASTER THE RACE.</small></span></div><section class="account-gate-intro"><div class="eyebrow">UMA CONTA · A MESMA CARREIRA</div><h1>Seu legado acompanha você.</h1><p>Entre com sua conta Google para acessar o jogo. Sua carreira será salva na nuvem e ficará disponível nas suas sessões e dispositivos.</p></section>${content}<p class="account-gate-footnote">Login protegido pelo Supabase Auth. O jogo não recebe nem armazena sua senha Google.</p></div></main>`;
+    return `<main class="account-gate"><div class="account-gate-shell"><div class="account-brand"><img src="/assets/logo-primary.png" alt="Apex Dynasty"><span><b>APEX DYNASTY<span class="brand-dot">.</span></b><small>BUILD THE TEAM. MASTER THE RACE.</small></span></div><section class="account-gate-intro"><div class="eyebrow">UMA CONTA · A MESMA CARREIRA</div><h1>Seu legado acompanha você.</h1><p>Crie sua conta com usuário, e-mail e senha, confirme o e-mail e acesse o jogo. Sua carreira será salva na nuvem e ficará disponível nas suas sessões e dispositivos.</p></section>${content}<p class="account-gate-footnote">Autenticação por e-mail e senha via Supabase Auth. Sua senha nunca é armazenada ou lida pelo jogo.</p></div></main>`;
+  };
+
+  UI.prototype.authPanel = function () {
+    const state = this.game.multiplayer.state;
+    const view = state.authView || "login";
+    const busy = state.busy ? "disabled" : "";
+    const alert = state.error
+      ? `<div class="mp-alert" role="alert"><span>${icon("alert")}</span><p>${esc(state.error)}</p><button data-action="mp-close-error" aria-label="Fechar">${icon("close")}</button></div>`
+      : "";
+    const info = state.info
+      ? `<div class="mp-info" role="status"><span class="live-dot"></span>${esc(state.info)}</div>`
+      : "";
+    if (view === "register") {
+      return `${alert}${info}<section class="panel mp-identity-card auth-card"><div class="eyebrow">ACESSO RESTRITO · NOVA CONTA</div><h2>Crie sua conta.</h2><p>Escolha um nome de usuário único, informe seu e-mail e defina uma senha. Você receberá um e-mail de confirmação.</p><form id="auth-register-form" class="mp-form" autocomplete="off" onsubmit="return false"><label>NOME DE USUÁRIO<input name="username" maxlength="20" minlength="3" pattern="[A-Za-z0-9_]{3,20}" placeholder="3-20 letras, números ou _" required autocomplete="username"></label><label>E-MAIL<input name="email" type="email" maxlength="254" required autocomplete="email"></label><label>SENHA<input name="password" type="password" minlength="8" maxlength="72" required autocomplete="new-password"></label><label>CONFIRMAR SENHA<input name="confirm" type="password" minlength="8" maxlength="72" required autocomplete="new-password"></label><button class="btn primary full-width" data-action="auth-register" ${busy}>${state.busy ? "CRIANDO…" : "CRIAR CONTA"}</button></form><div class="auth-links"><span>Já tem conta?</span><button class="btn text-btn" data-action="auth-view" data-view="login">ENTRAR</button></div></section>`;
+    }
+    if (view === "confirm") {
+      return `${alert}${info}<section class="panel mp-identity-card auth-card"><div class="eyebrow">CONFIRME SEU E-MAIL</div><h2>Quase lá.</h2><p>Enviamos um e-mail de confirmação para <b>${esc(state.pendingEmail || "seu e-mail")}</b>. Clique no link da mensagem para liberar sua conta antes de entrar.</p><button class="btn primary full-width" data-action="auth-resend" ${busy}>${state.busy ? "ENVIANDO…" : "REENVIAR CONFIRMAÇÃO"}</button><div class="auth-links"><span>Já confirmou?</span><button class="btn text-btn" data-action="auth-view" data-view="login">IR PARA O LOGIN</button></div></section>`;
+    }
+    if (view === "forgot") {
+      return `${alert}${info}<section class="panel mp-identity-card auth-card"><div class="eyebrow">RECUPERAR SENHA</div><h2>Esqueceu sua senha?</h2><p>Informe o e-mail da sua conta e enviaremos um link para redefinir a senha.</p><form id="auth-forgot-form" class="mp-form" autocomplete="off" onsubmit="return false"><label>E-MAIL<input name="email" type="email" maxlength="254" required autocomplete="email"></label><button class="btn primary full-width" data-action="auth-forgot" ${busy}>${state.busy ? "ENVIANDO…" : "ENVIAR LINK DE RECUPERAÇÃO"}</button></form><div class="auth-links"><button class="btn text-btn" data-action="auth-view" data-view="login">VOLTAR AO LOGIN</button></div></section>`;
+    }
+    if (view === "reset-sent") {
+      return `${alert}${info}<section class="panel mp-identity-card auth-card"><div class="eyebrow">E-MAIL ENVIADO</div><h2>Verifique sua caixa de entrada.</h2><p>Se <b>${esc(state.pendingEmail || "o e-mail informado")}</b> estiver cadastrado, você receberá um link para redefinir sua senha.</p><div class="auth-links"><button class="btn text-btn" data-action="auth-view" data-view="login">VOLTAR AO LOGIN</button></div></section>`;
+    }
+    return `${alert}${info}<section class="panel mp-identity-card auth-card"><div class="eyebrow">ACESSO RESTRITO · CONTA</div><h2>Entre na sua conta.</h2><p>Use seu nome de usuário ou e-mail e sua senha.</p><form id="auth-login-form" class="mp-form" autocomplete="off" onsubmit="return false"><label>NOME DE USUÁRIO OU E-MAIL<input name="identifier" maxlength="254" required autocomplete="username"></label><label>SENHA<input name="password" type="password" maxlength="72" required autocomplete="current-password"></label><label class="auth-keep"><input type="checkbox" name="keep" checked><span>Manter conectado neste dispositivo</span></label><button class="btn primary full-width" data-action="auth-login" ${busy}>${state.busy ? "ENTRANDO…" : "ENTRAR"}</button></form><div class="auth-links"><button class="btn text-btn" data-action="auth-view" data-view="forgot">ESQUECI MINHA SENHA</button><span>·</span><button class="btn text-btn" data-action="auth-view" data-view="register">CRIAR CONTA</button></div></section>`;
   };
 
   UI.prototype.multiplayer = function () {
     const mp = this.game.multiplayer;
     if (!mp) return this.title("APEX ONLINE", "Multiplayer indisponível.");
     const state = mp.state;
-    return `${this.title("APEX ONLINE / CORRIDAS REAIS", "Corra com pessoas de verdade.", "Salas e corridas sincronizadas. Sua carreira também fica vinculada à mesma conta Google.")}
+    return `${this.title("APEX ONLINE / CORRIDAS REAIS", "Corra com pessoas de verdade.", "Salas e corridas sincronizadas. Sua carreira também fica vinculada à mesma conta.")}
       ${state.error ? `<div class="mp-alert" role="alert"><span>${icon("alert")}</span><p>${esc(state.error)}</p><button data-action="mp-close-error" aria-label="Fechar">${icon("close")}</button></div>` : ""}
       ${state.info ? `<div class="mp-info" role="status"><span class="live-dot"></span>${esc(state.info)}</div>` : ""}
-      ${!state.configured ? this.multiplayerUnconfigured() : !state.profile ? this.multiplayerIdentity() : state.room ? this.multiplayerLobby() : this.multiplayerRooms()}`;
+      ${!state.configured ? this.multiplayerUnconfigured() : !state.profile ? this.authPanel() : state.room ? this.multiplayerLobby() : this.multiplayerRooms()}`;
   };
 
   UI.prototype.multiplayerUnconfigured = function () {
-    return `<section class="panel mp-setup-required"><span class="mp-mark">${icon("wifi")}</span><div><div class="eyebrow">GOOGLE OAUTH NECESSÁRIO</div><h2>Configure o acesso Google.</h2><p>Todo o jogo exige uma identidade Supabase Auth vinculada ao Google antes de carregar a carreira. O banco também rejeita acessos sem essa identidade.</p><ol><li>Aplique as migrations de <code>supabase/migrations/</code>.</li><li>Configure Google OAuth no Supabase e, se quiser converter sessões anônimas antigas, habilite <b>Manual Identity Linking</b>.</li><li>Defina <code>VITE_SUPABASE_GOOGLE_ENABLED=true</code>, a URL e a chave publicável; então reinicie o Vite.</li></ol><p class="subtle">Nunca coloque o segredo OAuth ou a chave <code>service_role</code> no frontend.</p></div></section>`;
-  };
-
-  UI.prototype.multiplayerIdentity = function () {
-    const state = this.game.multiplayer.state;
-    const linking = state.anonymousSession;
-    const heading = linking ? "Vincule esta sessão ao Google." : "Entre com sua conta Google.";
-    const message = linking
-      ? "Esta sessão antiga não tem acesso ao jogo. Vincule uma conta Google para carregar a carreira e habilitar o multiplayer."
-      : "O jogo inteiro e o multiplayer exigem uma conta Google. Sua identidade é validada pelo Supabase antes de carregar a carreira.";
-    const button = linking ? "VINCULAR CONTA GOOGLE" : "ENTRAR COM GOOGLE";
-    return `<section class="mp-identity-layout"><article class="panel mp-identity-card"><div class="eyebrow">ACESSO RESTRITO · GOOGLE</div><h2>${heading}</h2><p>${message}</p>${state.googleEnabled ? `<button class="btn primary full-width mp-google-signin" data-action="mp-google" ${state.busy ? "disabled" : ""}>${icon("user")} ${state.busy ? "REDIRECIONANDO…" : button}</button><small class="subtle">Login OAuth do Supabase. Nenhuma senha Google passa pelo jogo.</small>` : `<div class="mp-info" role="status">Google OAuth ainda não está configurado. Consulte <code>docs/MULTIPLAYER-SUPABASE.md</code>.</div>`}</article><article class="panel mp-google-note"><span class="mp-kicker">CONTA OBRIGATÓRIA</span><b>Google verificado pelo Supabase.</b><p>O banco rejeita identidades anônimas e contas sem o provedor Google, mesmo que tentem chamar a API diretamente.</p><div class="mp-connection-pill ${state.connection}"><i></i>${connectionLabel(state.connection)}</div></article></section>`;
+    return `<section class="panel mp-setup-required"><span class="mp-mark">${icon("wifi")}</span><div><div class="eyebrow">SUPABASE NECESSÁRIO</div><h2>Configure o acesso por conta.</h2><p>Todo o jogo exige uma conta de e-mail e senha criada no Supabase Auth antes de carregar a carreira. O banco também rejeita acessos sem conta confirmada.</p><ol><li>Aplique as migrations de <code>supabase/migrations/</code>.</li><li>No Supabase, mantenha o provedor <b>E-mail</b> habilitado e exija confirmação de e-mail em Authentication → Settings.</li><li>Defina <code>VITE_SUPABASE_URL</code> e a chave publicável <code>VITE_SUPABASE_ANON_KEY</code>; então reinicie o Vite.</li></ol><p class="subtle">Nunca coloque a chave <code>service_role</code> ou qualquer segredo no frontend.</p></div></section>`;
   };
 
   UI.prototype.multiplayerRooms = function () {
@@ -77,7 +91,7 @@ export function extendMultiplayerUI(UI) {
       const track = trackById(room.track_id);
       return `<article class="mp-room-row"><div class="mp-room-status"><i class="live-dot"></i><small>${esc(room.status === "waiting" ? "LOBBY" : room.status.toUpperCase())}</small></div><div class="mp-room-main"><b>${esc(room.name)}</b><span>${esc(track.name)} · ${room.lap_count} voltas · ${room.player_count}/${room.max_players} jogadores · até ${room.bot_count} bots</span></div><div class="mp-room-actions"><span class="mp-public-label">PÚBLICA</span><button class="btn secondary" data-action="mp-join-room" data-room-id="${esc(room.id)}" ${room.player_count >= room.max_players || state.busy ? "disabled" : ""}>ENTRAR ${icon("arrow")}</button></div></article>`;
     }).join("");
-    return `<section class="mp-profile-strip panel"><div class="mp-avatar">${esc(profile.display_name.slice(0, 1).toUpperCase())}</div><div><small>JOGADOR · GOOGLE</small><b>${esc(profile.display_name)}</b><span>${esc(profile.id.slice(0, 8))}… · salvo pelo Supabase Auth</span></div><form id="mp-profile-name-form" class="mp-profile-name" onsubmit="return false"><input id="mp-new-name" value="${esc(profile.display_name)}" maxlength="24" aria-label="Novo nome de exibição"><button class="btn secondary" data-action="mp-name">SALVAR NOME</button></form></section>
+    return `<section class="mp-profile-strip panel"><div class="mp-avatar">${esc((profile.display_name || "?").slice(0, 1).toUpperCase())}</div><div><small>JOGADOR · CONTA</small><b>${esc(profile.display_name)}</b><span>@${esc(profile.username || "")} · ${esc(profile.id.slice(0, 8))}… · Supabase Auth</span></div><form id="mp-profile-name-form" class="mp-profile-name" onsubmit="return false"><input id="mp-new-name" value="${esc(profile.display_name)}" maxlength="24" aria-label="Novo nome de exibição"><button class="btn secondary" data-action="mp-name">SALVAR NOME</button></form><button class="btn text-btn" data-action="auth-logout">${icon("close")} SAIR</button></section>
       <div class="mp-workspace"><section class="panel mp-create-card"><div class="eyebrow">NOVO GRID</div><h2>Criar sala.</h2><p>O anfitrião controla pista e largada. O limite do grid real é ${MAX_GRID_CARS} carros.</p><form id="mp-create-form" class="mp-form mp-room-form" autocomplete="off" onsubmit="return false"><label>NOME DA SALA<input name="name" value="Sala Apex" maxlength="40" minlength="3" required></label><label>VISIBILIDADE<select name="visibility"><option value="public">Pública · aparece na busca</option><option value="private">Privada · somente convite</option></select></label><label>PISTA${trackSelect(mp.trackOptions, this.game.save.settings.track)}</label><label>VOLTAS${lapSelect(8)}</label><label>JOGADORES${maxPlayerSelect(6)}</label><label>BOTS${botSelect(5)}</label><small class="subtle">Bots preenchem as vagas restantes até o grid físico de seis; configurações inválidas são rejeitadas também pelo banco.</small><button class="btn primary" data-action="mp-create" ${state.busy ? "disabled" : ""}>CRIAR SALA ${icon("arrow")}</button></form><div class="mp-join-code"><div class="eyebrow">TEM UM CONVITE?</div><div class="mp-code-entry"><input id="mp-join-code-input" maxlength="8" minlength="8" placeholder="CÓDIGO DE 8 CARACTERES" aria-label="Código de convite" autocomplete="off" spellcheck="false"><button class="btn secondary" data-action="mp-join-code">ENTRAR PELO CÓDIGO</button></div></div></section><section class="panel mp-room-list"><div class="mp-section-head"><div><div class="eyebrow">SALAS PÚBLICAS</div><h2>Encontre uma corrida.</h2></div><button class="btn text-btn" data-action="mp-refresh" ${state.busy ? "disabled" : ""}>${icon("reset")} ATUALIZAR</button></div>${roomRows || `<div class="mp-empty"><span>${icon("flag")}</span><b>Nenhuma sala pública disponível.</b><small>Crie uma sala ou atualize a lista. Salas fechadas e privadas não aparecem.</small></div>`}</section></div>`;
   };
 
@@ -109,7 +123,7 @@ export function extendMultiplayerUI(UI) {
 }
 
 function connectionLabel(status) {
-  return ({ online: "CONECTADO", reconnecting: "RECONECTANDO", offline: "DESCONECTADO", unconfigured: "CONFIGURAÇÃO NECESSÁRIA", "google-required": "LOGIN GOOGLE NECESSÁRIO" })[status] || "CONECTANDO";
+  return ({ online: "CONECTADO", reconnecting: "RECONECTANDO", offline: "DESCONECTADO", unconfigured: "CONFIGURAÇÃO NECESSÁRIA", "email-unconfirmed": "CONFIRME SEU E-MAIL" })[status] || "CONECTANDO";
 }
 function formatRaceTime(value) {
   if (!Number.isFinite(value)) return "—";

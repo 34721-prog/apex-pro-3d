@@ -1,6 +1,5 @@
 .mp-setup-required,
 .mp-identity-card,
-.mp-google-note,
 .mp-create-card,
 .mp-room-list,
 .mp-participants-card,
@@ -28,7 +27,6 @@
 }
 .mp-setup-required p,
 .mp-identity-card p,
-.mp-google-note p,
 .mp-create-card > p,
 .mp-lobby-header p {
   color: #9eafc1;
@@ -64,14 +62,7 @@
   width: 23px;
   height: 23px;
 }
-.mp-identity-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.7fr);
-  gap: 18px;
-  margin-top: 22px;
-}
 .mp-identity-card,
-.mp-google-note,
 .mp-create-card,
 .mp-room-list,
 .mp-participants-card,
@@ -144,18 +135,10 @@
   background: #ffffff18;
 }
 .mp-identity-card > .subtle,
-.mp-google-note p,
 .mp-create-card .subtle,
 .mp-lobby-actions small,
 .mp-lobby-header p {
   font-size: 11px;
-}
-.mp-google-note {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  border-left: 2px solid #586b80;
 }
 .mp-kicker,
 .mp-profile-strip > div:nth-child(2) small,
@@ -163,13 +146,6 @@
   color: #8293a8;
   font: 700 9px Barlow, sans-serif;
   letter-spacing: 1.25px;
-}
-.mp-google-note > b {
-  font: 700 23px var(--heading, "Barlow Condensed", sans-serif);
-  margin-top: 12px;
-}
-.mp-google-note p {
-  max-width: 330px;
 }
 .mp-connection-pill,
 .mp-presence {
@@ -709,15 +685,11 @@
   }
 }
 @media (max-width: 680px) {
-  .mp-identity-layout {
-    grid-template-columns: 1fr;
-  }
-  .mp-setup-required {
+    .mp-setup-required {
     grid-template-columns: 1fr;
     padding: 20px;
   }
   .mp-identity-card,
-  .mp-google-note,
   .mp-create-card,
   .mp-room-list,
   .mp-participants-card,
@@ -859,18 +831,11 @@
   color: #a4b1c0;
   font: 400 14px/1.7 Barlow, sans-serif;
 }
-.account-gate-shell .mp-identity-layout {
-  margin-top: 0;
-}
-.account-gate-shell .mp-setup-required {
+.account-gate-shell .account-gate-shell .mp-setup-required {
   margin-top: 0;
 }
 .account-gate-shell .mp-identity-card,
-.account-gate-shell .mp-google-note {
-  background: linear-gradient(145deg, #182330, #111820);
-  box-shadow: 0 22px 80px #0006;
-}
-.account-gate-shell .mp-identity-card {
+.account-gate-shell .account-gate-shell .mp-identity-card {
   max-width: none;
 }
 .account-gate-shell .mp-identity-card h2 {
@@ -878,11 +843,6 @@
 }
 .account-gate-shell .mp-identity-card > p {
   max-width: 560px;
-}
-.account-gate-shell .mp-google-signin {
-  display: flex;
-  justify-content: center;
-  margin: 22px 0 12px;
 }
 .account-check {
   display: flex;
@@ -974,14 +934,61 @@
   .account-gate-intro p {
     font-size: 12px;
   }
-  .account-gate-shell .mp-identity-layout {
-    grid-template-columns: 1fr;
-  }
-  .account-gate-shell .mp-identity-card h2 {
+  .account-gate-shell   .account-gate-shell .mp-identity-card h2 {
     font-size: 29px;
   }
   .cloud-save-note {
     align-items: flex-start;
     flex-wrap: wrap;
+  }
+}
+
+/* ---- E-mail/password auth screens ---- */
+.auth-card {
+  max-width: 560px;
+  margin: 22px auto 0;
+  width: 100%;
+}
+.auth-card .mp-form {
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  margin: 20px 0 14px;
+}
+.auth-card .mp-form .btn {
+  width: 100%;
+}
+.auth-keep {
+  display: flex !important;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 9px !important;
+  color: #a9b8c8 !important;
+  font: 500 12px Barlow, sans-serif !important;
+  letter-spacing: 0.2px !important;
+  text-transform: none;
+  cursor: pointer;
+}
+.auth-keep input {
+  width: 15px;
+  height: 15px;
+  min-height: 0;
+  accent-color: #ef3150;
+  cursor: pointer;
+}
+.auth-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 6px;
+  color: #74859a;
+  font: 600 11px Barlow, sans-serif;
+}
+.auth-links .text-btn {
+  padding: 4px 6px;
+}
+@media (max-width: 760px) {
+  .auth-card {
+    max-width: none;
   }
 }
