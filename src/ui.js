@@ -92,6 +92,13 @@ export class UI {
         this.game.setting("volume", e.target.value);
     });
   }
+  pilotBadge() {
+    const profile = this.game.multiplayer?.state.profile;
+    const name = String(profile?.display_name || profile?.username || "").replace(/[^\p{L}\p{N} _-]/gu, "").trim();
+    if (!name) return `<div class="avatar" title="Apex Motorsport">AD</div>`;
+    const initials = name.split(/[\s_]+/).filter(Boolean).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
+    return `<div class="avatar pilot-avatar" title="${name.replaceAll('"', "&quot;")} — ${String(profile?.username || "").replaceAll('"', "&quot;")}">${initials || "P"}</div><span class="pilot-name">${name.replaceAll("<", "&lt;")}</span>`;
+  }
   header() {
     const s = this.game.save;
     return `<header class="header"><button class="brand" data-nav="home" aria-label="Apex Dynasty — Início"><img src="/assets/logo-primary.png" alt="Logo oficial Apex Dynasty"><span><b>APEX DYNASTY<span class="brand-dot">.</span></b><small>F1 MANAGER <i>/</i> RETRO RACING</small></span></button><nav aria-label="Menu principal">${[
@@ -109,7 +116,7 @@ export class UI {
       )
       .join(
         "",
-      )}</nav><div class="header-tools"><div class="credit-balance">${icon("credit")}<b>${fmt(s.credits)}</b><small>CR</small></div><span class="header-divider"></span><button class="icon-btn settings-btn" data-action="settings" aria-label="Configurações">${icon("settings")}</button><div class="avatar" title="Apex Motorsport">AD</div></div></header>`;
+      )}</nav><div class="header-tools"><div class="credit-balance">${icon("credit")}<b>${fmt(s.credits)}</b><small>CR</small></div><span class="header-divider"></span><button class="icon-btn settings-btn" data-action="settings" aria-label="Configurações">${icon("settings")}</button>${this.pilotBadge()}</div></header>`;
   }
   footer() {
     return `<footer class="footer"><span><span class="live-dot"></span> SEU PRÓXIMO LEGADO COMEÇA AQUI.</span><span>BUILD THE TEAM. <b>MASTER THE RACE.</b><i>APEX DYNASTY © 2026</i></span></footer>`;

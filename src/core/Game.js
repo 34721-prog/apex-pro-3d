@@ -531,10 +531,11 @@ export class Game {
     if (
       this.authStatus !== "ready" &&
       !["mp-close-error", "account-retry", "save-sync-retry"].includes(action) &&
-      !action.startsWith("auth-")
+      !action.startsWith("auth-") &&
+      !action.startsWith("identity-")
     )
       return;
-    if (action.startsWith("mp-") || action.startsWith("auth-")) {
+    if (action.startsWith("mp-") || action.startsWith("auth-") || action.startsWith("identity-")) {
       void this.multiplayer.handleAction(action, data);
       return;
     }

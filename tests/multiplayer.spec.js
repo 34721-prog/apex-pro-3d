@@ -9,7 +9,7 @@ async function boot(page) {
   return errors;
 }
 
-test("E-mail/password account is required before any career or multiplayer screen", async ({ page }) => {
+test("Pilot identity screen is required before any career or multiplayer screen", async ({ page }) => {
   const errors = await boot(page);
   await expect(page.locator(".account-gate")).toBeVisible();
   await expect(page.getByRole("heading", { name: "Seu legado acompanha você." })).toBeVisible();
@@ -25,12 +25,14 @@ test("E-mail/password account is required before any career or multiplayer scree
   }));
   expect(["login-required", "unconfigured", "sync-error"]).toContain(state.status);
   expect(state).toMatchObject({ profile: null, room: null, publicRooms: 0 });
-  if (state.status === "login-required" && state.configured) {
-    await expect(page.locator("#auth-login-form")).toBeVisible();
-    await expect(page.getByRole("button", { name: "ENTRAR" })).toBeVisible();
-    await expect(page.getByRole("button", { name: "CRIAR CONTA" })).toBeVisible();
-    await expect(page.getByRole("button", { name: "ESQUECI MINHA SENHA" })).toBeVisible();
-    await expect(page.getByRole("checkbox", { name: /Manter conectado/ })).toBeChecked();
+  if (["login-required", "identity"].includes(state.status) && state.configured) {
+    await expect(page.locator("#identity-form")).toBeVisible();
+    await expect(page.getByRole("heading", { name: "IDENTIFIQUE SEU PILOTO." })).toBeVisible();
+    await expect(page.getByRole("button", { name: "ENTRAR NO JOGO" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "GERAR NOME ALEATÓRIO" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "ENTRAR COM E-MAIL" })).toBeVisible();
+    await expect(page.locator('#identity-form [name="email"]')).toHaveCount(0);
+    await expect(page.locator('#identity-form [name="password"]')).toHaveCount(0);
     // No Google/OAuth button anywhere.
     await expect(page.getByRole("button", { name: /GOOGLE/i })).toHaveCount(0);
   } else if (state.status === "sync-error") {
@@ -44,19 +46,17 @@ test("E-mail/password account is required before any career or multiplayer scree
   expect(errors).toEqual([]);
 });
 
-test("register view shows username, e-mail, password and confirmation fields", async ({ page }) => {
+test("legacy e-mail login remains available as a secondary option", async ({ page }) => {
   const errors = await boot(page);
   const state = await page.evaluate(() => __game.multiplayer.state.configured && __game.authStatus);
   test.skip(!state || state === "unconfigured" || state === "sync-error", "requires a configured Supabase project");
-  await page.getByRole("button", { name: "CRIAR CONTA" }).click();
-  await expect(page.locator("#auth-register-form")).toBeVisible();
-  await expect(page.locator('#auth-register-form [name="username"]')).toBeVisible();
-  await expect(page.locator('#auth-register-form [name="email"]')).toBeVisible();
-  await expect(page.locator('#auth-register-form [name="password"]')).toBeVisible();
-  await expect(page.locator('#auth-register-form [name="confirm"]')).toBeVisible();
-  await expect(page.getByRole("button", { name: "CRIAR CONTA" })).toBeVisible();
-  await page.getByRole("button", { name: "ENTRAR" }).click();
+  await page.getByRole("button", { name: "ENTRAR COM E-MAIL" }).click();
   await expect(page.locator("#auth-login-form")).toBeVisible();
+  await expect(page.locator('#auth-login-form [name="identifier"]')).toBeVisible();
+  await expect(page.locator('#auth-login-form [name="password"]')).toBeVisible();
+  await expect(page.getByRole("button", { name: "ESQUECI MINHA SENHA" })).toBeVisible();
+  await page.getByRole("button", { name: "VOLTAR" }).click();
+  await expect(page.locator("#identity-form")).toBeVisible();
   expect(errors).toEqual([]);
 });
 

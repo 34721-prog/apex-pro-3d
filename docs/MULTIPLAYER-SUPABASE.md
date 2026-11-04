@@ -1,17 +1,24 @@
-# Login por e-mail/senha, carreira na nuvem e multiplayer
+# Identidade anônima de piloto, carreira na nuvem e multiplayer
 
 ## Projeto provisionado
 
 - Projeto Supabase: `apex-dynasty-3d-pro` (plano Free, região São Paulo `sa-east-1`).
 - Referência: `kjvzbonieahvqobulggb`.
 - Migrations multiplayer/RLS/saves: `20261028211101` (`apex_dynasty_multiplayer`), `20261028211941` (`revoke_anon_public_table_privileges`), `20261029201652` (`google_account_cloud_saves`, tabela `player_saves`) e `20261104120000` (`email_password_auth`: remove o gate Google, adiciona `profiles.username` único, troca as políticas/RPCs para contas de e-mail confirmadas e cria os RPCs de login por nome de usuário).
-- O jogo só libera qualquer tela de carreira depois de autenticação por e-mail/senha com e-mail confirmado e carregamento do save da conta. O banco confere a sessão assinada do JWT em RLS e RPCs; a interface não é a única barreira.
+- O jogo só libera qualquer tela de carreira depois de uma sessão autenticada (identidade anônima criada automaticamente no primeiro acesso, ou conta e-mail antiga pelo link secundário) e do carregamento do save. O banco confere `auth.uid()` em RLS e RPCs; a interface não é a única barreira.
 
 `.env.local` é ignorado pelo Git. O frontend usa somente uma **publishable key**. Nunca coloque `service_role` / `sb_secret_*` em variável `VITE_*`, bundle ou repositório. Não existe mais provedor OAuth nem segredo de provedor neste projeto.
 
-## Configurar a autenticação por e-mail e senha
+## Configurar a identidade anônima (passos no painel — faça você mesmo)
 
-1. No [Supabase — Authentication Providers](https://supabase.com/dashboard/project/kjvzbonieahvqobulggb/auth/providers), mantenha o provedor **E-mail** habilitado. **Não habilite Google nem nenhum outro provedor OAuth.**
+1. **Authentication → Sign In / Providers → Anonymous**: habilite **Anonymous Sign-Ins** (valor esperado: ON).
+2. **Authentication → Rate Limits**: defina um limite de sign-ins anônimos por IP (sugestão: 30/hora) — esta é a proteção contra criação excessiva de identidades.
+3. Mantenha o provedor **E-mail** habilitado apenas para contas antigas (login secundário e futura vinculação de e-mail à identidade anônima).
+4. Aplique a migration `20261105200000_anonymous_player_identity.sql` no SQL Editor (ordem: depois das migrations anteriores). Ela é não-destructiva: troca o gate de `require_confirmed_user()` para `require_authenticated_user()` (aceita anônimos), cria `username_attempts` (throttle de 5 nomes/min), adiciona `profiles.username_claimed`/`email_linked` e o trigger dá um username placeholder (`pilot_<hex>`) para anônimos.
+
+## Configurar a autenticação por e-mail e senha (legado)
+
+1. No [Supabase — Authentication Providers](https://supabase.com/dashboard/project/kjvzbonieahvqobulggb/auth/providers), mantenha o provedor **E-mail** habilitado para contas antigas. **Não habilite Google nem nenhum outro provedor OAuth.**
 2. Em Authentication → Settings, mantenha **Confirm email** ligado: o jogador só acessa o jogo depois de clicar no link enviado por e-mail (a tela exibe a opção de reenviar a confirmação).
 3. Desligue **Anonymous Sign-Ins** em Authentication → Sign In / Providers; o banco rejeita sessões anônimas mesmo que a opção fique ligada.
 4. No [Supabase — URL Configuration](https://supabase.com/dashboard/project/kjvzbonieahvqobulggb/auth/url-configuration), defina o Site URL real e permita os redirect URLs usados pelo jogo (desenvolvimento local e domínio publicado), incluindo a URL usada no link de recuperação de senha.

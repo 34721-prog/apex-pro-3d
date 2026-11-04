@@ -1034,3 +1034,32 @@
     justify-content: flex-end;
   }
 }
+
+/* ---- Pilot identity screen ---- */
+.auth-warning {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border: 1px solid #ef315044;
+  border-radius: 4px;
+  background: #ef31500f;
+  color: #c9a0a8;
+  font-size: 11px;
+  line-height: 1.55;
+}
+.pilot-name {
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #dce5ef;
+  font: 700 11px Barlow, sans-serif;
+  letter-spacing: 0.6px;
+}
+.pilot-avatar {
+  background: linear-gradient(145deg, #ef3150, #8f1d30);
+}
+@media (max-width: 680px) {
+  .pilot-name {
+    display: none;
+  }
+}

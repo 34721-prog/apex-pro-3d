@@ -19,7 +19,8 @@ import {
 import {
   cleanupAuthRedirectUrl,
   createSupabaseClient,
-  isEmailConfirmed,
+  isPlaceholderUsername,
+  isValidSessionUser,
   setRememberSession,
   supabaseConfigured,
 } from "./supabase.js";
@@ -43,7 +44,7 @@ export class MultiplayerClient {
     this.configured = options.configured ?? (injectedClient ? !!this.client : supabaseConfigured);
     this.state = {
       configured: this.configured,
-      authView: "login",
+      authView: "identity",
       pendingEmail: "",
       emailUnconfirmed: false,
       profile: null,
@@ -177,6 +178,22 @@ export class MultiplayerClient {
           this.emit({ busy: false, cloudSaveStatus: "idle", error: "" });
           return false;
         }
+        // Anonymous identity without a pilot name yet: stay on the identity
+        // screen; the career save loads right after the name is claimed.
+        if (
+          profile.username_claimed === false ||
+          isPlaceholderUsername(profile.username)
+        ) {
+          this.game.authStatus = "identity";
+          this.emit({
+            busy: false,
+            cloudSaveStatus: "idle",
+            error: "",
+            authView: "identity",
+            info: "Escolha seu nome de piloto para entrar no jogo.",
+          });
+          return false;
+        }
 
         this.emit({
           busy: true,
@@ -301,7 +318,7 @@ export class MultiplayerClient {
         info: "Você saiu da sua conta. Entre novamente para continuar.",
         cloudSaveStatus: "idle",
         connection: "offline",
-        authView: "login",
+        authView: "identity",
       });
   }
 
@@ -456,33 +473,35 @@ export class MultiplayerClient {
   async loadExistingProfile() {
     if (!this.configured || this.state.profile) return this.state.profile;
     await this.ensureClient();
-    const { data, error } = await this.client.auth.getSession();
+    let { data, error } = await this.client.auth.getSession();
     if (error) throw error;
-    const user = data?.session?.user;
-    if (!user?.id || user.is_anonymous) {
+    let user = data?.session?.user;
+    if (!isValidSessionUser(user)) {
+      // First visit (or cleared storage): create an anonymous player identity.
+      // The session is persisted by Supabase, so the pilot never has to pick
+      // a name again on this device.
+      const anon = await this.client.auth.signInAnonymously();
+      if (anon.error) throw anon.error;
+      user = anon.data?.user;
+      if (!isValidSessionUser(user)) {
+        ({ data, error } = await this.client.auth.getSession());
+        if (error) throw error;
+        user = data?.session?.user;
+      }
+    }
+    if (!isValidSessionUser(user)) {
       this.emit({
         profile: null,
         emailUnconfirmed: false,
         connection: "offline",
-        authView: "login",
-        info: "Entre com sua conta para acessar o jogo.",
-      });
-      return null;
-    }
-    if (!isEmailConfirmed(user)) {
-      this.emit({
-        profile: null,
-        emailUnconfirmed: true,
-        pendingEmail: user.email || "",
-        connection: "email-unconfirmed",
-        authView: "confirm",
-        info: "Confirme seu e-mail para liberar o acesso à sua conta.",
+        authView: "identity",
+        info: "Não foi possível criar sua identidade de piloto. Verifique a conexão.",
       });
       return null;
     }
     const { data: profile, error: profileError } = await this.client
       .from("profiles")
-      .select("id,username,display_name,avatar_url,created_at,updated_at")
+      .select("id,username,username_claimed,display_name,avatar_url,created_at,updated_at")
       .eq("id", user.id)
       .maybeSingle();
     if (profileError) throw profileError;
@@ -496,12 +515,18 @@ export class MultiplayerClient {
       return null;
     }
     this.state.profile = { ...profile };
+    // A profile with the auto placeholder username still needs a pilot name.
+    const needsName =
+      profile.username_claimed === false || isPlaceholderUsername(profile.username);
     this.emit({
       profile: this.state.profile,
       emailUnconfirmed: false,
       connection: "online",
       error: "",
-      info: "Sessão restaurada. Bem-vindo de volta.",
+      authView: needsName ? "identity" : this.state.authView,
+      info: needsName
+        ? "Escolha seu nome de piloto para entrar no jogo."
+        : "Sessão restaurada. Bem-vindo de volta.",
     });
     return this.state.profile;
   }
@@ -519,9 +544,47 @@ export class MultiplayerClient {
   }
 
   switchAuthView(view) {
-    const allowed = ["login", "register", "confirm", "forgot", "reset-sent"];
+    const allowed = ["identity", "login", "register", "confirm", "forgot", "reset-sent"];
     if (!allowed.includes(view)) return;
     this.emit({ authView: view, error: "", info: "" });
+  }
+
+  randomPilotName() {
+    const adjectives = ["veloz", "turbo", "nitro", "apex", "drift", "storm", "lunar", "carmesim", "sonic", "phantom"];
+    const nouns = ["racer", "falcon", "viper", "bolt", "shadow", "nova", "rex", "jet", "blaze", "hawk"];
+    const a = adjectives[Math.floor(Math.random() * adjectives.length)];
+    const n = nouns[Math.floor(Math.random() * nouns.length)];
+    const num = Math.floor(Math.random() * 90 + 10);
+    return `${a}_${n}${num}`.slice(0, 20).toLowerCase().replace(/[^a-z0-9_]/g, "");
+  }
+
+  async claimUsername(rawName) {
+    const name = cleanUsername(rawName);
+    this.emit({ busy: true, error: "", info: "Salvando seu nome de piloto…" });
+    await this.ensureClient();
+    const { data: available, error: availabilityError } = await this.client.rpc(
+      "username_available",
+      { p_username: name },
+    );
+    if (availabilityError) throw availabilityError;
+    if (available === false) throw new Error("username_taken");
+    const { data, error } = await this.client.rpc("set_username", {
+      p_username: name,
+    });
+    if (error) throw error;
+    if (data?.username) {
+      this.state.profile = {
+        ...this.state.profile,
+        ...data,
+        username: data.username,
+        username_claimed: true,
+        display_name: this.state.profile?.display_name || data.username,
+      };
+    }
+    this.emit({ profile: this.state.profile, busy: false, error: "", info: "Nome salvo!" });
+    // With the name claimed, run the full account boot (loads the career save).
+    await this.initializeAccount();
+    return true;
   }
 
   async signUp({ username, email, password, confirmPassword }) {
@@ -1645,6 +1708,20 @@ export class MultiplayerClient {
         case "auth-view":
           this.switchAuthView(data.view);
           return true;
+        case "identity-claim": {
+          const form = document.getElementById("identity-form");
+          await this.claimUsername(form?.querySelector('[name="pilot_name"]')?.value);
+          this.game.ui.render();
+          return true;
+        }
+        case "identity-random": {
+          const input = document.querySelector('#identity-form [name="pilot_name"]');
+          if (input) {
+            input.value = this.randomPilotName();
+            input.focus();
+          }
+          return true;
+        }
         case "mp-name":
           await this.updateDisplayName(document.getElementById("mp-new-name")?.value);
           this.game.ui.toast("Nome de exibição atualizado.");
@@ -1793,7 +1870,9 @@ function friendlyError(error) {
   if (/user already registered|already been registered/i.test(message))
     return "Este e-mail já está cadastrado. Faça login ou recupere sua senha.";
   if (/username_taken|23505/i.test(message))
-    return "Este nome de usuário já está em uso. Escolha outro.";
+    return "Este nome de piloto já está em uso. Escolha outro.";
+  if (/username_rate_limited/i.test(message))
+    return "Muitas tentativas de trocar o nome. Aguarde um minuto e tente novamente.";
   if (/username_invalid/i.test(message))
     return "O nome de usuário deve ter 3 a 20 caracteres (letras, números e _).";
   if (/account_not_found/i.test(message))

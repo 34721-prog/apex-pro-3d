@@ -19,11 +19,23 @@ function validSupabaseUrl(value) {
 export const supabaseConfigured =
   validSupabaseUrl(supabaseConfig.url) && supabaseConfig.anonKey.length > 20;
 
-// A usable account is any non-anonymous Supabase Auth user whose e-mail has
-// been confirmed. Anonymous sessions and unconfirmed signups are rejected.
+// A usable identity is any authenticated Supabase session — anonymous player
+// identities (the default) or legacy e-mail accounts. The database gate
+// (require_authenticated_user) mirrors this rule.
+export function isValidSessionUser(user) {
+  return !!(user && user.id && !user.deleted_at);
+}
+
+// Legacy e-mail accounts: kept working for players who already had an account.
 export function isEmailConfirmed(user) {
   if (!user || user.is_anonymous) return false;
   return !!(user.email_confirmed_at || user.confirmed_at);
+}
+
+// True when the profile still has the auto-generated placeholder username and
+// the player has not picked a pilot name yet.
+export function isPlaceholderUsername(username) {
+  return /^pilot_[0-9a-f]{8}$/.test(String(username || ""));
 }
 
 // "Manter conectado" preference: when disabled the session is kept only in
