@@ -24,7 +24,7 @@ import {
   validateRaceInput,
 } from "../src/multiplayer/NetworkProtocol.js";
 import { MultiplayerClient } from "../src/multiplayer/MultiplayerClient.js";
-import { isEmailConfirmed } from "../src/multiplayer/supabase.js";
+import { isValidSessionUser, isPlaceholderUsername } from "../src/multiplayer/supabase.js";
 import { resolveAccountSave } from "../src/multiplayer/CloudSave.js";
 
 const RACE_ID = "74a2a023-270f-4e53-923e-e99bbbc5ca4d";
@@ -231,25 +231,23 @@ test("snapshot interpolation wraps heading and synchronizes resources and pit st
   assert.equal(car.pit.requested, true);
 });
 
-test("multiplayer accepts only confirmed e-mail accounts, never anonymous or unconfirmed sessions", async () => {
-  assert.equal(isEmailConfirmed({
+test("anonymous player identities are valid sessions; placeholder usernames require the identity screen", async () => {
+  assert.equal(isValidSessionUser({
+    id: GUEST_ID,
+    is_anonymous: true,
+    app_metadata: { provider: "anonymous", providers: ["anonymous"] },
+  }), true, "anonymous Supabase sessions are first-class identities");
+  assert.equal(isValidSessionUser({
     id: HOST_ID,
     is_anonymous: false,
     email_confirmed_at: "2026-11-04T10:00:00Z",
-    app_metadata: { provider: "email", providers: ["email"] },
-  }), true);
-  assert.equal(isEmailConfirmed({
-    id: GUEST_ID,
-    is_anonymous: true,
-    email_confirmed_at: "2026-11-04T10:00:00Z",
-  }), false, "anonymous sessions are rejected");
-  assert.equal(isEmailConfirmed({
-    id: GUEST_ID,
-    is_anonymous: false,
-    email: "piloto@example.com",
-  }), false, "an unconfirmed e-mail cannot access the game");
+  }), true, "legacy e-mail accounts keep working");
+  assert.equal(isValidSessionUser(null), false);
+  assert.equal(isValidSessionUser({}), false);
+  assert.equal(isPlaceholderUsername("pilot_ab12cd34"), true);
+  assert.equal(isPlaceholderUsername("veloz_racer42"), false);
 
-  const calls = [];
+  // anonymous session + profile with placeholder username -> identity screen
   const client = {
     auth: {
       getSession: async () => ({
@@ -261,25 +259,102 @@ test("multiplayer accepts only confirmed e-mail accounts, never anonymous or unc
         error: null,
       }),
     },
-    from: () => { calls.push("profile-read"); throw new Error("must not read a guest profile"); },
-    rpc: () => { calls.push("rpc"); throw new Error("must not call room RPCs as guest"); },
+    from: () => ({
+      select: () => ({
+        eq: () => ({
+          maybeSingle: async () => ({
+            data: { id: GUEST_ID, username: "pilot_ab12cd34", username_claimed: false, display_name: "Piloto" },
+            error: null,
+          }),
+        }),
+      }),
+    }),
+    rpc: async () => { throw new Error("must not call room RPCs before the name is claimed"); },
+  };
+  const game = { ui: { page: "account", render() {}, toast() {} } };
+  const multiplayer = new MultiplayerClient(game, { client, configured: true });
+  const profile = await multiplayer.loadExistingProfile();
+  assert.equal(profile.username, "pilot_ab12cd34");
+  assert.equal(multiplayer.state.authView, "identity", "placeholder username forces the identity screen");
+  // the anonymous identity itself is accepted (the room RPC is reached);
+  // the identity SCREEN is what gates the UI until the name is claimed.
+  await assert.rejects(multiplayer.createRoom(roomSettings()), /must not call room RPCs/);
+
+  // claimed username -> normal access
+  const claimed = {
+    ...client,
+    from: () => ({
+      select: () => ({
+        eq: () => ({
+          maybeSingle: async () => ({
+            data: { id: GUEST_ID, username: "veloz_racer42", username_claimed: true, display_name: "Veloz" },
+            error: null,
+          }),
+        }),
+      }),
+    }),
+  };
+  const mp2 = new MultiplayerClient(game, { client: claimed, configured: true });
+  await mp2.loadExistingProfile();
+  assert.equal(mp2.state.authView, "identity", "default view is identity until claimed (state default)");
+  mp2.state.authView = "";
+  await mp2.loadExistingProfile();
+  assert.equal(mp2.state.profile.username, "veloz_racer42");
+});
+
+test("claimUsername validates, rejects duplicates and completes the account boot", async () => {
+  let claimed = null;
+  const client = {
+    auth: {
+      getSession: async () => ({ data: { session: { user: { id: GUEST_ID, is_anonymous: true } } }, error: null }),
+      signInAnonymously: async () => ({ data: { user: { id: GUEST_ID, is_anonymous: true } }, error: null }),
+    },
+    from: () => ({
+      select: () => ({
+        eq: () => ({
+          maybeSingle: async () => ({
+            data: { id: GUEST_ID, username: "pilot_ab12cd34", username_claimed: false, display_name: "Piloto" },
+            error: null,
+          }),
+        }),
+      }),
+    }),
+    rpc: async (name, args) => {
+      if (name === "username_available")
+        return { data: args.p_username === "taken_name" ? false : true, error: null };
+      if (name === "set_username") {
+        claimed = args.p_username;
+        return { data: { id: GUEST_ID, username: args.p_username, username_claimed: true, display_name: "Piloto" }, error: null };
+      }
+      if (name === "load_player_save") return { data: null, error: null };
+      if (name === "save_player_save") return { data: { revision: 1 }, error: null };
+      throw new Error(`Unexpected RPC: ${name}`);
+    },
   };
   const game = {
-    ui: { page: "multiplayer", render: () => calls.push("render"), toast() {} },
+    ui: { page: "account", render() {}, toast() {}, modal: null },
+    authStatus: "identity",
+    save: defaults(),
+    world: { setMode() {}, setPreview() {}, raceContext: null },
+    applyCloudSave() {},
   };
-  const multiplayer = new MultiplayerClient(game, { client, configured: true });
-  await multiplayer.openMenu();
-  assert.equal(multiplayer.state.emailUnconfirmed, false);
-  assert.equal(multiplayer.state.connection, "offline");
-  assert.equal(multiplayer.state.authView, "login");
-  assert.equal(multiplayer.state.profile, null);
-  assert.equal(multiplayer.state.room, null);
-  assert.equal(multiplayer.state.publicRooms.length, 0);
-  await assert.rejects(multiplayer.createRoom(roomSettings()), /Entre na sua conta/i);
-  assert.equal(await multiplayer.handleAction("auth-view", { view: "register" }), true);
-  assert.equal(multiplayer.state.authView, "register");
-  assert.equal(calls.includes("profile-read"), false);
-  assert.equal(calls.includes("rpc"), false);
+  const mp = new MultiplayerClient(game, { client, configured: true });
+  await mp.loadExistingProfile();
+  assert.equal(mp.state.authView, "identity");
+
+  await assert.rejects(mp.claimUsername("ab"), /username_invalid/);
+  await assert.rejects(mp.claimUsername("taken_name"), /username_taken/i);
+  await mp.claimUsername("veloz_racer42");
+  assert.equal(claimed, "veloz_racer42");
+  assert.equal(mp.state.profile.username, "veloz_racer42");
+  assert.equal(mp.state.profile.username_claimed, true);
+  assert.equal(game.authStatus, "ready", "after claiming the name the game boots fully");
+
+  // random name generator produces valid, unique-format names
+  for (let i = 0; i < 50; i++) {
+    const name = mp.randomPilotName();
+    assert.match(name, /^[a-z0-9_]{3,20}$/);
+  }
 });
 
 test("signup requires unique username, matching passwords and shows the confirm-e-mail screen", async () => {
@@ -386,7 +461,7 @@ test("login resolves username to e-mail, keeps session preference and loads the 
   await multiplayer.signOut();
   assert.equal(multiplayer.state.profile, null);
   assert.equal(game.authStatus, "login-required");
-  assert.equal(multiplayer.state.authView, "login");
+  assert.equal(multiplayer.state.authView, "identity", "after logout the pilot identity screen is shown again");
 });
 
 test("invite codes are exactly eight characters and survive room-state refreshes", async () => {
