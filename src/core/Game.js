@@ -534,7 +534,7 @@ export class Game {
       !action.startsWith("auth-")
     )
       return;
-    if (action.startsWith("mp-")) {
+    if (action.startsWith("mp-") || action.startsWith("auth-")) {
       void this.multiplayer.handleAction(action, data);
       return;
     }
